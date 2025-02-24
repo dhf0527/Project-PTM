@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 11Golem
+  m_EditorClassIdentifier: 
+  itemType: 11
+  itemId: 11
+  itemName: "\uACE8\uB818"
+  itemDesc: "\uB2E8\uB2E8\uD55C \uACE8\uB818\uC774\uB2E4."
+  itemIcon: {fileID: 396016501, guid: 107bdac3ed505bc4e9647c3612ec669e, type: 3}
+  attackType: "\uADFC\uAC70\uB9AC"
+  attackRange: 1
+  member: 2
+  defenseValue: 14
+  healthValue: 240
+  strengthValue: 40
+  attackSpeedValue: 2
+  Defense: "\uB9E4\uC6B0 \uB192\uC74C"
+  Health: "\uB192\uC74C"
+  Strength: "\uB192\uC74C"
+  AttackSpeed: "\uB9E4\uC8FC \uB0AE\uC74C"
+  Attribute: "\uBB3C\uB9AC"
+  weakAttribute: "\uB9C8\uBC95"
+  strongAttribute: "\uC5C6\uC74C"
+  attackCountLimitValue: 1
+  realSpeed: 0.4
+  speedValue: -1
+  accuracyValue: 40
+  avoidanceValue: 20
+  size: 3
+  createCountValue: 1
+  level: 2
+  cost: 300
+  Skill: 
+  SkillIntro: 

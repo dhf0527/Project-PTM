@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 9Minotaur
+  m_EditorClassIdentifier: 
+  itemType: 9
+  itemId: 9
+  itemName: "\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4"
+  itemDesc: "\uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4\uC774\uB2E4."
+  itemIcon: {fileID: 535035561, guid: 62d740ebb7084434682f04e97f25a2dc, type: 3}
+  attackType: "\uADFC\uAC70\uB9AC"
+  attackRange: 0.8
+  member: 2
+  defenseValue: 8
+  healthValue: 200
+  strengthValue: 30
+  attackSpeedValue: 3
+  Defense: "\uB192\uC74C"
+  Health: "\uB192\uC74C"
+  Strength: "\uB192\uC74C"
+  AttackSpeed: "\uB0AE\uC74C"
+  Attribute: "\uBB3C\uB9AC"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uC5C6\uC74C"
+  attackCountLimitValue: 1
+  realSpeed: 0.8
+  speedValue: 0
+  accuracyValue: 40
+  avoidanceValue: 20
+  size: 2
+  createCountValue: 1
+  level: 2
+  cost: 300
+  Skill: 
+  SkillIntro: 

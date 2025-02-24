@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 1Thief
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemId: 1
+  itemName: "\uB3C4\uC801"
+  itemDesc: "\uC18D\uB3C4\uAC00 \uBE60\uB978 \uB3C4\uB451\uC774\uB2E4"
+  itemIcon: {fileID: -1227750600, guid: b54601c1220ef8e4ea1f17fd320ba48f, type: 3}
+  attackType: "\uC6D0\uAC70\uB9AC"
+  attackRange: 2
+  member: 0
+  defenseValue: 0
+  healthValue: 40
+  strengthValue: 10
+  attackSpeedValue: 7
+  Defense: "\uB9E4\uC6B0 \uB0AE\uC74C"
+  Health: "\uB0AE\uC74C"
+  Strength: "\uBCF4\uD1B5"
+  AttackSpeed: "\uB9E4\uC6B0 \uB192\uC74C"
+  Attribute: "\uBB3C\uB9AC"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uC5C6\uC74C"
+  attackCountLimitValue: 1
+  realSpeed: 1
+  speedValue: 1
+  accuracyValue: 60
+  avoidanceValue: 80
+  size: 1
+  createCountValue: 1
+  level: 1
+  cost: 150
+  Skill: "\uAC15\uD0C8"
+  SkillIntro: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uBA85\uC911\uD560
+    \uB54C\uB9C8\uB2E4 2\uACE8\uB4DC\uB97C \uC5BB\uB294\uB2E4. \uC790\uC2E0\uC774
+    \uC801\uC744 \uCC98\uCE58\uD558\uBA74 10\uACE8\uB4DC\uB97C \uC5BB\uB294\uB2E4."
+  SkillNext: 
+  SkillIntroNext: 

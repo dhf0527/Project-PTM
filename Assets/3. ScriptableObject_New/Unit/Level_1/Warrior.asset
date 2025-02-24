@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  unit_Name: "\uAC80\uC0AC"
+  unit_Code: 100
+  faction: 0
+  size: 1
+  level: 1
+  cost: 100
+  hp: 80
+  move_Speed: 0.8
+  damage: 10
+  attack_Speed: 4
+  attack_RangeType: 0
+  attack_Range: 1.5
+  multi_Hit: 1
+  attack_Type: 0
+  accuracy: 60
+  avoidance: 40
+  armor: 4
+  resistance_Type: 2
+  weak_Type: 2

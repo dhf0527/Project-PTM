@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 01EnemyTower
+  m_EditorClassIdentifier: 
+  itemType: 16
+  itemId: 100
+  itemName: 
+  itemDesc: 
+  itemIcon: {fileID: 0}
+  attackType: 
+  attackRange: 0
+  member: 0
+  defenseValue: 6
+  healthValue: 1600
+  strengthValue: 0
+  attackSpeedValue: 0
+  Defense: 0
+  Health: 0
+  Strength: 0
+  AttackSpeed: 0
+  Attribute: 0
+  weakAttribute: 
+  strongAttribute: 
+  attackCountLimitValue: 0
+  realSpeed: 0
+  speedValue: 0
+  accuracyValue: 0
+  avoidanceValue: 0
+  size: 0
+  createCountValue: 0
+  level: 1
+  cost: 0

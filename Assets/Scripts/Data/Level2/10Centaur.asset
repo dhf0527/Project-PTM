@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 10Centaur
+  m_EditorClassIdentifier: 
+  itemType: 10
+  itemId: 10
+  itemName: "\uCF04\uD0C0\uC6B0\uB85C\uC2A4"
+  itemDesc: "\uCF04\uD0C0\uC6B0\uB85C\uC2A4\uC774\uB2E4."
+  itemIcon: {fileID: -1869737852, guid: dab46e185a00e8d4499c84a18e690874, type: 3}
+  attackType: "\uADFC\uAC70\uB9AC"
+  attackRange: 0.8
+  member: 2
+  defenseValue: 4
+  healthValue: 160
+  strengthValue: 20
+  attackSpeedValue: 5
+  Defense: "\uB9E4\uC6B0 \uB0AE\uC74C"
+  Health: "\uBCF4\uD1B5"
+  Strength: "\uB192\uC74C"
+  AttackSpeed: "\uB0AE\uC74C"
+  Attribute: "\uBB3C\uB9AC"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uC5C6\uC74C"
+  attackCountLimitValue: 1
+  realSpeed: 1.5
+  speedValue: 2
+  accuracyValue: 60
+  avoidanceValue: 40
+  size: 2
+  createCountValue: 1
+  level: 2
+  cost: 300
+  Skill: 
+  SkillIntro: 

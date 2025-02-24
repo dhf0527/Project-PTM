@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 16Elementalist
+  m_EditorClassIdentifier: 
+  itemType: 16
+  itemId: 16
+  itemName: "\uC815\uB839\uC220\uC0AC"
+  itemDesc: "\uC815\uB839\uC220\uC0AC\uC774\uB2E4."
+  itemIcon: {fileID: -112904193, guid: 4a5ade541c8cd4d4b98d9772d7c9dedb, type: 3}
+  attackType: "\uC6D0\uAC70\uB9AC"
+  attackRange: 2.5
+  member: 1
+  defenseValue: 0
+  healthValue: 160
+  strengthValue: 30
+  attackSpeedValue: 6
+  Defense: "\uB9E4\uC6B0 \uB0AE\uC74C"
+  Health: "\uBCF4\uD1B5"
+  Strength: "\uB192\uC74C"
+  AttackSpeed: "\uB9E4\uC6B0 \uB192\uC74C"
+  Attribute: "\uB9C8\uBC95"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uBB3C\uB9AC"
+  attackCountLimitValue: 1
+  realSpeed: 1
+  speedValue: 1
+  accuracyValue: 120
+  avoidanceValue: 80
+  size: 1
+  createCountValue: 1
+  level: 3
+  cost: 500
+  Skill: "\uC815\uB839 \uD68C\uADC0"
+  SkillIntro: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uBA85\uC911\uD560
+    \uB54C\uB9C8\uB2E4 \uC790\uC2E0 \uC8FC\uBCC0\uC758 200 \uBC94\uC704\uC5D0 \uC0DD\uBA85\uB825\uC758
+    \uBE44\uC728\uC774 \uAC00\uC7A5 \uB0AE\uC740 \uC544\uAD70 \uC720\uB2DB\uC758
+    \uC0DD\uBA85\uB825\uC744 10\uD68C\uBCF5\uD55C\uB2E4."
+  SkillNext: 
+  SkillIntroNext: 

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 0Warrior
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemId: 0
+  itemName: "\uAC80\uC0AC"
+  itemDesc: "\uAC80\uC0AC\uC774\uB2E4."
+  itemIcon: {fileID: -1109344244, guid: 0fdd73686cb670d42bdc0fbc0f08d5a5, type: 3}
+  attackType: "\uADFC\uAC70\uB9AC"
+  attackRange: 0.5
+  member: 0
+  defenseValue: 4
+  healthValue: 80
+  strengthValue: 10
+  attackSpeedValue: 4
+  Defense: "\uBCF4\uD1B5"
+  Health: "\uB192\uC74C"
+  Strength: "\uBCF4\uD1B5"
+  AttackSpeed: "\uB0AE\uC74C"
+  Attribute: "\uBB3C\uB9AC"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uC5C6\uC74C"
+  attackCountLimitValue: 1
+  realSpeed: 0.8
+  speedValue: 1
+  accuracyValue: 60
+  avoidanceValue: 40
+  size: 1
+  createCountValue: 1
+  level: 1
+  cost: 100
+  Skill: 
+  SkillIntro: 
+  SkillNext: 
+  SkillIntroNext: 

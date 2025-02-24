@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7a2d30eb19d3f499cc1ffd6ad9528c, type: 3}
+  m_Name: 8MagicWarrior
+  m_EditorClassIdentifier: 
+  itemType: 8
+  itemId: 8
+  itemName: "\uB9C8\uAC80\uC0AC"
+  itemDesc: "\uB9C8\uAC80\uC0AC\uC774\uB2E4"
+  itemIcon: {fileID: -1166019717, guid: a31d915f4c835b54bae9647bcadb3735, type: 3}
+  attackType: "\uADFC\uAC70\uB9AC"
+  attackRange: 0.5
+  member: 1
+  defenseValue: 4
+  healthValue: 120
+  strengthValue: 30
+  attackSpeedValue: 4
+  Defense: "\uBCF4\uD1B5"
+  Health: "\uBCF4\uD1B5"
+  Strength: "\uB192\uC74C"
+  AttackSpeed: "\uB0AE\uC74C"
+  Attribute: "\uB9C8\uBC95"
+  weakAttribute: "\uC5C6\uC74C"
+  strongAttribute: "\uB9C8\uBC95"
+  attackCountLimitValue: 1
+  realSpeed: 1
+  speedValue: 0
+  accuracyValue: 60
+  avoidanceValue: 60
+  size: 1
+  createCountValue: 1
+  level: 2
+  cost: 300
+  Skill: "\uAC11\uC637 \uC808\uB2E8"
+  SkillIntro: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC5D0 \uBA85\uC911\uD55C \uC801\uC758
+    \uBC29\uC5B4\uB3C4\uB97C \uC808\uBC18\uC73C\uB85C \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+  SkillNext: 
+  SkillIntroNext: 
