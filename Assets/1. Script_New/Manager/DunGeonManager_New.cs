@@ -16,7 +16,11 @@ public class DunGeonManager_New : MonoBehaviour
     [SerializeField] UnitSpawnButton[] unitSpawnButton = new UnitSpawnButton[3];
     //생산할 유닛(임시)
     [SerializeField] BaseUnit[] spawnUnits = new BaseUnit[3];
-    
+
+    //카메라
+    public CameraMove cameraMove;
+    //공주 체력 패널
+    public PrincessHpPanel princessHpPanel;
     //World Space Canvas
     public Transform worldCanvas_Trans;
     #endregion
@@ -27,13 +31,15 @@ public class DunGeonManager_New : MonoBehaviour
     //유닛(팀)의 부모
     [SerializeField] Transform unit_Parent;
     #endregion
-
+    [HideInInspector] public Princess princess;
 
     //싱글톤
     public static DunGeonManager_New instance;
     private void Awake()
     {
         instance = this;
+
+        princess = FindAnyObjectByType<Princess>();
 
         //버튼과 유닛 연동(임시)
         for (int i = 0; i < unitSpawnButton.Length; i++)
@@ -55,5 +61,21 @@ public class DunGeonManager_New : MonoBehaviour
         unit.transform.position += Vector3.up * Random.Range(-0.25f, 0.25f);
         unit.transform.parent = unit_Parent;
         unit.IsTeam = true;
+    }
+
+    //공주 부활 쿨타임
+    public void PrincessCoolDown()
+    {
+        princessHpPanel.rest_Time = 3f;
+    }
+
+    //공주 부활
+    public void PrincessRivive()
+    {
+        //카메라 설정
+        cameraMove.isPrincessDead = false;
+        //스폰 위치로 이동
+        princess.transform.position = spawn_Trans.position;
+        princess.Rivive();
     }
 }

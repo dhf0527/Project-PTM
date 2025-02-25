@@ -8,6 +8,9 @@ public class Princess : BaseUnit
 {
     private void Update()
     {
+        if (isDead)
+            return;
+
         Move();
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -34,6 +37,9 @@ public class Princess : BaseUnit
     //버튼을 눌렀을 때 이동 방향/속도 설정
     public void OnMove(int move_dir)
     {
+        if (isDead)
+            return;
+
         moveDir = Vector3.right * move_dir;
         SetDir();
         OnEndAttack();
@@ -76,4 +82,26 @@ public class Princess : BaseUnit
     }
     #endregion
 
+    public override void Dead()
+    {
+        SetAnim(AnimState.die);
+        GetComponent<Collider2D>().enabled = false;
+        isDead = true;
+    }
+
+    public override void OnDead()
+    {
+        DunGeonManager_New.instance.PrincessCoolDown();
+        DunGeonManager_New.instance.cameraMove.isPrincessDead = true;
+
+        //안보이는 곳으로 옮기기
+        transform.position = new Vector3(-15, 0, 0);
+    }
+
+    public void Rivive()
+    {
+        Cur_Hp = ud.hp;
+        isDead = false;
+        GetComponent<Collider2D>().enabled = true;
+    }
 }

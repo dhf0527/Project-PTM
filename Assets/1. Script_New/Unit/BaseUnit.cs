@@ -76,18 +76,26 @@ public abstract class BaseUnit : MonoBehaviour
         set
         {
             cur_Hp = value;
-            //체력바 갱신
-            hp_bar.SetHpBar();
             //사망 체크
             if (cur_Hp <= 0)
+            {
+                cur_Hp = 0;
                 Dead();
+            }
+            //공주일 경우 전용 체력바 갱신
+            if (ud.unit_Code == 0)
+                DunGeonManager_New.instance.princessHpPanel.SetHpText(this);
+            //체력바 갱신
+            hp_bar.SetHpBar();
         }
     }
 
+    //체력으로 인한 넉백을 당할 수 있는 횟수
     protected int knockBack_Count = 3;
     protected bool canKnockBack = true;
     protected bool canKnockBack_By_Hp = true;
     protected bool isKnockBacking = false;
+    protected bool isDead = false;
     #endregion
     #region 애니메이션 변수
 
@@ -109,7 +117,7 @@ public abstract class BaseUnit : MonoBehaviour
 
     protected void Update()
     {
-        if (cur_State == AnimState.die)
+        if (isDead)
             return;
 
         if (isKnockBacking)
@@ -332,16 +340,17 @@ public abstract class BaseUnit : MonoBehaviour
     }
 
     //유닛 사망 즉시 호출
-    public void Dead()
+    public virtual void Dead()
     {
         canKnockBack = false;
         SetAnim(AnimState.die);
         hp_bar.gameObject.SetActive(false);
         GetComponent<Collider2D>().enabled = false;
+        isDead = true;
     }
 
     //유닛 사망 애니메이션 끝날 때 호출
-    public void OnDead()
+    public virtual void OnDead()
     {
         Destroy(gameObject);
     }
