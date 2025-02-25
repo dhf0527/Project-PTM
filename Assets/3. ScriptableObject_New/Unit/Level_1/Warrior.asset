@@ -24,8 +24,8 @@ MonoBehaviour:
   damage: 10
   attack_Speed: 4
   attack_RangeType: 0
-  attack_Range: 1.5
-  multi_Hit: 1
+  attack_Range: 0.8
+  target_Count: 1
   attack_Type: 0
   accuracy: 60
   avoidance: 40

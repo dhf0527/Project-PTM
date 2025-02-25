@@ -8,7 +8,7 @@ public abstract class BaseUnit : MonoBehaviour
     public struct UnitData_Struct
     {
         public float moveSpeed;
-        public float damage;
+        public float attackDamage;
         public float attackSpeed;
         public float accuracy;
         public float avoidance;
@@ -26,11 +26,14 @@ public abstract class BaseUnit : MonoBehaviour
             isTeam = value;
             moveDir.x = isTeam ? 1 : -1;
             SetTeam();
+            hp_bar?.SetHpBarSprite(isTeam);
         }
     }
 
     [Header("scriptable object")]
-    [SerializeField] UnitData ud;
+    public UnitData ud;
+    public HpBar_new hp_bar;
+
     #region readOnly
     protected static readonly int DoMove = Animator.StringToHash("doMove");
     protected static readonly int DoAttack = Animator.StringToHash("doAttack");
@@ -53,8 +56,6 @@ public abstract class BaseUnit : MonoBehaviour
     protected float boundary_Max_x;
     #endregion
     #region 공격 변수
-    //인식할 거리(공격 범위 - 0.1(20px))
-    protected float rayCast_dis = 0.8f - 0.1f;
     //공격할 수 있는지 판별하는 변수
     protected bool canAttack = true;
     //공격중인지 판별하는 변수
@@ -62,6 +63,31 @@ public abstract class BaseUnit : MonoBehaviour
 
     //스캔한 적을 받아올 hit
     protected RaycastHit2D hit;
+    #endregion
+    #region 피격 변수
+    //현재 체력
+    float cur_Hp;
+    public float Cur_Hp
+    {
+        get 
+        {
+            return cur_Hp;
+        }
+        set
+        {
+            cur_Hp = value;
+            //체력바 갱신
+            hp_bar.SetHpBar();
+            //사망 체크
+            if (cur_Hp <= 0)
+                Dead();
+        }
+    }
+
+    protected int knockBack_Count = 3;
+    protected bool canKnockBack = true;
+    protected bool canKnockBack_By_Hp = true;
+    protected bool isKnockBacking = false;
     #endregion
     #region 애니메이션 변수
 
@@ -83,8 +109,13 @@ public abstract class BaseUnit : MonoBehaviour
 
     protected void Update()
     {
-        Move();
+        if (cur_State == AnimState.die)
+            return;
+
+        if (isKnockBacking)
+            return;
         ScanEnemy();
+        Move();
     }
 
     #region 초기화
@@ -92,10 +123,14 @@ public abstract class BaseUnit : MonoBehaviour
     {
         //유닛 사이즈별 공격 범위 설정
         ud.attack_Range = ud.size == 1 ? 0.8f : ud.size == 2 ? 1f : 1.2f;
-        rayCast_dis = ud.attack_Range - 0.1f;
+
+        //체력바와 연동
+        hp_bar.unit = this;
+        //체력 설정
+        Cur_Hp = ud.hp;
 
         unitData_st.moveSpeed = ud.move_Speed;
-        unitData_st.damage = ud.damage;
+        unitData_st.attackDamage = ud.damage;
         unitData_st.attackSpeed = ud.attack_Speed;
         unitData_st.accuracy = ud.accuracy;
         unitData_st.avoidance = ud.avoidance;
@@ -169,19 +204,23 @@ public abstract class BaseUnit : MonoBehaviour
     #endregion
 
     #region 공격
-    //공격 범위 내에 적이 있는지 스캔
+    //스캔 범위 내에 적이 있는지 스캔
     protected void ScanEnemy()
     {
+        //레이캐스트 위치
+        Vector3 rayPos = transform.position;
+        rayPos.y = 0;
         //방향 설정
         Vector2 rayDir = IsTeam ? Vector2.right : Vector2.left;
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? EnemyLayer : TeamLayer; 
-        hit = Physics2D.Raycast(transform.position, rayDir, rayCast_dis, LayerMask.GetMask(target_Layer));
+        //레이캐스트 발사
+        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
         //rayCast 가시화(디버깅)
-        Debug.DrawRay(transform.position + (IsTeam ? Vector3.up : Vector3.zero), rayDir * rayCast_dis, IsTeam ? Color.blue : Color.red, Time.deltaTime);
+        Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * ud.attack_Range, IsTeam ? Color.blue : Color.red, Time.deltaTime);
 
-        //스캔된 적이 있으면 멈춤
-        if (hit.collider != null)
+        //스캔된 적이 있고, 일정 거리 내에 있으면 멈춤
+        if (hit.collider != null && (transform.position.x - hit.transform.position.x) < ud.attack_Range + 0.4f)
             isMoving = false;
         //스캔된 적이 없고 공격중이 아니면 다시 움직임
         else if (!isAttacking)
@@ -200,6 +239,69 @@ public abstract class BaseUnit : MonoBehaviour
         }   
     }
 
+    //attack애니메이션에서 호출할 함수
+    public void OnAttack()
+    {
+        switch (ud.attack_RangeType)
+        {
+            case AttackRange.Melee:
+                MeleeAttack();
+                break;
+            case AttackRange.Ranged:
+                RangedAttack();
+                break;
+            default:
+                Debug.LogError($"{name}:잘못된 RangeType");
+                break;
+        }
+    }
+
+    void MeleeAttack()
+    {
+        //방향 설정
+        Vector2 rayDir = IsTeam ? Vector2.right : Vector2.left;
+        //스캔할 레이어 설정
+        string target_Layer = IsTeam ? EnemyLayer : TeamLayer;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
+
+        //공격할 대상의 수
+        int target_Count = hits.Length < ud.target_Count ? hits.Length : ud.target_Count;
+        for (int i = 0; i < target_Count; i++)
+        {
+            BaseUnit target_Unit = hits[i].collider.GetComponent<BaseUnit>();
+            if (TryAttack(target_Unit))
+            {
+                ApplyAttack(target_Unit);
+            }
+        }
+    }
+
+    void RangedAttack()
+    {
+
+    }
+
+    //공격 전달 판정을 반환
+    bool TryAttack(BaseUnit target_Unit)
+    {
+        //명중 확률
+        float pro = unitData_st.accuracy - target_Unit.unitData_st.avoidance + 50f;
+        //최소 확률 5%
+        pro = pro > 5 ? pro : 5;
+        return Random.Range(0, 100) < pro;
+    }
+
+    //공격 명중 시 피해를 주는 함수
+    protected virtual void ApplyAttack(BaseUnit target_Unit)
+    {
+        float type_res = ud.attack_Type == target_Unit.ud.resistance_Type ? 0.5f : 1;
+        float type_weak = ud.attack_Type == target_Unit.ud.weak_Type ? 2f : 1;
+
+        //최종 피해량
+        float damage = (unitData_st.attackDamage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+        target_Unit.TakeDamage(damage);
+    }
+
     //공격 딜레이를 구현하는 함수
     IEnumerator C_AttackCoolDown()
     {
@@ -213,6 +315,68 @@ public abstract class BaseUnit : MonoBehaviour
     {
         isMoving = true;
         isAttacking = false;
+    }
+    #endregion
+
+    #region 피격
+    public void TakeDamage(float damage)
+    {
+        Cur_Hp -= damage;
+        //체력 감소로 인한 넉백
+        if (canKnockBack && damage >= (ud.hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
+        {
+            StartCoroutine(KnockBack());
+            knockBack_Count--;
+            StartCoroutine(C_KnockBack_CoolDown());
+        }
+    }
+
+    //유닛 사망 즉시 호출
+    public void Dead()
+    {
+        canKnockBack = false;
+        SetAnim(AnimState.die);
+        hp_bar.gameObject.SetActive(false);
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    //유닛 사망 애니메이션 끝날 때 호출
+    public void OnDead()
+    {
+        Destroy(gameObject);
+    }
+
+    //넉백 함수
+    IEnumerator KnockBack()
+    {
+        //공격 중이었을 경우 공격 종료 처리
+        if (cur_State == AnimState.attack)
+            OnEndAttack();
+
+        //0.75초동안 넉백
+        SetAnim(AnimState.hit);
+        isKnockBacking = true;
+
+        float knockTime = 0;
+        float knockSpeed = 0;
+        while (knockTime < 0.75f)
+        {
+            knockTime += Time.deltaTime;
+            //가속도 보정
+            knockSpeed = Mathf.Lerp((1.5f / 0.75f), 0, (knockTime / 0.75f));
+            transform.position += (-moveDir.normalized) * knockSpeed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        isKnockBacking = false;
+    }
+
+    //체력 감소로 인한 넉백의 쿨다운
+    IEnumerator C_KnockBack_CoolDown()
+    {
+        canKnockBack_By_Hp = false;
+        yield return new WaitForSeconds(2);
+        canKnockBack_By_Hp = true;
     }
     #endregion
 

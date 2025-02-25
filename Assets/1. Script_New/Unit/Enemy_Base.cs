@@ -32,6 +32,12 @@ public class Enemy_Base : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Spawn_Unit(spawn_Units[0,0]);
+        }
+
+        /*
         for (int i = 0; i < spawn_Time_Count.Length; i++)
         {
             //해당 유닛 번호가 비어있으면 스폰 시간 카운트하지 않음
@@ -46,6 +52,7 @@ public class Enemy_Base : MonoBehaviour
                 spawn_Time_Count[i] = 0;
             }
         }
+        */
     }
 
     //유닛 생산 함수
@@ -53,6 +60,7 @@ public class Enemy_Base : MonoBehaviour
     {
         //유닛 생산
         BaseUnit baseUnit = Instantiate(unit, spawn_Trans);
+        baseUnit.transform.position += Vector3.up * Random.Range(-0.25f, 0.25f);
         //부모 설정(적 유닛들만 모아놓은 Gameobject)
         baseUnit.transform.parent = enemy_Unit_Parent;
         //팀 설정

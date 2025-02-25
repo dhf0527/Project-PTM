@@ -33,7 +33,7 @@ public class UnitData : ScriptableObject
     //공격범위
     public float attack_Range;
     //최대 공격 수
-    public int multi_Hit;
+    public int target_Count;
     //피해 유형(물,마)
     public AttackType attack_Type;
     //명중률

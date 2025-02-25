@@ -17,6 +17,10 @@ public class Princess : BaseUnit
         {
             unitData_st.moveSpeed = 4f;
         }
+        if (!Input.GetKeyDown(KeyCode.F3))
+        {
+            unitData_st.accuracy = 1000f;
+        }
     }
 
     public override void Init()
