@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
   m_Name: Princess
   m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: 2083078570, guid: 4171359abe9d0ca4a82287097eb18c5e, type: 3}
   unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
   unit_Code: 0
+  faction: 0
   size: 2
   level: 0
   cost: 0
@@ -27,5 +29,6 @@ MonoBehaviour:
   attack_Type: 0
   accuracy: 60
   avoidance: 40
+  armor: 0
   resistance_Type: 2
   weak_Type: 2

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: -1109344244, guid: 0fdd73686cb670d42bdc0fbc0f08d5a5, type: 3}
   unit_Name: "\uAC80\uC0AC"
   unit_Code: 100
   faction: 0

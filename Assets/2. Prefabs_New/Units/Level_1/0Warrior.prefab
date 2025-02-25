@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17de1c7c49d05464ab9c5bde283c7005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTeam: 0
   ud: {fileID: 11400000, guid: d2745a8df907b3b4d97a3080282a4284, type: 2}
 --- !u!95 &5061897147921594596
 Animator:
@@ -171,7 +170,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 2}
+  m_Size: {x: 0.7, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &934097701605030411
 GameObject:

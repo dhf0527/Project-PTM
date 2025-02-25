@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class UnitData : ScriptableObject
 {
+    //스프라이트
+    public Sprite unit_Sprite;
     //이름
     public string unit_Name;
     //코드
