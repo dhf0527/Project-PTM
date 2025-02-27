@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Base : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
     //유닛이 생성될 위치
     [SerializeField] Transform spawn_Trans;
@@ -60,7 +60,7 @@ public class Enemy_Base : MonoBehaviour
     {
         //유닛 생산
         BaseUnit baseUnit = Instantiate(unit, spawn_Trans);
-        baseUnit.transform.position += Vector3.up * Random.Range(-0.25f, 0.25f);
+        baseUnit.transform.position += DunGeonManager_New.instance.SpawnY();
         //부모 설정(적 유닛들만 모아놓은 Gameobject)
         baseUnit.transform.parent = enemy_Unit_Parent;
         //팀 설정

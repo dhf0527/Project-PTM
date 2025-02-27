@@ -2837,6 +2837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283656906}
   - component: {fileID: 283656905}
+  - component: {fileID: 283656907}
   m_Layer: 0
   m_Name: DunGeonManager
   m_TagString: Untagged
@@ -2867,9 +2868,12 @@ MonoBehaviour:
   - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  worldCanvas_Trans: {fileID: 1937814460}
+  cameraMove: {fileID: 519420035}
+  princessHpPanel: {fileID: 521670939}
   spawn_Trans: {fileID: 1470081848}
   unit_Parent: {fileID: 813430772}
+  spawn_Y: 0.3
+  princess: {fileID: 0}
 --- !u!4 &283656906
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,6 +2889,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283656907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283656904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97f3ee3777702942a3495a33490cf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldCanvas_Trans: {fileID: 1937814460}
+  hpBar_Prf: {fileID: 4871286019806623654, guid: 33faff9f1a122884aa621f7871ca7d51, type: 3}
 --- !u!1 &300370183
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,7 +4201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_Speed: 5
-  princess: {fileID: 8313518626789154301}
+  isPrincessDead: 0
 --- !u!1 &521670935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,6 +4294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b950d053a681a42449db80fc1140441b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character_Image: {fileID: 200789572}
+  hpBar_Image: {fileID: 1830273644}
+  coolDown_Text: {fileID: 856251815}
+  hp_Text: {fileID: 1458918496}
+  rest_Time: 0
 --- !u!1 &532123695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5826,7 +5849,7 @@ GameObject:
   - component: {fileID: 655837833}
   - component: {fileID: 655837836}
   m_Layer: 6
-  m_Name: Team_Base
+  m_Name: TeamBase
   m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9213,7 +9236,7 @@ GameObject:
   - component: {fileID: 963480816}
   - component: {fileID: 963480815}
   m_Layer: 7
-  m_Name: Enemy_Base
+  m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14870,7 +14893,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545025055}
-  - component: {fileID: 1545025054}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -14878,23 +14900,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1545025054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545025053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e71e55b11ad284dbe4b48060543055, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  hpBar_Sprite:
-  - {fileID: 128905188, guid: 88d1e4cfe94cdb8449be27b79e9fac3c, type: 3}
-  - {fileID: 1121888653, guid: 88d1e4cfe94cdb8449be27b79e9fac3c, type: 3}
-  fill_Image: {fileID: 1830273644}
 --- !u!224 &1545025055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17571,7 +17576,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 16.99, y: 8.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1971738546
 GameObject:
@@ -22821,7 +22826,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 90032e4a0a609a448ad0c3fef8647788, type: 2}
-  hp_bar: {fileID: 1545025054}
 --- !u!224 &8420170406286171610
 RectTransform:
   m_ObjectHideFlags: 0

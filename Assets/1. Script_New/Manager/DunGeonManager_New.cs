@@ -21,8 +21,6 @@ public class DunGeonManager_New : MonoBehaviour
     public CameraMove cameraMove;
     //공주 체력 패널
     public PrincessHpPanel princessHpPanel;
-    //World Space Canvas
-    public Transform worldCanvas_Trans;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]
@@ -30,6 +28,9 @@ public class DunGeonManager_New : MonoBehaviour
     [SerializeField] Transform spawn_Trans;
     //유닛(팀)의 부모
     [SerializeField] Transform unit_Parent;
+
+    [Header("유닛간 Y축 차이")]
+    public float spawn_Y = 0.03f;
     #endregion
     [HideInInspector] public Princess princess;
 
@@ -58,9 +59,16 @@ public class DunGeonManager_New : MonoBehaviour
     public void OnSpawnUnit(int i)
     {
         BaseUnit unit = Instantiate(spawnUnits[i], spawn_Trans);
-        unit.transform.position += Vector3.up * Random.Range(-0.25f, 0.25f);
+        unit.transform.position += SpawnY();
         unit.transform.parent = unit_Parent;
         unit.IsTeam = true;
+    }
+
+    public Vector3 SpawnY()
+    {
+        int rand = Random.Range(-5, 6);
+        Vector3 return_Vec = Vector3.up * rand * spawn_Y + Vector3.forward * rand * spawn_Y;
+        return return_Vec;
     }
 
     //공주 부활 쿨타임

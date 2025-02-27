@@ -26,13 +26,13 @@ public abstract class BaseUnit : MonoBehaviour
             isTeam = value;
             moveDir.x = isTeam ? 1 : -1;
             SetTeam();
-            hp_bar?.SetHpBarSprite(isTeam);
+            hpBar?.SetHpBarSprite(isTeam);
         }
     }
 
     [Header("scriptable object")]
     public UnitData ud;
-    public HpBar_new hp_bar;
+    HpBar_new hpBar;
 
     #region readOnly
     protected static readonly int DoMove = Animator.StringToHash("doMove");
@@ -84,9 +84,10 @@ public abstract class BaseUnit : MonoBehaviour
             }
             //공주일 경우 전용 체력바 갱신
             if (ud.unit_Code == 0)
-                DunGeonManager_New.instance.princessHpPanel.SetHpText(this);
+                DunGeonManager_New.instance.princessHpPanel.SetHpBar(this);
+
             //체력바 갱신
-            hp_bar.SetHpBar();
+            hpBar.SetHpBar();
         }
     }
 
@@ -132,8 +133,13 @@ public abstract class BaseUnit : MonoBehaviour
         //유닛 사이즈별 공격 범위 설정
         ud.attack_Range = ud.size == 1 ? 0.8f : ud.size == 2 ? 1f : 1.2f;
 
-        //체력바와 연동
-        hp_bar.unit = this;
+        //체력바를 world canvas에 생성
+        hpBar = Instantiate(WorldCanavsManager.instance.hpBar_Prf, WorldCanavsManager.instance.worldCanvas_Trans);
+        //체력바 연동
+        hpBar.unit = this;
+        //체력바 위치 설정
+        hpBar.SetHpPos();
+
         //체력 설정
         Cur_Hp = ud.hp;
 
@@ -344,7 +350,7 @@ public abstract class BaseUnit : MonoBehaviour
     {
         canKnockBack = false;
         SetAnim(AnimState.die);
-        hp_bar.gameObject.SetActive(false);
+        hpBar.gameObject.SetActive(false);
         GetComponent<Collider2D>().enabled = false;
         isDead = true;
     }

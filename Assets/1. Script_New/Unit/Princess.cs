@@ -14,15 +14,19 @@ public class Princess : BaseUnit
         Move();
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            unitData_st.moveSpeed = 1f;
+            unitData_st.moveSpeed = 4f;
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            unitData_st.moveSpeed = 4f;
+            unitData_st.moveSpeed = 1f;
         }
-        if (!Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             unitData_st.accuracy = 1000f;
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            unitData_st.accuracy = 60f;
         }
     }
 
@@ -103,5 +107,6 @@ public class Princess : BaseUnit
         Cur_Hp = ud.hp;
         isDead = false;
         GetComponent<Collider2D>().enabled = true;
+        SetAnim(AnimState.idle);
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PrincessHpPanel : MonoBehaviour
 {
     public Image character_Image;
+    public Image hpBar_Image;
     public TMP_Text coolDown_Text;
     public TMP_Text hp_Text;
 
@@ -34,8 +35,9 @@ public class PrincessHpPanel : MonoBehaviour
         }
     }
 
-    public void SetHpText(BaseUnit princess)
+    public void SetHpBar(BaseUnit princess)
     {
         hp_Text.text = $"{princess.Cur_Hp}/{princess.ud.hp}";
+        hpBar_Image.fillAmount = princess.Cur_Hp / princess.ud.hp;
     }
 }
