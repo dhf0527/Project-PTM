@@ -2872,7 +2872,7 @@ MonoBehaviour:
   princessHpPanel: {fileID: 521670939}
   spawn_Trans: {fileID: 1470081848}
   unit_Parent: {fileID: 813430772}
-  spawn_Y: 0.3
+  spawn_Y: 0.03
   princess: {fileID: 0}
 --- !u!4 &283656906
 Transform:
