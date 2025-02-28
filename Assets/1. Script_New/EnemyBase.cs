@@ -10,7 +10,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] Transform enemy_Unit_Parent;
 
     // spawn_Units[m,n] -> 유닛번호 m-n(m웨이브 n번째) 
-    BaseUnit[,] spawn_Units = new BaseUnit[3,3];
+    Unit[,] spawn_Units = new Unit[3,3];
     //스폰 시간
     float[] spawn_Time = { 10, 20, 30 };
     //스폰 시간 카운터
@@ -18,7 +18,7 @@ public class EnemyBase : MonoBehaviour
 
 
 
-    [SerializeField] BaseUnit[] test_units = new BaseUnit[3];
+    [SerializeField] Unit[] test_units = new Unit[3];
     private void Start()
     {
         //스폰할 유닛 데이터 삽입(임시)
@@ -56,10 +56,10 @@ public class EnemyBase : MonoBehaviour
     }
 
     //유닛 생산 함수
-    void Spawn_Unit(BaseUnit unit)
+    void Spawn_Unit(Unit unit)
     {
         //유닛 생산
-        BaseUnit baseUnit = Instantiate(unit, spawn_Trans);
+        Unit baseUnit = Instantiate(unit, spawn_Trans);
         baseUnit.transform.position += DunGeonManager_New.instance.SpawnY();
         //부모 설정(적 유닛들만 모아놓은 Gameobject)
         baseUnit.transform.parent = enemy_Unit_Parent;

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 1Thief
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: -1227750600, guid: b54601c1220ef8e4ea1f17fd320ba48f, type: 3}
+  unit_Code: 101
+  level: 1
+  unit_Name: "\uB3C4\uC801"
+  faction: 0
+  move_Speed: 1
+  hp: 40
+  damage: 10
+  attack_Speed: 7
+  accuracy: 60
+  avoidance: 80
+  armor: 0
+  attack_RangeType: 1
+  target_Count: 1
+  attack_Type: 1
+  weak_Type: 0
+  resistance_Type: 0
+  spawn_Count: 1
+  size: 0
+  cost: 150
+  attack_Range: 0.8

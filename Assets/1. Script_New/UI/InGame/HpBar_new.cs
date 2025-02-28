@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HpBar_new : MonoBehaviour
 {
-    [HideInInspector] public BaseUnit unit;
+    [HideInInspector] public Unit unit;
 
     //체력바 sprite
     [Header("0: 아군 체력바 1: 적군 체력바")]

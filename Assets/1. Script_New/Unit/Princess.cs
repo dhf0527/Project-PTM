@@ -4,7 +4,7 @@ using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Princess : BaseUnit
+public class Princess : Unit
 {
     private void Update()
     {
@@ -27,6 +27,14 @@ public class Princess : BaseUnit
         if (Input.GetKeyDown(KeyCode.F4))
         {
             unitData_st.accuracy = 60f;
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            unitData_st.avoidance = 1000f;
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            unitData_st.avoidance = 40f;
         }
     }
 

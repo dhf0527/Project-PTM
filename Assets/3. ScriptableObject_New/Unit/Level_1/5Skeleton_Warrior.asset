@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
-  m_Name: Warrior
+  m_Name: 5Skeleton_Warrior
   m_EditorClassIdentifier: 
-  unit_Sprite: {fileID: -1109344244, guid: 0fdd73686cb670d42bdc0fbc0f08d5a5, type: 3}
-  unit_Name: "\uAC80\uC0AC"
-  unit_Code: 100
-  faction: 0
-  size: 1
+  unit_Sprite: {fileID: -1252669523, guid: cd25d2ad125b64e45ace438a1d8137fb, type: 3}
+  unit_Code: 105
   level: 1
-  cost: 100
-  hp: 80
-  move_Speed: 0.8
-  damage: 10
+  unit_Name: "\uD574\uACE8 \uC804\uC0AC"
+  faction: 3
+  move_Speed: 0.6
+  hp: 60
+  damage: 8
   attack_Speed: 4
-  attack_RangeType: 0
-  attack_Range: 0.8
-  target_Count: 1
-  attack_Type: 0
-  accuracy: 60
+  accuracy: 40
   avoidance: 40
-  armor: 4
-  resistance_Type: 2
-  weak_Type: 2
+  armor: 2
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 1
+  weak_Type: 0
+  resistance_Type: 0
+  spawn_Count: 1
+  size: 0
+  cost: 100
+  attack_Range: 0

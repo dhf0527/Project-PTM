@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: Princess
   m_EditorClassIdentifier: 
   unit_Sprite: {fileID: 2083078570, guid: 4171359abe9d0ca4a82287097eb18c5e, type: 3}
-  unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
   unit_Code: 0
-  faction: 0
-  size: 2
   level: 0
-  cost: 0
-  hp: 400
+  unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
+  faction: 0
   move_Speed: 1
+  hp: 400
   damage: 20
   attack_Speed: 5
-  attack_RangeType: 0
-  attack_Range: 1
-  target_Count: 1
-  attack_Type: 0
   accuracy: 60
   avoidance: 40
   armor: 0
-  resistance_Type: 2
-  weak_Type: 2
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 1
+  weak_Type: 0
+  resistance_Type: 0
+  spawn_Count: 0
+  size: 1
+  cost: 0
+  attack_Range: 1

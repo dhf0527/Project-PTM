@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UnitSpawnButton : MonoBehaviour
 {
-    [HideInInspector] public BaseUnit unit;
+    [HideInInspector] public Unit unit;
 
     [SerializeField] TMP_Text level_Text;
     [SerializeField] TMP_Text cost_Text;

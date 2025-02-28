@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseUnit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     //전투 도중 바뀔 수 있는 능력치들을 담은 구조체
     public struct UnitData_Struct
@@ -25,6 +25,7 @@ public abstract class BaseUnit : MonoBehaviour
         {
             isTeam = value;
             moveDir.x = isTeam ? 1 : -1;
+            SetDir();
             SetTeam();
             hpBar?.SetHpBarSprite(isTeam);
         }
@@ -49,13 +50,18 @@ public abstract class BaseUnit : MonoBehaviour
     #region 이동 변수
     //이동 중인지 판별하는 변수
     protected bool isMoving = true;
-    //이동 속도(방향 포함)
+    //이동 방향
     protected Vector3 moveDir = Vector3.zero;
     //이동 가능한 경계선
     protected float boundary_Min_x;
     protected float boundary_Max_x;
     #endregion
     #region 공격 변수
+    [Header("ranged: 원거리 유닛만 필요로 하는 변수")]
+    [SerializeField] Transform ranged_Projectile_Pos;
+    [SerializeField] Projectile ranged_Projectile_Prefabs;
+
+
     //공격할 수 있는지 판별하는 변수
     protected bool canAttack = true;
     //공격중인지 판별하는 변수
@@ -130,8 +136,11 @@ public abstract class BaseUnit : MonoBehaviour
     #region 초기화
     public virtual void Init()
     {
-        //유닛 사이즈별 공격 범위 설정
-        ud.attack_Range = ud.size == 1 ? 0.8f : ud.size == 2 ? 1f : 1.2f;
+        //유닛 공격 유형/사이즈별 공격 범위 설정
+        if (ud.attack_RangeType == AttackRange.Melee)
+            ud.attack_Range = ud.size == Unit_Size.Small ? 0.8f : ud.size == Unit_Size.Medium ? 1f : 1.2f;
+        else
+            ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
         //체력바를 world canvas에 생성
         hpBar = Instantiate(WorldCanavsManager.instance.hpBar_Prf, WorldCanavsManager.instance.worldCanvas_Trans);
@@ -150,7 +159,7 @@ public abstract class BaseUnit : MonoBehaviour
         unitData_st.avoidance = ud.avoidance;
         unitData_st.armor = ud.armor;
     }
-    
+
     //팀 설정
     public void SetTeam()
     {
@@ -282,7 +291,7 @@ public abstract class BaseUnit : MonoBehaviour
         int target_Count = hits.Length < ud.target_Count ? hits.Length : ud.target_Count;
         for (int i = 0; i < target_Count; i++)
         {
-            BaseUnit target_Unit = hits[i].collider.GetComponent<BaseUnit>();
+            Unit target_Unit = hits[i].collider.GetComponent<Unit>();
             if (TryAttack(target_Unit))
             {
                 ApplyAttack(target_Unit);
@@ -292,11 +301,16 @@ public abstract class BaseUnit : MonoBehaviour
 
     void RangedAttack()
     {
-
+        //투사체 생성
+        Projectile projectile = Instantiate(ranged_Projectile_Prefabs, ranged_Projectile_Pos);
+        //투사체 부모 설정
+        projectile.transform.SetParent(DunGeonManager_New.instance.projectile_Parent);
+        //투사체 데이터 전달
+        projectile.SetData(this);
     }
 
     //공격 전달 판정을 반환
-    bool TryAttack(BaseUnit target_Unit)
+    bool TryAttack(Unit target_Unit)
     {
         //명중 확률
         float pro = unitData_st.accuracy - target_Unit.unitData_st.avoidance + 50f;
@@ -306,13 +320,15 @@ public abstract class BaseUnit : MonoBehaviour
     }
 
     //공격 명중 시 피해를 주는 함수
-    protected virtual void ApplyAttack(BaseUnit target_Unit)
+    protected virtual void ApplyAttack(Unit target_Unit)
     {
         float type_res = ud.attack_Type == target_Unit.ud.resistance_Type ? 0.5f : 1;
         float type_weak = ud.attack_Type == target_Unit.ud.weak_Type ? 2f : 1;
 
         //최종 피해량
         float damage = (unitData_st.attackDamage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+        //최소 피해량 1
+        damage = damage < 1 ? 1 : damage;
         target_Unit.TakeDamage(damage);
     }
 
@@ -379,7 +395,12 @@ public abstract class BaseUnit : MonoBehaviour
             knockTime += Time.deltaTime;
             //가속도 보정
             knockSpeed = Mathf.Lerp((1.5f / 0.75f), 0, (knockTime / 0.75f));
-            transform.position += (-moveDir.normalized) * knockSpeed * Time.deltaTime;
+            //경계선 보정
+            SetBoundary();
+            Vector3 tmp_Vec = transform.position + (-moveDir.normalized) * knockSpeed * Time.deltaTime;
+            tmp_Vec.x = Mathf.Clamp(tmp_Vec.x, boundary_Min_x, boundary_Max_x);
+            //이동
+            transform.position = tmp_Vec;
             yield return new WaitForEndOfFrame();
         }
 
