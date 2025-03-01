@@ -13,7 +13,8 @@ public enum AttackType
 {
     None,
     Physical,
-    Magical
+    Magical,
+    Fire
 }
 
 public enum AttackRange

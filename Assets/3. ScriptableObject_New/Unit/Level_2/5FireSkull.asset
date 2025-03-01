@@ -21,14 +21,14 @@ MonoBehaviour:
   hp: 120
   damage: 20
   attack_Speed: 3
-  accuracy: 600
+  accuracy: 60
   avoidance: 40
   armor: 4
   attack_RangeType: 1
   target_Count: 3
-  attack_Type: 2
+  attack_Type: 3
   weak_Type: 0
-  resistance_Type: 0
+  resistance_Type: 3
   spawn_Count: 1
   size: 1
   cost: 350
