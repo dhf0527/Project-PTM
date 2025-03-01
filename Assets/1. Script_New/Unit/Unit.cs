@@ -33,7 +33,7 @@ public abstract class Unit : MonoBehaviour
 
     [Header("scriptable object")]
     public UnitData ud;
-    HpBar_new hpBar;
+    public bool isHpText;
 
     #region readOnly
     protected static readonly int DoMove = Animator.StringToHash("doMove");
@@ -97,6 +97,8 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
+    protected HpBar_new hpBar;
+
     //체력으로 인한 넉백을 당할 수 있는 횟수
     protected int knockBack_Count = 3;
     protected bool canKnockBack = true;
@@ -142,15 +144,7 @@ public abstract class Unit : MonoBehaviour
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        //체력바를 world canvas에 생성
-        hpBar = Instantiate(WorldCanavsManager.instance.hpBar_Prf, WorldCanavsManager.instance.worldCanvas_Trans);
-        //체력바 연동
-        hpBar.unit = this;
-        //체력바 위치 설정
-        hpBar.SetHpPos();
-
-        //체력 설정
-        Cur_Hp = ud.hp;
+        SetHpBar();
 
         unitData_st.moveSpeed = ud.move_Speed;
         unitData_st.attackDamage = ud.damage;
@@ -158,6 +152,20 @@ public abstract class Unit : MonoBehaviour
         unitData_st.accuracy = ud.accuracy;
         unitData_st.avoidance = ud.avoidance;
         unitData_st.armor = ud.armor;
+    }
+
+    //체력바 생성 및 설정
+    public virtual void SetHpBar()
+    {
+        //체력바를 world canvas에 생성
+        hpBar = Instantiate(WorldCanavsManager.instance.hpBar_Prf, WorldCanavsManager.instance.worldCanvas_Trans);
+        //체력바 연동
+        hpBar.unit = this;
+        //체력바 위치 설정
+        hpBar.SetHpPos(ud.size == Unit_Size.Small ? 1.2f : ud.size == Unit_Size.Medium ? 1.2f : 1.5f);
+
+        //체력 설정
+        Cur_Hp = ud.hp;
     }
 
     //팀 설정
@@ -301,10 +309,15 @@ public abstract class Unit : MonoBehaviour
 
     void RangedAttack()
     {
+        //바라보는 방향에 따라 투사체 생성 위치 조정
+        Vector3 spawn_Pos = transform.position + (sr.flipX ? -ranged_Projectile_Pos.localPosition : ranged_Projectile_Pos.localPosition);
+        spawn_Pos.y = ranged_Projectile_Pos.position.y;
         //투사체 생성
-        Projectile projectile = Instantiate(ranged_Projectile_Prefabs, ranged_Projectile_Pos);
-        //투사체 부모 설정
+        Projectile projectile = Instantiate(ranged_Projectile_Prefabs);
+        //투사체 부모 및 위치 설정
         projectile.transform.SetParent(DunGeonManager_New.instance.projectile_Parent);
+        projectile.transform.position = spawn_Pos;
+
         //투사체 데이터 전달
         projectile.SetData(this);
     }

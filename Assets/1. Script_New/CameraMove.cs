@@ -7,6 +7,7 @@ public class CameraMove : MonoBehaviour
     [SerializeField] float move_Speed;
 
     [HideInInspector] public bool isPrincessDead;
+    [HideInInspector] public bool isChasePrincess;
 
     Princess princess;
     float min_x;
@@ -14,6 +15,8 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
+        isChasePrincess = true;
+
         princess = DunGeonManager_New.instance.princess;
 
         min_x = DunGeonManager_New.instance.boundary_Min_x / 2.18f;
