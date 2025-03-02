@@ -60,6 +60,7 @@ public class DunGeonManager_New : MonoBehaviour
         boundary_Max_x = boundary.bounds.max.x;
     }
 
+    #region 유닛 생산 함수
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
@@ -82,14 +83,16 @@ public class DunGeonManager_New : MonoBehaviour
         }
     }
 
-    //유닛이 생성될 Y축 벡터를 반환하는 함수
+    //유닛이 생산될 Y축 벡터를 반환하는 함수
     public Vector3 SpawnY()
     {
         int rand = UnityEngine.Random.Range(-5, 6);
         Vector3 return_Vec = Vector3.up * rand * spawn_Y + Vector3.forward * rand * spawn_Y;
         return return_Vec;
     }
+    #endregion
 
+    #region 공주 관련 함수
     //공주 부활을 쿨타임 설정하는 함수
     public void PrincessCoolDown()
     {
@@ -101,8 +104,10 @@ public class DunGeonManager_New : MonoBehaviour
     {
         //카메라 설정
         cameraMove.isPrincessDead = false;
+        cameraMove.isChasePrincess = true;
         //스폰 위치로 이동
         princess.transform.position = spawn_Trans.position;
         princess.Rivive();
     }
+    #endregion
 }

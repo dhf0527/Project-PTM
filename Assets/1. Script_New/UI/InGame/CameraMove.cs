@@ -25,13 +25,19 @@ public class CameraMove : MonoBehaviour
 
     private void Update()
     {
-        if (!isPrincessDead)
+        if (!isPrincessDead && isChasePrincess)
         {
             //공주의 x좌표를 따라감(경계선을 넘지 않도록)
-            Vector3 tmp_Pos = transform.position;
-            tmp_Pos.x = Mathf.Clamp(princess.transform.position.x, min_x, max_x);
-            transform.position = tmp_Pos;
+            MoveCamera(princess.transform.position.x);
         }
     }
 
+    //카메라를 move_Pos로 이동시키는 함수
+    public void MoveCamera(float move_Pos_X)
+    {
+        Vector3 tmp_Pos = transform.position;
+        //경계선 보정
+        tmp_Pos.x = Mathf.Clamp(move_Pos_X, min_x, max_x);
+        transform.position = tmp_Pos;
+    }
 }

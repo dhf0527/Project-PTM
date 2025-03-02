@@ -52,6 +52,7 @@ public class Princess : Unit
         if (isDead)
             return;
 
+        DunGeonManager_New.instance.cameraMove.isChasePrincess = true;
         moveDir = Vector3.right * move_dir;
         SetDir();
         OnEndAttack();
