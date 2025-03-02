@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DunGeonManager_New : MonoBehaviour
@@ -17,6 +18,11 @@ public class DunGeonManager_New : MonoBehaviour
     //생산할 유닛(임시)
     [SerializeField] Unit[] spawnUnits = new Unit[3];
 
+    //골드 패널
+    public GoldPanel goldPanel;
+    //요새 업그레이드 패널
+    public BaseLevelUpPanel baseLevelUpPanel;
+
     //카메라
     public CameraMove cameraMove;
     //공주 체력 패널
@@ -28,14 +34,61 @@ public class DunGeonManager_New : MonoBehaviour
     [SerializeField] Transform spawn_Trans;
     //유닛(팀)의 부모
     [SerializeField] Transform unit_Parent;
-
     [Header("유닛간 최소 Y축 차이")]
     public float spawn_Y = 0.03f;
+
+    float max_Gold;
+    public float Max_Gold 
+    { 
+        get { return max_Gold; } 
+        set 
+        { 
+            max_Gold = value;
+            goldPanel.SetGoldText();
+        }
+    }
+    float cur_Gold;
+    public float Cur_Gold 
+    { 
+        get { return cur_Gold; } 
+        set 
+        { 
+            cur_Gold = value;
+            goldPanel.SetGoldText();
+        } 
+    }
+    float gold_Per_Sec;
+    public float Gold_Per_Sec 
+    { 
+        get { return gold_Per_Sec; } 
+        set 
+        { 
+            gold_Per_Sec = value; 
+            goldPanel.SetGoldText();
+        } 
+    }
+    int base_UpgradeCost;
+
+    float gold_time;
     #endregion
+
+    [Serializable]
+    public class AbillitiesByLevel
+    {
+        public int base_Hp_By_Level;
+        public int base_Armor_By_Level;
+        public int base_UpgradeCost_By_Level;
+        public int base_GoldPerSec_By_Level;
+        public int base_MaxGold_By_Level;
+    }
+    [Header("아군 요새의 (Element + 1)레벨 능력치")]
+    public List<AbillitiesByLevel> base_abillitiesByLevels;
+
     //투사체 부모
     public Transform projectile_Parent;
 
     [HideInInspector] public Princess princess;
+    [HideInInspector] public TeamBase_Unit teamBase;
 
     //싱글톤
     public static DunGeonManager_New instance;
@@ -45,12 +98,17 @@ public class DunGeonManager_New : MonoBehaviour
 
         //공주 찾아서 저장
         princess = FindAnyObjectByType<Princess>();
+        teamBase = FindAnyObjectByType<TeamBase_Unit>();
 
         //버튼과 유닛 연동(임시)
         for (int i = 0; i < unitSpawnButton.Length; i++)
         {
             unitSpawnButton[i].unit = spawnUnits[i];
         }
+
+        Gold_Per_Sec = base_abillitiesByLevels[0].base_GoldPerSec_By_Level;
+        Max_Gold = base_abillitiesByLevels[0].base_MaxGold_By_Level;
+        base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
     }
 
     private void Start()
@@ -60,7 +118,13 @@ public class DunGeonManager_New : MonoBehaviour
         boundary_Max_x = boundary.bounds.max.x;
     }
 
-    #region 유닛 생산 함수
+    private void Update()
+    {
+        //0.1초마다 골드 획득
+        GetGoldPerSec();
+    }
+
+    #region 유닛 생산 함수(골드 포함)
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
@@ -89,6 +153,48 @@ public class DunGeonManager_New : MonoBehaviour
         int rand = UnityEngine.Random.Range(-5, 6);
         Vector3 return_Vec = Vector3.up * rand * spawn_Y + Vector3.forward * rand * spawn_Y;
         return return_Vec;
+    }
+
+    //요새 레벨업 버튼을 눌렀을 때 호출
+    public void OnBaseLevelUp()
+    {
+        //최대 레벨
+        if (teamBase.Base_level >= base_abillitiesByLevels.Count)
+        {
+            return;
+        }
+
+        if (Cur_Gold >= base_UpgradeCost)
+        {
+            Cur_Gold -= base_UpgradeCost;
+            //요새 레벨업 처리
+            teamBase.Base_LevelUp();
+            //골드 관련 레벨업 처리
+            Set_GoldByBaseLevel();
+        }
+        else
+        {
+            
+        }
+    }
+
+    //아군 요새 레벨에 따라 골드 관련 변수 설정
+    public void Set_GoldByBaseLevel()
+    {
+        Gold_Per_Sec = base_abillitiesByLevels[teamBase.Base_level - 1].base_GoldPerSec_By_Level;
+        Max_Gold = base_abillitiesByLevels[teamBase.Base_level - 1].base_MaxGold_By_Level;
+        base_UpgradeCost = base_abillitiesByLevels[teamBase.Base_level - 1].base_UpgradeCost_By_Level;
+    }
+
+    //0.1초마다 골드를 획득하는 함수
+    void GetGoldPerSec()
+    {
+        gold_time += Time.deltaTime;
+        if (gold_time >= 0.1f)
+        {
+            Cur_Gold += Gold_Per_Sec / 10f;
+            gold_time -= 0.1f;
+        }
     }
     #endregion
 

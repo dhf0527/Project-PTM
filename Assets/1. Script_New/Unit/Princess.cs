@@ -113,7 +113,7 @@ public class Princess : Unit
 
     public void Rivive()
     {
-        Cur_Hp = ud.hp;
+        Cur_Hp = unitData_st.max_Hp;
         isDead = false;
         GetComponent<Collider2D>().enabled = true;
         SetAnim(AnimState.idle);

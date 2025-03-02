@@ -24,6 +24,7 @@ public class EnemyBase_Unit : Unit
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
+        unitData_st.max_Hp = ud.hp;
         unitData_st.moveSpeed = ud.move_Speed;
         unitData_st.attackDamage = ud.damage;
         unitData_st.attackSpeed = ud.attack_Speed;
@@ -47,7 +48,7 @@ public class EnemyBase_Unit : Unit
         hpBar.transform.localScale *= 2;
 
         //체력 설정
-        Cur_Hp = ud.hp;
+        Cur_Hp = unitData_st.max_Hp;
     }
 
     public override void Dead()

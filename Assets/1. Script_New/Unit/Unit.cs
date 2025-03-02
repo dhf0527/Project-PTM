@@ -7,6 +7,7 @@ public abstract class Unit : MonoBehaviour
     //전투 도중 바뀔 수 있는 능력치들을 담은 구조체
     public struct UnitData_Struct
     {
+        public float max_Hp;
         public float moveSpeed;
         public float attackDamage;
         public float attackSpeed;
@@ -144,14 +145,14 @@ public abstract class Unit : MonoBehaviour
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        SetHpBar();
-
+        unitData_st.max_Hp = ud.hp;
         unitData_st.moveSpeed = ud.move_Speed;
         unitData_st.attackDamage = ud.damage;
         unitData_st.attackSpeed = ud.attack_Speed;
         unitData_st.accuracy = ud.accuracy;
         unitData_st.avoidance = ud.avoidance;
         unitData_st.armor = ud.armor;
+        SetHpBar();
     }
 
     //체력바 생성 및 설정
@@ -165,7 +166,7 @@ public abstract class Unit : MonoBehaviour
         hpBar.SetHpPos(ud.size == Unit_Size.Small ? 1.2f : ud.size == Unit_Size.Medium ? 1.2f : 1.5f);
 
         //체력 설정
-        Cur_Hp = ud.hp;
+        Cur_Hp = unitData_st.max_Hp;
     }
 
     //팀 설정
@@ -366,7 +367,7 @@ public abstract class Unit : MonoBehaviour
     {
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
-        if (canKnockBack && damage >= (ud.hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
+        if (canKnockBack && damage >= (unitData_st.max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
         {
             StartCoroutine(KnockBack());
             knockBack_Count--;

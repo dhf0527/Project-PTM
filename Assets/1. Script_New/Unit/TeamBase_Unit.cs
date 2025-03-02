@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,18 @@ using UnityEngine.UI;
 
 public class TeamBase_Unit : Unit
 {
+    int base_level = 1;
+    public int Base_level
+    {
+        get { return base_level; }
+        set 
+        {
+            base_level = value;
+            DunGeonManager_New.instance.baseLevelUpPanel.Set_LevelText(base_level);
+            DunGeonManager_New.instance.baseLevelUpPanel.Set_CostText(DunGeonManager_New.instance.base_abillitiesByLevels[base_level - 1].base_UpgradeCost_By_Level);
+        }
+    }
+
     private void Start()
     {
         SetHpBar();
@@ -23,6 +36,7 @@ public class TeamBase_Unit : Unit
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
+        unitData_st.max_Hp = ud.hp;
         unitData_st.moveSpeed = ud.move_Speed;
         unitData_st.attackDamage = ud.damage;
         unitData_st.attackSpeed = ud.attack_Speed;
@@ -46,7 +60,7 @@ public class TeamBase_Unit : Unit
         hpBar.transform.localScale *= 2;
 
         //체력 설정
-        Cur_Hp = ud.hp;
+        Cur_Hp = unitData_st.max_Hp;
     }
 
     public override void Dead()
@@ -55,4 +69,30 @@ public class TeamBase_Unit : Unit
         Debug.Log("패배");
     }
 
+    //요새 레벨업을 했을 때 호출
+    public void Base_LevelUp()
+    {
+        Base_level++;
+        float tmp_max_Hp = unitData_st.max_Hp;
+        Set_BaseAbillityByLevel(DunGeonManager_New.instance.base_abillitiesByLevels[Base_level - 1]);
+        //최대 체력이 오른만큼 현재 체력 상승
+        Cur_Hp += unitData_st.max_Hp - tmp_max_Hp;
+    }
+
+    //레벨에 따라 능력치를 설정
+    public void Set_BaseAbillityByLevel(DunGeonManager_New.AbillitiesByLevel base_abillitiesByLevel)
+    {
+        
+        unitData_st.max_Hp = base_abillitiesByLevel.base_Hp_By_Level;
+        unitData_st.armor = base_abillitiesByLevel.base_Armor_By_Level;
+        /*
+        //업그레이드 비용
+        DunGeonManager_New.instance.Gold_Per_Sec = base_abillitiesByLevels[base_level - 1].base_GoldPerSec_By_Level;
+        DunGeonManager_New.instance.Max_Gold = base_abillitiesByLevels[base_level - 1].base_MaxGold_By_Level;
+        */
+    }
+
 }
+
+
+
