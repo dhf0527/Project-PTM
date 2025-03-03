@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 50f5da919e1d199458cb0f69a844d732, type: 2}
   isHpText: 0
+  isHavePassive: 1
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: -6458632999849278288, guid: 7058502c843cdab46b144ef34566ba88, type: 3}
 --- !u!95 &5061897147921594596

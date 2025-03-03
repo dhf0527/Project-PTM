@@ -16,7 +16,10 @@ public class DunGeonManager_New : MonoBehaviour
     //유닛 생산 버튼
     [SerializeField] UnitSpawnButton[] unitSpawnButton = new UnitSpawnButton[3];
     //생산할 유닛(임시)
-    [SerializeField] Unit[] spawnUnits = new Unit[3];
+    [HideInInspector] public Unit[] spawnUnits;
+
+    //유닛 해금 패널
+    public UnitUnlock unitUnlock;
 
     //골드 패널
     public GoldPanel goldPanel;
@@ -71,6 +74,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     float gold_time;
     #endregion
+    public List<Unit> units_Level_1;
 
     [Serializable]
     public class AbillitiesByLevel
@@ -100,15 +104,25 @@ public class DunGeonManager_New : MonoBehaviour
         princess = FindAnyObjectByType<Princess>();
         teamBase = FindAnyObjectByType<TeamBase_Unit>();
 
-        //버튼과 유닛 연동(임시)
-        for (int i = 0; i < unitSpawnButton.Length; i++)
-        {
-            unitSpawnButton[i].unit = spawnUnits[i];
-        }
-
         Gold_Per_Sec = base_abillitiesByLevels[0].base_GoldPerSec_By_Level;
         Max_Gold = base_abillitiesByLevels[0].base_MaxGold_By_Level;
         base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
+        spawnUnits = new Unit[3];
+
+        //카드에 데이터 삽입
+        List<int> numbers = new List<int>();
+        for (int i = 0; i < units_Level_1.Count; i++)
+            numbers.Add(i);
+
+        for (int k = 0; k < unitUnlock.cards.Count; k++)
+        {
+            int index = UnityEngine.Random.Range(0, numbers.Count);
+            unitUnlock.cards[k].SetData(units_Level_1[numbers[index]]);
+            numbers.RemoveAt(index);
+        }
+
+        //유닛 해금 창 열기
+        unitUnlock.OpenUnitUnlock(true);
     }
 
     private void Start()
@@ -128,7 +142,11 @@ public class DunGeonManager_New : MonoBehaviour
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
-        StartCoroutine(C_SpawnUnit(index));
+        if (Cur_Gold >= spawnUnits[index].ud.cost)
+        {
+            StartCoroutine(C_SpawnUnit(index));
+            Cur_Gold -= spawnUnits[index].ud.cost;
+        }
     }
 
     //실제로 생산을 하는 함수
@@ -144,6 +162,16 @@ public class DunGeonManager_New : MonoBehaviour
             unit.IsTeam = true;
             //생산 딜레이
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+    
+    public void SetUnitSpawnButton()
+    {
+        //버튼과 유닛 연동
+        for (int i = 0; i < spawnUnits.Length; i++)
+        {
+            unitSpawnButton[i].unit = spawnUnits[i];
+            unitSpawnButton[i].SetUI();
         }
     }
 
@@ -192,9 +220,17 @@ public class DunGeonManager_New : MonoBehaviour
         gold_time += Time.deltaTime;
         if (gold_time >= 0.1f)
         {
-            Cur_Gold += Gold_Per_Sec / 10f;
+            GetGold(Gold_Per_Sec / 10f);
             gold_time -= 0.1f;
         }
+    }
+
+    //골드를 획득하는 함수
+    public void GetGold(float getGold)
+    {
+        Cur_Gold += getGold;
+        if (Cur_Gold > Max_Gold)
+            Cur_Gold = Max_Gold;
     }
     #endregion
 

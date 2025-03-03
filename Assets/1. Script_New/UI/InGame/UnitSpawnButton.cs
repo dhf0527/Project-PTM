@@ -23,8 +23,14 @@ public class UnitSpawnButton : MonoBehaviour
     public void SetUI()
     {
         if (unit == null)
+        {
+            GetComponent<Button>().interactable = false;
+            level_Text.text = $"";
+            cost_Text.text = $"";
             return;
+        }
 
+        GetComponent<Button>().interactable = true;
         level_Text.text = $"Lv.{unit.ud.level}";
         cost_Text.text = $"{unit.ud.cost}";
         unit_Image.sprite = unit.ud.unit_Sprite;

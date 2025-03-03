@@ -12,6 +12,13 @@ public class Princess : Unit
             return;
 
         Move();
+        
+        Test();
+    }
+
+    //테스트 함수
+    void Test()
+    {
         if (Input.GetKeyDown(KeyCode.F1))
         {
             unitData_st.moveSpeed = 4f;
@@ -35,6 +42,10 @@ public class Princess : Unit
         if (Input.GetKeyDown(KeyCode.F6))
         {
             unitData_st.avoidance = 40f;
+        }
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            DunGeonManager_New.instance.Cur_Gold = DunGeonManager_New.instance.Max_Gold;
         }
     }
 

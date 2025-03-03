@@ -35,7 +35,7 @@ public abstract class Unit : MonoBehaviour
     [Header("scriptable object")]
     public UnitData ud;
     public bool isHpText;
-
+    public bool isHavePassive;
     #region readOnly
     protected static readonly int DoMove = Animator.StringToHash("doMove");
     protected static readonly int DoAttack = Animator.StringToHash("doAttack");

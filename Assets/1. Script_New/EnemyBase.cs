@@ -32,6 +32,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Update()
     {
+        //Å×½ºÆ®
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             Spawn_Unit(spawn_Units[0,0]);
