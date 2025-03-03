@@ -142,10 +142,11 @@ public class DunGeonManager_New : MonoBehaviour
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
-        if (Cur_Gold >= spawnUnits[index].ud.cost)
+        if (!unitSpawnButton[index].isCoolDown && Cur_Gold >= spawnUnits[index].ud.cost)
         {
             StartCoroutine(C_SpawnUnit(index));
             Cur_Gold -= spawnUnits[index].ud.cost;
+            unitSpawnButton[index].SetCoolDown();
         }
     }
 

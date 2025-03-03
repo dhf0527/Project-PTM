@@ -14,9 +14,30 @@ public class UnitSpawnButton : MonoBehaviour
     [SerializeField] Image lock_Image;
     [SerializeField] Image coolDown_Image;
 
+    [HideInInspector] public bool isCoolDown;
+    float coolTime;
+    float cur_CoolTime;
+
     private void Start()
     {
         SetUI();
+    }
+
+    private void Update()
+    {
+        if (isCoolDown)
+        {
+            if (cur_CoolTime > 0)
+            {
+                cur_CoolTime -= Time.deltaTime;
+                coolDown_Image.fillAmount = (cur_CoolTime / coolTime);
+            }
+            else
+            {
+                isCoolDown = false;
+            }
+        }
+        
     }
 
     //UI연동
@@ -36,5 +57,14 @@ public class UnitSpawnButton : MonoBehaviour
         unit_Image.sprite = unit.ud.unit_Sprite;
         lock_Image.gameObject.SetActive(false);
         coolDown_Image.gameObject.SetActive(false);
+    }
+
+    public void SetCoolDown()
+    {
+        isCoolDown = true;
+        //비용에 따른 쿨타임
+        coolTime = unit.ud.cost * 0.04f;
+        cur_CoolTime = coolTime;
+        coolDown_Image.gameObject.SetActive(true);
     }
 }
