@@ -43,7 +43,7 @@ public class Card_new : MonoBehaviour
 
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
         spawnCount_Text.text = $"X {unit.ud.spawn_Count}";
-        unitLevel_Text.text = $"{unit.ud.level}";
+        unitLevel_Text.text = $"LV.{unit.ud.level}";
         faction_Image.sprite = faction_Sprites[(int)unit.ud.faction];
         unit_Image.sprite = unit.ud.unit_Sprite;
         unitName_Text.text = $"{unit.ud.unit_Name}";
@@ -63,6 +63,8 @@ public class Card_new : MonoBehaviour
     {
         foreach (var item in dark_Masks)
         {
+            if (!toggle)
+                toggle = GetComponent<Toggle>();
             item.SetActive(!toggle.isOn);
         }
     }

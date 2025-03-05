@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UnitUnlock : MonoBehaviour
 {
+    public GameObject cardParent;
+    public DetailPanel detailPanel;
+
+    public TMP_Text unlock_Text;
     public List<Card_new> cards;
-    [SerializeField] Button select_Button;
+    public Button select_Button;
+    public Button detail_Button;
 
     Unit selected_Unit;
     int level = 0;
@@ -14,16 +20,7 @@ public class UnitUnlock : MonoBehaviour
     private void Awake()
     {
         Init();
-    }
-
-    //선택한 카드를 제외한 나머지를 어둡게 만드는 함수
-    public void SetDark()
-    {
-        foreach (var item in cards)
-        {
-            item.SetDarkMask();
-        }
-    }
+    }  
 
     //card toggle에서 호출
     public void OnCardSelect()
@@ -32,11 +29,25 @@ public class UnitUnlock : MonoBehaviour
 
         foreach(var item in cards)
         {
-            if(item.GetComponent<Toggle>().isOn)
+            //선택된 card에 저장된 unit 가져오기
+            if (item.GetComponent<Toggle>().isOn)
             {
                 selected_Unit = item.unit;
-                break;
+                SetButtonsInteractable(true);
+                return;
             }
+        }
+
+        //모든 카드가 선택되지 않았으면 버튼 비활성화
+        SetButtonsInteractable(false);
+    }
+
+    //선택한 카드를 제외한 나머지를 어둡게 만드는 함수
+    public void SetDark()
+    {
+        foreach (var item in cards)
+        {
+            item.SetDarkMask();
         }
     }
 
@@ -53,9 +64,11 @@ public class UnitUnlock : MonoBehaviour
         OpenUnitUnlock(false);
     }
 
+    //유닛 해금창을 열거나 닫는 함수
     public void OpenUnitUnlock(bool isOpen)
     {
         Init();
+        unlock_Text.text = $"Lv.{level + 1} 용병 해금!";
         if (isOpen)
         {
             Time.timeScale = 0;
@@ -68,12 +81,32 @@ public class UnitUnlock : MonoBehaviour
         }
     }
 
+    //카드 선택 초기화 함수
     public void Init()
     {
-        //카드 선택 초기화
         foreach (var item in cards)
+        {
             item.GetComponent<Toggle>().isOn = false;
+            item.SetDarkMask();
+        }
 
-        select_Button.interactable = false;
+        SetButtonsInteractable(false);
+    }
+
+    //버튼들을 활성/비활성화 하는 함수
+    void SetButtonsInteractable(bool interactable)
+    {
+        select_Button.interactable = interactable;
+        detail_Button.interactable = interactable;
+    }
+
+    //상세 확인 창을 여는 함수
+    public void OpenDetailPanel(bool isOpen)
+    {
+        detailPanel.gameObject.SetActive(isOpen);
+        cardParent.gameObject.SetActive(!isOpen);
+        
+        if (isOpen)
+            detailPanel.SetDetail(selected_Unit);
     }
 }
