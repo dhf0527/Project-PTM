@@ -403,7 +403,7 @@ public abstract class Unit : MonoBehaviour
         isKnockBacking = true;
 
         float knockTime = 0;
-        float knockSpeed = 0;
+        float knockSpeed;
         while (knockTime < 0.75f)
         {
             knockTime += Time.deltaTime;

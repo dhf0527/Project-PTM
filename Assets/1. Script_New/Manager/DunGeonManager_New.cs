@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DunGeonManager_New : MonoBehaviour
@@ -40,42 +41,43 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("유닛간 최소 Y축 차이")]
     public float spawn_Y = 0.03f;
 
+    public List<Unit> units_Level_1;
+    #endregion
+    #region 골드 변수
     float max_Gold;
-    public float Max_Gold 
-    { 
-        get { return max_Gold; } 
-        set 
-        { 
+    public float Max_Gold
+    {
+        get { return max_Gold; }
+        set
+        {
             max_Gold = value;
             goldPanel.SetGoldText();
         }
     }
     float cur_Gold;
-    public float Cur_Gold 
-    { 
-        get { return cur_Gold; } 
-        set 
-        { 
+    public float Cur_Gold
+    {
+        get { return cur_Gold; }
+        set
+        {
             cur_Gold = value;
             goldPanel.SetGoldText();
-        } 
+        }
     }
     float gold_Per_Sec;
-    public float Gold_Per_Sec 
-    { 
-        get { return gold_Per_Sec; } 
-        set 
-        { 
-            gold_Per_Sec = value; 
+    public float Gold_Per_Sec
+    {
+        get { return gold_Per_Sec; }
+        set
+        {
+            gold_Per_Sec = value;
             goldPanel.SetGoldText();
-        } 
+        }
     }
-    int base_UpgradeCost;
-
     float gold_time;
+    int base_UpgradeCost;
     #endregion
-    public List<Unit> units_Level_1;
-
+    #region 요새 레벨업 변수
     [Serializable]
     public class AbillitiesByLevel
     {
@@ -87,6 +89,7 @@ public class DunGeonManager_New : MonoBehaviour
     }
     [Header("아군 요새의 (Element + 1)레벨 능력치")]
     public List<AbillitiesByLevel> base_abillitiesByLevels;
+    #endregion
 
     //투사체 부모
     public Transform projectile_Parent;
@@ -109,17 +112,8 @@ public class DunGeonManager_New : MonoBehaviour
         base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
         spawnUnits = new Unit[3];
 
-        //카드에 데이터 삽입
-        List<int> numbers = new List<int>();
-        for (int i = 0; i < units_Level_1.Count; i++)
-            numbers.Add(i);
-
-        for (int k = 0; k < unitUnlock.cards.Count; k++)
-        {
-            int index = UnityEngine.Random.Range(0, numbers.Count);
-            unitUnlock.cards[k].SetData(units_Level_1[numbers[index]]);
-            numbers.RemoveAt(index);
-        }
+        //해금 유닛 데이터 설정
+        SetUnlockData();
 
         //유닛 해금 창 열기
         unitUnlock.OpenUnitUnlock(true);
@@ -232,6 +226,22 @@ public class DunGeonManager_New : MonoBehaviour
         Cur_Gold += getGold;
         if (Cur_Gold > Max_Gold)
             Cur_Gold = Max_Gold;
+    }
+
+    //해금 유닛 데이터 설정
+    public void SetUnlockData()
+    {
+        //1레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
+        List<int> numbers = new List<int>();
+        for (int i = 0; i < units_Level_1.Count; i++)
+            numbers.Add(i);
+
+        for (int k = 0; k < unitUnlock.cards.Count; k++)
+        {
+            int index = UnityEngine.Random.Range(0, numbers.Count);
+            unitUnlock.cards[k].SetData(units_Level_1[numbers[index]]);
+            numbers.RemoveAt(index);
+        }
     }
     #endregion
 

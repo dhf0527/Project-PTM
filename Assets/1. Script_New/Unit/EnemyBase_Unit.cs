@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyBase_Unit : Unit
 {
+
     private void Start()
     {
         SetHpBar();
@@ -13,7 +14,11 @@ public class EnemyBase_Unit : Unit
 
     private void Update()
     {
-
+        //체력에 따라 다음 웨이브로 넘어감
+        if (Cur_Hp <= unitData_st.max_Hp * 0.8f)
+            EnemySpawnManager.instance.ToNextWave(2);
+        if (Cur_Hp <= unitData_st.max_Hp * 0.4f)
+            EnemySpawnManager.instance.ToNextWave(3);
     }
 
     public override void Init()
