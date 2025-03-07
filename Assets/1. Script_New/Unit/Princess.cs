@@ -6,14 +6,24 @@ using UnityEngine;
 
 public class Princess : Unit
 {
+    [SerializeField] float skill1_coolTime;
+    [SerializeField] float skill2_coolTime;
+    [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
+
+    bool canSkill1 = true;
+    bool canSkill2 = true;
+
+    bool isSkilling;
+
     private void Update()
     {
-        if (isDead)
+        Test();
+
+        if (isDead || isSkilling)
             return;
 
         Move();
         
-        Test();
     }
 
     //테스트 함수
@@ -47,6 +57,10 @@ public class Princess : Unit
         {
             DunGeonManager_New.instance.Cur_Gold = DunGeonManager_New.instance.Max_Gold;
         }
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            Cur_Hp = 0;
+        }
     }
 
     public override void Init()
@@ -55,6 +69,12 @@ public class Princess : Unit
         IsTeam = true;
         moveDir = Vector3.zero;
     }
+
+    #region readOnly
+    protected static readonly int DoSkill1 = Animator.StringToHash("doSkill1");
+    protected static readonly int DoSkill2 = Animator.StringToHash("doSkill2");
+
+    #endregion
 
     #region 이동 함수
     //버튼을 눌렀을 때 이동 방향/속도 설정
@@ -84,7 +104,7 @@ public class Princess : Unit
             //공격중이 아닐 때 idle 애니메이션 재생
             if (!isAttacking)
             {
-                SetAnim(AnimState.idle);
+                SetAnim(AnimState.Idle);
             }
             return;
         }
@@ -102,15 +122,17 @@ public class Princess : Unit
         transform.position = tmp_vec;
 
         //이동 애니메이션
-        SetAnim(AnimState.move);
+        SetAnim(AnimState.Move);
     }
     #endregion
 
+    #region 사망 처리 함수
     public override void Dead()
     {
-        SetAnim(AnimState.die);
+        SetAnim(AnimState.Die);
         GetComponent<Collider2D>().enabled = false;
         isDead = true;
+        isSkilling = false;
     }
 
     public override void OnDead()
@@ -127,6 +149,107 @@ public class Princess : Unit
         Cur_Hp = unitData_st.max_Hp;
         isDead = false;
         GetComponent<Collider2D>().enabled = true;
-        SetAnim(AnimState.idle);
+        SetAnim(AnimState.Idle);
     }
+    #endregion
+
+    #region 스킬 함수
+
+    //스킬1 버튼을 누르면 호출
+    public void OnTrySkill1()
+    {
+        if (isDead)
+            return;
+
+        if (canSkill1 && !isSkilling)
+        {
+            isSkilling = true;
+            animator.SetTrigger(DoSkill1);
+        }
+    }
+
+    //공주 스킬1: 방패 강타
+    public void OnSkill1()
+    {
+        float skillRange = 1.5f;
+
+        //스캔할 레이어 설정
+        string target_Layer = EnemyLayer;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.right, skillRange, LayerMask.GetMask(target_Layer));
+
+        foreach (var item in hits)
+        {
+            Unit target_Unit = item.collider.GetComponent<Unit>();
+            target_Unit.OnStartKnockBack();
+            ApplyAttack(target_Unit, unitData_st.attackDamage * 3, AttackType.Physical);
+            //디버프 처리
+        }
+        StartCoroutine(C_Skill1_CoolDown());
+    }
+
+    IEnumerator C_Skill1_CoolDown()
+    {
+        canSkill1 = false;
+        float cur_Time = skill1_coolTime;
+
+        while(cur_Time > 0)
+        {
+            cur_Time -= Time.deltaTime;
+            skillIcons[0].SetDelayImage(cur_Time / skill1_coolTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        canSkill1 = true;
+    }
+
+    public void OnEndSkill()
+    {
+        isSkilling = false;
+    }
+
+    //스킬1 버튼을 누르면 호출
+    public void OnTrySkill2()
+    {
+        if (isDead)
+            return;
+
+        if (canSkill2 && !isSkilling)
+        {
+            isSkilling = true;
+            animator.SetTrigger(DoSkill2);
+        }
+    }
+
+    //공주 스킬2: 부러진 영웅검
+    public void OnSkill2()
+    {
+        float skillRange = 1f;
+
+        //스캔할 레이어 설정
+        string target_Layer = TeamLayer;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position - Vector3.left * skillRange, Vector2.right, skillRange * 2, LayerMask.GetMask(target_Layer));
+
+        foreach (var item in hits)
+        {
+            Unit target_Unit = item.collider.GetComponent<Unit>();
+            //버프 처리
+        }
+        StartCoroutine(C_Skill2_CoolDown());
+    }
+
+    IEnumerator C_Skill2_CoolDown()
+    {
+        canSkill2 = false;
+        float cur_Time = skill2_coolTime;
+
+        while (cur_Time > 0)
+        {
+            cur_Time -= Time.deltaTime;
+            skillIcons[1].SetDelayImage(cur_Time / skill2_coolTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        canSkill2 = true;
+    }
+    #endregion
 }

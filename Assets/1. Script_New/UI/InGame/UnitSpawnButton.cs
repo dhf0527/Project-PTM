@@ -13,6 +13,7 @@ public class UnitSpawnButton : MonoBehaviour
     [SerializeField] Image unit_Image;
     [SerializeField] Image lock_Image;
     [SerializeField] Image coolDown_Image;
+    [SerializeField] Animation anim;
 
     [HideInInspector] public bool isCoolDown;
     float coolTime;
@@ -35,9 +36,9 @@ public class UnitSpawnButton : MonoBehaviour
             else
             {
                 isCoolDown = false;
+                anim.Play();
             }
         }
-        
     }
 
     //UI¿¬µ¿

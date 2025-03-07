@@ -106,16 +106,17 @@ public abstract class Unit : MonoBehaviour
     protected bool canKnockBack_By_Hp = true;
     protected bool isKnockBacking = false;
     protected bool isDead = false;
+    Coroutine cor_knockBack;
     #endregion
     #region 애니메이션 변수
 
-    protected enum AnimState {idle,move,attack,hit,die }
+    protected enum AnimState {Idle,Move,Attack,Hit,Die }
     //현재 애니메이션의 상태
     protected AnimState cur_State;
     #endregion
     #region 컴포넌트
     SpriteRenderer sr;
-    Animator animator;
+    protected Animator animator;
     #endregion
 
     private void Awake()
@@ -195,7 +196,7 @@ public abstract class Unit : MonoBehaviour
             //공격중이 아닐 때 idle 애니메이션 재생
             if (!isAttacking)
             {
-                SetAnim(AnimState.idle);
+                SetAnim(AnimState.Idle);
             }
             return;
         }
@@ -213,7 +214,7 @@ public abstract class Unit : MonoBehaviour
         transform.position = tmp_vec;
 
         //이동 애니메이션
-        SetAnim(AnimState.move);
+        SetAnim(AnimState.Move);
     }
 
     //이동 방향을 바라보게 하는 함수
@@ -267,7 +268,7 @@ public abstract class Unit : MonoBehaviour
         {
             isAttacking = true;
             StartCoroutine(C_AttackCoolDown());
-            SetAnim(AnimState.attack);
+            SetAnim(AnimState.Attack);
         }   
     }
 
@@ -303,7 +304,7 @@ public abstract class Unit : MonoBehaviour
             Unit target_Unit = hits[i].collider.GetComponent<Unit>();
             if (TryAttack(target_Unit))
             {
-                ApplyAttack(target_Unit);
+                ApplyAttack(target_Unit, unitData_st.attackDamage, ud.attack_Type);
             }
         }
     }
@@ -334,13 +335,13 @@ public abstract class Unit : MonoBehaviour
     }
 
     //공격 명중 시 피해를 주는 함수
-    protected virtual void ApplyAttack(Unit target_Unit)
+    protected virtual void ApplyAttack(Unit target_Unit, float attackDamage, AttackType attackType)
     {
-        float type_res = ud.attack_Type == target_Unit.ud.resistance_Type ? 0.5f : 1;
-        float type_weak = ud.attack_Type == target_Unit.ud.weak_Type ? 2f : 1;
+        float type_res = attackType == target_Unit.ud.resistance_Type ? 0.5f : 1;
+        float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
 
         //최종 피해량
-        float damage = (unitData_st.attackDamage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+        float damage = (attackDamage - target_Unit.unitData_st.armor) * (type_res * type_weak);
         //최소 피해량 1
         damage = damage < 1 ? 1 : damage;
         target_Unit.TakeDamage(damage);
@@ -369,7 +370,7 @@ public abstract class Unit : MonoBehaviour
         //체력 감소로 인한 넉백
         if (canKnockBack && damage >= (unitData_st.max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
         {
-            StartCoroutine(KnockBack());
+            OnStartKnockBack();
             knockBack_Count--;
             StartCoroutine(C_KnockBack_CoolDown());
         }
@@ -379,7 +380,7 @@ public abstract class Unit : MonoBehaviour
     public virtual void Dead()
     {
         canKnockBack = false;
-        SetAnim(AnimState.die);
+        SetAnim(AnimState.Die);
         hpBar.gameObject.SetActive(false);
         GetComponent<Collider2D>().enabled = false;
         isDead = true;
@@ -391,15 +392,27 @@ public abstract class Unit : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //특수 넉백
+    public void OnStartKnockBack()
+    {
+        if (!canKnockBack)
+            return;
+
+        if (cor_knockBack != null)
+            StopCoroutine(cor_knockBack);
+
+        cor_knockBack = StartCoroutine(KnockBack());
+    }
+
     //넉백 함수
     IEnumerator KnockBack()
     {
         //공격 중이었을 경우 공격 종료 처리
-        if (cur_State == AnimState.attack)
+        if (cur_State == AnimState.Attack)
             OnEndAttack();
 
         //0.75초동안 넉백
-        SetAnim(AnimState.hit);
+        SetAnim(AnimState.Hit);
         isKnockBacking = true;
 
         float knockTime = 0;
@@ -443,19 +456,19 @@ public abstract class Unit : MonoBehaviour
         //해당 애니메이션 재생
         switch (animState)
         {
-            case AnimState.idle:
+            case AnimState.Idle:
                 animator.SetTrigger(DoStop);
                 break;
-            case AnimState.move:
+            case AnimState.Move:
                 animator.SetTrigger(DoMove);
                 break;
-            case AnimState.attack:
+            case AnimState.Attack:
                 animator.SetTrigger(DoAttack);
                 break;
-            case AnimState.hit:
+            case AnimState.Hit:
                 animator.SetTrigger(DoHit);
                 break;
-            case AnimState.die:
+            case AnimState.Die:
                 animator.SetTrigger(DoDie);
                 break;
             default:

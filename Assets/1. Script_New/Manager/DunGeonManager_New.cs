@@ -27,6 +27,8 @@ public class DunGeonManager_New : MonoBehaviour
     //요새 업그레이드 패널
     public BaseLevelUpPanel baseLevelUpPanel;
 
+    public GameObject fasty_Mask;
+
     //카메라
     public CameraMove cameraMove;
     //공주 체력 패널
@@ -96,6 +98,8 @@ public class DunGeonManager_New : MonoBehaviour
 
     [HideInInspector] public Princess princess;
     [HideInInspector] public TeamBase_Unit teamBase;
+
+    bool isFasty;
 
     //싱글톤
     public static DunGeonManager_New instance;
@@ -195,10 +199,6 @@ public class DunGeonManager_New : MonoBehaviour
             //골드 관련 레벨업 처리
             Set_GoldByBaseLevel();
         }
-        else
-        {
-            
-        }
     }
 
     //아군 요새 레벨에 따라 골드 관련 변수 설정
@@ -263,4 +263,17 @@ public class DunGeonManager_New : MonoBehaviour
         princess.Rivive();
     }
     #endregion
+
+    //2배속 함수
+    public void OnFasty()
+    {
+        isFasty = !isFasty;
+        Time.timeScale = isFasty ? 2 : 1;
+        fasty_Mask.SetActive(isFasty);
+    }
+
+    public void OnPause(bool isPause)
+    {
+        Time.timeScale = isPause ? 0 : 1;
+    }
 }

@@ -23,6 +23,8 @@ public class Card_new : MonoBehaviour
     [SerializeField] GameObject passive_Gameobject;
     [SerializeField] List<GameObject> dark_Masks = new List<GameObject>();
 
+    Animation anim;
+
     [Header("0±ÙÁ¢ 1¿ø°Å¸®")]
     [SerializeField] List<Sprite> attackRangeType_Sprites = new List<Sprite>();
     [Header("0Áß¾Ó 1¿äÁ¤ 2¸¶¿Õ 3¹¦Áö±â")]
@@ -35,6 +37,7 @@ public class Card_new : MonoBehaviour
     private void Awake()
     {
         toggle = GetComponent<Toggle>();
+        anim = GetComponent<Animation>();
     }
 
     public void SetData(Unit setUnit)
@@ -66,6 +69,14 @@ public class Card_new : MonoBehaviour
             if (!toggle)
                 toggle = GetComponent<Toggle>();
             item.SetActive(!toggle.isOn);
+            if (toggle.isOn)
+            {
+                transform.localScale = Vector3.one * 1.1f;
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+            }
         }
     }
 }

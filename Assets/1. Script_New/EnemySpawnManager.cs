@@ -21,6 +21,11 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("0:경고, 1:카운트다운")]
     [SerializeField] Color[] textColors = new Color[2]; 
     public float[] waveTimes = new float[3];
+    [Header("0:초반, 1:중반")]
+    public float[] phaseTimes = new float[2];
+    public float[] phase0_SpawnTimes = new float[3];
+    public float[] phase1_SpawnTimes = new float[3];
+    public float[] phase2_SpawnTimes = new float[3];
 
     [Header("적 유닛(임시)")]
     public Unit[] wave1_enemy = new Unit[3];
@@ -29,6 +34,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     //현재 웨이브-1
     int cur_Wave = 0;
+    int cur_Phase = 0;
 
 
     //C_SetWarnText를 담는 코루틴
@@ -123,6 +129,45 @@ public class EnemySpawnManager : MonoBehaviour
     void CheckWaveTime()
     {
         cur_WaveTime += Time.deltaTime;
+
+        //구간 설정
+        //후반
+        if (cur_WaveTime >= phaseTimes[0] + phaseTimes[1])
+        {
+            if (cur_Phase != 2)
+            {
+                cur_Phase = 2;
+                spawn_Time[0] = phase0_SpawnTimes[0];
+                spawn_Time[1] = phase0_SpawnTimes[1];
+                spawn_Time[2] = phase0_SpawnTimes[2];
+                Debug.Log($"{cur_Phase + 1}페이즈");
+            }
+        }
+        //중반
+        else if (cur_WaveTime >= phaseTimes[0])
+        {
+            if (cur_Phase != 1)
+            {
+                cur_Phase = 1;
+                spawn_Time[0] = phase1_SpawnTimes[0];
+                spawn_Time[1] = phase1_SpawnTimes[1];
+                spawn_Time[2] = phase1_SpawnTimes[2];
+                Debug.Log($"{cur_Phase + 1}페이즈");
+            }
+        }
+        //초반
+        else
+        {
+            if (cur_Phase != 0)
+            {
+                cur_Phase = 0;
+                spawn_Time[0] = phase2_SpawnTimes[0];
+                spawn_Time[1] = phase2_SpawnTimes[1];
+                spawn_Time[2] = phase2_SpawnTimes[2];
+                Debug.Log($"{cur_Phase + 1}페이즈");
+            }
+        }
+
         //마지막 웨이브일 때
         if (cur_Wave >= waveTimes.Length - 1)
         {
@@ -166,6 +211,7 @@ public class EnemySpawnManager : MonoBehaviour
         cur_WaveTime = 0;
         wavePanel.ToNextWave(cur_Wave);
         cur_Wave++;
+        cur_Phase = 0;
     }
 
     //(wave)웨이브 이전이라면 다음 웨이브로 넘어가는 함수
