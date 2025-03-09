@@ -15,6 +15,8 @@ public class HpBar_new : MonoBehaviour
     [SerializeField] Image fill_Image;
     //체력 텍스트
     [SerializeField] TMP_Text hp_Text;
+    [Header("버프 아이콘 위에서부터 0")]
+    [SerializeField] List<GameObject> buffIcons;
 
     //체력바가 위치할 높이
     float up_Y = 1.2f;
@@ -41,6 +43,12 @@ public class HpBar_new : MonoBehaviour
         up_Y = height;
         //체력바 위치 설정
         transform.position = unit.transform.position + Vector3.up * up_Y;
+    }
+
+    //버프 아이콘을 활성/비활성화하는 함수
+    public void SetBuffIcon(int index, bool isActive)
+    {
+        buffIcons[index].SetActive(isActive);
     }
 
     private void Start()

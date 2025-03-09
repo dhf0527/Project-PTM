@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 6, y: -1}
+  m_SizeDelta: {x: 2, y: 1.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3464877073239178349
 CanvasRenderer:
@@ -184,8 +184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 57.5, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 13.5, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &706214197056393251
 CanvasRenderer:
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 3009887931620140814}
   - component: {fileID: 5358984552520571055}
   m_Layer: 5
-  m_Name: Princess2
+  m_Name: Princess1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15.5, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 1, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3009887931620140814
 CanvasRenderer:
@@ -334,8 +334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.5, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 8.5, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6725217884984012214
 CanvasRenderer:
@@ -404,8 +404,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8406560184637507359}
   - {fileID: 4843261504073455623}
+  - {fileID: 8406560184637507359}
   - {fileID: 184691517766707837}
   - {fileID: 5420963930607683583}
   - {fileID: 4715335400631754514}
@@ -413,11 +413,11 @@ RectTransform:
   - {fileID: 1480915229493843667}
   m_Father: {fileID: 727761452603213276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 9.5}
-  m_SizeDelta: {x: 66.3333, y: 11.1382}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -3.4997559, y: -0.00024414062}
+  m_SizeDelta: {x: 7, y: 2}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &8081571111428180442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,10 +435,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_Spacing: 0.5
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 6475456632524090957}
   - component: {fileID: 6766006380847267557}
   m_Layer: 5
-  m_Name: Princess1
+  m_Name: Princess2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,8 +612,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 3.5, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6475456632524090957
 CanvasRenderer:
@@ -710,6 +710,14 @@ MonoBehaviour:
   - {fileID: 1121888653, guid: 88d1e4cfe94cdb8449be27b79e9fac3c, type: 3}
   fill_Image: {fileID: 1013012266467480504}
   hp_Text: {fileID: 3035681700147155944}
+  buffIcons:
+  - {fileID: 3739943643299017018}
+  - {fileID: 4504657775494197332}
+  - {fileID: 2753318478726038406}
+  - {fileID: 3972998697438073555}
+  - {fileID: 6309894592476083593}
+  - {fileID: 3639100155077164344}
+  - {fileID: 6815665175388054929}
 --- !u!1 &6309894592476083593
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,8 +752,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 47, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 11, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5541650386831524495
 CanvasRenderer:
@@ -895,8 +903,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 68, y: -5}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 16, y: -1}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4034963240541641150
 CanvasRenderer:

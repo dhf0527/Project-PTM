@@ -80,7 +80,7 @@ public class Princess : Unit
     //버튼을 눌렀을 때 이동 방향/속도 설정
     public void OnMove(int move_dir)
     {
-        if (isDead)
+        if (isDead || isSkilling)
             return;
 
         DunGeonManager_New.instance.cameraMove.isChasePrincess = true;
@@ -180,9 +180,12 @@ public class Princess : Unit
         foreach (var item in hits)
         {
             Unit target_Unit = item.collider.GetComponent<Unit>();
+            //넉백
             target_Unit.OnStartKnockBack();
+            //데미지 부여
             ApplyAttack(target_Unit, unitData_st.attackDamage * 3, AttackType.Physical);
             //디버프 처리
+            target_Unit.AddComponent<ShieldSmiteDebuff>();
         }
         StartCoroutine(C_Skill1_CoolDown());
     }
@@ -227,11 +230,15 @@ public class Princess : Unit
 
         //스캔할 레이어 설정
         string target_Layer = TeamLayer;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position - Vector3.left * skillRange, Vector2.right, skillRange * 2, LayerMask.GetMask(target_Layer));
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + Vector3.left * skillRange, Vector2.right, skillRange * 2, LayerMask.GetMask(target_Layer));
 
         foreach (var item in hits)
         {
+            if (item.collider.GetComponent<TeamBase_Unit>())
+                continue;
+
             Unit target_Unit = item.collider.GetComponent<Unit>();
+            target_Unit.AddComponent<BrokenHeroSword>();
             //버프 처리
         }
         StartCoroutine(C_Skill2_CoolDown());

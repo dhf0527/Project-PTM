@@ -477,5 +477,11 @@ public abstract class Unit : MonoBehaviour
     }
     #endregion
 
+    #region น๖วม
+    public void SetBuffIcon(int index, bool isActive)
+    {
+        hpBar.SetBuffIcon(index, isActive);
+    }
 
+    #endregion
 }
