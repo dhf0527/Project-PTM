@@ -29,6 +29,9 @@ public class DetailPanel : MonoBehaviour
     [SerializeField] TMP_Text avoidance_Text;
     [SerializeField] TMP_Text size_Text;
     [SerializeField] TMP_Text detail_SpawnCount_Text;
+    [SerializeField] GameObject[] passivePanels;
+    [SerializeField] TMP_Text[] passiveName_Texts;
+    [SerializeField] TMP_Text[] passiveDetail_Texts;
 
     [Header("0근접 1원거리")]
     [SerializeField] List<Sprite> attackRangeType_Sprites = new List<Sprite>();
@@ -70,6 +73,24 @@ public class DetailPanel : MonoBehaviour
             : unit.ud.size == Unit_Size.Large ? "대형" : "";
 
         detail_SpawnCount_Text.text = $"{unit.ud.spawn_Count}";
+
+        if (unit.ud.passive1 != "")
+        {
+            passivePanels[0].SetActive(true);
+            passiveName_Texts[0].text = unit.ud.passive1;
+            passiveDetail_Texts[0].text = unit.ud.passive1_Detail;
+        }
+        else
+            passivePanels[0].SetActive(false);
+
+        if (unit.ud.passive2 != "")
+        {
+            passivePanels[1].SetActive(true);
+            passiveName_Texts[1].text = unit.ud.passive2;
+            passiveDetail_Texts[1].text = unit.ud.passive2_Detail;
+        }
+        else
+            passivePanels[1].SetActive(false);
     }
 
 }

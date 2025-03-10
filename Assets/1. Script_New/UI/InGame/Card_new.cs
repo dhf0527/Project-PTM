@@ -20,7 +20,7 @@ public class Card_new : MonoBehaviour
     [SerializeField] TMP_Text unitAttack_Text;
     [SerializeField] TMP_Text unitAttackSpeed_Text;
     [SerializeField] Image attackType_Image;
-    [SerializeField] GameObject passive_Gameobject;
+    [SerializeField] TMP_Text[] passive_Text;
     [SerializeField] List<GameObject> dark_Masks = new List<GameObject>();
 
     Animation anim;
@@ -58,7 +58,22 @@ public class Card_new : MonoBehaviour
         //AttackType[0] = none이므로 제외하고 1부터
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
 
-        passive_Gameobject.SetActive(unit.ud.passive1 != "");
+        //패시브
+        if(unit.ud.passive1 != "")
+        {
+            passive_Text[0].transform.parent.gameObject.SetActive(true);
+            passive_Text[0].text = unit.ud.passive1;
+
+            if (unit.ud.passive2 != "")
+            {
+                passive_Text[1].transform.parent.gameObject.SetActive(true);
+                passive_Text[1].text = unit.ud.passive2;
+            }
+            else
+                passive_Text[1].transform.parent.gameObject.SetActive(false);
+        }
+        else
+            passive_Text[0].transform.parent.gameObject.SetActive(false);
     }
 
     //선택되지 않으면 어둡게 만드는 함수
