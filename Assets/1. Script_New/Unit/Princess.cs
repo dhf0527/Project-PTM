@@ -39,19 +39,19 @@ public class Princess : Unit
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            unitData_st.accuracy = 1000f;
+            unitData_st.accuracy = 1000;
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            unitData_st.accuracy = 60f;
+            unitData_st.accuracy = 60;
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            unitData_st.avoidance = 1000f;
+            unitData_st.avoidance = 1000;
         }
         if (Input.GetKeyDown(KeyCode.F6))
         {
-            unitData_st.avoidance = 40f;
+            unitData_st.avoidance = 40;
         }
         if (Input.GetKeyDown(KeyCode.F7))
         {

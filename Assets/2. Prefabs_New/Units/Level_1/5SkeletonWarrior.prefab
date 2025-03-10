@@ -105,6 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 71fcff609148b3a49a6a3f15b1c05021, type: 2}
+  isHpText: 0
+  ranged_Projectile_Pos: {fileID: 0}
+  ranged_Projectile_Prefabs: {fileID: 0}
+  reborn_anim: {fileID: 9100000, guid: abab83798f6f587428d0721506a89330, type: 2}
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

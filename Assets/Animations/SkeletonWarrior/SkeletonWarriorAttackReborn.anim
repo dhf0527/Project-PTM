@@ -195,9 +195,16 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: AttackHIt
+    functionName: OnAttack
     data: 
     objectReferenceParameter: {fileID: 344319866593267813, guid: 385b4b21e08e43d41a2a2e3a0132ce83, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.98333335
+    functionName: OnEndAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

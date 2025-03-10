@@ -32,4 +32,10 @@ MonoBehaviour:
   spawn_Count: 1
   size: 0
   cost: 300
+  passive1: "\uAC11\uC637 \uC808\uB2E8"
+  passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC5D0 \uBA85\uC911\uD55C \uC801\uC5D0\uAC8C
+    '\uC808\uB2E8\uB41C \uAC11\uC637'\uC744 \uB0A8\uACA8 \uBC29\uC5B4\uB3C4\uB97C
+    \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+  passive2: 
+  passive2_Detail: 
   attack_Range: 0

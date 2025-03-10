@@ -58,7 +58,7 @@ public class Card_new : MonoBehaviour
         //AttackType[0] = none이므로 제외하고 1부터
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
 
-        passive_Gameobject.SetActive(unit.isHavePassive);
+        passive_Gameobject.SetActive(unit.ud.passive1 != "");
     }
 
     //선택되지 않으면 어둡게 만드는 함수

@@ -18,7 +18,10 @@ public abstract class Buff : MonoBehaviour
     {
         //요새 디버프 면역
         if (GetComponent<EnemyBase_Unit>() || GetComponent<TeamBase_Unit>())
+        {
+            Destroy(this);
             return;
+        }
 
         unit = GetComponent<Unit>();
 

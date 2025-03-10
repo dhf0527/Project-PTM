@@ -32,6 +32,8 @@ public abstract class Projectile : MonoBehaviour
     float cur_range;
     //공격 유형
     AttackType attackType;
+    //관통 공격 여부
+    bool isPenetration;
 
     //이동 속도
     float move_Speed = 2f;
@@ -110,8 +112,16 @@ public abstract class Projectile : MonoBehaviour
         float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
 
         //최종 피해량
-        float total_Damage = (damage - target_Unit.unitData_st.armor) * (type_res * type_weak);
-        target_Unit.TakeDamage(total_Damage);
+        float totalDamage;
+        //관통공격일 경우
+        if (isPenetration)
+            totalDamage = damage * type_weak;
+        else
+            totalDamage = (damage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+
+        //최소 피해량 1
+        totalDamage = totalDamage < 1 ? 1 : totalDamage;
+        target_Unit.TakeDamage(totalDamage);
     }
 
 
@@ -125,6 +135,7 @@ public abstract class Projectile : MonoBehaviour
         damage = unit.ud.damage;
         accuracy = unit.ud.accuracy;
         attackType = unit.ud.attack_Type;
+        isPenetration = unit.isPenetration;
     }
 
     //투사체를 삭제하는 함수

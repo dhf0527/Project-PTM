@@ -25,11 +25,11 @@ public class UnitData : ScriptableObject
     //공격속도
     public float attack_Speed;
     //명중률
-    public float accuracy;
+    public int accuracy;
     //회피율
-    public float avoidance;
+    public int avoidance;
     //방어도
-    public float armor;
+    public int armor;
     //공격 유형(원,근)
     public AttackRange attack_RangeType;
     //최대 공격 수
@@ -46,7 +46,15 @@ public class UnitData : ScriptableObject
     public Unit_Size size;
     //생산 비용
     public int cost;
-   
+    //고유 특성1 이름
+    public string passive1;
+    //고유 특성1 설명
+    public string passive1_Detail;
+    //고유 특성2 이름
+    public string passive2;
+    //고유 특성2 설명
+    public string passive2_Detail;
+
     //공격범위
     [HideInInspector] public float attack_Range;
 }

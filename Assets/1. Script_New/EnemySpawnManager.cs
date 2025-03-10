@@ -15,6 +15,9 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] Transform enemy_Unit_Parent;
     //웨이브 텍스트
     public WavePanel wavePanel;
+    [Header("(테스트용)자동 스폰 중지")]
+    [SerializeField] bool isStopSpawn;
+
     //경고 텍스트
     [SerializeField] Image warnText_Image;
     [SerializeField] TMP_Text warnText_Text;
@@ -90,7 +93,8 @@ public class EnemySpawnManager : MonoBehaviour
         CheckWaveTime();
 
         //주기적으로 유닛 생산
-        Spawn_Timer();
+        if(!isStopSpawn)
+            Spawn_Timer();
         
     }
 

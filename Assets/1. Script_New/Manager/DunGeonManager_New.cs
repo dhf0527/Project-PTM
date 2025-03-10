@@ -92,6 +92,10 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("아군 요새의 (Element + 1)레벨 능력치")]
     public List<AbillitiesByLevel> base_abillitiesByLevels;
     #endregion
+    #region 디버깅
+    [Header("(테스트용)고용할 유닛들")]
+    [SerializeField] Unit[] test_Units = new Unit[3];
+    #endregion
 
     //투사체 부모
     public Transform projectile_Parent;
@@ -241,6 +245,12 @@ public class DunGeonManager_New : MonoBehaviour
             int index = UnityEngine.Random.Range(0, numbers.Count);
             unitUnlock.cards[k].SetData(units_Level_1[numbers[index]]);
             numbers.RemoveAt(index);
+        }
+
+        for (int i = 0; i < unitUnlock.cards.Count; i++)
+        {
+            if (test_Units[i])
+                unitUnlock.cards[i].SetData(test_Units[i]);
         }
     }
     #endregion

@@ -11,9 +11,9 @@ public abstract class Unit : MonoBehaviour
         public float moveSpeed;
         public float attackDamage;
         public float attackSpeed;
-        public float accuracy;
-        public float avoidance;
-        public float armor;
+        public int accuracy;
+        public int avoidance;
+        public int armor;
     }
     public UnitData_Struct unitData_st;
 
@@ -35,7 +35,6 @@ public abstract class Unit : MonoBehaviour
     [Header("scriptable object")]
     public UnitData ud;
     public bool isHpText;
-    public bool isHavePassive;
     #region readOnly
     protected static readonly int DoMove = Animator.StringToHash("doMove");
     protected static readonly int DoAttack = Animator.StringToHash("doAttack");
@@ -70,6 +69,8 @@ public abstract class Unit : MonoBehaviour
 
     //스캔한 적을 받아올 hit
     protected RaycastHit2D hit;
+    //관통 공격 여부
+    [HideInInspector] public bool isPenetration;
     #endregion
     #region 피격 변수
     //현재 체력
@@ -253,7 +254,7 @@ public abstract class Unit : MonoBehaviour
         Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * ud.attack_Range, IsTeam ? Color.blue : Color.red, Time.deltaTime);
 
         //스캔된 적이 있고, 일정 거리 내에 있으면 멈춤
-        if (hit.collider != null && (transform.position.x - hit.transform.position.x) < ud.attack_Range + 0.4f)
+        if (hit.collider != null && (transform.position.x - hit.transform.position.x) < ud.attack_Range + 0.3f)
             isMoving = false;
         //스캔된 적이 없고 공격중이 아니면 다시 움직임
         else if (!isAttacking)
@@ -328,23 +329,37 @@ public abstract class Unit : MonoBehaviour
     bool TryAttack(Unit target_Unit)
     {
         //명중 확률
-        float pro = unitData_st.accuracy - target_Unit.unitData_st.avoidance + 50f;
+        float pro;
+
+        string fly = "비행";
+        if (target_Unit.ud.passive1 == fly || target_Unit.ud.passive2 == fly && ud.attack_RangeType == AttackRange.Melee && ud.passive1 != fly && ud.passive2 != fly)
+            pro = unitData_st.accuracy - (target_Unit.unitData_st.avoidance * 2) + 50;
+        else
+            pro = unitData_st.accuracy - target_Unit.unitData_st.avoidance + 50f;
+
         //최소 확률 5%
         pro = pro > 5 ? pro : 5;
         return Random.Range(0, 100) < pro;
     }
 
     //공격 명중 시 피해를 주는 함수
-    protected virtual void ApplyAttack(Unit target_Unit, float attackDamage, AttackType attackType)
+    protected virtual void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
         float type_res = attackType == target_Unit.ud.resistance_Type ? 0.5f : 1;
         float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
 
         //최종 피해량
-        float damage = (attackDamage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+        float totalDamage;
+
+        //관통공격일 경우
+        if (isPenetration)
+            totalDamage = damage * type_weak;
+        else
+            totalDamage = (damage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+
         //최소 피해량 1
-        damage = damage < 1 ? 1 : damage;
-        target_Unit.TakeDamage(damage);
+        totalDamage = totalDamage < 1 ? 1 : totalDamage;
+        target_Unit.TakeDamage(totalDamage);
     }
 
     //공격 딜레이를 구현하는 함수

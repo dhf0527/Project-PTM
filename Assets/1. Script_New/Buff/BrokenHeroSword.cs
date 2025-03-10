@@ -5,7 +5,7 @@ using UnityEngine;
 public class BrokenHeroSword : Buff
 {
     //명중률 증가량
-    [SerializeField] float accuracy_increase = 40;
+    [SerializeField] int accuracy_increase = 40;
 
     protected override void Init()
     {
@@ -17,14 +17,14 @@ public class BrokenHeroSword : Buff
     {
         base.BuffStart();
         unit.unitData_st.accuracy += accuracy_increase;
-        Debug.Log("Start " + unit.unitData_st.accuracy);
+        unit.isPenetration = true;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
         unit.unitData_st.accuracy -= accuracy_increase;
-        Debug.Log("End " + unit.unitData_st.accuracy);
+        unit.isPenetration = false;
     }
 
     protected override bool PreventStack()

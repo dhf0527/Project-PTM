@@ -32,4 +32,8 @@ MonoBehaviour:
   spawn_Count: 1
   size: 0
   cost: 100
+  passive1: 
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
   attack_Range: 0.8

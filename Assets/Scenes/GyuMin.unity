@@ -2975,6 +2975,10 @@ MonoBehaviour:
     base_UpgradeCost_By_Level: 0
     base_GoldPerSec_By_Level: 50
     base_MaxGold_By_Level: 8100
+  test_Units:
+  - {fileID: -3346708215878065150, guid: 279637ebfc4f7dc459f7a7308585e719, type: 3}
+  - {fileID: 4541328312039694865, guid: 9cf2054573ff09b49ae17c3422b410d9, type: 3}
+  - {fileID: 0}
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
   teamBase: {fileID: 0}
@@ -7319,9 +7323,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 5c36f5331e2342540ad887958491bf84, type: 2}
   isHpText: 1
-  isHavePassive: 0
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
+  isPenetration: 0
 --- !u!1 &663296276
 GameObject:
   m_ObjectHideFlags: 0
@@ -11612,9 +11616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 90423bc2f1aa034488039a8e4ba99975, type: 2}
   isHpText: 1
-  isHavePassive: 0
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
+  isPenetration: 0
 --- !u!1 &963843912
 GameObject:
   m_ObjectHideFlags: 0
@@ -26661,9 +26665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: 90032e4a0a609a448ad0c3fef8647788, type: 2}
   isHpText: 0
-  isHavePassive: 0
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
+  isPenetration: 0
   skill1_coolTime: 30
   skill2_coolTime: 60
   skillIcons:
