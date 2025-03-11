@@ -29,9 +29,9 @@ public class DetailPanel : MonoBehaviour
     [SerializeField] TMP_Text avoidance_Text;
     [SerializeField] TMP_Text size_Text;
     [SerializeField] TMP_Text detail_SpawnCount_Text;
-    [SerializeField] GameObject[] passivePanels;
-    [SerializeField] TMP_Text[] passiveName_Texts;
-    [SerializeField] TMP_Text[] passiveDetail_Texts;
+
+    [SerializeField] PassivePanel passivePanel_Prefab;
+    [SerializeField] Transform passive_Parent;
 
     [Header("0근접 1원거리")]
     [SerializeField] List<Sprite> attackRangeType_Sprites = new List<Sprite>();
@@ -68,29 +68,27 @@ public class DetailPanel : MonoBehaviour
         speed_Text.text = $"{unit.ud.move_Speed}";
         accuracy_Text.text = $"{unit.ud.accuracy}";
         avoidance_Text.text = $"{unit.ud.avoidance}";
-        size_Text.text = unit.ud.size == Unit_Size.Small ? "소형":
+        size_Text.text = unit.ud.size == Unit_Size.Small ? "소형" :
             unit.ud.size == Unit_Size.Medium ? "중형"
             : unit.ud.size == Unit_Size.Large ? "대형" : "";
 
         detail_SpawnCount_Text.text = $"{unit.ud.spawn_Count}";
 
+        //원래 있던 패시브 설명창 삭제
+        foreach (Transform child in passive_Parent)
+            Destroy(child.gameObject);
+
         if (unit.ud.passive1 != "")
-        {
-            passivePanels[0].SetActive(true);
-            passiveName_Texts[0].text = unit.ud.passive1;
-            passiveDetail_Texts[0].text = unit.ud.passive1_Detail;
-        }
-        else
-            passivePanels[0].SetActive(false);
+            MakeNewDetail(unit.ud.passive1, unit.ud.passive1_Detail);
 
         if (unit.ud.passive2 != "")
-        {
-            passivePanels[1].SetActive(true);
-            passiveName_Texts[1].text = unit.ud.passive2;
-            passiveDetail_Texts[1].text = unit.ud.passive2_Detail;
-        }
-        else
-            passivePanels[1].SetActive(false);
+            MakeNewDetail(unit.ud.passive2, unit.ud.passive2_Detail);
     }
-
+    
+    public void MakeNewDetail(string passiveName, string passiveDetail)
+    {
+        PassivePanel newPd = Instantiate(passivePanel_Prefab, passive_Parent);
+        newPd.SetNameText(passiveName);
+        newPd.SetDetailText(passiveDetail);
+    }
 }
