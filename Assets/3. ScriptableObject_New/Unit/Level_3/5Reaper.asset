@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 5Reaper
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: 125290895, guid: bcf23d87cf79fd4499faaf85a1ce6ae7, type: 3}
+  unit_Code: 305
+  level: 3
+  unit_Name: "\uC218\uD655\uC790"
+  faction: 3
+  move_Speed: 1
+  hp: 240
+  damage: 30
+  attack_Speed: 4
+  accuracy: 60
+  avoidance: 60
+  armor: 0
+  attack_RangeType: 0
+  target_Count: 3
+  attack_Type: 2
+  weak_Type: 0
+  resistance_Type: 1
+  spawn_Count: 1
+  size: 1
+  cost: 500
+  passive1: "\uC601\uD63C \uC218\uD655"
+  passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uB0A8\uC740 \uC0DD\uBA85\uB825\uC758
+    \uBE44\uC728\uC774 *r30%* \uC774\uD558\uC778 \uC801\uC5D0\uAC8C \uBA85\uC911\uD558\uBA74
+    \uD574\uB2F9 \uC801\uC744 \uC989\uC2DC \uCC98\uCE58\uD55C\uB2E4. \uC790\uC2E0\uC774
+    \uC801\uC744 \uCC98\uCE58\uD558\uBA74 \uC0DD\uBA85\uB825\uC744 *b10*\uD68C\uBCF5\uD558\uBA70
+    '\uC218\uD655\uD55C \uC601\uD63C'\uC744 \uC5BB\uC5B4 \uACF5\uACA9\uB825\uACFC
+    \uBA85\uC911\uB960\uC774 \uC624\uB978\uB2E4."
+  passive2: 
+  passive2_Detail: 
+  attack_Range: 0

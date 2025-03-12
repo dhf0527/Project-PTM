@@ -44,6 +44,8 @@ public class DunGeonManager_New : MonoBehaviour
     public float spawn_Y = 0.03f;
 
     public List<Unit> units_Level_1;
+    public List<Unit> units_Level_2;
+    public List<Unit> units_Level_3;
     #endregion
     #region 골드 변수
     float max_Gold;
@@ -120,11 +122,8 @@ public class DunGeonManager_New : MonoBehaviour
         base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
         spawnUnits = new Unit[3];
 
-        //해금 유닛 데이터 설정
-        SetUnlockData();
-
-        //유닛 해금 창 열기
-        unitUnlock.OpenUnitUnlock(true);
+        //유닛 해금 창 설정 후 열기
+        OpenUnitUnlock(1);
     }
 
     private void Start()
@@ -232,21 +231,46 @@ public class DunGeonManager_New : MonoBehaviour
             Cur_Gold = Max_Gold;
     }
 
-    //해금 유닛 데이터 설정
-    public void SetUnlockData()
+    public void OpenUnitUnlock(int unitLevel)
     {
+        SetUnlockData(unitLevel);
+        unitUnlock.OpenUnitUnlock(true);
+    }
+
+    //해금 유닛 데이터 설정
+    public void SetUnlockData(int unitLevel)
+    {
+        List<Unit> targetLevel_Units;
+        switch (unitLevel)
+        {
+            case 1:
+                targetLevel_Units = units_Level_1;
+                break;
+            case 2:
+                targetLevel_Units = units_Level_2;
+                break;
+            case 3:
+                targetLevel_Units = units_Level_3;
+                break;
+            default:
+                targetLevel_Units = new List<Unit>();
+                Debug.LogError("유닛 레벨 설정 오류");
+                break;
+        }
+
         //1레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
         List<int> numbers = new List<int>();
-        for (int i = 0; i < units_Level_1.Count; i++)
+        for (int i = 0; i < targetLevel_Units.Count; i++)
             numbers.Add(i);
 
         for (int k = 0; k < unitUnlock.cards.Count; k++)
         {
             int index = UnityEngine.Random.Range(0, numbers.Count);
-            unitUnlock.cards[k].SetData(units_Level_1[numbers[index]]);
+            unitUnlock.cards[k].SetData(targetLevel_Units[numbers[index]]);
             numbers.RemoveAt(index);
         }
 
+        //테스트용
         for (int i = 0; i < unitUnlock.cards.Count; i++)
         {
             if (test_Units[i])

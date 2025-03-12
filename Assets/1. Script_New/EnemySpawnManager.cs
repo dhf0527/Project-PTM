@@ -216,6 +216,7 @@ public class EnemySpawnManager : MonoBehaviour
         wavePanel.ToNextWave(cur_Wave);
         cur_Wave++;
         cur_Phase = 0;
+        DunGeonManager_New.instance.OpenUnitUnlock(cur_Wave + 1);
     }
 
     //(wave)웨이브 이전이라면 다음 웨이브로 넘어가는 함수

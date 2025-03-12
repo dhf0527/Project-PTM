@@ -13,6 +13,7 @@ public class PassivePanel : MonoBehaviour
     const string reborn = "부활 상태";
     const string cursedFlame = "저주 받은 불꽃";
     const string cuttedArmor = "절단된 갑옷";
+    const string reapedSpirit = "수확한 영혼";
 
     const string color_Red = "#CD3B3B";
     const string color_Blue = "#3A43CD";
@@ -24,16 +25,24 @@ public class PassivePanel : MonoBehaviour
 
     public void SetDetailText(string setText)
     {
+        //' 사이의 단어(키워드)들을 찾아 저장
         List<string> keyWords = FindWords(setText);
 
         foreach (var keyWord in keyWords)
         {
             //각 키워드를 찾아서 대체
             setText = Regex.Replace(setText, $"\'{keyWord}\'", $"<u>{keyWord}</u>");
-            //키워드에 대한 설명
-            WordDetail(keyWord);
+            //키워드에 대한 설명(무한 루프 방지)
+            if(keyWord != nameText.text)
+                WordDetail(keyWord);
         }
-        
+
+        //*b(단어)* = 파란색, *r(단어)* = 빨간색 단어 색상 변경
+        foreach (var words_Blue in FindWords_Blue(setText))
+            setText = Regex.Replace(setText, $"\\*b{words_Blue}\\*", ColorText(words_Blue, color_Blue));
+        foreach (var words_Blue in FindWords_Red(setText))
+            setText = Regex.Replace(setText, $"\\*r{words_Blue}\\*", ColorText(words_Blue, color_Red));
+
         detailText.text = setText;
     }
 
@@ -43,6 +52,29 @@ public class PassivePanel : MonoBehaviour
         List<string> words = new List<string>();
 
         MatchCollection matches = Regex.Matches(input_Text, "'(.*?)'");
+
+        foreach (Match match in matches)
+            words.Add(match.Groups[1].Value);
+
+        return words;
+    }
+    
+    List<string> FindWords_Red(string input_Text)
+    {
+        List<string> words = new List<string>();
+
+        MatchCollection matches = Regex.Matches(input_Text, "\\*r(.*?)\\*");
+
+        foreach (Match match in matches)
+            words.Add(match.Groups[1].Value);
+
+        return words;
+    }
+    List<string> FindWords_Blue(string input_Text)
+    {
+        List<string> words = new List<string>();
+
+        MatchCollection matches = Regex.Matches(input_Text, "\\*b(.*?)\\*");
 
         foreach (Match match in matches)
             words.Add(match.Groups[1].Value);
@@ -68,6 +100,9 @@ public class PassivePanel : MonoBehaviour
                 break;
             case cuttedArmor:
                 passive_Detail = $"방어도 {ColorText("-50%", color_Red)}";
+                break;
+            case reapedSpirit:
+                passive_Detail = $"공격력 {ColorText("+20", color_Blue)}, 명중률 {ColorText("+40", color_Blue)}";
                 break;
             default:
                 return;

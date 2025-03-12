@@ -59,21 +59,19 @@ public class Card_new : MonoBehaviour
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
 
         //패시브
-        if(unit.ud.passive1 != "")
+        passive_Text[0].transform.parent.gameObject.SetActive(false);
+        passive_Text[1].transform.parent.gameObject.SetActive(false);
+
+        if (unit.ud.passive1 != "")
         {
             passive_Text[0].transform.parent.gameObject.SetActive(true);
-            passive_Text[0].text = unit.ud.passive1;
-
-            if (unit.ud.passive2 != "")
-            {
-                passive_Text[1].transform.parent.gameObject.SetActive(true);
-                passive_Text[1].text = unit.ud.passive2;
-            }
-            else
-                passive_Text[1].transform.parent.gameObject.SetActive(false);
+            passive_Text[0].text = unit.ud.passive1;  
         }
-        else
-            passive_Text[0].transform.parent.gameObject.SetActive(false);
+        if (unit.ud.passive2 != "")
+        {
+            passive_Text[1].transform.parent.gameObject.SetActive(true);
+            passive_Text[1].text = unit.ud.passive2;
+        }
     }
 
     //선택되지 않으면 어둡게 만드는 함수
