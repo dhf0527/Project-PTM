@@ -10,7 +10,7 @@ public class BrokenHeroSword : Buff
     protected override void Init()
     {
         buff_Time = 6f;
-        buffIcon_Index = 0;
+        buffIcon_Index = 1;
     }
 
     protected override void BuffStart()

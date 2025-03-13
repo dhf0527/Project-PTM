@@ -33,6 +33,10 @@ public class DunGeonManager_New : MonoBehaviour
     public CameraMove cameraMove;
     //공주 체력 패널
     public PrincessHpPanel princessHpPanel;
+
+    //결과창 패널
+    public GameObject GameOverPanel;
+    public GameObject GameClearPanel;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]
@@ -105,7 +109,7 @@ public class DunGeonManager_New : MonoBehaviour
     [HideInInspector] public Princess princess;
     [HideInInspector] public TeamBase_Unit teamBase;
 
-    bool isFasty;
+    [HideInInspector] public bool isFasty;
 
     //싱글톤
     public static DunGeonManager_New instance;
@@ -308,6 +312,16 @@ public class DunGeonManager_New : MonoBehaviour
 
     public void OnPause(bool isPause)
     {
-        Time.timeScale = isPause ? 0 : 1;
+        Time.timeScale = isPause ? 0 : isFasty ? 2 : 1;
+    }
+
+    public void OpenGameOverPanel()
+    {
+        GameOverPanel.SetActive(true);
+    }
+
+    public void OpenGameClearPanel()
+    {
+        GameClearPanel.SetActive(true);
     }
 }

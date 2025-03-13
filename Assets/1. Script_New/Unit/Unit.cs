@@ -499,4 +499,13 @@ public abstract class Unit : MonoBehaviour
     }
 
     #endregion
+
+    //체력 회복
+    public void GetHp(float amount)
+    {
+        if (Cur_Hp + amount > unitData_st.max_Hp)
+            Cur_Hp = unitData_st.max_Hp;
+        else
+            Cur_Hp += amount;
+    }
 }

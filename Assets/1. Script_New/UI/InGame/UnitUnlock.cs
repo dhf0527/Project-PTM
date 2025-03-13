@@ -76,7 +76,7 @@ public class UnitUnlock : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
             gameObject.SetActive(false);
         }
     }

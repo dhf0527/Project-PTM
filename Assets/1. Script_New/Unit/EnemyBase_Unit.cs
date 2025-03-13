@@ -58,8 +58,8 @@ public class EnemyBase_Unit : Unit
 
     public override void Dead()
     {
-        Time.timeScale = 0;
-        Debug.Log("½Â¸®");
+        GetComponent<Collider2D>().enabled = false;
+        DunGeonManager_New.instance.OpenGameClearPanel();
     }
 
 }

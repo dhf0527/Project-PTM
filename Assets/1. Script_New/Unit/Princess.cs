@@ -61,6 +61,8 @@ public class Princess : Unit
         {
             Cur_Hp = 0;
         }
+        if (Input.GetKeyDown(KeyCode.F9))
+            unitData_st.attackDamage = 1000;
     }
 
     public override void Init()

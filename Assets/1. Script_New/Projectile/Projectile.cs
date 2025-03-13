@@ -21,27 +21,27 @@ public abstract class Projectile : MonoBehaviour
     }
 
     //데미지
-    float damage;
+    protected float damage;
     //명중률
-    float accuracy;
+    protected float accuracy;
     //공격 가능 수
-    int target_Count;
+    protected int target_Count;
     //최대 이동 거리
-    float max_range;
+    protected float max_range;
     //현재 이동 거리
-    float cur_range;
+    protected float cur_range;
     //공격 유형
-    AttackType attackType;
+    protected AttackType attackType;
     //관통 공격 여부
-    bool isPenetration;
+    protected bool isPenetration;
 
     //이동 속도
-    float move_Speed = 2f;
+    protected float move_Speed = 2f;
 
     //이동 방향
-    Vector3 moveDir = Vector3.zero;
+    protected Vector3 moveDir = Vector3.zero;
     //대상 태그
-    string targetTag;
+    protected string targetTag;
 
     //적중한 대상 List
     List<Collider2D> hitted_col = new List<Collider2D>();
@@ -126,7 +126,7 @@ public abstract class Projectile : MonoBehaviour
 
 
     //unit에게 데이터를 받아오는 함수
-    public void SetData(Unit unit)
+    public virtual void SetData(Unit unit)
     {
         IsTeam = unit.IsTeam;
         target_Count = unit.ud.target_Count;
