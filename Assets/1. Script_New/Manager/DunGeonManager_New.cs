@@ -35,8 +35,8 @@ public class DunGeonManager_New : MonoBehaviour
     public PrincessHpPanel princessHpPanel;
 
     //결과창 패널
-    public GameObject GameOverPanel;
-    public GameObject GameClearPanel;
+    public GameClearPanel GameOverPanel;
+    public GameClearPanel GameClearPanel;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]
@@ -103,6 +103,9 @@ public class DunGeonManager_New : MonoBehaviour
     [SerializeField] Unit[] test_Units = new Unit[3];
     #endregion
 
+    //총 전투 시간
+    [HideInInspector] public float inGamePlayTime;
+
     //투사체 부모
     public Transform projectile_Parent;
 
@@ -139,6 +142,8 @@ public class DunGeonManager_New : MonoBehaviour
 
     private void Update()
     {
+        inGamePlayTime += Time.deltaTime;
+
         //0.1초마다 골드 획득
         GetGoldPerSec();
     }
@@ -315,13 +320,15 @@ public class DunGeonManager_New : MonoBehaviour
         Time.timeScale = isPause ? 0 : isFasty ? 2 : 1;
     }
 
-    public void OpenGameOverPanel()
-    {
-        GameOverPanel.SetActive(true);
-    }
-
     public void OpenGameClearPanel()
     {
-        GameClearPanel.SetActive(true);
+        GameClearPanel.gameObject.SetActive(true);
+        GameClearPanel.SetClearPanel();
+    }
+
+    public void OpenGameOverPanel()
+    {
+        GameOverPanel.gameObject.SetActive(true);
+        GameOverPanel.SetClearPanel();
     }
 }

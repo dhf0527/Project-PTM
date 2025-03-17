@@ -65,8 +65,8 @@ public class TeamBase_Unit : Unit
 
     public override void Dead()
     {
-        Time.timeScale = 0;
-        Debug.Log("패배");
+        GetComponent<Collider2D>().enabled = false;
+        DunGeonManager_New.instance.OpenGameOverPanel();
     }
 
     //요새 레벨업을 했을 때 호출
