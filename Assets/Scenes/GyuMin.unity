@@ -3715,6 +3715,7 @@ MonoBehaviour:
   spawn_Trans: {fileID: 1145465302}
   enemy_Unit_Parent: {fileID: 1045928008}
   wavePanel: {fileID: 1139534701}
+  shockWave_prf: {fileID: 2387810802357558423, guid: afb4eb0b52eb4fc448d6580e770e98c6, type: 3}
   isStopSpawn: 1
   warnText_Image: {fileID: 1241100437}
   warnText_Text: {fileID: 222850364}
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   - {fileID: -5261022507513659052, guid: 8e9e90117372f294cb1e8d3805a93f47, type: 3}
   - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
+  boss_Unit: {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,8 +6396,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 24
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 2.84
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6461,6 +6463,7 @@ MonoBehaviour:
   move_Speed: 5
   isPrincessDead: 0
   isChasePrincess: 1
+  shake_Pos: {x: 0, y: 0, z: 0}
 --- !u!1 &521670935
 GameObject:
   m_ObjectHideFlags: 0
@@ -8321,6 +8324,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  origin_Scale: 1
+  scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &670904439
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,6 +12353,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  origin_Scale: 1
+  scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &963843912
 GameObject:
   m_ObjectHideFlags: 0
@@ -27347,7 +27354,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53, y: 1.3}
+  m_Size: {x: 0.53, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &8313518626789154300
 GameObject:
@@ -27387,6 +27394,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  origin_Scale: 1
+  scaleVector: {x: 0, y: 0, z: 0}
   skill1_coolTime: 5
   skill2_coolTime: 5
   skillIcons:

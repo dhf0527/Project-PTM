@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7797822636383587268}
   - component: {fileID: 5061897147921594596}
   - component: {fileID: 8313343597627569893}
+  - component: {fileID: -7132013908935408840}
   m_Layer: 6
   m_Name: 2Archer
   m_TagString: Team
@@ -106,8 +107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: af7d214651f340241b1cc3eb85c48267, type: 2}
+  isHpText: 0
   ranged_Projectile_Pos: {fileID: 143713528348981101}
   ranged_Projectile_Prefabs: {fileID: 5105366617006020590, guid: e880285ed93fefd418a4f738e197ef5e, type: 3}
+  isPenetration: 0
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -174,6 +177,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 2}
   m_EdgeRadius: 0
+--- !u!50 &-7132013908935408840
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344319866593267813}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3374972541113252475
 GameObject:
   m_ObjectHideFlags: 0

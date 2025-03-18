@@ -19,7 +19,7 @@ public class Princess : Unit
     {
         Test();
 
-        if (isDead || isSkilling)
+        if (isDead || isSkilling || isKnockBacking)
             return;
 
         Move();
@@ -78,6 +78,41 @@ public class Princess : Unit
     protected static readonly int DoSkill1 = Animator.StringToHash("doSkill1");
     protected static readonly int DoSkill2 = Animator.StringToHash("doSkill2");
 
+    #endregion
+
+    #region 피격
+    //넉백 함수
+    public override IEnumerator KnockBack()
+    {
+        //공격 중이었을 경우 공격 종료 처리
+        if (cur_State == AnimState.Attack)
+            OnEndAttack();
+
+        //스킬 종료 처리
+        OnEndSkill();
+
+        //0.75초동안 넉백
+        SetAnim(AnimState.Hit);
+        isKnockBacking = true;
+
+        float knockTime = 0;
+        float knockSpeed;
+        while (knockTime < 0.75f)
+        {
+            knockTime += Time.deltaTime;
+            //가속도 보정
+            knockSpeed = Mathf.Lerp((1.5f / 0.75f), 0, (knockTime / 0.75f));
+            //경계선 보정
+            SetBoundary();
+            Vector3 tmp_Vec = transform.position + (-moveDir.normalized) * knockSpeed * Time.deltaTime;
+            tmp_Vec.x = Mathf.Clamp(tmp_Vec.x, boundary_Min_x, boundary_Max_x);
+            //이동
+            transform.position = tmp_Vec;
+            yield return new WaitForEndOfFrame();
+        }
+
+        isKnockBacking = false;
+    }
     #endregion
 
     #region 이동 함수

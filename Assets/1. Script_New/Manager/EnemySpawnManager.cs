@@ -15,6 +15,8 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] Transform enemy_Unit_Parent;
     //웨이브 텍스트
     public WavePanel wavePanel;
+    [SerializeField] ShockWave shockWave_prf;
+
     [Header("(테스트용)자동 스폰 중지")]
     [SerializeField] bool isStopSpawn;
 
@@ -34,6 +36,7 @@ public class EnemySpawnManager : MonoBehaviour
     public Unit[] wave1_enemy = new Unit[3];
     public Unit[] wave2_enemy = new Unit[3];
     public Unit[] wave3_enemy = new Unit[3];
+    public Unit boss_Unit;
 
     //현재 웨이브-1
     int cur_Wave = 0;
@@ -88,6 +91,10 @@ public class EnemySpawnManager : MonoBehaviour
         {
             ToNextWave();
         }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SpawnBossUnit();
+        }
 
         //웨이브 시간 확인
         CheckWaveTime();
@@ -98,6 +105,7 @@ public class EnemySpawnManager : MonoBehaviour
         
     }
 
+    #region 유닛 생산 함수
     //주기적으로 유닛을 생산하는 함수
     void Spawn_Timer()
     {
@@ -118,17 +126,22 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     //유닛 생산 함수
-    void Spawn_Unit(Unit unit)
+    Unit Spawn_Unit(Unit unit)
     {
         //유닛 생산
-        Unit baseUnit = Instantiate(unit, spawn_Trans);
-        baseUnit.transform.position += spawn_Y;
+        Unit spawned_Unit = Instantiate(unit, spawn_Trans);
+        spawned_Unit.transform.position += spawn_Y;
         //부모 설정(적 유닛들만 모아놓은 Gameobject)
-        baseUnit.transform.parent = enemy_Unit_Parent;
+        spawned_Unit.transform.parent = enemy_Unit_Parent;
         //팀 설정
-        baseUnit.IsTeam = false;
+        spawned_Unit.IsTeam = false;
+
+        return spawned_Unit;
     }
 
+    #endregion
+
+    #region 웨이브 함수
     //웨이브 시간을 확인하는 함수
     void CheckWaveTime()
     {
@@ -282,4 +295,34 @@ public class EnemySpawnManager : MonoBehaviour
             yield return new WaitForEndOfFrame() ;
         }
     }
+    #endregion
+
+    #region 보스 소환 함수
+    public void SpawnBossUnit()
+    {
+        //카메라 진동
+        Camera.main.GetComponent<CameraMove>().ShakeCamera(1f, 2);
+        //충격파 발생
+        MakeShockWave();
+        //보스 소환
+        Unit bossUnit = Spawn_Unit(boss_Unit);
+        //크기 조정
+        bossUnit.origin_Scale = 1.2f;
+        //소,중형 -> 중,대형
+        if(bossUnit.ud.size != Unit_Size.Large)
+            bossUnit.ud.size ++;
+        //능력치 조정
+        bossUnit.unitData_st.max_Hp *= 4;
+        bossUnit.Cur_Hp = bossUnit.unitData_st.max_Hp;
+        bossUnit.unitData_st.attackDamage *= 1.5f;
+        bossUnit.unitData_st.targetCount *= 2;
+    }
+
+    public void MakeShockWave()
+    {
+        Instantiate(shockWave_prf, spawn_Trans);
+    }
+    #endregion
+
+
 }

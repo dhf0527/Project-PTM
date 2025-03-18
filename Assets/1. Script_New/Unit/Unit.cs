@@ -14,6 +14,8 @@ public abstract class Unit : MonoBehaviour
         public int accuracy;
         public int avoidance;
         public int armor;
+        public int targetCount;
+        public Unit_Size size;
     }
     public UnitData_Struct unitData_st;
 
@@ -110,6 +112,8 @@ public abstract class Unit : MonoBehaviour
     Coroutine cor_knockBack;
     #endregion
     #region 애니메이션 변수
+    [HideInInspector] public float origin_Scale = 1;
+    [HideInInspector] public Vector3 scaleVector = Vector3.one;
 
     protected enum AnimState {Idle,Move,Attack,Hit,Die }
     //현재 애니메이션의 상태
@@ -129,13 +133,18 @@ public abstract class Unit : MonoBehaviour
 
     protected void Update()
     {
-        if (isDead)
+
+        if (isDead || isKnockBacking)
             return;
 
-        if (isKnockBacking)
-            return;
         ScanEnemy();
         Move();
+    }
+
+    private void LateUpdate()
+    {
+        if (animator)
+            transform.localScale = origin_Scale * scaleVector;
     }
 
     #region 초기화
@@ -154,7 +163,12 @@ public abstract class Unit : MonoBehaviour
         unitData_st.accuracy = ud.accuracy;
         unitData_st.avoidance = ud.avoidance;
         unitData_st.armor = ud.armor;
+        unitData_st.targetCount = ud.target_Count;
+        unitData_st.size = ud.size;
         SetHpBar();
+
+        origin_Scale = 1;
+        scaleVector = Vector3.one;
     }
 
     //체력바 생성 및 설정
@@ -420,7 +434,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     //넉백 함수
-    IEnumerator KnockBack()
+    public virtual IEnumerator KnockBack()
     {
         //공격 중이었을 경우 공격 종료 처리
         if (cur_State == AnimState.Attack)

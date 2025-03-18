@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1198370873967010812}
   - component: {fileID: 5061897147921594596}
   - component: {fileID: 8313343597627569893}
+  - component: {fileID: 132855656999085087}
   m_Layer: 6
   m_Name: 1Thief
   m_TagString: Team
@@ -107,9 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ud: {fileID: 11400000, guid: da48000b6344f6b46ace2f5731f55e2d, type: 2}
   isHpText: 0
-  isHavePassive: 1
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: 5915279210137212383, guid: 80186e1230fa6224c8d17f94ab452687, type: 3}
+  isPenetration: 0
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -176,6 +177,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 2}
   m_EdgeRadius: 0
+--- !u!50 &132855656999085087
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344319866593267813}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4245013335915615497
 GameObject:
   m_ObjectHideFlags: 0

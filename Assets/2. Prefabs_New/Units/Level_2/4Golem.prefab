@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1873704384784698236}
   - component: {fileID: 5061897147921594596}
   - component: {fileID: 8313343597627569893}
+  - component: {fileID: -2123743113169532784}
   m_Layer: 6
   m_Name: 4Golem
   m_TagString: Team
@@ -108,6 +109,7 @@ MonoBehaviour:
   isHpText: 0
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
+  isPenetration: 0
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -174,6 +176,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4400618, y: 2.2333517}
   m_EdgeRadius: 0
+--- !u!50 &-2123743113169532784
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344319866593267813}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1198175909361950562
 GameObject:
   m_ObjectHideFlags: 0
