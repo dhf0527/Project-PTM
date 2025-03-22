@@ -44,12 +44,17 @@ public class DunGeonManager_New : MonoBehaviour
     [SerializeField] Transform spawn_Trans;
     //유닛(팀)의 부모
     [SerializeField] Transform unit_Parent;
-    [Header("유닛간 최소 Y축 차이")]
-    public float spawn_Y = 0.03f;
-
     public List<Unit> units_Level_1;
     public List<Unit> units_Level_2;
     public List<Unit> units_Level_3;
+    [Header("유닛간 최소 Y축 차이")]
+    public float spawn_Y = 0.03f;
+    [Header("유닛 아이템")]
+    public List<ItemData> item_Advanced;
+    public List<ItemData> item_Rare;
+
+    //현재 가진 아이템들
+    [HideInInspector] public ItemData[] itemDatas = new ItemData[3];
     #endregion
     #region 골드 변수
     float max_Gold;
@@ -152,10 +157,14 @@ public class DunGeonManager_New : MonoBehaviour
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
-        if (!unitSpawnButton[index].isCoolDown && Cur_Gold >= spawnUnits[index].ud.cost)
+        int cost = itemDatas[index]?.ItemCode == 5 ? (int)(spawnUnits[index].ud.cost * (1 - 0.15f))
+            : itemDatas[index]?.ItemCode == 105 ? (int)(spawnUnits[index].ud.cost * (1 - 0.25f))
+            : spawnUnits[index].ud.cost;
+
+        if (!unitSpawnButton[index].isCoolDown && Cur_Gold >= cost)
         {
             StartCoroutine(C_SpawnUnit(index));
-            Cur_Gold -= spawnUnits[index].ud.cost;
+            Cur_Gold -= cost;
             unitSpawnButton[index].SetCoolDown();
         }
     }
@@ -175,6 +184,35 @@ public class DunGeonManager_New : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
+    void SetUnitByItem(Unit unit, int index)
+    {
+        //아이템이 없으면 실행 안 함
+        if (!itemDatas[index])
+            return;
+        switch (itemDatas[index].ItemCode)
+        {
+            case 1:
+            case 101:
+                unit.unitData_st.attackDamage += unit.ud.level * itemDatas[index].itemValue;
+                break;
+            case 2:
+            case 102:
+                unit.unitData_st.attackSpeed += itemDatas[index].itemValue;
+                break;
+            case 3:
+            case 103:
+                unit.unitData_st.armor += (int)itemDatas[index].itemValue;
+                break;
+            case 4:
+            case 104:
+                unit.unitData_st.max_Hp += unit.ud.level * itemDatas[index].itemValue;
+                break;
+            default:
+                Debug.LogError("Item 확인");
+                return;
+        }
+    }
     
     public void SetUnitSpawnButton()
     {
@@ -182,6 +220,7 @@ public class DunGeonManager_New : MonoBehaviour
         for (int i = 0; i < spawnUnits.Length; i++)
         {
             unitSpawnButton[i].unit = spawnUnits[i];
+            unitSpawnButton[i].item = itemDatas[i];
             unitSpawnButton[i].SetUI();
         }
     }
@@ -267,25 +306,48 @@ public class DunGeonManager_New : MonoBehaviour
                 break;
         }
 
-        //1레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
+        #region 해당 레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
         List<int> numbers = new List<int>();
         for (int i = 0; i < targetLevel_Units.Count; i++)
             numbers.Add(i);
 
         for (int k = 0; k < unitUnlock.cards.Count; k++)
         {
+            //아이템 설정
+            unitUnlock.cards[k].item = GetRandomItem();
+
             int index = UnityEngine.Random.Range(0, numbers.Count);
             unitUnlock.cards[k].SetData(targetLevel_Units[numbers[index]]);
             numbers.RemoveAt(index);
         }
 
-        //테스트용
+        #endregion
+
+        //해금에 나올 유닛들 수동으로 설정(테스트용)
         for (int i = 0; i < unitUnlock.cards.Count; i++)
         {
-            if (test_Units[i])
+            if (test_Units.Length > i && test_Units[i])
                 unitUnlock.cards[i].SetData(test_Units[i]);
         }
     }
+
+    //무작위로 Item을 가져오는 함수
+    ItemData GetRandomItem()
+    {
+        //희귀 확률
+        int rare_pro = 20;
+        //고급 확률
+        int advenced_pro = 30;
+
+        int rand = UnityEngine.Random.Range(0, 100);
+        if (rand < rare_pro)
+            return item_Rare[UnityEngine.Random.Range(0, item_Rare.Count)];
+        else if (rand < rare_pro + advenced_pro)
+            return item_Advanced[UnityEngine.Random.Range(0, item_Advanced.Count)];
+        else
+            return null;
+    }
+
     #endregion
 
     #region 공주 관련 함수

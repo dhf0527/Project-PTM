@@ -41,9 +41,10 @@ public class DetailPanel : MonoBehaviour
     [SerializeField] List<Sprite> attackType_Sprites = new List<Sprite>();
 
 
-    public void SetDetail(Unit setUnit)
+    public void SetDetail(Card_new selected_card)
     {
-        unit = setUnit;
+        unit = selected_card.unit;
+        ItemData item = selected_card.item;
 
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type];
         weakType_Image.sprite = attackType_Sprites[(int)unit.ud.weak_Type];
@@ -73,6 +74,31 @@ public class DetailPanel : MonoBehaviour
             : unit.ud.size == Unit_Size.Large ? "대형" : "";
 
         detail_SpawnCount_Text.text = $"{unit.ud.spawn_Count}";
+
+        //아이템에 따라 표기 변경
+        switch (item?.ItemCode)
+        {
+            case 1:
+            case 101:
+                attack_Text.text = $"<color=green>{unit.ud.damage + item.itemValue * unit.ud.level}</color>";
+                break;
+            case 2:
+            case 102:
+                attackSpeed_Text.text = $"<color=green>{unit.ud.attack_Speed + item.itemValue}</color>";
+                break;
+            case 3:
+            case 103:
+                armor_Text.text = $"<color=green>{unit.ud.armor + item.itemValue}</color>";
+                break;
+            case 4:
+            case 104:
+                hp_Text.text = $"<color=green>{unit.ud.hp + item.itemValue}</color>";
+                break;
+            case 5:
+            case 105:
+                cost_Text.text = $"<color=green>{(int)(unit.ud.cost * (1 - item.itemValue * 0.01f))}</color>";
+                break;
+        }
 
         //원래 있던 패시브 설명창 삭제
         foreach (Transform child in passive_Parent)

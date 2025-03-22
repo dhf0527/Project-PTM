@@ -33,8 +33,6 @@ public class GameClearPanel : MonoBehaviour
         dungeonNumber_Text.text = dungeonNumber;
         resultTime_Text.text = $"0s";
         reward_Text.text = $"0";
-
-        GetComponent<Animation>().Play();
     }
 
     public void OnSetPlayTime()
@@ -54,13 +52,13 @@ public class GameClearPanel : MonoBehaviour
 
         while (curTime < showTime)
         {
-            curTime += Time.deltaTime;
+            curTime += Time.unscaledDeltaTime;
             resultTime_Text.text = $"{(int)(resultTime * (curTime / showTime))}sec";
 
             yield return new WaitForEndOfFrame();
         }
         resultTime_Text.text = $"{resultTime}sec";
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         StartCoroutine(C_SetReward());
     }
 
@@ -71,7 +69,7 @@ public class GameClearPanel : MonoBehaviour
 
         while (curTime < showTime)
         {
-            curTime += Time.deltaTime;
+            curTime += Time.unscaledDeltaTime;
             reward_Text.text = $"{(int)(reward * (curTime / showTime))}";
 
             yield return new WaitForEndOfFrame();

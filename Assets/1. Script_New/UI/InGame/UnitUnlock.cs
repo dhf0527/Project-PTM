@@ -14,7 +14,7 @@ public class UnitUnlock : MonoBehaviour
     public Button select_Button;
     public Button detail_Button;
 
-    Unit selected_Unit;
+    Card_new selected_Card;
     int level = 0;
 
     private void Awake()
@@ -29,10 +29,10 @@ public class UnitUnlock : MonoBehaviour
 
         foreach(var item in cards)
         {
-            //선택된 card에 저장된 unit 가져오기
+            //선택된 card 가져오기
             if (item.GetComponent<Toggle>().isOn)
             {
-                selected_Unit = item.unit;
+                selected_Card = item;
                 SetButtonsInteractable(true);
                 return;
             }
@@ -55,7 +55,9 @@ public class UnitUnlock : MonoBehaviour
     public void OnSelectButton()
     {
         //유닛 데이터 전달
-        DunGeonManager_New.instance.spawnUnits[level] = selected_Unit;
+        DunGeonManager_New.instance.spawnUnits[level] = selected_Card.unit;
+        //아이템 데이터 전달
+        DunGeonManager_New.instance.itemDatas[level] = selected_Card.item;
         //유닛 생산 버튼 동기화
         DunGeonManager_New.instance.SetUnitSpawnButton();
         //다음 해금을 위해 레벨 증가
@@ -107,6 +109,8 @@ public class UnitUnlock : MonoBehaviour
         cardParent.gameObject.SetActive(!isOpen);
         
         if (isOpen)
-            detailPanel.SetDetail(selected_Unit);
+        {
+            detailPanel.SetDetail(selected_Card);
+        }
     }
 }

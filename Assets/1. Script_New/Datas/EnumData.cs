@@ -30,3 +30,9 @@ public enum Faction
     Demon,
     Graveyard
 }
+
+public enum ItemRarity
+{
+    Advanced,
+    Rare
+}
