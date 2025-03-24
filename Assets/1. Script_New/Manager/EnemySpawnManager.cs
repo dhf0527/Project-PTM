@@ -19,6 +19,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     [Header("(테스트용)자동 스폰 중지")]
     [SerializeField] bool isStopSpawn;
+    [SerializeField] Animator backGround_Anim;
 
     //경고 텍스트
     [SerializeField] Image warnText_Image;
@@ -93,7 +94,7 @@ public class EnemySpawnManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad3))
         {
-            SpawnBossUnit();
+            backGround_Anim.SetTrigger("SpawnBoss");
         }
 
         //웨이브 시간 확인

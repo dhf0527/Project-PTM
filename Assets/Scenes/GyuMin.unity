@@ -3865,6 +3865,7 @@ MonoBehaviour:
   wavePanel: {fileID: 1139534701}
   shockWave_prf: {fileID: 2387810802357558423, guid: afb4eb0b52eb4fc448d6580e770e98c6, type: 3}
   isStopSpawn: 1
+  backGround_Anim: {fileID: 973086257}
   warnText_Image: {fileID: 1241100437}
   warnText_Text: {fileID: 222850364}
   textColors:
@@ -12766,6 +12767,8 @@ GameObject:
   m_Component:
   - component: {fileID: 973086255}
   - component: {fileID: 973086256}
+  - component: {fileID: 973086257}
+  - component: {fileID: 973086258}
   m_Layer: 0
   m_Name: BackGround_Image
   m_TagString: Untagged
@@ -12840,6 +12843,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &973086257
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973086254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 026f99b6c2e3e664e9009ecbc5fb4b53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &973086258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973086254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e65fcfc6eadf34e8794965813322d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &975434761
 GameObject:
   m_ObjectHideFlags: 0
