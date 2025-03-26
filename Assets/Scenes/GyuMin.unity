@@ -3813,7 +3813,8 @@ MonoBehaviour:
     base_UpgradeCost_By_Level: 0
     base_GoldPerSec_By_Level: 50
     base_MaxGold_By_Level: 8100
-  test_Units: []
+  test_Units:
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
@@ -3902,7 +3903,7 @@ MonoBehaviour:
   - {fileID: -5261022507513659052, guid: 8e9e90117372f294cb1e8d3805a93f47, type: 3}
   - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
-  boss_Unit: {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
+  boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0

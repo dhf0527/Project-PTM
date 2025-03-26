@@ -11,7 +11,7 @@ public class ShockWave : MonoBehaviour
         if (curTime < 3)
         {
         curTime += Time.deltaTime;
-        transform.localScale = Vector3.one * curTime * 30;
+        transform.localScale = Vector3.one * curTime * 50;
         }    
         else
             Destroy(gameObject);
