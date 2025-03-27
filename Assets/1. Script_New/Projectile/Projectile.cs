@@ -36,7 +36,7 @@ public abstract class Projectile : MonoBehaviour
     protected bool isPenetration;
 
     //이동 속도
-    protected float move_Speed = 2f;
+    protected float move_Speed = 4f;
 
     //이동 방향
     protected Vector3 moveDir = Vector3.zero;
@@ -87,7 +87,25 @@ public abstract class Projectile : MonoBehaviour
             {
                 //공격 명중
                 ApplyAttack(target_Unit);
+                switch (attackType)
+                {
+                    case AttackType.None:
+                        break;
+                    case AttackType.Physical:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Physic);
+                        break;
+                    case AttackType.Magical:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Magic);
+                        break;
+                    case AttackType.Fire:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Fire);
+                        break;
+                    default:
+                        break;
+                }
             }
+            else
+                AudioManager.instance.PlayerSfx(SFX_Enum.Avoid);
 
             //최대 대상 수만큼 공격 전달을 완료했으면 투사체 삭제
             if (--target_Count <= 0)

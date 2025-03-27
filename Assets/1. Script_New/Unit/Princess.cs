@@ -227,6 +227,8 @@ public class Princess : Unit
             target_Unit.AddComponent<ShieldSmiteDebuff>();
         }
         StartCoroutine(C_Skill1_CoolDown());
+
+        AudioManager.instance.PlayerSfx(SFX_Enum.ShieldSmite);
     }
 
     IEnumerator C_Skill1_CoolDown()
@@ -281,6 +283,8 @@ public class Princess : Unit
             //버프 처리
         }
         StartCoroutine(C_Skill2_CoolDown());
+
+        AudioManager.instance.PlayerSfx(SFX_Enum.BrokenHeroSword);
     }
 
     IEnumerator C_Skill2_CoolDown()

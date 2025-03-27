@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 1
   unit_Name: "\uC2DC\uCCB4 \uBC15\uC950"
   faction: 3
-  move_Speed: 1.5
+  move_Speed: 300
   hp: 20
   damage: 7
   attack_Speed: 5

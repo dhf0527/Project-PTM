@@ -320,6 +320,26 @@ public abstract class Unit : MonoBehaviour
             if (TryAttack(target_Unit))
             {
                 ApplyAttack(target_Unit, unitData_st.attackDamage, ud.attack_Type);
+                switch (ud.attack_Type)
+                {
+                    case AttackType.None:
+                        break;
+                    case AttackType.Physical:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Physic);
+                        break;
+                    case AttackType.Magical:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Magic);
+                        break;
+                    case AttackType.Fire:
+                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Fire);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                AudioManager.instance.PlayerSfx(SFX_Enum.Avoid);
             }
         }
     }
@@ -334,6 +354,8 @@ public abstract class Unit : MonoBehaviour
         //투사체 부모 및 위치 설정
         projectile.transform.SetParent(DunGeonManager_New.instance.projectile_Parent);
         projectile.transform.position = spawn_Pos;
+        //투사체 크기 설정
+        projectile.transform.localScale = origin_Scale * Vector3.one;
 
         //투사체 데이터 전달
         projectile.SetData(this);

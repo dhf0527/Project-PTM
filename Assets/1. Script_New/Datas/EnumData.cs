@@ -36,3 +36,13 @@ public enum ItemRarity
     Uncommon,
     Rare
 }
+
+public enum BGM_Enum 
+{ 
+    Map_1 , Boss
+}
+public enum SFX_Enum 
+{ 
+    Touch , CardAppear, TowerUpGrade , UnitConfirm, UnitCoolDown , Deny , UnitEmploy , Hit_Physic , Hit_Magic, Hit_Fire 
+        , Avoid , ShieldSmite, BrokenHeroSword
+}

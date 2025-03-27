@@ -166,7 +166,10 @@ public class DunGeonManager_New : MonoBehaviour
             StartCoroutine(C_SpawnUnit(index));
             Cur_Gold -= cost;
             unitSpawnButton[index].SetCoolDown();
+            AudioManager.instance.PlayerSfx(SFX_Enum.UnitEmploy);
         }
+        else
+            AudioManager.instance.PlayerSfx(SFX_Enum.Deny);
     }
 
     //실제로 생산을 하는 함수
@@ -249,6 +252,8 @@ public class DunGeonManager_New : MonoBehaviour
             teamBase.Base_LevelUp();
             //골드 관련 레벨업 처리
             Set_GoldByBaseLevel();
+
+            AudioManager.instance.PlayerSfx(SFX_Enum.TowerUpGrade);
         }
     }
 

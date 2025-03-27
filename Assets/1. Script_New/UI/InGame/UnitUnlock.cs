@@ -75,6 +75,8 @@ public class UnitUnlock : MonoBehaviour
         {
             Time.timeScale = 0;
             gameObject.SetActive(true);
+
+            AudioManager.instance.PlayerSfx(SFX_Enum.CardAppear);
         }
         else
         {

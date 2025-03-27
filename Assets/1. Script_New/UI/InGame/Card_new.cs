@@ -125,26 +125,26 @@ public class Card_new : MonoBehaviour
     //선택되지 않으면 어둡게 만드는 함수
     public void SetDarkMask(bool isAllMask = false)
     {
+        if (!toggle)
+            toggle = GetComponent<Toggle>();
+
         foreach (var item in dark_Masks)
         {
-            if (!toggle)
-                toggle = GetComponent<Toggle>();
-
             //어둡게 만들기
             if (!isAllMask)
                 item.SetActive(!toggle.isOn);
             else
                 item.SetActive(false);
+        }
 
-            //선택된 카드 크기 키우기
-            if (toggle.isOn)
-            {
-                transform.localScale = Vector3.one * 1.1f;
-            }
-            else
-            {
-                transform.localScale = Vector3.one;
-            }
+        //선택된 카드 크기 키우기
+        if (toggle.isOn)
+        {
+            transform.localScale = Vector3.one * 1.1f;
+        }
+        else
+        {
+            transform.localScale = Vector3.one;
         }
     }
 }

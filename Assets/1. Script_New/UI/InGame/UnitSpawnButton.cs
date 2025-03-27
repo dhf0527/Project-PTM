@@ -39,6 +39,7 @@ public class UnitSpawnButton : MonoBehaviour
             {
                 isCoolDown = false;
                 anim.Play();
+                AudioManager.instance.PlayerSfx(SFX_Enum.UnitCoolDown);
             }
         }
     }
