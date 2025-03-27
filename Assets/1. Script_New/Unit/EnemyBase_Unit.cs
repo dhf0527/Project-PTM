@@ -5,6 +5,41 @@ using UnityEngine.UI;
 
 public class EnemyBase_Unit : Unit
 {
+    bool isBossSpawn = false;
+
+    public override float Cur_Hp
+    {
+        get
+        {
+            return cur_Hp;
+        }
+        set
+        {
+            cur_Hp = value;
+            //사망 체크
+            if (cur_Hp <= 0)
+            {
+                cur_Hp = 0;
+                Dead();
+            }
+            //체력에 따라 다음 웨이브로 넘어감
+            else if (Cur_Hp <= unitData_st.max_Hp * 0.8f)
+                EnemySpawnManager.instance.ToNextWave(2);
+            else if (Cur_Hp <= unitData_st.max_Hp * 0.4f)
+                EnemySpawnManager.instance.ToNextWave(3);
+
+            //체력이 50% 이하가 되면 보스 스폰
+            if (cur_Hp <= 0.5f * unitData_st.max_Hp)
+                EnemySpawnManager.instance.OnBossSpawn();
+
+            //공주일 경우 전용 체력바 갱신
+            if (ud.unit_Code == 0)
+                DunGeonManager_New.instance.princessHpPanel.SetHpBar(this);
+
+            //체력바 갱신
+            hpBar.SetHpBar();
+        }
+    }
 
     private void Start()
     {
@@ -14,11 +49,7 @@ public class EnemyBase_Unit : Unit
 
     private void Update()
     {
-        //체력에 따라 다음 웨이브로 넘어감
-        if (Cur_Hp <= unitData_st.max_Hp * 0.8f)
-            EnemySpawnManager.instance.ToNextWave(2);
-        if (Cur_Hp <= unitData_st.max_Hp * 0.4f)
-            EnemySpawnManager.instance.ToNextWave(3);
+        
     }
 
     public override void Init()

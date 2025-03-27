@@ -76,8 +76,8 @@ public abstract class Unit : MonoBehaviour
     #endregion
     #region 피격 변수
     //현재 체력
-    float cur_Hp;
-    public float Cur_Hp
+    protected float cur_Hp;
+    public virtual float Cur_Hp
     {
         get 
         {
@@ -220,7 +220,7 @@ public abstract class Unit : MonoBehaviour
         SetDir();
 
         //임시 이동
-        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * unitData_st.moveSpeed;
+        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * unitData_st.moveSpeed / 200f;
         //경계선을 넘지 않도록 보정
         SetBoundary();
         float clamped_x = Mathf.Clamp(tmp_vec.x, boundary_Min_x, boundary_Max_x);

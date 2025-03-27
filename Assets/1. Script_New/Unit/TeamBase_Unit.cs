@@ -14,7 +14,10 @@ public class TeamBase_Unit : Unit
         {
             base_level = value;
             DunGeonManager_New.instance.baseLevelUpPanel.Set_LevelText(base_level);
-            DunGeonManager_New.instance.baseLevelUpPanel.Set_CostText(DunGeonManager_New.instance.base_abillitiesByLevels[base_level - 1].base_UpgradeCost_By_Level);
+            if (base_level != DunGeonManager_New.instance.base_abillitiesByLevels.Count)
+                DunGeonManager_New.instance.baseLevelUpPanel.Set_CostText(DunGeonManager_New.instance.base_abillitiesByLevels[base_level - 1].base_UpgradeCost_By_Level);
+            else
+                DunGeonManager_New.instance.baseLevelUpPanel.Set_CostText("MAX");
         }
     }
 

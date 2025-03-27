@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,6 +60,8 @@ public class EnemySpawnManager : MonoBehaviour
     float[] spawn_Time = { 10, 20, 30 };
     //스폰 시간 카운터
     float[] spawn_Time_Count = new float[3];
+    //보스 소환 판별 변수
+    bool isBossSpawned = false;
 
     private void Awake()
     {
@@ -94,7 +97,8 @@ public class EnemySpawnManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad3))
         {
-            backGround_Anim.SetTrigger("SpawnBoss");
+            isBossSpawned = false;
+            OnBossSpawn();
         }
 
         //웨이브 시간 확인
@@ -214,6 +218,10 @@ public class EnemySpawnManager : MonoBehaviour
                 cor_warn = StartCoroutine(C_SetWarnText(11f));
                 StartCoroutine(C_CountDown(10.5f));
             }
+
+            //15초 경과 시 보스 등장
+            if (!isBossSpawned && cur_WaveTime >= 15f)
+                OnBossSpawn();
         }
         //웨이브 시간 종료 시 다음 웨이브로 넘어감
         else if (cur_WaveTime >= waveTimes[cur_Wave])
@@ -299,6 +307,15 @@ public class EnemySpawnManager : MonoBehaviour
     #endregion
 
     #region 보스 소환 함수
+    public void OnBossSpawn()
+    {
+        if (!isBossSpawned)
+        {
+            backGround_Anim.SetTrigger("SpawnBoss");
+            isBossSpawned = true;
+        }
+    }
+
     public void SpawnBossUnit()
     {
         //카메라 진동

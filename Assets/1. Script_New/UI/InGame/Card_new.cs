@@ -111,7 +111,7 @@ public class Card_new : MonoBehaviour
         if (item)
         {
             itemParent_Go.SetActive(true);
-            itemPanel_Image.color = item.itemRarity == ItemRarity.Advanced ? new Color(107 / 255f, 198 / 255f, 53 / 255f) : Color.white;
+            itemPanel_Image.color = item.itemRarity == ItemRarity.Uncommon ? new Color(107 / 255f, 198 / 255f, 53 / 255f) : Color.white;
             //itemIcon_Image.sprite = item.itemIcon;
 
             //{value}를 item.itemValue로 변환
@@ -123,13 +123,20 @@ public class Card_new : MonoBehaviour
     }
 
     //선택되지 않으면 어둡게 만드는 함수
-    public void SetDarkMask()
+    public void SetDarkMask(bool isAllMask = false)
     {
         foreach (var item in dark_Masks)
         {
             if (!toggle)
                 toggle = GetComponent<Toggle>();
-            item.SetActive(!toggle.isOn);
+
+            //어둡게 만들기
+            if (!isAllMask)
+                item.SetActive(!toggle.isOn);
+            else
+                item.SetActive(false);
+
+            //선택된 카드 크기 키우기
             if (toggle.isOn)
             {
                 transform.localScale = Vector3.one * 1.1f;

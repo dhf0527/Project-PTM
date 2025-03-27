@@ -89,7 +89,7 @@ public class UnitUnlock : MonoBehaviour
         foreach (var item in cards)
         {
             item.GetComponent<Toggle>().isOn = false;
-            item.SetDarkMask();
+            item.SetDarkMask(true);
         }
 
         SetButtonsInteractable(false);

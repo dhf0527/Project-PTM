@@ -25,6 +25,11 @@ public class BaseLevelUpPanel : MonoBehaviour
         cost_Text.text = $"{cost}";
     }
 
+    public void Set_CostText(string message)
+    {
+        cost_Text.text = message;
+    } 
+
     public void Anim_LevelUp()
     {
         anim.Play();

@@ -33,6 +33,6 @@ public enum Faction
 
 public enum ItemRarity
 {
-    Advanced,
+    Uncommon,
     Rare
 }
