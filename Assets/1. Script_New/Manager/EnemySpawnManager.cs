@@ -40,6 +40,9 @@ public class EnemySpawnManager : MonoBehaviour
     public Unit[] wave3_enemy = new Unit[3];
     public Unit boss_Unit;
 
+    //보스 오라 이펙트
+    public GameObject bossAura;
+
     //현재 웨이브-1
     int cur_Wave = 0;
     int cur_Phase = 0;
@@ -62,6 +65,7 @@ public class EnemySpawnManager : MonoBehaviour
     float[] spawn_Time_Count = new float[3];
     //보스 소환 판별 변수
     bool isBossSpawned = false;
+    
 
     private void Awake()
     {
@@ -335,6 +339,9 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.Cur_Hp = bossUnit.unitData_st.max_Hp;
         bossUnit.unitData_st.attackDamage *= 1.5f;
         bossUnit.unitData_st.targetCount *= 2;
+
+        //아우라 생성
+        Instantiate(bossAura, bossUnit.transform);
     }
 
     public void MakeShockWave()

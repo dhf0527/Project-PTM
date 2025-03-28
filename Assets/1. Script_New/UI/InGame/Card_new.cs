@@ -34,6 +34,17 @@ public class Card_new : MonoBehaviour
     [SerializeField] Image itemIcon_Image;
     [SerializeField] TMP_Text itemDescription_Text;
 
+    [SerializeField] List<Image> upDownFrame_Image;
+    [SerializeField] List<Image> backGroundFrame_Image;
+    [SerializeField] List<Image> backGround2Frame_Image;
+    [SerializeField] List<Image> backGround3Frame_Image;
+
+    [Header("¼Ò¼Ó º° Frame : ¿Õ±¹, ½£, ¸¶¿Õ, ¹¦Áö±â ¼ø")]
+    [SerializeField] List<Sprite> upDownFrameByFaction_Sprite;
+    [SerializeField] List<Sprite> backGroundByFaction_Sprite;
+    [SerializeField] List<Sprite> backGround2ByFaction_Sprite;
+    [SerializeField] List<Sprite> backGround3ByFaction_Sprite;
+
     [Header("0±ÙÁ¢ 1¿ø°Å¸®")]
     [SerializeField] List<Sprite> attackRangeType_Sprites = new List<Sprite>();
     [Header("0Áß¾Ó 1¿äÁ¤ 2¸¶¿Õ 3¹¦Áö±â")]
@@ -52,6 +63,8 @@ public class Card_new : MonoBehaviour
     public void SetData(Unit setUnit)
     {
         unit = setUnit;
+
+        SetFrame();
 
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
         spawnCount_Text.text = $"X {unit.ud.spawn_Count}";
@@ -145,6 +158,26 @@ public class Card_new : MonoBehaviour
         else
         {
             transform.localScale = Vector3.one;
+        }
+    }
+
+    public void SetFrame()
+    {
+        foreach (var item in upDownFrame_Image)
+        {
+            item.sprite = upDownFrameByFaction_Sprite[(int)unit.ud.faction];
+        }
+        foreach (var item in backGroundFrame_Image)
+        {
+            item.sprite = backGroundByFaction_Sprite[(int)unit.ud.faction];
+        }
+        foreach (var item in backGround2Frame_Image)
+        {
+            item.sprite = backGround2ByFaction_Sprite[(int)unit.ud.faction];
+        }
+        foreach (var item in backGround3Frame_Image)
+        {
+            item.sprite = backGround3ByFaction_Sprite[(int)unit.ud.faction];
         }
     }
 }

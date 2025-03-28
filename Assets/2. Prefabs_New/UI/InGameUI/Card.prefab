@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2068,14 +2068,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19784619, g: 0.36830786, b: 0.735849, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -535705393, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!1 &4811605556963381751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,14 +2144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19784619, g: 0.36830786, b: 0.735849, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -535705393, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!1 &4852083975673702262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,8 +2809,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3302,6 +3302,43 @@ MonoBehaviour:
   itemPanel_Image: {fileID: 311947391160171239}
   itemIcon_Image: {fileID: 635900608490846159}
   itemDescription_Text: {fileID: 745104675636944798}
+  upDownFrame_Image:
+  - {fileID: 8279422777428707472}
+  - {fileID: 7423723671733133680}
+  backGroundFrame_Image:
+  - {fileID: 2136702949764472373}
+  backGround2Frame_Image:
+  - {fileID: 2679420158459144989}
+  - {fileID: 6013117048974583984}
+  - {fileID: 804707528877168771}
+  - {fileID: 1977207708748234637}
+  - {fileID: 5056235167943398620}
+  - {fileID: 1981314769859386857}
+  - {fileID: 3338966926275941691}
+  - {fileID: 7399106109786499443}
+  - {fileID: 7451263079066994319}
+  backGround3Frame_Image:
+  - {fileID: 2307208565449431152}
+  upDownFrameByFaction_Sprite:
+  - {fileID: 1542329866, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 1516928091, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 2026909127, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 1658402941, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
+  backGroundByFaction_Sprite:
+  - {fileID: 849950081, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1994441904, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 2139594836, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 416037374, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
+  backGround2ByFaction_Sprite:
+  - {fileID: 1153962734, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 2138508906, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1137483167, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1050672317, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
+  backGround3ByFaction_Sprite:
+  - {fileID: -651040586, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1634179573, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1059288469, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -989832914, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
   attackRangeType_Sprites:
   - {fileID: -512888545, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
   - {fileID: 541129334, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
@@ -3387,6 +3424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57c6a0e13f627f4a8c2c989763a5614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_enum: 0
+  isButtonDown: 0
 --- !u!1 &7729939166915876874
 GameObject:
   m_ObjectHideFlags: 0

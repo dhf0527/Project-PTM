@@ -340,7 +340,7 @@ public class DunGeonManager_New : MonoBehaviour
     ItemData GetRandomItem()
     {
         //Èñ±Í È®·ü
-        int rare_pro = 20;
+        int rare_pro = 15;
         //°í±Þ È®·ü
         int advenced_pro = 30;
 

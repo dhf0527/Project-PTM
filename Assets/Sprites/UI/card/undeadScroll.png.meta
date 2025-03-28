@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: undedScroll_0
+      name: undeadScroll_0
       rect:
         serializedVersion: 2
         x: 232
@@ -131,7 +131,7 @@ TextureImporter:
         width: 1767
         height: 341
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: undedScroll_1
+      name: undeadScroll_1
       rect:
         serializedVersion: 2
         x: 311
@@ -152,7 +152,7 @@ TextureImporter:
         width: 1610
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: undedScroll_2
+      name: undeadScroll_2
       rect:
         serializedVersion: 2
         x: 1076
@@ -173,7 +173,7 @@ TextureImporter:
         width: 752
         height: 280
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: undedScroll_3
+      name: undeadScroll_3
       rect:
         serializedVersion: 2
         x: 1076
@@ -194,7 +194,7 @@ TextureImporter:
         width: 752
         height: 281
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      undedScroll_0: 1658402941
-      undedScroll_1: 416037374
-      undedScroll_2: -989832914
-      undedScroll_3: -1050672317
+      undeadScroll_0: 1658402941
+      undeadScroll_1: 416037374
+      undeadScroll_2: -989832914
+      undeadScroll_3: -1050672317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

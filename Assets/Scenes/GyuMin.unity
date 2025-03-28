@@ -3995,6 +3995,7 @@ MonoBehaviour:
   - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
   boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
+  bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,6 +10078,21 @@ MonoBehaviour:
   detail_SpawnCount_Text: {fileID: 510987274}
   passivePanel_Prefab: {fileID: 7587400354298489402, guid: b175c71a23ae47d42b243a52845d8645, type: 3}
   passive_Parent: {fileID: 258428719}
+  upDownFrame_Image:
+  - {fileID: 2065610175}
+  - {fileID: 1683031748}
+  backGroundFrame_Image:
+  - {fileID: 2019860359}
+  upDownFrameByFaction_Sprite:
+  - {fileID: 1542329866, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 1516928091, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 2026909127, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 1658402941, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
+  backGroundByFaction_Sprite:
+  - {fileID: 849950081, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1994441904, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 2139594836, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 416037374, guid: e1ead06afbff423418c9f1462b836f0b, type: 3}
   attackRangeType_Sprites:
   - {fileID: -512888545, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
   - {fileID: 541129334, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}

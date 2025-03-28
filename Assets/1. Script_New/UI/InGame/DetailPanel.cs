@@ -33,6 +33,13 @@ public class DetailPanel : MonoBehaviour
     [SerializeField] PassivePanel passivePanel_Prefab;
     [SerializeField] Transform passive_Parent;
 
+    [SerializeField] List<Image> upDownFrame_Image;
+    [SerializeField] List<Image> backGroundFrame_Image;
+
+    [Header("¼Ò¼Ó º° Frame : ¿Õ±¹, ½£, ¸¶¿Õ, ¹¦Áö±â ¼ø")]
+    [SerializeField] List<Sprite> upDownFrameByFaction_Sprite;
+    [SerializeField] List<Sprite> backGroundByFaction_Sprite;
+
     [Header("0±ÙÁ¢ 1¿ø°Å¸®")]
     [SerializeField] List<Sprite> attackRangeType_Sprites = new List<Sprite>();
     [Header("0Áß¾Ó 1¿äÁ¤ 2¸¶¿Õ 3¹¦Áö±â")]
@@ -45,6 +52,8 @@ public class DetailPanel : MonoBehaviour
     {
         unit = selected_card.unit;
         ItemData item = selected_card.item;
+
+        SetFrame();
 
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type];
         weakType_Image.sprite = attackType_Sprites[(int)unit.ud.weak_Type];
@@ -116,5 +125,17 @@ public class DetailPanel : MonoBehaviour
         PassivePanel newPd = Instantiate(passivePanel_Prefab, passive_Parent);
         newPd.SetNameText(passiveName);
         newPd.SetDetailText(passiveDetail);
+    }
+
+    public void SetFrame()
+    {
+        foreach (var item in upDownFrame_Image)
+        {
+            item.sprite = upDownFrameByFaction_Sprite[(int)unit.ud.faction];
+        }
+        foreach (var item in backGroundFrame_Image)
+        {
+            item.sprite = backGroundByFaction_Sprite[(int)unit.ud.faction];
+        }
     }
 }
