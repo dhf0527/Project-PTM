@@ -21,10 +21,10 @@ public class DungeonPanel : MonoBehaviour
         {
             if (!dd.units[i])
             {
-                unit_Images[i].sprite = null;
+                unit_Images[i].gameObject.SetActive(false);
                 continue;
             }
-
+            unit_Images[i].gameObject.SetActive(true);
             unit_Images[i].sprite = dd.units[i].unit_Sprite;
         }
     }

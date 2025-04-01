@@ -39,10 +39,15 @@ public enum ItemRarity
 
 public enum BGM_Enum 
 { 
-    Map_1 , Boss
+    Map_1 , Boss, WorldMap
 }
 public enum SFX_Enum 
 { 
     Touch , CardAppear, TowerUpGrade , UnitConfirm, UnitCoolDown , Deny , UnitEmploy , Hit_Physic , Hit_Magic, Hit_Fire 
         , Avoid , ShieldSmite, BrokenHeroSword
+}
+
+public enum EMixer
+{
+    Master, BGM, SFX
 }
