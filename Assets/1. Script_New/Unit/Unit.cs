@@ -59,6 +59,7 @@ public abstract class Unit : MonoBehaviour
     protected float boundary_Max_x;
     #endregion
     #region 공격 변수
+    [SerializeField] Transform hitParent;
     [Header("ranged: 원거리 유닛만 필요로 하는 변수")]
     [SerializeField] Transform ranged_Projectile_Pos;
     [SerializeField] Projectile ranged_Projectile_Prefabs;
@@ -100,7 +101,6 @@ public abstract class Unit : MonoBehaviour
             hpBar.SetHpBar();
         }
     }
-
     protected HpBar_new hpBar;
 
     //체력으로 인한 넉백을 당할 수 있는 횟수
@@ -235,8 +235,8 @@ public abstract class Unit : MonoBehaviour
     //이동 방향을 바라보게 하는 함수
     protected void SetDir()
     {
-        //왼쪽을 바라보면 스프라이트 좌우반전
-        sr.flipX = moveDir.x < 0;
+        //왼쪽을 바라보면 y축 180도 회전
+        transform.localRotation = moveDir.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
     }
 
     //경계선 설정 함수
@@ -347,8 +347,7 @@ public abstract class Unit : MonoBehaviour
     void RangedAttack()
     {
         //바라보는 방향에 따라 투사체 생성 위치 조정
-        Vector3 spawn_Pos = transform.position + (sr.flipX ? -ranged_Projectile_Pos.localPosition : ranged_Projectile_Pos.localPosition);
-        spawn_Pos.y = ranged_Projectile_Pos.position.y;
+        Vector3 spawn_Pos = ranged_Projectile_Pos.position;
         //투사체 생성
         Projectile projectile = Instantiate(ranged_Projectile_Prefabs);
         //투사체 부모 및 위치 설정
@@ -396,6 +395,9 @@ public abstract class Unit : MonoBehaviour
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
         target_Unit.TakeDamage(totalDamage);
+
+        //피격 이펙트 생성
+        FxManager.Instance.Hit(hitParent.position);
     }
 
     //공격 딜레이를 구현하는 함수

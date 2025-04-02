@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class SkeletonWarrior_New : Unit
 {
     //부활 후 애니메이션
-    [SerializeField] AnimatorController reborn_anim;
+    [SerializeField] RuntimeAnimatorController reborn_anim;
     bool isReborn;
 
     public override void Dead()

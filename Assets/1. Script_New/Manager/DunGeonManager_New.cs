@@ -121,6 +121,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     //싱글톤
     public static DunGeonManager_New instance;
+
     private void Awake()
     {
         instance = this;
@@ -133,9 +134,6 @@ public class DunGeonManager_New : MonoBehaviour
         Max_Gold = base_abillitiesByLevels[0].base_MaxGold_By_Level;
         base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
         spawnUnits = new Unit[3];
-
-        //유닛 해금 창 설정 후 열기
-        OpenUnitUnlock(1);
     }
 
     private void Start()
@@ -143,6 +141,9 @@ public class DunGeonManager_New : MonoBehaviour
         //경계선 양끝 좌표 가져오기
         boundary_Min_x = boundary.bounds.min.x;
         boundary_Max_x = boundary.bounds.max.x;
+
+        //유닛 해금 창 설정 후 열기
+        OpenUnitUnlock(1);
     }
 
     private void Update()

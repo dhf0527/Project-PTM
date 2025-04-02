@@ -3,7 +3,11 @@ guid: 8efba719e3a861a489a23c040a0d1dd7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ud: {instanceID: 0}
+  - ranged_Projectile_Pos: {instanceID: 0}
+  - ranged_Projectile_Prefabs: {instanceID: 0}
+  - hitFx_prf: {fileID: 7676690530936883298, guid: 3dcecf6e4d2bbf545b49feeb6d01d957, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -36,7 +36,7 @@ public abstract class Projectile : MonoBehaviour
     protected bool isPenetration;
 
     //이동 속도
-    protected float move_Speed = 4f;
+    protected float move_Speed = 8f;
 
     //이동 방향
     protected Vector3 moveDir = Vector3.zero;
@@ -140,6 +140,8 @@ public abstract class Projectile : MonoBehaviour
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
         target_Unit.TakeDamage(totalDamage);
+
+        FxManager.Instance.Hit(transform.position);
     }
 
 
