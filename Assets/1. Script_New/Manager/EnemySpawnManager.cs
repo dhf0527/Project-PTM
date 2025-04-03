@@ -44,7 +44,7 @@ public class EnemySpawnManager : MonoBehaviour
     public GameObject bossAura;
 
     //현재 웨이브-1
-    int cur_Wave = 0;
+    [HideInInspector] public int cur_Wave = 0;
     int cur_Phase = 0;
 
 

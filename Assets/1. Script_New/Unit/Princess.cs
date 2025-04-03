@@ -10,6 +10,8 @@ public class Princess : Unit
     [SerializeField] float skill2_coolTime;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
 
+    float nonCombatTime = 0;
+
     bool canSkill1 = true;
     bool canSkill2 = true;
 
@@ -23,7 +25,13 @@ public class Princess : Unit
             return;
 
         Move();
-        
+
+        nonCombatTime += Time.deltaTime;
+        if (nonCombatTime > 4f)
+        {
+            nonCombatTime -= 1;
+            GetHp((4 + (EnemySpawnManager.instance.cur_Wave + 1) * 4) / 100f * unitData_st.max_Hp);
+        }
     }
 
     //테스트 함수
@@ -80,10 +88,21 @@ public class Princess : Unit
 
     #endregion
 
+    #region 공격
+    protected override void Attack()
+    {
+        nonCombatTime = 0;
+        base.Attack();
+    }
+    #endregion
+
     #region 피격
     //넉백 함수
     public override IEnumerator KnockBack()
     {
+        nonCombatTime = 0;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+
         //공격 중이었을 경우 공격 종료 처리
         if (cur_State == AnimState.Attack)
             OnEndAttack();
@@ -104,7 +123,7 @@ public class Princess : Unit
             knockSpeed = Mathf.Lerp((1.5f / 0.75f), 0, (knockTime / 0.75f));
             //경계선 보정
             SetBoundary();
-            Vector3 tmp_Vec = transform.position + (-moveDir.normalized) * knockSpeed * Time.deltaTime;
+            Vector3 tmp_Vec = transform.position + (Vector3.left) * knockSpeed * Time.deltaTime;
             tmp_Vec.x = Mathf.Clamp(tmp_Vec.x, boundary_Min_x, boundary_Max_x);
             //이동
             transform.position = tmp_Vec;
@@ -112,6 +131,12 @@ public class Princess : Unit
         }
 
         isKnockBacking = false;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        nonCombatTime = 0;
+        base.TakeDamage(damage);
     }
     #endregion
 
@@ -210,6 +235,7 @@ public class Princess : Unit
     //공주 스킬1: 방패 강타
     public void OnSkill1()
     {
+        nonCombatTime = 0;
         float skillRange = 1.5f;
 
         //스캔할 레이어 설정
@@ -267,6 +293,7 @@ public class Princess : Unit
     //공주 스킬2: 부러진 영웅검
     public void OnSkill2()
     {
+        nonCombatTime = 0;
         float skillRange = 1f;
 
         //스캔할 레이어 설정

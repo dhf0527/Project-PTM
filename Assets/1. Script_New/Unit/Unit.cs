@@ -276,7 +276,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     //공격
-    protected void Attack()
+    protected virtual void Attack()
     {
         //공격할 수 있으면 공격 실행
         if (canAttack)
@@ -417,7 +417,7 @@ public abstract class Unit : MonoBehaviour
     #endregion
 
     #region 피격
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
