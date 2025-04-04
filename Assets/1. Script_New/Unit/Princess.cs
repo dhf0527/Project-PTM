@@ -39,11 +39,11 @@ public class Princess : Unit
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            unitData_st.moveSpeed = 4f;
+            unitData_st.moveSpeed = ud.move_Speed * 4f;
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            unitData_st.moveSpeed = 1f;
+            unitData_st.moveSpeed = ud.move_Speed * 1f;
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
@@ -80,6 +80,14 @@ public class Princess : Unit
         base.Init();
         IsTeam = true;
         moveDir = Vector3.zero;
+
+        unitData_st.armor += (2 * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "0"));
+        unitData_st.max_Hp += (ud.hp * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "1"));
+        unitData_st.attackDamage += (ud.damage * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "2"));
+        unitData_st.attackSpeed += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "3"));
+        unitData_st.moveSpeed += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "4"));
+        unitData_st.accuracy += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "5"));
+        unitData_st.avoidance += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "6"));
     }
 
     #region readOnly
@@ -177,7 +185,7 @@ public class Princess : Unit
         SetDir();
 
         //임시 이동
-        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * unitData_st.moveSpeed;
+        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * (unitData_st.moveSpeed / 200f);
         //경계선을 넘지 않도록 보정
         SetBoundary();
         float clamped_x = Mathf.Clamp(tmp_vec.x, boundary_Min_x, boundary_Max_x);

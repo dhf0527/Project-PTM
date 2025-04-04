@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 0
   unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
   faction: 0
-  move_Speed: 1
+  move_Speed: 200
   hp: 400
   damage: 20
   attack_Speed: 5
@@ -32,4 +32,8 @@ MonoBehaviour:
   spawn_Count: 0
   size: 1
   cost: 0
+  passive1: 
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
   attack_Range: 1

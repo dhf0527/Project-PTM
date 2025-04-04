@@ -9,6 +9,9 @@ public class UpGrade : MonoBehaviour
 
     public List<StatBar> statBars;
     public TMP_Text totalCost_Text;
+
+    
+
     int totalCost;
     public int TotalCost
     {
@@ -31,11 +34,31 @@ public class UpGrade : MonoBehaviour
 
     private void Start()
     {
-        foreach (StatBar item in statBars)
+        for (int i = 0; i < statBars.Count; i++)
         {
-            item.SetCostTextAndButton();
+            //강화 수치 로드
+            statBars[i].Grade = PlayerPrefs.GetInt(ReadOnlyData.statGrade + i.ToString());
+            //비용 설정 및 버튼 활성화
+            statBars[i].SetCostTextAndButton();
         }
+
         TotalCost = 0;
+    }
+
+    private void Update()
+    {
+        //테스트/디버깅(강화 수치 초기화)
+        if(Input.GetKeyDown(KeyCode.F3))
+        {
+            for (int i = 0; i < statBars.Count; i++)
+            {
+                //강화 수치 초기화
+                PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), 0);
+                statBars[i].Grade = 0;
+                statBars[i].SetCostTextAndButton();
+                statBars[i].SetCell();
+            }
+        }
     }
 
     //확정 버튼
@@ -43,13 +66,16 @@ public class UpGrade : MonoBehaviour
     {
         if (MainManager.instance.Soul < totalCost)
         {
-            Debug.Log("소울 부족");
+            MainManager.instance.FloatMessage();
             return;
         }
 
-        foreach (StatBar item in statBars)
+        for (int i = 0; i < statBars.Count; i++)
         {
-            item.ConfirmUpgrade();
+            //업그레이드 확정
+            statBars[i].ConfirmUpgrade();
+            //강화 수치 저장
+            PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), statBars[i].Grade);
         }
 
         MainManager.instance.Soul -= totalCost;
@@ -76,4 +102,6 @@ public class UpGrade : MonoBehaviour
     {
         totalCost_Text.text = TotalCost.ToString();
     }
+
+    
 }

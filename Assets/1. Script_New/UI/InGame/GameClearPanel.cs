@@ -29,6 +29,8 @@ public class GameClearPanel : MonoBehaviour
         string dungeonNumber = $"{stage}-{order}";
         //소울 보상 계산
         reward = resultTime * (3 + stage) * 2;
+        //보상 지급
+        PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);
 
         dungeonNumber_Text.text = dungeonNumber;
         resultTime_Text.text = $"0s";

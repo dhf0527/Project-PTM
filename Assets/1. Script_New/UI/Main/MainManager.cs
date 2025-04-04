@@ -13,6 +13,10 @@ public class MainManager : MonoBehaviour
 
     public TMP_Text soul_Text;
 
+    public GameObject floatingMessage_go;
+    Coroutine c_Floating;
+    bool isFloating;
+
     int cur_Stage_Index;
     int soul;
     public int Soul
@@ -70,5 +74,20 @@ public class MainManager : MonoBehaviour
     void SetSoul()
     {
         soul_Text.text = Soul.ToString();
+    }
+
+    public void FloatMessage()
+    {
+        if (!isFloating)
+            StartCoroutine(C_FloatMessage());
+    }
+
+    IEnumerator C_FloatMessage()
+    {
+        floatingMessage_go.SetActive(true);
+        isFloating = true;
+        yield return new WaitForSeconds(2f);
+        floatingMessage_go.SetActive(false);
+        isFloating = false;
     }
 }

@@ -16,6 +16,15 @@ public class StatBar : MonoBehaviour
     int tmpGrade = 0;
     //확정된 레벨
     int grade = 0;
+     public int Grade
+    {
+        get { return grade; }
+        set
+        {
+            grade = value;
+            tmpGrade = grade;
+        }
+    }
     //업그레이드 시 사용될 비용
     int cost = 500;
 
@@ -24,7 +33,7 @@ public class StatBar : MonoBehaviour
     {
         for (int i = 0; i < statCell_Images.Count; i++)
         {
-            if(i < grade)
+            if(i < Grade)
             {
                 statCell_Images[i].gameObject.SetActive(true);
                 statCell_Images[i].sprite = cell_Sprites[0];
@@ -55,6 +64,8 @@ public class StatBar : MonoBehaviour
     //레벨에 따라 코스트를 표시
     public void SetCostTextAndButton()
     {
+        SetCell();
+
         if (tmpGrade >= statCell_Images.Count)
         {
             upgradeButton.interactable = false;
@@ -71,7 +82,7 @@ public class StatBar : MonoBehaviour
     //업그레이드 확정 버튼을 눌렀을 때 호출
     public void ConfirmUpgrade()
     {
-        grade = tmpGrade;
+        Grade = tmpGrade;
         SetCell();
         cost = ((int)Mathf.Pow(2, tmpGrade) * 500);
     }
@@ -79,7 +90,7 @@ public class StatBar : MonoBehaviour
     //초기화 버튼을 눌렀을 때 호출
     public void ReturnUpgrade()
     {
-        tmpGrade = grade;
+        tmpGrade = Grade;
         SetCell();
         cost = 0;
     }
