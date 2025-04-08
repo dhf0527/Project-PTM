@@ -144,6 +144,9 @@ public class DunGeonManager_New : MonoBehaviour
 
         //유닛 해금 창 설정 후 열기
         OpenUnitUnlock(1);
+
+        //베이스 1레벨 표시
+        teamBase.Base_level = 1;
     }
 
     private void Update()
