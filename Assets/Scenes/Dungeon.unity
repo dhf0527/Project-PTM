@@ -4218,51 +4218,50 @@ MonoBehaviour:
   base_abillitiesByLevels:
   - base_Hp_By_Level: 500
     base_Armor_By_Level: 0
-    base_UpgradeCost_By_Level: 25
-    base_GoldPerSec_By_Level: 10
+    base_UpgradeCost_By_Level: 50
+    base_GoldPerSec_By_Level: 5
     base_MaxGold_By_Level: 100
   - base_Hp_By_Level: 700
     base_Armor_By_Level: 1
-    base_UpgradeCost_By_Level: 50
-    base_GoldPerSec_By_Level: 15
-    base_MaxGold_By_Level: 330
+    base_UpgradeCost_By_Level: 100
+    base_GoldPerSec_By_Level: 10
+    base_MaxGold_By_Level: 300
   - base_Hp_By_Level: 900
     base_Armor_By_Level: 2
-    base_UpgradeCost_By_Level: 100
-    base_GoldPerSec_By_Level: 20
-    base_MaxGold_By_Level: 720
+    base_UpgradeCost_By_Level: 200
+    base_GoldPerSec_By_Level: 15
+    base_MaxGold_By_Level: 600
   - base_Hp_By_Level: 1100
     base_Armor_By_Level: 3
-    base_UpgradeCost_By_Level: 200
-    base_GoldPerSec_By_Level: 25
-    base_MaxGold_By_Level: 1300
+    base_UpgradeCost_By_Level: 400
+    base_GoldPerSec_By_Level: 20
+    base_MaxGold_By_Level: 1000
   - base_Hp_By_Level: 1300
     base_Armor_By_Level: 4
-    base_UpgradeCost_By_Level: 400
+    base_UpgradeCost_By_Level: 800
     base_GoldPerSec_By_Level: 30
-    base_MaxGold_By_Level: 2100
+    base_MaxGold_By_Level: 1800
   - base_Hp_By_Level: 1500
     base_Armor_By_Level: 5
-    base_UpgradeCost_By_Level: 800
-    base_GoldPerSec_By_Level: 35
-    base_MaxGold_By_Level: 3150
-  - base_Hp_By_Level: 1700
-    base_Armor_By_Level: 6
     base_UpgradeCost_By_Level: 1600
     base_GoldPerSec_By_Level: 40
-    base_MaxGold_By_Level: 4480
+    base_MaxGold_By_Level: 2800
+  - base_Hp_By_Level: 1700
+    base_Armor_By_Level: 6
+    base_UpgradeCost_By_Level: 3200
+    base_GoldPerSec_By_Level: 60
+    base_MaxGold_By_Level: 4800
   - base_Hp_By_Level: 1900
     base_Armor_By_Level: 7
-    base_UpgradeCost_By_Level: 3200
-    base_GoldPerSec_By_Level: 45
-    base_MaxGold_By_Level: 6120
+    base_UpgradeCost_By_Level: 6400
+    base_GoldPerSec_By_Level: 80
+    base_MaxGold_By_Level: 7200
   - base_Hp_By_Level: 2100
     base_Armor_By_Level: 8
     base_UpgradeCost_By_Level: 0
-    base_GoldPerSec_By_Level: 50
-    base_MaxGold_By_Level: 8100
-  test_Units:
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+    base_GoldPerSec_By_Level: 100
+    base_MaxGold_By_Level: 10000
+  test_Units: []
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
@@ -26102,6 +26101,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 813430772}
     m_Modifications:
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill1_coolTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill2_coolTime
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]
       value: 
