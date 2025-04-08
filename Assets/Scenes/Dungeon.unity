@@ -4342,17 +4342,18 @@ MonoBehaviour:
   wave1_enemy:
   - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: 0}
+  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   wave2_enemy:
-  - {fileID: -7464574810850663169, guid: 21282c881a5b94b44a289ab425e3e386, type: 3}
-  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
-  - {fileID: 4541328312039694865, guid: 9cf2054573ff09b49ae17c3422b410d9, type: 3}
+  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
+  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   wave3_enemy:
-  - {fileID: -5261022507513659052, guid: 8e9e90117372f294cb1e8d3805a93f47, type: 3}
-  - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
+  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
+  cur_Wave: 0
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0
