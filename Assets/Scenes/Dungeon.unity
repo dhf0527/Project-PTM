@@ -4340,17 +4340,17 @@ MonoBehaviour:
   - 24
   wave1_enemy:
   - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
+  - {fileID: 0}
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   wave2_enemy:
   - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
+  - {fileID: 0}
   wave3_enemy:
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
-  boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
+  boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
 --- !u!1 &283831843
@@ -20130,9 +20130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '25
-
-'
+  m_text: 50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a4a30f7b54a185a4a915796f382f3110, type: 2}
   m_sharedMaterial: {fileID: -5080774239886890811, guid: a4a30f7b54a185a4a915796f382f3110, type: 2}
