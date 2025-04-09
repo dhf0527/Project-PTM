@@ -329,6 +329,8 @@ public class EnemySpawnManager : MonoBehaviour
         MakeShockWave();
         //보스 소환
         Unit bossUnit = Spawn_Unit(boss_Unit);
+        //넉백 방지
+        bossUnit.canKnockBack = false;
         //크기 조정
         bossUnit.origin_Scale = 1.2f;
         //소,중형 -> 중,대형
@@ -340,6 +342,8 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.unitData_st.attackDamage *= 1.5f;
         bossUnit.unitData_st.targetCount *= 2;
 
+        //보스의 수호 버프 부여
+        bossUnit.AddComponent<BossGuard>();
         //아우라 생성
         Instantiate(bossAura, bossUnit.transform);
     }

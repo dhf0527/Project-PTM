@@ -116,6 +116,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     [HideInInspector] public Princess princess;
     [HideInInspector] public TeamBase_Unit teamBase;
+    [HideInInspector] public EnemyBase_Unit enemyBase;
 
     [HideInInspector] public bool isFasty;
 
@@ -129,6 +130,7 @@ public class DunGeonManager_New : MonoBehaviour
         //공주 찾아서 저장
         princess = FindAnyObjectByType<Princess>();
         teamBase = FindAnyObjectByType<TeamBase_Unit>();
+        enemyBase = FindAnyObjectByType<EnemyBase_Unit>();
 
         Gold_Per_Sec = base_abillitiesByLevels[0].base_GoldPerSec_By_Level;
         Max_Gold = base_abillitiesByLevels[0].base_MaxGold_By_Level;

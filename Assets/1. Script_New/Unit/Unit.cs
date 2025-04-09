@@ -105,7 +105,8 @@ public abstract class Unit : MonoBehaviour
 
     //체력으로 인한 넉백을 당할 수 있는 횟수
     protected int knockBack_Count = 3;
-    protected bool canKnockBack = true;
+    [HideInInspector] public bool canKnockBack = true;
+    [HideInInspector] public bool isImmune = false;
     protected bool canKnockBack_By_Hp = true;
     protected bool isKnockBacking = false;
     protected bool isDead = false;
@@ -404,7 +405,12 @@ public abstract class Unit : MonoBehaviour
     IEnumerator C_AttackCoolDown()
     {
         canAttack = false;
-        yield return new WaitForSeconds(10f / unitData_st.attackSpeed);
+        float curTime = 0;
+        while (curTime < (10f / unitData_st.attackSpeed))
+        {
+            curTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
         canAttack = true;
     }
 
@@ -419,6 +425,9 @@ public abstract class Unit : MonoBehaviour
     #region 피격
     public virtual void TakeDamage(float damage)
     {
+        if (isImmune)
+            return;
+
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
         if (canKnockBack && damage >= (unitData_st.max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
@@ -474,7 +483,7 @@ public abstract class Unit : MonoBehaviour
         {
             knockTime += Time.deltaTime;
             //가속도 보정
-            knockSpeed = Mathf.Lerp((1.5f / 0.75f), 0, (knockTime / 0.75f));
+            knockSpeed = Mathf.Lerp((2.5f / 0.75f), 0, (knockTime / 0.75f));
             //경계선 보정
             SetBoundary();
             Vector3 tmp_Vec = transform.position + (-moveDir.normalized) * knockSpeed * Time.deltaTime;

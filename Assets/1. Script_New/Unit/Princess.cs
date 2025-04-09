@@ -67,7 +67,7 @@ public class Princess : Unit
         }
         if (Input.GetKeyDown(KeyCode.F8))
         {
-            Cur_Hp = 0;
+            unitData_st.attackDamage = 1000f;
         }
         if (Input.GetKeyDown(KeyCode.F9))
             DunGeonManager_New.instance.OpenGameClearPanel();
