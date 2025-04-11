@@ -102,6 +102,28 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public AudioSource PlayerSfx_Source(SFX_Enum sfx_enum)
+    {
+        for (int i = 0; i < channels; i++)
+        {
+            //마지막으로 사용한 channel의 index부터 탐색
+            int loopIndex = (i + channel_Index) % channels;
+
+            //사용중이지 않은 채널 탐색
+            if (sfx_Players[loopIndex].isPlaying)
+                continue;
+
+            //채널에 클립 부여
+            channel_Index = loopIndex;
+            sfx_Players[loopIndex].clip = sfx_Clips[(int)sfx_enum];
+
+            //오디오 재생
+            sfx_Players[loopIndex].Play();
+            return sfx_Players[loopIndex];
+        }
+        return null;
+    }
+
     //int 인덱스를 통해 sfx를 재생하는 함수 (버튼 OnClick에 사용)
     public void PlaySfx_By_Int(int sfx_int)
     {
