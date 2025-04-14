@@ -28,19 +28,13 @@ public class CutSceneManager : MonoBehaviour
 
     private void Start()
     {
-        list_Dialogue = GetDialogueDatasByCsv("1-1");
-        cutScene_Go.SetActive(true);
-        PrintNextDialogue();
+        StartCutScene("1-1");
     }
 
     private void Update()
     {
-        /*
-        if(i <= list_Dialogue.Count && Input.GetMouseButtonDown(0))
-        {
-            dialogue.ToNextTypeText();
-        }
-        */
+        if (Input.GetKeyDown(KeyCode.S))
+            StartCutScene("1-1");
     }
 
     //다음 대사 출력
@@ -51,6 +45,7 @@ public class CutSceneManager : MonoBehaviour
         {
             //컷씬 종료
             cutScene_Go.SetActive(false);
+            EndCutScene();
             return;
         }
         
@@ -84,7 +79,20 @@ public class CutSceneManager : MonoBehaviour
     public void OnSkipButton()
     {
         dialogue.EndTyping();
+        EndCutScene();
         cutScene_Go.SetActive(false);
+    }
+
+    public void EndCutScene()
+    {
+        i = 0;
+    }
+
+    public void StartCutScene(string eventName)
+    {
+        list_Dialogue = GetDialogueDatasByCsv(eventName);
+        cutScene_Go.SetActive(true);
+        PrintNextDialogue();
     }
 
     #region CSV 함수
