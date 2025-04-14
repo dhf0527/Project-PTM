@@ -116,7 +116,7 @@ public abstract class Unit : MonoBehaviour
     [HideInInspector] public float origin_Scale = 1;
     [HideInInspector] public Vector3 scaleVector = Vector3.one;
 
-    protected enum AnimState {Idle,Move,Attack,Hit,Die }
+    protected enum AnimState {Idle,Move,Attack,Hit,Die,Skill1,Skill2 }
     //현재 애니메이션의 상태
     protected AnimState cur_State;
     #endregion

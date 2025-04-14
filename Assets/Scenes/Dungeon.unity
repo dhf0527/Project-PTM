@@ -4266,6 +4266,7 @@ MonoBehaviour:
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
   teamBase: {fileID: 0}
+  enemyBase: {fileID: 0}
   isFasty: 0
 --- !u!4 &283656906
 Transform:
@@ -9048,6 +9049,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &670904439
@@ -13112,6 +13115,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &963843912

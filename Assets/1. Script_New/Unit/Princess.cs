@@ -22,7 +22,9 @@ public class Princess : Unit
         Test();
 
         if (isDead || isSkilling || isKnockBacking)
+        {
             return;
+        }
 
         Move();
 
@@ -236,7 +238,7 @@ public class Princess : Unit
         if (canSkill1 && !isSkilling)
         {
             isSkilling = true;
-            animator.SetTrigger(DoSkill1);
+            SetAnim(AnimState.Skill1);
         }
     }
 
@@ -294,7 +296,7 @@ public class Princess : Unit
         if (canSkill2 && !isSkilling)
         {
             isSkilling = true;
-            animator.SetTrigger(DoSkill2);
+            SetAnim(AnimState.Skill2);
         }
     }
 
@@ -337,4 +339,41 @@ public class Princess : Unit
         canSkill2 = true;
     }
     #endregion
+
+    protected void SetAnim(AnimState animState)
+    {
+        //이미 해당 애니메이션 재생중이면 실행하지 않음
+        if (cur_State == animState)
+            return;
+
+        //현재 애니메이션 상태를 설정
+        cur_State = animState;
+        //해당 애니메이션 재생
+        switch (animState)
+        {
+            case AnimState.Idle:
+                animator.SetTrigger(DoStop);
+                break;
+            case AnimState.Move:
+                animator.SetTrigger(DoMove);
+                break;
+            case AnimState.Attack:
+                animator.SetTrigger(DoAttack);
+                break;
+            case AnimState.Hit:
+                animator.SetTrigger(DoHit);
+                break;
+            case AnimState.Die:
+                animator.SetTrigger(DoDie);
+                break;
+            case AnimState.Skill1:
+                animator.SetTrigger(DoSkill1);
+                break;
+            case AnimState.Skill2:
+                animator.SetTrigger(DoSkill2);
+                break;
+            default:
+                break;
+        }
+    }
 }

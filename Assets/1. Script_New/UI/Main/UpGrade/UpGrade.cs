@@ -67,6 +67,8 @@ public class UpGrade : MonoBehaviour
         if (MainManager.instance.Soul < totalCost)
         {
             MainManager.instance.FloatMessage();
+
+            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
             return;
         }
 
@@ -77,6 +79,11 @@ public class UpGrade : MonoBehaviour
             //강화 수치 저장
             PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), statBars[i].Grade);
         }
+
+        if(totalCost == 0)
+            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+        else
+            AudioManager.instance.PlayerSfx(SFX_Enum.HeroUpgrade);
 
         MainManager.instance.Soul -= totalCost;
         TotalCost = 0;

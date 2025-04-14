@@ -81,6 +81,8 @@ public class CutSceneManager : MonoBehaviour
         dialogue.EndTyping();
         EndCutScene();
         cutScene_Go.SetActive(false);
+
+        AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
     }
 
     public void EndCutScene()

@@ -68,6 +68,8 @@ public class Dialogue : MonoBehaviour
             //다음 대사 출력
             cutSceneManager.PrintNextDialogue();
         }
+
+        AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
     }
 
     public void EndTyping()
