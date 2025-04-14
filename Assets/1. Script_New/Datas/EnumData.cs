@@ -51,8 +51,3 @@ public enum EMixer
 {
     Master, BGM, SFX
 }
-
-public enum CharacterName
-{
-    Kay, Caliburn
-}

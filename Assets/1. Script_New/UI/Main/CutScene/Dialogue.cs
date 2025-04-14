@@ -26,6 +26,9 @@ public class Dialogue : MonoBehaviour
     IEnumerator C_TypeText(string input_text)
     {
         isTyping = true;
+
+        input_text = input_text.Replace("\\n", "\n");
+
         target_Text = input_text;
         dialogue_Text.text = string.Empty;
         StringBuilder sb = new StringBuilder();
@@ -58,20 +61,23 @@ public class Dialogue : MonoBehaviour
     {
         //타이핑 효과가 나오는 중일 때
         if (isTyping)
-        {
-            isTyping = false;
-            //코루틴 정지
-            StopCoroutine(co_TypeText);
-            //텍스트 즉시 표시
-            dialogue_Text.text = target_Text;
-            text_AudioSource.loop = false;
-            text_AudioSource.Stop();
-        }
+            EndTyping();
         //타이핑 효과가 끝난 후일 때
         else
         {
             //다음 대사 출력
             cutSceneManager.PrintNextDialogue();
         }
+    }
+
+    public void EndTyping()
+    {
+        isTyping = false;
+        //코루틴 정지
+        StopCoroutine(co_TypeText);
+        //텍스트 즉시 표시
+        dialogue_Text.text = target_Text;
+        text_AudioSource.loop = false;
+        text_AudioSource.Stop();
     }
 }

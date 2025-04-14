@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b92fb1e148460e46b86d1ef091aaf85, type: 3}
   m_Name: 1Caliburn
   m_EditorClassIdentifier: 
+  characterCode: char_001
   characterName: "\uCE7C\uB9AC\uBC88"
   characterSprite: {fileID: 535035561, guid: 62d740ebb7084434682f04e97f25a2dc, type: 3}
