@@ -23,7 +23,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] Animator backGround_Anim;
 
     //경고 텍스트
-    [SerializeField] Image warnText_Image;
+    public Image warnText_Image;
     [SerializeField] TMP_Text warnText_Text;
     [Header("0:경고, 1:카운트다운")]
     [SerializeField] Color[] textColors = new Color[2]; 
@@ -50,6 +50,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     //C_SetWarnText를 담는 코루틴
     Coroutine cor_warn;
+    Coroutine cor_countDown;
     Color warnImg_Color;
     float cur_WaveTime = 0;
     bool isWarned;
@@ -220,7 +221,7 @@ public class EnemySpawnManager : MonoBehaviour
                 if (cor_warn != null)
                     StopCoroutine(cor_warn);
                 cor_warn = StartCoroutine(C_SetWarnText(11f));
-                StartCoroutine(C_CountDown(10.5f));
+                cor_countDown = StartCoroutine(C_CountDown(10.5f));
             }
 
             //15초 경과 시 보스 등장
@@ -307,6 +308,13 @@ public class EnemySpawnManager : MonoBehaviour
             warnText_Text.text = $"남은 시간 {(int)cur_Timer + 1}초!";
             yield return new WaitForEndOfFrame() ;
         }
+        DunGeonManager_New.instance.OpenGameOverPanel();
+    }
+
+    public void StopWarn()
+    {
+        StopAllCoroutines();
+        warnText_Image.gameObject.SetActive(false);
     }
     #endregion
 

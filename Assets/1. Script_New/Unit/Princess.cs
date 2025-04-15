@@ -34,6 +34,8 @@ public class Princess : Unit
             nonCombatTime -= 1;
             GetHp((4 + (EnemySpawnManager.instance.cur_Wave + 1) * 4) / 100f * unitData_st.max_Hp);
         }
+
+        animator.SetFloat("MoveSpeed", unitData_st.moveSpeed/200);
     }
 
     //테스트 함수
