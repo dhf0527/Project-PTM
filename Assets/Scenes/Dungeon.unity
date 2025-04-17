@@ -4249,13 +4249,13 @@ MonoBehaviour:
   - base_Hp_By_Level: 1700
     base_Armor_By_Level: 6
     base_UpgradeCost_By_Level: 3200
-    base_GoldPerSec_By_Level: 60
-    base_MaxGold_By_Level: 4800
+    base_GoldPerSec_By_Level: 50
+    base_MaxGold_By_Level: 4000
   - base_Hp_By_Level: 1900
     base_Armor_By_Level: 7
     base_UpgradeCost_By_Level: 6400
-    base_GoldPerSec_By_Level: 80
-    base_MaxGold_By_Level: 7200
+    base_GoldPerSec_By_Level: 70
+    base_MaxGold_By_Level: 6300
   - base_Hp_By_Level: 2100
     base_Armor_By_Level: 8
     base_UpgradeCost_By_Level: 0
