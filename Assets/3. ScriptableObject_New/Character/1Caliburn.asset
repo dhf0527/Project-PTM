@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCode: char_001
   characterName: "\uCE7C\uB9AC\uBC88"
-  characterSprite: {fileID: 535035561, guid: 62d740ebb7084434682f04e97f25a2dc, type: 3}
+  characterSprite: {fileID: 730342512, guid: b1a3fa0e3411a3f4a9cc61763fea0a2e, type: 3}

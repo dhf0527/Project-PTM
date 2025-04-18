@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 477463469
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 23
   m_Sprite: {fileID: 125290895, guid: bcf23d87cf79fd4499faaf85a1ce6ae7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,6 +109,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
 --- !u!95 &5061897147921594596

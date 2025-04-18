@@ -56,8 +56,6 @@ public class EnemySpawnManager : MonoBehaviour
     bool isWarned;
     bool isCountDowned;
 
-    //유닛간 최소 Y축 차이
-    Vector3 spawn_Y;
     // spawn_Units[m,n] -> 유닛번호 m-n(m웨이브 n번째) 
     Unit[,] spawn_Units = new Unit[3,3];
     //스폰 시간
@@ -76,8 +74,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        spawn_Y = DunGeonManager_New.instance.SpawnY();
-
         //스폰할 유닛 데이터 삽입(임시)
         for (int i = 0; i < spawn_Units.GetLength(0); i++)
         {
@@ -140,7 +136,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         //유닛 생산
         Unit spawned_Unit = Instantiate(unit, spawn_Trans);
-        spawned_Unit.transform.position += spawn_Y;
+        spawned_Unit.transform.position += DunGeonManager_New.instance.SpawnY(spawned_Unit);
         //부모 설정(적 유닛들만 모아놓은 Gameobject)
         spawned_Unit.transform.parent = enemy_Unit_Parent;
         //팀 설정
@@ -343,7 +339,10 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.origin_Scale = 1.2f;
         //소,중형 -> 중,대형
         if(bossUnit.ud.size != Unit_Size.Large)
-            bossUnit.ud.size ++;
+        {
+            bossUnit.ud.size++;
+            DunGeonManager_New.instance.SpawnY(bossUnit);
+        }
         //능력치 조정
         bossUnit.unitData_st.max_Hp *= 4;
         bossUnit.Cur_Hp = bossUnit.unitData_st.max_Hp;

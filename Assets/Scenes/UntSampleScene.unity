@@ -4523,6 +4523,7 @@ MonoBehaviour:
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
   teamBase: {fileID: 0}
+  enemyBase: {fileID: 0}
   isFasty: 0
 --- !u!4 &283656906
 Transform:
@@ -4609,6 +4610,7 @@ MonoBehaviour:
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
   boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
+  cur_Wave: 0
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0
@@ -9022,7 +9024,7 @@ Transform:
   m_GameObject: {fileID: 640924651}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5883336, y: -1.2365581, z: 0.021259055}
+  m_LocalPosition: {x: -4.5883336, y: -1.11, z: 0.021259055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9491,6 +9493,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &670904439
@@ -11498,7 +11502,7 @@ Transform:
   m_GameObject: {fileID: 812866124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5883336, y: -1.2365581, z: 0.021259055}
+  m_LocalPosition: {x: -4.5883336, y: -1.325, z: 0.021259055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13722,6 +13726,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
 --- !u!1 &963843912

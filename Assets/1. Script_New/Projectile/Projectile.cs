@@ -80,6 +80,8 @@ public abstract class Projectile : MonoBehaviour
 
             //공격 대상 유닛
             Unit target_Unit = collision.GetComponent<Unit>();
+            if (target_Unit == null)
+                return;
             //공격한 대상 저장
             hitted_col.Add(collision);
             //공격 전달

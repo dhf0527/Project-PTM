@@ -47,14 +47,13 @@ public class DunGeonManager_New : MonoBehaviour
     public List<Unit> units_Level_1;
     public List<Unit> units_Level_2;
     public List<Unit> units_Level_3;
-    [Header("유닛간 최소 Y축 차이")]
-    public float spawn_Y = 0.03f;
     [Header("유닛 아이템")]
     public List<ItemData> item_Advanced;
     public List<ItemData> item_Rare;
 
     //현재 가진 아이템들
     [HideInInspector] public ItemData[] itemDatas = new ItemData[3];
+    float spawn_Z = 0;
     #endregion
     #region 골드 변수
     float max_Gold;
@@ -186,7 +185,8 @@ public class DunGeonManager_New : MonoBehaviour
         {
             //유닛 하나 생성 및 설정
             Unit unit = Instantiate(spawnUnits[index], spawn_Trans);
-            unit.transform.position += SpawnY();
+            unit.transform.position += SpawnY(unit) + Vector3.forward * spawn_Z;
+            spawn_Z += 0.001f;
             unit.transform.parent = unit_Parent;
             unit.IsTeam = true;
             //생산 딜레이
@@ -223,8 +223,9 @@ public class DunGeonManager_New : MonoBehaviour
         }
     }
     
-    public void SetUnitSpawnButton()
+    public void SetUnitSpawnButton(int index)
     {
+        /*
         //버튼과 유닛 연동
         for (int i = 0; i < spawnUnits.Length; i++)
         {
@@ -232,13 +233,36 @@ public class DunGeonManager_New : MonoBehaviour
             unitSpawnButton[i].item = itemDatas[i];
             unitSpawnButton[i].SetUI();
         }
+        */
+
+        unitSpawnButton[index].unit = spawnUnits[index];
+        unitSpawnButton[index].item = itemDatas[index];
+        unitSpawnButton[index].SetUI();
     }
 
     //유닛이 생산될 Y축 벡터를 반환하는 함수
-    public Vector3 SpawnY()
+    public Vector3 SpawnY(Unit unit)
     {
+        /*
         int rand = UnityEngine.Random.Range(-5, 6);
         Vector3 return_Vec = Vector3.up * rand * spawn_Y + Vector3.forward * rand * spawn_Y;
+        */
+
+        float y_BySize;
+        switch (unit.unitData_st.size)
+        {
+            case Unit_Size.Medium:
+                y_BySize = 0.12f;
+                break;
+            case Unit_Size.Large:
+                y_BySize = 0.24f;
+                break;
+            default:
+                y_BySize = 0;
+                break;
+        }
+
+        Vector3 return_Vec = Vector3.up * y_BySize;
         return return_Vec;
     }
 
@@ -375,7 +399,7 @@ public class DunGeonManager_New : MonoBehaviour
         cameraMove.isPrincessDead = false;
         cameraMove.isChasePrincess = true;
         //스폰 위치로 이동
-        princess.transform.position = spawn_Trans.position;
+        princess.transform.position = spawn_Trans.position + SpawnY(princess);
         princess.Rivive();
     }
     #endregion

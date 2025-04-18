@@ -4196,7 +4196,6 @@ MonoBehaviour:
   - {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
   - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
-  spawn_Y: 0.03
   item_Advanced:
   - {fileID: 11400000, guid: 93bf9ea72f57a0740b7bf28246d21502, type: 2}
   - {fileID: 11400000, guid: 912fac0ab16d0974a88ea604f9edee2f, type: 2}
@@ -26128,13 +26127,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6589536725174150462, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7976566878304337799, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.343
       objectReference: {fileID: 0}
     - target: {fileID: 7976566878304337799, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7976566878304337799, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: m_LocalPosition.z

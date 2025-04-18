@@ -59,7 +59,7 @@ public class UnitUnlock : MonoBehaviour
         //아이템 데이터 전달
         DunGeonManager_New.instance.itemDatas[level] = selected_Card.item;
         //유닛 생산 버튼 동기화
-        DunGeonManager_New.instance.SetUnitSpawnButton();
+        DunGeonManager_New.instance.SetUnitSpawnButton(level);
         //다음 해금을 위해 레벨 증가
         level++;
         //선택창 닫기

@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 477463469
   m_SortingLayer: 2
-  m_SortingOrder: 4
+  m_SortingOrder: 34
   m_Sprite: {fileID: -112904193, guid: 4a5ade541c8cd4d4b98d9772d7c9dedb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,6 +109,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 7048745327833278821}
   ranged_Projectile_Prefabs: {fileID: 2980525041126465586, guid: c0b291bbafa814e4da8218875f1cc5a7, type: 3}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
 --- !u!95 &5061897147921594596
@@ -168,7 +170,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.1999999, y: 1.1999999}
+    oldSize: {x: 1.171875, y: 1.171875}
     newSize: {x: 1.1999999, y: 1.1999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

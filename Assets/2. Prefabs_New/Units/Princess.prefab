@@ -244,6 +244,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
   skill1_coolTime: 30
