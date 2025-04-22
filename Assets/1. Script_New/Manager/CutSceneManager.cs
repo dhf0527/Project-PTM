@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class CutSceneManager : MonoBehaviour
 {
+    public static CutSceneManager instance;
+
     public class DialogueData
     {
         public bool isRight;
@@ -23,12 +25,19 @@ public class CutSceneManager : MonoBehaviour
     public Image character_Image_Left;
     public Image character_Image_Right;
 
+    Action completeFunc;
+
     List<DialogueData> list_Dialogue;
     int i = 0;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
-        StartCutScene("1-1");
+        //StartCutScene("1-1");
     }
 
     private void Update()
@@ -88,13 +97,16 @@ public class CutSceneManager : MonoBehaviour
     public void EndCutScene()
     {
         i = 0;
+        completeFunc?.Invoke();
     }
 
-    public void StartCutScene(string eventName)
+    public void StartCutScene(string eventName, Action onComplete = null)
     {
         list_Dialogue = GetDialogueDatasByCsv(eventName);
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
+
+        completeFunc = onComplete;
     }
 
     #region CSV ÇÔ¼ö

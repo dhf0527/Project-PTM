@@ -43,7 +43,7 @@ public class Dialogue : MonoBehaviour
             dialogue_Text.text = sb.ToString();
             
             //텍스트가 출력될 속도
-            yield return new WaitForSeconds(1 / textPerSec);
+            yield return new WaitForSecondsRealtime(1 / textPerSec);
         }
 
         //타이핑 효과음 정지

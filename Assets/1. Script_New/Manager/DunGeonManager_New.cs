@@ -37,6 +37,8 @@ public class DunGeonManager_New : MonoBehaviour
     //°á°úÃ¢ ÆÐ³Î
     public GameClearPanel GameOverPanel;
     public GameClearPanel GameClearPanel;
+
+    public GameObject pauseMask;
     #endregion
     #region À¯´Ö »ý»ê º¯¼ö
     [Header("À¯´Ö »ý»ê º¯¼ö")]
@@ -156,6 +158,18 @@ public class DunGeonManager_New : MonoBehaviour
 
         //0.1ÃÊ¸¶´Ù °ñµå È¹µæ
         GetGoldPerSec();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            pauseMask.SetActive(Time.timeScale != 0);
+            OnPause(Time.timeScale != 0);
+            princess.OnMove(0);
+            CutSceneManager.instance.StartCutScene("1-1" , ()=> {
+                pauseMask.SetActive(Time.timeScale != 0);
+                OnPause(Time.timeScale != 0);
+            });
+
+        }
     }
 
     #region À¯´Ö »ý»ê ÇÔ¼ö(°ñµå Æ÷ÇÔ)
