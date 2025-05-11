@@ -16,6 +16,7 @@ MonoBehaviour:
   unit_Code: 0
   level: 0
   unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
+  unit_SubName: "\uB9D0\uAD04\uB7C9\uC774 \uACF5\uC8FC"
   faction: 0
   move_Speed: 200
   hp: 400

@@ -14,6 +14,7 @@ public class UnitData : ScriptableObject
     public int level;
     //이름
     public string unit_Name;
+    public string unit_SubName;
     //세력 코드
     public Faction faction;
     //이동 속도

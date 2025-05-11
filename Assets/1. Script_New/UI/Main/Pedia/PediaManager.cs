@@ -16,15 +16,23 @@ public class PediaManager : MonoBehaviour
     public GameObject left_Scroll_go;
     public GameObject right_Scroll_go;
 
+    #region ¿µ¿õ ÅÇ º¯¼ö
     public GameObject heroList_go;
-    public HeroData heroData;
+    public HeroData_Pedia heroData;
 
     public GameObject heroSkill_go;
     public GameObject heroDescription_go;
 
-    public HeroDetail HeroDetail;
+    public UnitDetail_Pedia unitDetail;
+    #endregion
+
+    #region À¯´Ö ÅÇ º¯¼ö
+    public GameObject unitList_go;
+    public UnitData_Pedia unitData;
+    #endregion
 
     [HideInInspector] public UnitData hero_ud;
+    [HideInInspector] public UnitData unit_ud;
 
     private void Awake()
     {
@@ -40,7 +48,8 @@ public class PediaManager : MonoBehaviour
         heroData.gameObject.SetActive(false);
         heroSkill_go.SetActive(false);
         heroDescription_go.SetActive(false);
-
+        unitList_go.SetActive(false);
+        unitData.gameObject.SetActive(false);
     }
 
     public void OnCloseButton()
@@ -49,6 +58,7 @@ public class PediaManager : MonoBehaviour
         Init();
     }
 
+    #region ¿µ¿õ ÅÇ
     //¿µ¿õ ÅÇ ´­·¶À» ¶§ È£Ãâ
     public void OnHeroTab()
     {
@@ -63,7 +73,7 @@ public class PediaManager : MonoBehaviour
     {
         hero_ud = ud;
         heroData.SetData(ud);
-        HeroDetail.SetData(ud);
+        unitDetail.SetData(ud, true);
     }
 
     //¿µ¿õ Å¬¸¯ÇßÀ» ¶§ heroCell¿¡¼­ È£Ãâ
@@ -82,4 +92,31 @@ public class PediaManager : MonoBehaviour
         heroSkill_go.SetActive(isOpen);
         heroData.gameObject.SetActive(isOpen);
     }
+    #endregion
+
+    #region À¯´Ö ÅÇ
+    //À¯´Ö ÅÇ ´­·¶À» ¶§ È£Ãâ
+    public void OnUnitList()
+    {
+        Init();
+
+        left_Scroll_go.SetActive(true);
+        unitList_go.SetActive(true);
+    }
+
+    //¿µ¿õ Å¬¸¯ÇßÀ» ¶§ UnitCell¿¡¼­ È£Ãâ
+    public void SetUnitData(UnitData ud)
+    {
+        unit_ud = ud;
+        unitData.gameObject.SetActive(true);
+        unitData.SetData(ud);
+        unitDetail.SetData(ud, false);
+    }
+
+    //¿µ¿õ Å¬¸¯ÇßÀ» ¶§ UnitCell¿¡¼­ È£Ãâ
+    public void OnUnitDescription()
+    {
+        
+    }
+    #endregion
 }

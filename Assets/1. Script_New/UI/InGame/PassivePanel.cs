@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class PassivePanel : MonoBehaviour
 {
@@ -108,7 +109,8 @@ public class PassivePanel : MonoBehaviour
                 return;
         }
 
-        DunGeonManager_New.instance.unitUnlock.detailPanel.MakeNewDetail(passive_Name ,passive_Detail);
+        DunGeonManager_New.instance?.unitUnlock.detailPanel.MakeNewDetail(passive_Name ,passive_Detail);
+        PediaManager.instance?.unitDetail.MakeNewDetail(passive_Name, passive_Detail);
     }
 
     string ColorText(string word ,string color_Code)
