@@ -31,8 +31,10 @@ public class PediaManager : MonoBehaviour
     public UnitData_Pedia unitData;
     #endregion
 
-    [HideInInspector] public UnitData hero_ud;
-    [HideInInspector] public UnitData unit_ud;
+    #region 아이템 탭 변수
+    public GameObject itemList_go;
+    public ItemDescription itemDescription;
+    #endregion
 
     private void Awake()
     {
@@ -50,6 +52,8 @@ public class PediaManager : MonoBehaviour
         heroDescription_go.SetActive(false);
         unitList_go.SetActive(false);
         unitData.gameObject.SetActive(false);
+        itemList_go.SetActive(false);
+        itemDescription.gameObject.SetActive(false);
     }
 
     public void OnCloseButton()
@@ -71,7 +75,6 @@ public class PediaManager : MonoBehaviour
     //영웅 클릭했을 때 heroCell에서 호출
     public void SetHeroData(UnitData ud)
     {
-        hero_ud = ud;
         heroData.SetData(ud);
         unitDetail.SetData(ud, true);
     }
@@ -104,19 +107,30 @@ public class PediaManager : MonoBehaviour
         unitList_go.SetActive(true);
     }
 
-    //영웅 클릭했을 때 UnitCell에서 호출
+    //유닛 클릭했을 때 UnitCell에서 호출
     public void SetUnitData(UnitData ud)
     {
-        unit_ud = ud;
         unitData.gameObject.SetActive(true);
         unitData.SetData(ud);
         unitDetail.SetData(ud, false);
     }
+    #endregion
 
-    //영웅 클릭했을 때 UnitCell에서 호출
-    public void OnUnitDescription()
+    #region 아이템 탭
+    //아이템 탭 눌렀을 때 호출
+    public void OnItemList()
     {
-        
+        Init();
+
+        left_Scroll_go.SetActive(true);
+        itemList_go.SetActive(true);
+    }
+
+    //아이템 클릭했을 때 itemCell에서 호출
+    public void SetItemData(ItemData id)
+    {
+        itemDescription.gameObject.SetActive(true);
+        itemDescription.SetItemData(id);
     }
     #endregion
 }

@@ -25,6 +25,5 @@ public class UnitCell : MonoBehaviour
     public void OnClick()
     {
         PediaManager.instance.SetUnitData(ud);
-        PediaManager.instance.OnUnitDescription();
     }
 }
