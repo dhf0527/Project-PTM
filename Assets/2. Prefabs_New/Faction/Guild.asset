@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37894552221ae540a58072a2c72bb05, type: 3}
+  m_Name: Guild
+  m_EditorClassIdentifier: 
+  faction_Sprite: {fileID: -273395694, guid: ee00c852b9a41314d80d47540070eaa5, type: 3}
+  factionName: "\uC911\uC559 \uC655\uAD6D"
+  factionDescription: "\uC778\uAC04\uB4E4\uC774 \uC18C\uC18D\uB41C \uCEE4\uB2E4\uB780
+    \uC655\uAD6D. \uACF5\uC8FC\uAC00 \uC0AC\uB294 \uC9C0\uC5ED. \uC790\uCCB4\uC801\uC73C\uB85C
+    \uBAA8\uD5D8\uAC00 \uAE38\uB4DC\uB97C \uBCF4\uC720\uD558\uC5EC \uB2E4\uB978 \uC885\uC871
+    \uBAA8\uD5D8\uAC00\uB4E4\uB3C4 \uC790\uC8FC \uBC29\uBB38\uD55C\uB2E4. \uACFC\uAC70\uC5D4
+    \uAD70\uC0AC\uC801\uC73C\uB85C \uB9E4\uC6B0 \uAC15\uD588\uC9C0\uB9CC \uD3C9\uD654\uB85C\uC6B4
+    \uC624\uB298 \uB0A0, \uACC4\uC18D\uD574\uC11C \uAD6D\uBC29 \uC608\uC0B0\uC774
+    \uAC10\uC18C\uD558\uB294 \uC911\uC774\uB2E4."

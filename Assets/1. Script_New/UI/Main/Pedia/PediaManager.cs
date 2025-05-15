@@ -8,7 +8,7 @@ public class PediaManager : MonoBehaviour
     public static PediaManager instance;
 
     public List<GameObject> list_Tabs;
-    enum E_Tabs
+    public enum E_Tabs
     {
         hero, unit, item, faction, story
     }
@@ -36,6 +36,11 @@ public class PediaManager : MonoBehaviour
     public ItemDescription itemDescription;
     #endregion
 
+    #region ¼¼·Â ÅÇ º¯¼ö
+    public GameObject factionList_go;
+    public FactionDescription factionDescription;
+    #endregion
+
     private void Awake()
     {
         instance = this;
@@ -54,12 +59,25 @@ public class PediaManager : MonoBehaviour
         unitData.gameObject.SetActive(false);
         itemList_go.SetActive(false);
         itemDescription.gameObject.SetActive(false);
+        factionList_go.SetActive(false);
+        factionDescription.gameObject.SetActive(false);
     }
 
     public void OnCloseButton()
     {
         gameObject.SetActive(false);
         Init();
+    }
+
+    public void OnTabClick(int index)
+    {
+        for (int i = 0; i < list_Tabs.Count; i++)
+        {
+            if (i == index)
+                list_Tabs[i].GetComponent<Animator>().SetBool("IsAnim", true);
+            else
+                list_Tabs[i].GetComponent<Animator>().SetBool("IsAnim", false);
+        }
     }
 
     #region ¿µ¿õ ÅÇ
@@ -131,6 +149,23 @@ public class PediaManager : MonoBehaviour
     {
         itemDescription.gameObject.SetActive(true);
         itemDescription.SetItemData(id);
+    }
+    #endregion
+
+    #region ¼¼·Â ÅÇ
+    //À¯´Ö ÅÇ ´­·¶À» ¶§ È£Ãâ
+    public void OnFactionTab()
+    {
+        Init();
+
+        left_Scroll_go.SetActive(true);
+        factionList_go.SetActive(true);
+    }
+
+    public void SetFactionData(FactionData fd)
+    {
+        factionDescription.gameObject.SetActive(true);
+        factionDescription.SetData(fd);
     }
     #endregion
 }

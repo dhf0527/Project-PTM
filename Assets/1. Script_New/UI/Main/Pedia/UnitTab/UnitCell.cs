@@ -11,8 +11,11 @@ public class UnitCell : MonoBehaviour
     public TMP_Text name_Text;
     public Image unit_Image;
 
+    Animator animator;
+
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         Init();
     }
 
@@ -25,5 +28,6 @@ public class UnitCell : MonoBehaviour
     public void OnClick()
     {
         PediaManager.instance.SetUnitData(ud);
+        animator.SetTrigger("Anim");
     }
 }
