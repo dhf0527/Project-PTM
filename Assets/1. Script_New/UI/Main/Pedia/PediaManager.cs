@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,20 @@ public class PediaManager : MonoBehaviour
 {
     public static PediaManager instance;
 
-    public List<GameObject> list_Tabs;
-    public enum E_Tabs
+    public List<Animator> list_Tabs_Animator;
+    enum E_Tabs
     {
         hero, unit, item, faction, story
+    }
+    E_Tabs cur_Tab;
+    E_Tabs Cur_Tab 
+    { 
+        get { return cur_Tab; }
+        set 
+        { 
+            cur_Tab = value;
+            SetTab();
+        }
     }
 
     public GameObject left_Scroll_go;
@@ -67,16 +78,24 @@ public class PediaManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         Init();
+
+        foreach (var item in list_Tabs_Animator)
+            item.SetBool("IsAnim", false);
     }
 
     public void OnTabClick(int index)
     {
-        for (int i = 0; i < list_Tabs.Count; i++)
+        Cur_Tab = (E_Tabs)index;
+    }
+
+    void SetTab()
+    {
+        for (int i = 0; i < list_Tabs_Animator.Count; i++)
         {
-            if (i == index)
-                list_Tabs[i].GetComponent<Animator>().SetBool("IsAnim", true);
+            if (i == (int)cur_Tab)
+                list_Tabs_Animator[i].SetBool("IsAnim", true);
             else
-                list_Tabs[i].GetComponent<Animator>().SetBool("IsAnim", false);
+                list_Tabs_Animator[i].SetBool("IsAnim", false);
         }
     }
 
@@ -85,6 +104,7 @@ public class PediaManager : MonoBehaviour
     public void OnHeroTab()
     {
         Init();
+        Cur_Tab = E_Tabs.hero;
 
         left_Scroll_go.SetActive(true);
         heroList_go.SetActive(true);
@@ -120,6 +140,7 @@ public class PediaManager : MonoBehaviour
     public void OnUnitList()
     {
         Init();
+        Cur_Tab = E_Tabs.unit;
 
         left_Scroll_go.SetActive(true);
         unitList_go.SetActive(true);
@@ -139,6 +160,7 @@ public class PediaManager : MonoBehaviour
     public void OnItemList()
     {
         Init();
+        Cur_Tab = E_Tabs.item;
 
         left_Scroll_go.SetActive(true);
         itemList_go.SetActive(true);
@@ -157,6 +179,7 @@ public class PediaManager : MonoBehaviour
     public void OnFactionTab()
     {
         Init();
+        Cur_Tab = E_Tabs.faction;
 
         left_Scroll_go.SetActive(true);
         factionList_go.SetActive(true);

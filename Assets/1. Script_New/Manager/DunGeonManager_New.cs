@@ -239,16 +239,6 @@ public class DunGeonManager_New : MonoBehaviour
     
     public void SetUnitSpawnButton(int index)
     {
-        /*
-        //버튼과 유닛 연동
-        for (int i = 0; i < spawnUnits.Length; i++)
-        {
-            unitSpawnButton[i].unit = spawnUnits[i];
-            unitSpawnButton[i].item = itemDatas[i];
-            unitSpawnButton[i].SetUI();
-        }
-        */
-
         unitSpawnButton[index].unit = spawnUnits[index];
         unitSpawnButton[index].item = itemDatas[index];
         unitSpawnButton[index].SetUI();
@@ -257,11 +247,6 @@ public class DunGeonManager_New : MonoBehaviour
     //유닛이 생산될 Y축 벡터를 반환하는 함수
     public Vector3 SpawnY(Unit unit)
     {
-        /*
-        int rand = UnityEngine.Random.Range(-5, 6);
-        Vector3 return_Vec = Vector3.up * rand * spawn_Y + Vector3.forward * rand * spawn_Y;
-        */
-
         float y_BySize;
         switch (unit.unitData_st.size)
         {

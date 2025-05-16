@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 5CoinPocket
   m_EditorClassIdentifier: 
   ItemCode: 5
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -888736552, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uB3D9\uC804 \uC8FC\uBA38\uB2C8"
   itemDescription: "\uACE0\uC6A9 \uBE44\uC6A9 {value}% \uAC10\uC18C"
   itemValue: 15

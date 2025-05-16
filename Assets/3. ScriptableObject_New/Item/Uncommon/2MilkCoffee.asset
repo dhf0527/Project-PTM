@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2MilkCoffee
   m_EditorClassIdentifier: 
   ItemCode: 2
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -1534194692, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uBC00\uD06C \uCEE4\uD53C"
   itemDescription: "\uACF5\uACA9 \uC18D\uB3C4 {value} \uC99D\uAC00"
   itemValue: 1

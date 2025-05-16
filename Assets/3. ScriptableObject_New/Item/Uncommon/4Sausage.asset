@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4Sausage
   m_EditorClassIdentifier: 
   ItemCode: 4
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 1136661942, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uC904\uC904\uC774 \uC18C\uC2DC\uC9C0"
   itemDescription: "\uB808\uBCA8 \uB2F9 \uC0DD\uBA85\uB825 {value} \uC99D\uAC00"
   itemValue: 10

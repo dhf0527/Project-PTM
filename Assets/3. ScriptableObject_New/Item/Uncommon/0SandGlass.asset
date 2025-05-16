@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 0SandGlass
   m_EditorClassIdentifier: 
   ItemCode: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -555393503, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uBAA8\uB798 \uC2DC\uACC4"
   itemDescription: "\uACE0\uC6A9 \uCFE8\uD0C0\uC784 {value}% \uAC10\uC18C"
   itemValue: 15

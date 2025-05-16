@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 5CoinBag
   m_EditorClassIdentifier: 
   ItemCode: 105
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 395809751, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uB3D9\uC804 \uAC00\uBC29"
   itemDescription: "\uACE0\uC6A9 \uBE44\uC6A9 {value}% \uAC10\uC18C"
   itemValue: 25

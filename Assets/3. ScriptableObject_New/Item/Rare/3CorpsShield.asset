@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3CorpsShield
   m_EditorClassIdentifier: 
   ItemCode: 103
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: -1642895398, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uAD70\uB2E8 \uBC29\uD328"
   itemDescription: "\uBC29\uC5B4\uB3C4 {value} \uC99D\uAC00"
   itemValue: 5

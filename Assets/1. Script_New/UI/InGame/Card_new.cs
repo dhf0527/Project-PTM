@@ -125,7 +125,7 @@ public class Card_new : MonoBehaviour
         {
             itemParent_Go.SetActive(true);
             itemPanel_Image.color = item.itemRarity == ItemRarity.Uncommon ? new Color(107 / 255f, 198 / 255f, 53 / 255f) : Color.white;
-            //itemIcon_Image.sprite = item.itemIcon;
+            itemIcon_Image.sprite = item.itemIcon;
 
             //{value}를 item.itemValue로 변환
             string fixed_Text = Regex.Replace(item.itemDescription, @"\{value\}", item.itemValue.ToString());

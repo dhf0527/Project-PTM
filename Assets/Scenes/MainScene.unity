@@ -8012,12 +8012,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e92deb8962d8a54baab1bf93436975c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list_Tabs:
-  - {fileID: 307959242}
-  - {fileID: 855199997}
-  - {fileID: 1235760650}
-  - {fileID: 33139064}
-  - {fileID: 1047663013}
+  list_Tabs_Animator:
+  - {fileID: 307959247}
+  - {fileID: 855200002}
+  - {fileID: 1235760655}
+  - {fileID: 33139069}
+  - {fileID: 1047663018}
   left_Scroll_go: {fileID: 1047681426}
   right_Scroll_go: {fileID: 1105463065}
   heroList_go: {fileID: 1320650586}
@@ -16301,7 +16301,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1256498566}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -19726,7 +19726,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1941435809}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -21175,7 +21175,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1190641107}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -22167,7 +22167,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 522044894}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -22756,7 +22756,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1148412824}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -25089,8 +25089,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 234108401}
-        m_TargetAssemblyTypeName: Pedia, Assembly-CSharp
-        m_MethodName: Init
+        m_TargetAssemblyTypeName: PediaManager, Assembly-CSharp
+        m_MethodName: OnHeroTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27129,7 +27129,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1250109882}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -28528,7 +28528,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 327539608}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -34994,7 +34994,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1778987991}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -39073,7 +39073,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 562307424}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -42178,7 +42178,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1610970928}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -43572,7 +43572,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1754930834}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -48881,7 +48881,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 956321589}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -50151,7 +50151,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1853729489}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -51240,7 +51240,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 197357681}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -53029,7 +53029,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1082433731}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -54777,7 +54777,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1087875497}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -61985,7 +61985,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 277397877}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -62269,7 +62269,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1907899159}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:

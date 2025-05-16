@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1LongSwrod
   m_EditorClassIdentifier: 
   ItemCode: 101
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 245217767, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uB871\uC18C\uB4DC"
   itemDescription: "\uB808\uBCA8 \uB2F9 \uACF5\uACA9\uB825 {value} \uC99D\uAC00"
   itemValue: 5
