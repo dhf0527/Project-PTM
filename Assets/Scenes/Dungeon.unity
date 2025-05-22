@@ -23402,6 +23402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6da7b8ead1ce7c4fb0f8ec02ac01da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas_2: {fileID: 1569105911}
+  mask_trans: {fileID: 1569105912}
+  list_Point:
+  - {fileID: 1890557069}
   characterDatas:
   - {fileID: 11400000, guid: c51e0caa161e65b499ba15d82603bc7d, type: 2}
   - {fileID: 11400000, guid: ad01d08c4956e7f4cad6588a97e066fd, type: 2}
