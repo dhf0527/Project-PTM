@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -72,3 +73,4 @@ public class GoogleSheetDownloader : EditorWindow
         }
     }
 }
+#endif
