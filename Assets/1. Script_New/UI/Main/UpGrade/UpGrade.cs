@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UpGrade : MonoBehaviour
@@ -45,22 +46,6 @@ public class UpGrade : MonoBehaviour
         TotalCost = 0;
     }
 
-    private void Update()
-    {
-        //테스트/디버깅(강화 수치 초기화)
-        if(Input.GetKeyDown(KeyCode.F3))
-        {
-            for (int i = 0; i < statBars.Count; i++)
-            {
-                //강화 수치 초기화
-                PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), 0);
-                statBars[i].Grade = 0;
-                statBars[i].SetCostTextAndButton();
-                statBars[i].SetCell();
-            }
-        }
-    }
-
     //확정 버튼
     public void OnConfirmButton()
     {
@@ -96,6 +81,23 @@ public class UpGrade : MonoBehaviour
         {
             item.ReturnUpgrade();
             item.SetCostTextAndButton();
+        }
+        TotalCost = 0;
+    }
+
+    public void ResetUpgrade()
+    {
+        for (int i = 0; i < statBars.Count; i++)
+        {
+            //강화 수치 초기화
+            PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), 0);
+
+            //비용 반환
+            MainManager.instance.Soul += (((int)Mathf.Pow(2, statBars[i].Grade) - 1) * 500);
+           
+            statBars[i].Grade = 0;
+            statBars[i].SetCostTextAndButton();
+            statBars[i].SetCell();
         }
         TotalCost = 0;
     }

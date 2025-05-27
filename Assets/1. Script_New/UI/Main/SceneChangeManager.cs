@@ -20,4 +20,9 @@ public class SceneChangeManager : MonoBehaviour
         SceneManager.LoadScene(dungeonSceneName);
         Time.timeScale = 1f;
     }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+    }
 }

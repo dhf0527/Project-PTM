@@ -109,6 +109,8 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: 5915279210137212383, guid: 80186e1230fa6224c8d17f94ab452687, type: 3}
   isPenetration: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
 --- !u!95 &5061897147921594596
@@ -164,18 +166,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: 0, y: 0.17885116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.05}
-    oldSize: {x: 1.1999999, y: 1.1999999}
+    oldSize: {x: 1.171875, y: 1.171875}
     newSize: {x: 1.5, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 2}
+  m_Size: {x: 0.7, y: 1.5577023}
   m_EdgeRadius: 0
 --- !u!50 &132855656999085087
 Rigidbody2D:

@@ -17,6 +17,7 @@ public class EnemySpawnManager : MonoBehaviour
     //웨이브 텍스트
     public WavePanel wavePanel;
     [SerializeField] ShockWave shockWave_prf;
+    public Image waveProgress_Image;
 
     [Header("(테스트용)자동 스폰 중지")]
     [SerializeField] bool isStopSpawn;
@@ -227,6 +228,8 @@ public class EnemySpawnManager : MonoBehaviour
         //웨이브 시간 종료 시 다음 웨이브로 넘어감
         else if (cur_WaveTime >= waveTimes[cur_Wave])
             ToNextWave();
+
+        waveProgress_Image.fillAmount = cur_WaveTime / waveTimes[cur_Wave];
     }
 
     //다음 웨이브로 넘어가는 함수

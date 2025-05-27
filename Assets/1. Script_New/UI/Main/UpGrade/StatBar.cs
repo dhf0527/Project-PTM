@@ -70,6 +70,7 @@ public class StatBar : MonoBehaviour
         {
             upgradeButton.interactable = false;
             cost_Text.text = "MAX";
+            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
         }
         else
         {
