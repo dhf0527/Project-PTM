@@ -135,10 +135,14 @@ public class CutSceneManager : MonoBehaviour
         i = 0;
         index = 0;
         completeFunc?.Invoke();
+
+        canvas_2.SetActive(false);
     }
 
     public void StartCutScene(string eventName, Action onComplete = null)
     {
+        canvas_2.SetActive(true);
+
         list_Dialogue = GetDialogueDatasByCsv(eventName);
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
