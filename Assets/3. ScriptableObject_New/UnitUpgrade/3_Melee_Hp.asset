@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
   m_Name: 3_Melee_Hp
   m_EditorClassIdentifier: 
+  code: 3
   upgradeName: "\uC7A5\uAC11 \uBCF4\uC0C1"
   upgradeIcon: {fileID: 0}
   upgradeValue:

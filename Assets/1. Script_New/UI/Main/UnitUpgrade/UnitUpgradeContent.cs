@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class UnitUpgradeContent : MonoBehaviour
 {
     public UnitUpgradeData unitUpgradeData;
+    public UnitUpgrade unitUpgrade;
 
+    public List<Sprite> star_Sprites;
     public Image icon_Image;
     public TMP_Text upgradeName_Text;
+    public List<Image> level_Images;
 
     int level;
     public int Level
@@ -25,6 +28,9 @@ public class UnitUpgradeContent : MonoBehaviour
     private void Start()
     {
         SetUpgradeData(unitUpgradeData);
+        GetComponent<Button>().onClick.AddListener(() => unitUpgrade.SetUpgrade(this));
+
+        Level = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString());
     }
 
     public void SetUpgradeData(UnitUpgradeData uud)
@@ -35,6 +41,24 @@ public class UnitUpgradeContent : MonoBehaviour
 
     public void SetLevel(int value)
     {
+        PlayerPrefs.SetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString(), value);
 
+        //레벨 이미지 설정
+        for (int i = 0; i < level_Images.Count; i++)
+        {
+            if(i < Level)
+            {
+                level_Images[i].sprite = star_Sprites[1];
+            }
+            else
+            {
+                level_Images[i].sprite = star_Sprites[0];
+            }
+        }
+    }
+
+    public void ResetLevel()
+    {
+        Level = 0;
     }
 }

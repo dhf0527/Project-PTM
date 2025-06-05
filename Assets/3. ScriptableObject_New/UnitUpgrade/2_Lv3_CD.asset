@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
   m_Name: 2_Lv3_CD
   m_EditorClassIdentifier: 
+  code: 2
   upgradeName: "\uC131\uACFC \uB300\uC6B0"
   upgradeIcon: {fileID: 0}
   upgradeValue:

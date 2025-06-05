@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
   m_Name: 7_Gold_PerBaseLevel
   m_EditorClassIdentifier: 
+  code: 7
   upgradeName: "\uAD11\uC0B0 \uCC44\uAD74\uAD8C"
   upgradeIcon: {fileID: 0}
   upgradeValue:
