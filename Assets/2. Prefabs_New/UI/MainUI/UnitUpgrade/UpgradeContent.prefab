@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitUpgradeData: {fileID: 11400000, guid: a76665e33777feb4aba8467a182654bb, type: 2}
+  unitUpgrade: {fileID: 0}
   star_Sprites:
   - {fileID: 1670213809, guid: 2aafda51111f660469da16aff608270d, type: 3}
   - {fileID: -797579517, guid: 2aafda51111f660469da16aff608270d, type: 3}
@@ -300,9 +301,9 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 3
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0

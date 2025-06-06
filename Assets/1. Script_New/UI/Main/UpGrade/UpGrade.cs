@@ -51,7 +51,7 @@ public class UpGrade : MonoBehaviour
     {
         if (MainManager.instance.Soul < totalCost)
         {
-            MainManager.instance.FloatMessage();
+            MainManager.instance.FloatMessage("소울이 부족합니다.");
 
             AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
             return;
