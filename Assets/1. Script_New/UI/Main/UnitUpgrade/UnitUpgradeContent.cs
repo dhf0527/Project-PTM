@@ -57,8 +57,10 @@ public class UnitUpgradeContent : MonoBehaviour
         }
     }
 
-    public void ResetLevel()
+    public int ResetLevel()
     {
+        int returnValue = Level * 2;
         Level = 0;
+        return returnValue;
     }
 }

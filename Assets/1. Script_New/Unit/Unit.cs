@@ -19,6 +19,33 @@ public abstract class Unit : MonoBehaviour
     }
     public UnitData_Struct unitData_st;
 
+    //스탯의 증감치를 담는 구조체
+    public struct UnitStatData_Struct
+    {
+        //공격력 증감(절대값 수치)
+        public float Atk_Plus;
+        //공격력 증감(비율 수치)
+        public float Atk_Multiply;
+        //공격속도 증감
+        public float AttackSpeed_Plus;
+        //주는 피해량 증감
+        public float attackBoost;
+        //명중률 증감
+        public int accuracy_Plus;
+        //타겟 수 증감
+        public int targetCount_Plus;
+
+        //최대체력 증감
+        public float max_Hp_Plus;
+        //방어력 증감
+        public int armor_Plus;
+        //회피율 증감
+        public int avoidance_Plus;
+        //받는 피해량 증감
+        public float damageReduction;
+    }
+    public UnitStatData_Struct unitStatData_st;
+
     //아군 유닛인지 적군 유닛인지 판별하는 변수
     bool isTeam;
     public bool IsTeam
@@ -391,7 +418,8 @@ public abstract class Unit : MonoBehaviour
         if (isPenetration)
             totalDamage = damage * type_weak;
         else
-            totalDamage = (damage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+            totalDamage = (damage - (target_Unit.unitData_st.armor+target_Unit.unitStatData_st.armor_Plus))
+                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction * 0.01f);
 
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
@@ -406,7 +434,7 @@ public abstract class Unit : MonoBehaviour
     {
         canAttack = false;
         float curTime = 0;
-        while (curTime < (10f / unitData_st.attackSpeed))
+        while (curTime < (10f / (unitData_st.attackSpeed + unitStatData_st.AttackSpeed_Plus)))
         {
             curTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();

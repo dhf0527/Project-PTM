@@ -217,19 +217,19 @@ public class DunGeonManager_New : MonoBehaviour
         {
             case 1:
             case 101:
-                unit.unitData_st.attackDamage += unit.ud.level * itemDatas[index].itemValue;
+                unit.unitStatData_st.Atk_Plus += itemDatas[index].itemValue;
                 break;
             case 2:
             case 102:
-                unit.unitData_st.attackSpeed += itemDatas[index].itemValue;
+                unit.unitStatData_st.AttackSpeed_Plus += itemDatas[index].itemValue;
                 break;
             case 3:
             case 103:
-                unit.unitData_st.armor += (int)itemDatas[index].itemValue;
+                unit.unitStatData_st.armor_Plus += (int)itemDatas[index].itemValue;
                 break;
             case 4:
             case 104:
-                unit.unitData_st.max_Hp += unit.ud.level * itemDatas[index].itemValue;
+                unit.unitStatData_st.max_Hp_Plus += unit.ud.level * itemDatas[index].itemValue;
                 break;
             default:
                 Debug.LogError("Item »Æ¿Œ");

@@ -9,7 +9,7 @@ public class UnitUpgrade : MonoBehaviour
 {
     public List<UnitUpgradeContent> uucs;
 
-    public GameObject selectedUpgrade_Go;
+    public TMP_Text star_Text;
     public Button upgrade_Button;
 
     public Image upgrade_Icon;
@@ -18,19 +18,36 @@ public class UnitUpgrade : MonoBehaviour
     public TMP_Text upgrade_Detail;
     public List<Image> level_Images;
 
+    //선택된 업그레이드 요소들
+    public GameObject selectedUpgrade_Go;   
     public List<Sprite> star_Sprites;
+    public GameObject selectedFrame;
 
     UnitUpgradeContent selected_UnitUpgradeContent;
+
+    public int Star
+    {
+        get { return PlayerPrefs.GetInt("Star"); } 
+        set 
+        { 
+            PlayerPrefs.SetInt("Star", value);
+            SetStarText();
+            if (selected_UnitUpgradeContent)
+                SetUpgrade(selected_UnitUpgradeContent);
+        }
+    }
 
     private void Start()
     {
         SetActiveSelectedUpgrade(false);
+        SetStarText();
     }
 
     //선택한 업그레이드의 정보를 띄우는 창을 제어하는 함수
     public void SetActiveSelectedUpgrade(bool isActive)
     {
         selectedUpgrade_Go.SetActive(isActive);
+        selectedFrame.SetActive(isActive);
         upgrade_Button.interactable = isActive;
     }
 
@@ -44,6 +61,7 @@ public class UnitUpgrade : MonoBehaviour
         upgrade_Icon.sprite = uud.upgradeIcon;
         upgrade_Name.text = uud.upgradeName;
 
+        //업그레이드 설명의 {value}를 바꾸는 함수
         string replace_Word = string.Empty;
         for (int i = 0; i < uud.upgradeValue.Count; i++)
         {
@@ -68,21 +86,46 @@ public class UnitUpgrade : MonoBehaviour
                 level_Images[i].gameObject.SetActive(false);
         }
 
-        upgrade_Button.interactable = uuc_level != uud.upgradeValue.Count;
+        //스타가 부족하거나 업그레이드 최대치일 때 업그레이드 비활성
+        upgrade_Button.interactable = Star >= 2 && uuc_level != uud.upgradeValue.Count;
+
+        //선택한 업그레이드에 강조선(테두리)표시
+        selectedFrame.transform.position = uuc.transform.GetChild(1).position;
+        selectedFrame.GetComponent<RectTransform>().anchoredPosition += new Vector2(-5, 0);
     }
 
     public void OnUpgrade()
     {
-        selected_UnitUpgradeContent.Level++;
-        SetUpgrade(selected_UnitUpgradeContent);
+        if(Star >= 2)
+        {
+            selected_UnitUpgradeContent.Level++;
+            SetUpgrade(selected_UnitUpgradeContent);
+            Star -= 2;
+        }
     }
 
     public void OnResetUpgrade()
     {
+        int returnStar = 0;
         foreach (var item in uucs)
-        {
-            item.ResetLevel();
-        }
+             returnStar += item.ResetLevel();
+
         SetActiveSelectedUpgrade(false);
+        Star += returnStar;
+    }
+
+    public void SetStarText()
+    {
+        star_Text.text = "X " + Star.ToString();
+    }
+
+    public void Debug_StarPlus()
+    {
+        Star += 5;
+    }
+
+    public void Debug_StarReset()
+    {
+        Star = 0;
     }
 }
