@@ -24,10 +24,10 @@ public class HpBar_new : MonoBehaviour
     //체력과 체력바를 연동하는 함수 (BaseUnit.CurHp에서 호출)
     public void SetHpBar()
     {
-        fill_Image.fillAmount = (unit.Cur_Hp / unit.unitData_st.max_Hp);
+        fill_Image.fillAmount = (unit.Cur_Hp / unit.Max_Hp);
         if (unit.isHpText)
         {
-            hp_Text.text = $"{unit.Cur_Hp / 1} / {unit.unitData_st.max_Hp / 1}";
+            hp_Text.text = $"{unit.Cur_Hp / 1} / {unit.Max_Hp / 1}";
         }
     }
 

@@ -119,7 +119,7 @@ public abstract class Projectile : MonoBehaviour
     bool TryAttack(Unit target_Unit)
     {
         //명중 확률
-        float pro = accuracy - target_Unit.unitData_st.avoidance + 50f;
+        float pro = accuracy - target_Unit.Avoidance + 50f;
         //최소 확률 5%
         pro = pro > 5 ? pro : 5;
         return Random.Range(0, 100) < pro;
@@ -137,7 +137,7 @@ public abstract class Projectile : MonoBehaviour
         if (isPenetration)
             totalDamage = damage * type_weak;
         else
-            totalDamage = (damage - target_Unit.unitData_st.armor) * (type_res * type_weak);
+            totalDamage = (damage - target_Unit.Armor) * (type_res * type_weak);
 
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
@@ -151,11 +151,11 @@ public abstract class Projectile : MonoBehaviour
     public virtual void SetData(Unit unit)
     {
         IsTeam = unit.IsTeam;
-        target_Count = unit.ud.target_Count;
+        target_Count = unit.TargetCount;
         //사거리는 공격한 유닛의 사거리 * 1.2
         max_range = unit.ud.attack_Range * 1.2f;
-        damage = unit.ud.damage;
-        accuracy = unit.ud.accuracy;
+        damage = unit.AttackDamage * (1 + unit.unitStatData_st.attackBoost_PlusPercent * 0.01f);
+        accuracy = unit.Accuracy;
         attackType = unit.ud.attack_Type;
         isPenetration = unit.isPenetration;
     }

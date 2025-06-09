@@ -5,9 +5,7 @@ using UnityEngine;
 public class CuttedArmor : Buff
 {
     //방어 감소 비율(%)
-    float armor_Decrease_percent;
-
-    int armor_Decrease;
+    int armor_Decrease_percent;
 
     protected override void Init()
     {
@@ -31,14 +29,13 @@ public class CuttedArmor : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        armor_Decrease = (int)(armor_Decrease_percent * unit.unitData_st.armor * 0.01f);
-        unit.unitData_st.armor -= armor_Decrease;
+        unit.unitStatData_st.armor_PlusPercent -= armor_Decrease_percent;
 
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitData_st.armor += armor_Decrease;
+        unit.unitStatData_st.armor_PlusPercent += armor_Decrease_percent;
     }
 }

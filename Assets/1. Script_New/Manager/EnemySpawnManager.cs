@@ -347,10 +347,10 @@ public class EnemySpawnManager : MonoBehaviour
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정
-        bossUnit.unitData_st.max_Hp *= 4;
-        bossUnit.Cur_Hp = bossUnit.unitData_st.max_Hp;
-        bossUnit.unitData_st.attackDamage *= 1.5f;
-        bossUnit.unitData_st.targetCount *= 2;
+        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * 3;
+        bossUnit.Cur_Hp = bossUnit.Max_Hp;
+        bossUnit.unitStatData_st.attack_PlusPercent += 50;
+        bossUnit.unitStatData_st.targetCount_Plus += 2;
 
         //보스의 수호 버프 부여
         bossUnit.AddComponent<BossGuard>();

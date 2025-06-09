@@ -1,10 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
 public class Card_new : MonoBehaviour
@@ -63,47 +62,104 @@ public class Card_new : MonoBehaviour
     public void SetData(Unit setUnit)
     {
         unit = setUnit;
+        unit.unitStatData_st.moveSpeed_Square = 1;
 
         SetFrame();
 
+        //아이템 효과 적용
+        switch (item?.ItemCode)
+        {
+            case 0:
+            case 100:
+                unit.unitStatData_st.spawnCoolDown_MinusPercent += item.itemValue;
+                break;
+            case 1:
+            case 101:
+                unit.unitStatData_st.attack_Plus += item.itemValue * unit.ud.level;
+                break;
+            case 2:
+            case 102:
+                unit.unitStatData_st.attackSpeed_Plus += item.itemValue;
+                break;
+            case 3:
+            case 103:
+                unit.unitStatData_st.armor_Plus = (int)item.itemValue;
+                break;
+            case 4:
+            case 104:
+                unit.unitStatData_st.max_Hp_Plus += item.itemValue;
+                break;
+            case 5:
+            case 105:
+                unit.unitStatData_st.cost_MinusPercent += item.itemValue;
+                break;
+        }
+
+        #region 업그레이드 효과 적용
+        //신입 모집
+        if (unit.ud.level == 1)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 0);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.cost_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1];
+        }
+        //군사 훈련
+        else if (unit.ud.level == 2)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 1);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.attackSpeed_Plus += DunGeonManager_New.instance.unitUpgradeDatas[1].upgradeValue[upgradeLv - 1];
+        }
+        //성과 대우
+        else if (unit.ud.level == 3)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 2);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
+        }
+        //장갑 보상
+        if (unit.ud.attack_RangeType == AttackRange.Melee)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 3);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1];
+        }
+        //사격 훈련
+        if (unit.ud.attack_RangeType == AttackRange.Ranged)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 4);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.attack_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[4].upgradeValue[upgradeLv - 1];
+        }
+        //개인 침낭
+        if (unit.ud.size == Unit_Size.Small)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 5);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.avoidance_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[5].upgradeValue[upgradeLv - 1];
+        }
+        //대형 텐트
+        if (unit.ud.size == Unit_Size.Medium || unit.ud.size == Unit_Size.Large)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 6);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.moveSpeed_Square *= 1 + (DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1]* 0.01f);
+        }
+        #endregion
+
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
-        spawnCount_Text.text = $"X {unit.ud.spawn_Count}";
+        spawnCount_Text.text = $"X {unit.SpawnCount}";
         unitLevel_Text.text = $"LV.{unit.ud.level}";
         faction_Image.sprite = faction_Sprites[(int)unit.ud.faction];
         unit_Image.sprite = unit.ud.unit_Sprite;
         unitName_Text.text = $"{unit.ud.unit_Name}";
-        unitCost_Text.text = $"{unit.ud.cost}";
-        unitArmor_Text.text = $"{unit.ud.armor}";
-        unitHp_Text.text = $"{unit.ud.hp}";
-        unitDamage_Text.text = $"{unit.ud.damage}";
-        unitAttackSpeed_Text.text = $"{unit.ud.attack_Speed}";
+        SetTextColor(unitCost_Text, unit.Cost, unit.ud.cost, false);
+        SetTextColor(unitArmor_Text, unit.Armor, unit.ud.armor);
+        SetTextColor(unitHp_Text, unit.Max_Hp, unit.ud.hp);
+        SetTextColor(unitDamage_Text, unit.AttackDamage, unit.ud.damage);
+        SetTextColor(unitAttackSpeed_Text, unit.AttackSpeed, unit.ud.attack_Speed);
         //AttackType[0] = none이므로 제외하고 1부터
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
-
-        //아이템에 따라 표기 변경
-        switch (item?.ItemCode)
-        {
-            case 1:
-            case 101:
-                unitDamage_Text.text = $"<color=green>{unit.ud.damage + item.itemValue * unit.ud.level}</color>";
-                break;
-            case 2:
-            case 102:
-                unitAttackSpeed_Text.text = $"<color=green>{unit.ud.attack_Speed + item.itemValue}</color>";
-                break;
-            case 3:
-            case 103:
-                unitArmor_Text.text = $"<color=green>{unit.ud.armor + item.itemValue}</color>";
-                break;
-            case 4:
-            case 104:
-                unitHp_Text.text = $"<color=green>{unit.ud.hp + item.itemValue}</color>";
-                break;
-            case 5:
-            case 105:
-                unitCost_Text.text = $"<color=green>{(int)(unit.ud.cost * (1 - item.itemValue * 0.01f))}</color>";
-                break;
-        }
 
         //패시브
         passive_Text[0].transform.parent.gameObject.SetActive(false);
@@ -133,6 +189,22 @@ public class Card_new : MonoBehaviour
         }
         else
             itemParent_Go.SetActive(false);
+    }
+
+    void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
+    {
+        text.text = value.ToString();
+
+        if (value == originValue)
+        {
+            text.color = Color.white;
+            return;
+        }
+
+        if ((value > originValue) == isBiggerGood)
+            text.color = Color.green;
+        else
+            text.color = Color.red;
     }
 
     //선택되지 않으면 어둡게 만드는 함수

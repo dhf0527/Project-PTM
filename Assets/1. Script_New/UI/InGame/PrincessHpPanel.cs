@@ -37,7 +37,7 @@ public class PrincessHpPanel : MonoBehaviour
 
     public void SetHpBar(Unit princess)
     {
-        hp_Text.text = $"{princess.Cur_Hp}/{princess.unitData_st.max_Hp}";
-        hpBar_Image.fillAmount = princess.Cur_Hp / princess.unitData_st.max_Hp;
+        hp_Text.text = $"{princess.Cur_Hp}/{princess.Max_Hp}";
+        hpBar_Image.fillAmount = princess.Cur_Hp / princess.Max_Hp;
     }
 }

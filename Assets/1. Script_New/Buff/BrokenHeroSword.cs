@@ -16,14 +16,14 @@ public class BrokenHeroSword : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        unit.unitData_st.accuracy += accuracy_increase;
+        unit.unitStatData_st.accuracy_Plus += accuracy_increase;
         unit.isPenetration = true;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitData_st.accuracy -= accuracy_increase;
+        unit.unitStatData_st.accuracy_Plus -= accuracy_increase;
         unit.isPenetration = false;
     }
 

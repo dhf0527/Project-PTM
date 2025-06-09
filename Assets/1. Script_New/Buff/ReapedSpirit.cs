@@ -31,14 +31,14 @@ public class ReapedSpirit : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        unit.unitData_st.attackDamage += attack_Increase;
-        unit.unitData_st.accuracy += accuracy_Increase;
+        unit.unitStatData_st.attack_Plus += attack_Increase;
+        unit.unitStatData_st.accuracy_Plus += accuracy_Increase;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitData_st.attackDamage -= attack_Increase;
-        unit.unitData_st.accuracy -= accuracy_Increase;
+        unit.unitStatData_st.attack_Plus -= attack_Increase;
+        unit.unitStatData_st.accuracy_Plus -= accuracy_Increase;
     }
 }

@@ -26,7 +26,7 @@ public class Elementalist_New : Unit
 
             Unit target_Unit = item.collider.GetComponent<Unit>();
 
-            if (target_Unit.Cur_Hp / target_Unit.unitData_st.max_Hp < healTarget_Unit.Cur_Hp / healTarget_Unit.unitData_st.max_Hp)
+            if (target_Unit.Cur_Hp / target_Unit.Max_Hp < healTarget_Unit.Cur_Hp / healTarget_Unit.Max_Hp)
                 healTarget_Unit = target_Unit;
         }
 

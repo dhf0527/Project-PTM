@@ -23,13 +23,13 @@ public class EnemyBase_Unit : Unit
                 Dead();
             }
             //체력에 따라 다음 웨이브로 넘어감
-            else if (Cur_Hp <= unitData_st.max_Hp * 0.8f)
+            else if (Cur_Hp <= Max_Hp * 0.8f)
                 EnemySpawnManager.instance.ToNextWave(2);
-            else if (Cur_Hp <= unitData_st.max_Hp * 0.4f)
+            else if (Cur_Hp <= Max_Hp * 0.4f)
                 EnemySpawnManager.instance.ToNextWave(3);
 
             //체력이 50% 이하가 되면 보스 스폰
-            if (cur_Hp <= 0.5f * unitData_st.max_Hp)
+            if (cur_Hp <= 0.5f * Max_Hp)
                 EnemySpawnManager.instance.OnBossSpawn();
 
             //공주일 경우 전용 체력바 갱신
@@ -60,14 +60,6 @@ public class EnemyBase_Unit : Unit
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        unitData_st.max_Hp = ud.hp;
-        unitData_st.moveSpeed = ud.move_Speed;
-        unitData_st.attackDamage = ud.damage;
-        unitData_st.attackSpeed = ud.attack_Speed;
-        unitData_st.accuracy = ud.accuracy;
-        unitData_st.avoidance = ud.avoidance;
-        unitData_st.armor = ud.armor;
-
         canKnockBack = false;
     }
 
@@ -84,7 +76,7 @@ public class EnemyBase_Unit : Unit
         hpBar.transform.localScale *= 2;
 
         //체력 설정
-        Cur_Hp = unitData_st.max_Hp;
+        Cur_Hp = Max_Hp;
     }
 
     public override void Dead()

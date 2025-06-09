@@ -27,11 +27,11 @@ public class Guard : Buff
 
     protected override void BuffStart()
     {
-        unit.unitData_st.armor += armorIncrease;
+        unit.unitStatData_st.armor_Plus += armorIncrease;
     }
 
     protected override void BuffEnd()
     {
-        unit.unitData_st.armor -= armorIncrease;
+        unit.unitStatData_st.armor_Plus -= armorIncrease;
     }
 }

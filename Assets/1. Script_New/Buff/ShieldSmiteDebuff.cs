@@ -11,22 +11,22 @@ public class ShieldSmiteDebuff : Buff
     {
         buff_Time = 4f;
         buffIcon_Index = 0;
-        move_Decrease = 0.8f * unit.unitData_st.moveSpeed;
-        attackSpeed_Decrease = 0.8f * unit.unitData_st.attackSpeed;
+        move_Decrease = 80;
+        attackSpeed_Decrease = 0.8f * unit.AttackSpeed;
     }
 
     protected override void BuffStart()
     {
         base.BuffStart();
-        unit.unitData_st.moveSpeed -= move_Decrease;
-        unit.unitData_st.attackSpeed -= attackSpeed_Decrease;
+        unit.unitStatData_st.moveSpeed_Square *= (1 - move_Decrease * 0.01f);
+        unit.unitStatData_st.attackSpeed_Plus -= attackSpeed_Decrease;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitData_st.moveSpeed += move_Decrease;
-        unit.unitData_st.attackSpeed += attackSpeed_Decrease;
+        unit.unitStatData_st.moveSpeed_Square *= (1 + move_Decrease * 0.01f);
+        unit.unitStatData_st.attackSpeed_Plus += attackSpeed_Decrease;
     }
 
     protected override bool PreventStack()

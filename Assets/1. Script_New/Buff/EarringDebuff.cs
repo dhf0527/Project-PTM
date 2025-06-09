@@ -28,14 +28,14 @@ public class EarringDebuff : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        unit.unitData_st.accuracy -= accuracy_Decrease;
-        unit.unitData_st.avoidance -= avoidance_Decrease;
+        unit.unitStatData_st.accuracy_Plus -= accuracy_Decrease;
+        unit.unitStatData_st.avoidance_Plus -= avoidance_Decrease;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitData_st.accuracy += accuracy_Decrease;
-        unit.unitData_st.avoidance += avoidance_Decrease;
+        unit.unitStatData_st.accuracy_Plus += accuracy_Decrease;
+        unit.unitStatData_st.avoidance_Plus += avoidance_Decrease;
     }
 }

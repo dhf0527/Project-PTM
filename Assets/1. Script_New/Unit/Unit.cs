@@ -1,35 +1,34 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    //전투 도중 바뀔 수 있는 능력치들을 담은 구조체
-    public struct UnitData_Struct
-    {
-        public float max_Hp;
-        public float moveSpeed;
-        public float attackDamage;
-        public float attackSpeed;
-        public int accuracy;
-        public int avoidance;
-        public int armor;
-        public int targetCount;
-        public Unit_Size size;
-    }
-    public UnitData_Struct unitData_st;
+    public float AttackDamage { get { return Mathf.Max((ud.damage * (1 + unitStatData_st.attack_PlusPercent * 0.01f)) + unitStatData_st.attack_Plus, 0); }}
+    public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed + unitStatData_st.attackSpeed_Plus, 0.1f); } }
+    public int Accuracy { get { return Mathf.Max(ud.accuracy + unitStatData_st.accuracy_Plus, 0);} }
+    public int TargetCount { get { return Mathf.Max(ud.target_Count + unitStatData_st.targetCount_Plus, 1); } }
+    public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); } }
+    public int Armor { get { return Mathf.Max((int)(ud.armor * (1  + unitStatData_st.armor_PlusPercent * 0.01f)) + unitStatData_st.armor_Plus, 0); } }
+    public int Avoidance { get { return ud.avoidance + unitStatData_st.avoidance_Plus; } }
+    public float MoveSpeed { get { return Mathf.Max((ud.move_Speed + unitStatData_st.moveSpeed_Plus) * unitStatData_st.moveSpeed_Square, 0); } }
+    public int Cost { get { return Mathf.Max((int)(ud.cost * (1 - unitStatData_st.cost_MinusPercent * 0.01f)), 0);  } }
+    public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
+    public float SpawnCoolDown { get { return ud.cost * 0.04f * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
+
+    public Unit_Size size;
 
     //스탯의 증감치를 담는 구조체
     public struct UnitStatData_Struct
     {
-        //공격력 증감(절대값 수치)
-        public float Atk_Plus;
-        //공격력 증감(비율 수치)
-        public float Atk_Multiply;
+        //공격력 증감(절대값)
+        public float attack_Plus;
+        //공격력 증감(비율)
+        public float attack_PlusPercent;
         //공격속도 증감
-        public float AttackSpeed_Plus;
+        public float attackSpeed_Plus;
         //주는 피해량 증감
-        public float attackBoost;
+        public float attackBoost_PlusPercent;
         //명중률 증감
         public int accuracy_Plus;
         //타겟 수 증감
@@ -37,12 +36,26 @@ public abstract class Unit : MonoBehaviour
 
         //최대체력 증감
         public float max_Hp_Plus;
-        //방어력 증감
+        //방어력 증감(절대값)
         public int armor_Plus;
+        //방어력 증감(비율)
+        public float armor_PlusPercent;
         //회피율 증감
         public int avoidance_Plus;
         //받는 피해량 증감
-        public float damageReduction;
+        public float damageReduction_PlusPercent;
+
+        //이동속도 증감(절대값)
+        public float moveSpeed_Plus;
+        //이동속도 증감(제곱)
+        public float moveSpeed_Square;
+
+        //비용 증감(비율)
+        public float cost_MinusPercent;
+        //스폰 수 증감
+        public int spawnCount_Plus;
+        //고용 쿨타임 증감
+        public float spawnCoolDown_MinusPercent;
     }
     public UnitStatData_Struct unitStatData_st;
 
@@ -184,15 +197,9 @@ public abstract class Unit : MonoBehaviour
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        unitData_st.max_Hp = ud.hp;
-        unitData_st.moveSpeed = ud.move_Speed;
-        unitData_st.attackDamage = ud.damage;
-        unitData_st.attackSpeed = ud.attack_Speed;
-        unitData_st.accuracy = ud.accuracy;
-        unitData_st.avoidance = ud.avoidance;
-        unitData_st.armor = ud.armor;
-        unitData_st.targetCount = ud.target_Count;
-        unitData_st.size = ud.size;
+        unitStatData_st.moveSpeed_Square = 1;
+        size = ud.size;
+
         SetHpBar();
 
         origin_Scale = 1;
@@ -210,7 +217,7 @@ public abstract class Unit : MonoBehaviour
         hpBar.SetHpPos(ud.size == Unit_Size.Small ? 1.2f : ud.size == Unit_Size.Medium ? 1.2f : 1.5f);
 
         //체력 설정
-        Cur_Hp = unitData_st.max_Hp;
+        Cur_Hp = Max_Hp;
     }
 
     //팀 설정
@@ -248,7 +255,7 @@ public abstract class Unit : MonoBehaviour
         SetDir();
 
         //임시 이동
-        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * unitData_st.moveSpeed / 200f;
+        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * MoveSpeed / 200f;
         //경계선을 넘지 않도록 보정
         SetBoundary();
         float clamped_x = Mathf.Clamp(tmp_vec.x, boundary_Min_x, boundary_Max_x);
@@ -347,7 +354,16 @@ public abstract class Unit : MonoBehaviour
             Unit target_Unit = hits[i].collider.GetComponent<Unit>();
             if (TryAttack(target_Unit))
             {
-                ApplyAttack(target_Unit, unitData_st.attackDamage, ud.attack_Type);
+                float dmg = AttackDamage * (1 + unitStatData_st.attackBoost_PlusPercent * 0.01f);
+
+                if (target_Unit.GetComponent<BossGuard>())
+                {
+                    int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 9);
+                    if (upgradeLv != 9)
+                        dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + DunGeonManager_New.instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1]) * 0.01f);
+                }
+
+                ApplyAttack(target_Unit, dmg, ud.attack_Type);
                 switch (ud.attack_Type)
                 {
                     case AttackType.None:
@@ -396,13 +412,13 @@ public abstract class Unit : MonoBehaviour
 
         string fly = "비행";
         if (target_Unit.ud.passive1 == fly || target_Unit.ud.passive2 == fly && ud.attack_RangeType == AttackRange.Melee && ud.passive1 != fly && ud.passive2 != fly)
-            pro = unitData_st.accuracy - (target_Unit.unitData_st.avoidance * 2) + 50;
+            pro = Accuracy - (target_Unit.Avoidance * 2) + 50;
         else
-            pro = unitData_st.accuracy - target_Unit.unitData_st.avoidance + 50f;
+            pro = Accuracy - target_Unit.Avoidance + 50f;
 
         //최소 확률 5%
         pro = pro > 5 ? pro : 5;
-        return Random.Range(0, 100) < pro;
+        return UnityEngine.Random.Range(0, 100) < pro;
     }
 
     //공격 명중 시 피해를 주는 함수
@@ -418,8 +434,8 @@ public abstract class Unit : MonoBehaviour
         if (isPenetration)
             totalDamage = damage * type_weak;
         else
-            totalDamage = (damage - (target_Unit.unitData_st.armor+target_Unit.unitStatData_st.armor_Plus))
-                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction * 0.01f);
+            totalDamage = (damage - target_Unit.Armor)
+                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f);
 
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
@@ -434,7 +450,7 @@ public abstract class Unit : MonoBehaviour
     {
         canAttack = false;
         float curTime = 0;
-        while (curTime < (10f / (unitData_st.attackSpeed + unitStatData_st.AttackSpeed_Plus)))
+        while (curTime < (10f / AttackSpeed))
         {
             curTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
@@ -458,7 +474,7 @@ public abstract class Unit : MonoBehaviour
 
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
-        if (canKnockBack && damage >= (unitData_st.max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
+        if (canKnockBack && damage >= (Max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
         {
             OnStartKnockBack();
             knockBack_Count--;
@@ -578,9 +594,8 @@ public abstract class Unit : MonoBehaviour
     //체력 회복
     public void GetHp(float amount)
     {
-        if (Cur_Hp + amount > unitData_st.max_Hp)
-            Cur_Hp = unitData_st.max_Hp;
-        else
+        if (Cur_Hp + amount > Max_Hp)
+            Cur_Hp = Max_Hp;
             Cur_Hp += amount;
     }
 }

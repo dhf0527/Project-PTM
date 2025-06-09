@@ -52,6 +52,10 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("유닛 아이템")]
     public List<ItemData> item_Advanced;
     public List<ItemData> item_Rare;
+    [Header("유닛 업그레이드")]
+    public List<UnitUpgradeData> unitUpgradeDatas;
+
+    List<int> costs = new List<int>();
 
     //현재 가진 아이템들
     [HideInInspector] public ItemData[] itemDatas = new ItemData[3];
@@ -133,9 +137,7 @@ public class DunGeonManager_New : MonoBehaviour
         teamBase = FindAnyObjectByType<TeamBase_Unit>();
         enemyBase = FindAnyObjectByType<EnemyBase_Unit>();
 
-        Gold_Per_Sec = base_abillitiesByLevels[0].base_GoldPerSec_By_Level;
-        Max_Gold = base_abillitiesByLevels[0].base_MaxGold_By_Level;
-        base_UpgradeCost = base_abillitiesByLevels[0].base_UpgradeCost_By_Level;
+        Set_GoldByBaseLevel();
         spawnUnits = new Unit[3];
     }
 
@@ -176,9 +178,7 @@ public class DunGeonManager_New : MonoBehaviour
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
-        int cost = itemDatas[index]?.ItemCode == 5 ? (int)(spawnUnits[index].ud.cost * (1 - 0.15f))
-            : itemDatas[index]?.ItemCode == 105 ? (int)(spawnUnits[index].ud.cost * (1 - 0.25f))
-            : spawnUnits[index].ud.cost;
+        int cost = spawnUnits[index].Cost;
 
         if (!unitSpawnButton[index].isCoolDown && Cur_Gold >= cost)
         {
@@ -195,7 +195,7 @@ public class DunGeonManager_New : MonoBehaviour
     IEnumerator C_SpawnUnit(int index)
     {
         //생산 수만큼 반복
-        for (int i = 0; i < spawnUnits[index].ud.spawn_Count; i++)
+        for (int i = 0; i < spawnUnits[index].SpawnCount; i++)
         {
             //유닛 하나 생성 및 설정
             Unit unit = Instantiate(spawnUnits[index], spawn_Trans);
@@ -203,40 +203,12 @@ public class DunGeonManager_New : MonoBehaviour
             spawn_Z += 0.001f;
             unit.transform.parent = unit_Parent;
             unit.IsTeam = true;
+
             //생산 딜레이
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    void SetUnitByItem(Unit unit, int index)
-    {
-        //아이템이 없으면 실행 안 함
-        if (!itemDatas[index])
-            return;
-        switch (itemDatas[index].ItemCode)
-        {
-            case 1:
-            case 101:
-                unit.unitStatData_st.Atk_Plus += itemDatas[index].itemValue;
-                break;
-            case 2:
-            case 102:
-                unit.unitStatData_st.AttackSpeed_Plus += itemDatas[index].itemValue;
-                break;
-            case 3:
-            case 103:
-                unit.unitStatData_st.armor_Plus += (int)itemDatas[index].itemValue;
-                break;
-            case 4:
-            case 104:
-                unit.unitStatData_st.max_Hp_Plus += unit.ud.level * itemDatas[index].itemValue;
-                break;
-            default:
-                Debug.LogError("Item 확인");
-                return;
-        }
-    }
-    
     public void SetUnitSpawnButton(int index)
     {
         unitSpawnButton[index].unit = spawnUnits[index];
@@ -248,7 +220,7 @@ public class DunGeonManager_New : MonoBehaviour
     public Vector3 SpawnY(Unit unit)
     {
         float y_BySize;
-        switch (unit.unitData_st.size)
+        switch (unit.size)
         {
             case Unit_Size.Medium:
                 y_BySize = 0.12f;
@@ -290,6 +262,10 @@ public class DunGeonManager_New : MonoBehaviour
     public void Set_GoldByBaseLevel()
     {
         Gold_Per_Sec = base_abillitiesByLevels[teamBase.Base_level - 1].base_GoldPerSec_By_Level;
+        int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 7);
+        if (upgradeLv != 0)
+            Gold_Per_Sec += unitUpgradeDatas[7].upgradeValue[upgradeLv - 1] * teamBase.Base_level;
+
         Max_Gold = base_abillitiesByLevels[teamBase.Base_level - 1].base_MaxGold_By_Level;
         base_UpgradeCost = base_abillitiesByLevels[teamBase.Base_level - 1].base_UpgradeCost_By_Level;
     }

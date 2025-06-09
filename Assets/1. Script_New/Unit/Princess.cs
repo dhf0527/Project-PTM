@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,6 +18,11 @@ public class Princess : Unit
 
     bool isSkilling;
 
+    bool test_Is1;
+    bool test_Is2;
+    bool test_Is3;
+    bool test_Is4;
+
     private void Update()
     {
         Test();
@@ -32,10 +38,10 @@ public class Princess : Unit
         if (nonCombatTime > 4f)
         {
             nonCombatTime -= 1;
-            GetHp((4 + (EnemySpawnManager.instance.cur_Wave + 1) * 4) / 100f * unitData_st.max_Hp);
+            GetHp((4 + (EnemySpawnManager.instance.cur_Wave + 1) * 4) / 100f * Max_Hp);
         }
 
-        animator.SetFloat("MoveSpeed", unitData_st.moveSpeed/200);
+        animator.SetFloat("MoveSpeed", MoveSpeed / 200);
     }
 
     //테스트 함수
@@ -43,39 +49,31 @@ public class Princess : Unit
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            unitData_st.moveSpeed = ud.move_Speed * 4f;
+            unitStatData_st.moveSpeed_Square *= !test_Is1 ? 4 : 1/4f;
+            test_Is1 = !test_Is1;
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            unitData_st.moveSpeed = ud.move_Speed * 1f;
+            unitStatData_st.accuracy_Plus += !test_Is2 ? 1000 : -1000;
+            test_Is2 = !test_Is2;
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            unitData_st.accuracy = 1000;
+            unitStatData_st.avoidance_Plus += !test_Is3 ? 1000 : -1000;
+            test_Is3 = !test_Is3;
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            unitData_st.accuracy = 60;
+            unitStatData_st.attack_Plus += !test_Is4 ? 1000 : - 1000;
+            test_Is4 = !test_Is4;
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            unitData_st.avoidance = 1000;
-        }
-        if (Input.GetKeyDown(KeyCode.F6))
-        {
-            unitData_st.avoidance = 40;
-        }
-        if (Input.GetKeyDown(KeyCode.F7))
-        {
             DunGeonManager_New.instance.Cur_Gold = DunGeonManager_New.instance.Max_Gold;
         }
-        if (Input.GetKeyDown(KeyCode.F8))
-        {
-            unitData_st.attackDamage = 1000f;
-        }
-        if (Input.GetKeyDown(KeyCode.F9))
+        if (Input.GetKeyDown(KeyCode.F6))
             DunGeonManager_New.instance.OpenGameClearPanel();
-        if (Input.GetKeyDown(KeyCode.F10))
+        if (Input.GetKeyDown(KeyCode.F7))
             DunGeonManager_New.instance.OpenGameOverPanel();
     }
 
@@ -85,13 +83,13 @@ public class Princess : Unit
         IsTeam = true;
         moveDir = Vector3.zero;
 
-        unitData_st.armor += (2 * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "0"));
-        unitData_st.max_Hp += (ud.hp * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "1"));
-        unitData_st.attackDamage += (ud.damage * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "2"));
-        unitData_st.attackSpeed += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "3"));
-        unitData_st.moveSpeed += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "4"));
-        unitData_st.accuracy += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "5"));
-        unitData_st.avoidance += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "6"));
+        unitStatData_st.armor_Plus += (2 * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "0"));
+        unitStatData_st.max_Hp_Plus += (ud.hp * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "1"));
+        unitStatData_st.attack_Plus += (ud.damage * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "2"));
+        unitStatData_st.attackSpeed_Plus += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "3"));
+        unitStatData_st.moveSpeed_Plus += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "4"));
+        unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "5"));
+        unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "6"));
     }
 
     #region readOnly
@@ -189,7 +187,7 @@ public class Princess : Unit
         SetDir();
 
         //임시 이동
-        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * (unitData_st.moveSpeed / 200f);
+        Vector3 tmp_vec = transform.position + moveDir * Time.deltaTime * (MoveSpeed / 200f);
         //경계선을 넘지 않도록 보정
         SetBoundary();
         float clamped_x = Mathf.Clamp(tmp_vec.x, boundary_Min_x, boundary_Max_x);
@@ -222,7 +220,7 @@ public class Princess : Unit
 
     public void Rivive()
     {
-        Cur_Hp = unitData_st.max_Hp;
+        Cur_Hp = Max_Hp;
         isDead = false;
         GetComponent<Collider2D>().enabled = true;
         SetAnim(AnimState.Idle);
@@ -260,7 +258,8 @@ public class Princess : Unit
             //넉백
             target_Unit.OnStartKnockBack();
             //데미지 부여
-            ApplyAttack(target_Unit, unitData_st.attackDamage * 3, AttackType.Physical);
+            float dmg = 3 * AttackDamage * (1+ unitStatData_st.attackBoost_PlusPercent * 0.01f);
+            ApplyAttack(target_Unit, dmg, AttackType.Physical);
             //디버프 처리
             target_Unit.AddComponent<ShieldSmiteDebuff>();
         }

@@ -69,45 +69,19 @@ public class DetailPanel : MonoBehaviour
 
         faction_Image.sprite = faction_Sprites[(int)unit.ud.faction];
         name_Text.text = $"{unit.ud.unit_Name}";
-        cost_Text.text = $"{unit.ud.cost}";
-        armor_Text.text = $"{unit.ud.armor}";
-        hp_Text.text = $"{unit.ud.hp}";
-        attack_Text.text = $"{unit.ud.damage}";
-        attackSpeed_Text.text = $"{unit.ud.attack_Speed}";
+        SetTextColor(cost_Text, unit.Cost, unit.ud.cost, false);
+        SetTextColor(armor_Text, unit.Armor, unit.ud.armor);
+        SetTextColor(hp_Text, unit.Max_Hp, unit.ud.hp);
+        SetTextColor(attack_Text, unit.AttackDamage, unit.ud.damage);
+        SetTextColor(attackSpeed_Text, unit.AttackSpeed, unit.ud.attack_Speed);
         targetCount_Text.text = $"{unit.ud.target_Count}";
-        speed_Text.text = $"{unit.ud.move_Speed}";
-        accuracy_Text.text = $"{unit.ud.accuracy}";
-        avoidance_Text.text = $"{unit.ud.avoidance}";
+        SetTextColor(speed_Text, unit.MoveSpeed, unit.ud.move_Speed);
+        SetTextColor(accuracy_Text, unit.Accuracy, unit.ud.accuracy);
+        SetTextColor(avoidance_Text, unit.Avoidance, unit.ud.avoidance);
         size_Text.text = unit.ud.size == Unit_Size.Small ? "소형" :
             unit.ud.size == Unit_Size.Medium ? "중형"
             : unit.ud.size == Unit_Size.Large ? "대형" : "";
-
-        detail_SpawnCount_Text.text = $"{unit.ud.spawn_Count}";
-
-        //아이템에 따라 표기 변경
-        switch (item?.ItemCode)
-        {
-            case 1:
-            case 101:
-                attack_Text.text = $"<color=green>{unit.ud.damage + item.itemValue * unit.ud.level}</color>";
-                break;
-            case 2:
-            case 102:
-                attackSpeed_Text.text = $"<color=green>{unit.ud.attack_Speed + item.itemValue}</color>";
-                break;
-            case 3:
-            case 103:
-                armor_Text.text = $"<color=green>{unit.ud.armor + item.itemValue}</color>";
-                break;
-            case 4:
-            case 104:
-                hp_Text.text = $"<color=green>{unit.ud.hp + item.itemValue}</color>";
-                break;
-            case 5:
-            case 105:
-                cost_Text.text = $"<color=green>{(int)(unit.ud.cost * (1 - item.itemValue * 0.01f))}</color>";
-                break;
-        }
+        SetTextColor(detail_SpawnCount_Text, unit.SpawnCount, unit.ud.spawn_Count);
 
         //원래 있던 패시브 설명창 삭제
         foreach (Transform child in passive_Parent)
@@ -119,7 +93,24 @@ public class DetailPanel : MonoBehaviour
         if (unit.ud.passive2 != "")
             MakeNewDetail(unit.ud.passive2, unit.ud.passive2_Detail);
     }
-    
+
+    void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
+    {
+        text.text = value.ToString();
+
+        if (value == originValue)
+        {
+            text.color = Color.white;
+            return;
+        }
+
+        if ((value > originValue) == isBiggerGood)
+            text.color = Color.green;
+        else
+            text.color = Color.red;
+    }
+
+
     public void MakeNewDetail(string passiveName, string passiveDetail)
     {
         PassivePanel newPd = Instantiate(passivePanel_Prefab, passive_Parent);

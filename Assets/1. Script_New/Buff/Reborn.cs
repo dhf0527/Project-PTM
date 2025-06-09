@@ -38,11 +38,10 @@ public class Reborn : Buff
     {
         base.BuffStart();
         //이동속도 증가
-        moveSpeed_Increase = unit.unitData_st.moveSpeed * moveSpeed_Increase_Percent * 0.01f;
-        unit.unitData_st.moveSpeed += moveSpeed_Increase;
+        unit.unitStatData_st.moveSpeed_Square *= (1 + moveSpeed_Increase * 0.01f);
         //공격속도 증가
-        attackSpeed_Increase = unit.unitData_st.attackSpeed * attackSpeed_Increase_Percent * 0.01f;
-        unit.unitData_st.attackSpeed += attackSpeed_Increase;
+        attackSpeed_Increase = unit.ud.attack_Speed * attackSpeed_Increase_Percent * 0.01f;
+        unit.unitStatData_st.attackSpeed_Plus += attackSpeed_Increase;
         //체력 지속적으로 감소
         InvokeRepeating("HpDecrease", 1, 1);
     }
@@ -51,15 +50,15 @@ public class Reborn : Buff
     {
         base.BuffEnd();
         //이동속도 복구
-        unit.unitData_st.moveSpeed -= moveSpeed_Increase;
+        unit.unitStatData_st.moveSpeed_Square *= (1 - moveSpeed_Increase * 0.01f);
         //공격속도 복구
-        unit.unitData_st.attackSpeed -= attackSpeed_Increase;
+        unit.unitStatData_st.attackSpeed_Plus -= attackSpeed_Increase;
         //체력 감소 삭제
         CancelInvoke();
     }
 
     void HpDecrease()
     {
-        unit.Cur_Hp -= hp_Decrease_Per_Sec * unit.unitData_st.max_Hp * 0.01f;
+        unit.Cur_Hp -= hp_Decrease_Per_Sec * unit.Max_Hp * 0.01f;
     }
 }

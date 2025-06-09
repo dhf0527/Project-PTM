@@ -39,14 +39,6 @@ public class TeamBase_Unit : Unit
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        unitData_st.max_Hp = ud.hp;
-        unitData_st.moveSpeed = ud.move_Speed;
-        unitData_st.attackDamage = ud.damage;
-        unitData_st.attackSpeed = ud.attack_Speed;
-        unitData_st.accuracy = ud.accuracy;
-        unitData_st.avoidance = ud.avoidance;
-        unitData_st.armor = ud.armor;
-
         canKnockBack = false;
     }
 
@@ -63,7 +55,7 @@ public class TeamBase_Unit : Unit
         hpBar.transform.localScale *= 2;
 
         //체력 설정
-        Cur_Hp = unitData_st.max_Hp;
+        Cur_Hp = Max_Hp;
     }
 
     public override void Dead()
@@ -76,23 +68,18 @@ public class TeamBase_Unit : Unit
     public void Base_LevelUp()
     {
         Base_level++;
-        float tmp_max_Hp = unitData_st.max_Hp;
+        float tmp_max_Hp = Max_Hp;
         Set_BaseAbillityByLevel(DunGeonManager_New.instance.base_abillitiesByLevels[Base_level - 1]);
         //최대 체력이 오른만큼 현재 체력 상승
-        Cur_Hp += unitData_st.max_Hp - tmp_max_Hp;
+        Cur_Hp += Max_Hp - tmp_max_Hp;
     }
 
     //레벨에 따라 능력치를 설정
     public void Set_BaseAbillityByLevel(DunGeonManager_New.AbillitiesByLevel base_abillitiesByLevel)
     {
         
-        unitData_st.max_Hp = base_abillitiesByLevel.base_Hp_By_Level;
-        unitData_st.armor = base_abillitiesByLevel.base_Armor_By_Level;
-        /*
-        //업그레이드 비용
-        DunGeonManager_New.instance.Gold_Per_Sec = base_abillitiesByLevels[base_level - 1].base_GoldPerSec_By_Level;
-        DunGeonManager_New.instance.Max_Gold = base_abillitiesByLevels[base_level - 1].base_MaxGold_By_Level;
-        */
+        unitStatData_st.max_Hp_Plus = base_abillitiesByLevel.base_Hp_By_Level - ud.hp;
+        unitStatData_st.armor_Plus = base_abillitiesByLevel.base_Armor_By_Level - ud.armor;
     }
 
 }

@@ -18,7 +18,7 @@ public class SkeletonWarrior_New : Unit
 
             isReborn = true;
             //체력 회복
-            Cur_Hp = unitData_st.max_Hp;
+            Cur_Hp = Max_Hp;
             //애니메이션(스프라이트) 변경
             animator.runtimeAnimatorController = reborn_anim;
 
