@@ -359,8 +359,8 @@ public abstract class Unit : MonoBehaviour
                 if (target_Unit.GetComponent<BossGuard>())
                 {
                     int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 9);
-                    if (upgradeLv != 9)
-                        dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + DunGeonManager_New.instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1]) * 0.01f);
+                    if (upgradeLv != 0)
+                        dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1]) * 0.01f);
                 }
 
                 ApplyAttack(target_Unit, dmg, ud.attack_Type);

@@ -204,8 +204,12 @@ public class DunGeonManager_New : MonoBehaviour
             unit.transform.parent = unit_Parent;
             unit.IsTeam = true;
 
-            //»ý»ê µô·¹ÀÌ
-            yield return new WaitForSeconds(0.5f);
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 8);
+            if (upgradeLv != 0)
+                unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * 0.01f * teamBase.Base_level);
+
+        //»ý»ê µô·¹ÀÌ
+        yield return new WaitForSeconds(0.5f);
         }
     }
 
