@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class MainManager : MonoBehaviour
 
     public TMP_Text soul_Text;
 
+    public Image meal_Icon;
+
     public TMP_Text floatingMessage;
     Coroutine c_Floating;
     bool isFloating;
 
+    [HideInInspector] public MealData mealData;
     int cur_Stage_Index;
     int soul;
     public int Soul
@@ -92,5 +96,12 @@ public class MainManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         floatingMessage.transform.parent.gameObject.SetActive(false);
         isFloating = false;
+    }
+
+    public void OnMeal(bool isActive)
+    {
+        meal_Icon.transform.parent.gameObject.SetActive(isActive);
+        if (isActive)
+            meal_Icon.sprite = mealData.mealIcon;
     }
 }

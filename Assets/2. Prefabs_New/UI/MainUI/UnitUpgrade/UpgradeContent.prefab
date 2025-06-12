@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 7429516383212376408}
   - component: {fileID: 7171601898975806334}
   - component: {fileID: 5643732220252924262}
+  - component: {fileID: 7189351743238039037}
   m_Layer: 5
   m_Name: UpgradeContent
   m_TagString: Untagged
@@ -205,6 +206,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &7189351743238039037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931335147960632533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c6a0e13f627f4a8c2c989763a5614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx_enum: 0
+  isButtonDown: 0
 --- !u!1 &5133471109488467845
 GameObject:
   m_ObjectHideFlags: 0

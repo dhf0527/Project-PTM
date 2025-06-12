@@ -66,6 +66,7 @@ public class Card_new : MonoBehaviour
 
         SetFrame();
 
+        #region 아이템 효과 적용
         //아이템 효과 적용
         switch (item?.ItemCode)
         {
@@ -94,6 +95,7 @@ public class Card_new : MonoBehaviour
                 unit.unitStatData_st.cost_MinusPercent += item.itemValue;
                 break;
         }
+        #endregion
 
         #region 업그레이드 효과 적용
         //신입 모집

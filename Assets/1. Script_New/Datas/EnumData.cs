@@ -51,3 +51,9 @@ public enum EMixer
 {
     Master, BGM, SFX
 }
+
+public enum MealRarity
+{
+    Uncommon,
+    Rare
+}
