@@ -10,8 +10,8 @@ public abstract class Unit : MonoBehaviour
     public int TargetCount { get { return Mathf.Max(ud.target_Count + unitStatData_st.targetCount_Plus, 1); } }
     public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); } }
     public int Armor { get { return Mathf.Max((int)(ud.armor * (1  + unitStatData_st.armor_PlusPercent * 0.01f)) + unitStatData_st.armor_Plus, 0); } }
-    public int Avoidance { get { return ud.avoidance + unitStatData_st.avoidance_Plus; } }
-    public float MoveSpeed { get { return Mathf.Max((ud.move_Speed + unitStatData_st.moveSpeed_Plus) * unitStatData_st.moveSpeed_Square, 0); } }
+    public int Avoidance { get { return Mathf.Max(ud.avoidance + unitStatData_st.avoidance_Plus, 0); } }
+    public float MoveSpeed { get { return Mathf.Max(ud.move_Speed * (1 + unitStatData_st.moveSpeed_PlusPercent * 0.01f) + unitStatData_st.moveSpeed_Plus, ud.move_Speed * 0.1f); } }
     public int Cost { get { return Mathf.Max((int)(ud.cost * (1 - unitStatData_st.cost_MinusPercent * 0.01f)), 0);  } }
     public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
     public float SpawnCoolDown { get { return ud.cost * 0.04f * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
@@ -47,8 +47,8 @@ public abstract class Unit : MonoBehaviour
 
         //이동속도 증감(절대값)
         public float moveSpeed_Plus;
-        //이동속도 증감(제곱)
-        public float moveSpeed_Square;
+        //이동속도 증감(비율)
+        public float moveSpeed_PlusPercent;
 
         //비용 증감(비율)
         public float cost_MinusPercent;
@@ -197,7 +197,6 @@ public abstract class Unit : MonoBehaviour
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
-        unitStatData_st.moveSpeed_Square = 1;
         size = ud.size;
 
         SetHpBar();

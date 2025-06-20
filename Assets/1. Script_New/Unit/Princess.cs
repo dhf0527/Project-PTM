@@ -49,7 +49,7 @@ public class Princess : Unit
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            unitStatData_st.moveSpeed_Square *= !test_Is1 ? 4 : 1/4f;
+            unitStatData_st.moveSpeed_PlusPercent += !test_Is1 ? 400 : -400f;
             test_Is1 = !test_Is1;
         }
         if (Input.GetKeyDown(KeyCode.F2))

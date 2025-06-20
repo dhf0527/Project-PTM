@@ -18,14 +18,14 @@ public class ShieldSmiteDebuff : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        unit.unitStatData_st.moveSpeed_Square *= (1 - move_Decrease * 0.01f);
+        unit.unitStatData_st.moveSpeed_PlusPercent -= 80;
         unit.unitStatData_st.attackSpeed_Plus -= attackSpeed_Decrease;
     }
 
     protected override void BuffEnd()
     {
         base.BuffEnd();
-        unit.unitStatData_st.moveSpeed_Square *= (1 + move_Decrease * 0.01f);
+        unit.unitStatData_st.moveSpeed_PlusPercent += 80;
         unit.unitStatData_st.attackSpeed_Plus += attackSpeed_Decrease;
     }
 

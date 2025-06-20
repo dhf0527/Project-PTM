@@ -68,7 +68,7 @@ public class Meal : MonoBehaviour
         eat_Meal_Text.text = $"{selected_md.mealName} 식사 완료!";
         eat_Meal_Card.Md = selected_md;
 
-        MainManager.instance.mealData = selected_md;
+        GameManager.Instance.current_Meal = selected_md;
     }
 }
 

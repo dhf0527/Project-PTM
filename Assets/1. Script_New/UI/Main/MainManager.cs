@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -102,6 +103,6 @@ public class MainManager : MonoBehaviour
     {
         meal_Icon.transform.parent.gameObject.SetActive(isActive);
         if (isActive)
-            meal_Icon.sprite = mealData.mealIcon;
+            meal_Icon.sprite = GameManager.Instance.current_Meal.mealIcon;
     }
 }

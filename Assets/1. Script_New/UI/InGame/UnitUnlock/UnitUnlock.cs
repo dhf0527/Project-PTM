@@ -73,14 +73,14 @@ public class UnitUnlock : MonoBehaviour
         unlock_Text.text = $"Lv.{level + 1} 용병 해금!";
         if (isOpen)
         {
-            Time.timeScale = 0;
+            DunGeonManager_New.instance.OnPause(true);
             gameObject.SetActive(true);
 
             AudioManager.instance.PlayerSfx(SFX_Enum.CardAppear);
         }
         else
         {
-            Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+            DunGeonManager_New.instance.OnPause(false);
             gameObject.SetActive(false);
         }
     }

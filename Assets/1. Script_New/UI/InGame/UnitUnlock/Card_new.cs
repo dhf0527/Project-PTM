@@ -62,7 +62,6 @@ public class Card_new : MonoBehaviour
     public void SetData(Unit setUnit)
     {
         unit = setUnit;
-        unit.unitStatData_st.moveSpeed_Square = 1;
 
         SetFrame();
 
@@ -145,7 +144,7 @@ public class Card_new : MonoBehaviour
         {
             int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 6);
             if (upgradeLv != 0)
-                unit.unitStatData_st.moveSpeed_Square *= 1 + (DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1]* 0.01f);
+                unit.unitStatData_st.moveSpeed_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1];
         }
         #endregion
 

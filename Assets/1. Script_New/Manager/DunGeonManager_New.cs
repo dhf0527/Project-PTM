@@ -125,6 +125,8 @@ public class DunGeonManager_New : MonoBehaviour
 
     [HideInInspector] public bool isFasty;
 
+    int pauseStack = 0;
+
     //½Ì±ÛÅæ
     public static DunGeonManager_New instance;
 
@@ -348,18 +350,21 @@ public class DunGeonManager_New : MonoBehaviour
     //¹«ÀÛÀ§·Î ItemÀ» °¡Á®¿À´Â ÇÔ¼ö
     ItemData GetRandomItem()
     {
+        //¾ÆÀÌÅÛ µîÀå È®·ü
+        int item_pro = 40;
+        if (UnityEngine.Random.Range(0, 100) >= item_pro)
+            return null;
+
         //Èñ±Í È®·ü
-        int rare_pro = 15;
+        int rare_pro = 30;
         //°í±Þ È®·ü
-        int advenced_pro = 30;
+        int advenced_pro = 70;
 
         int rand = UnityEngine.Random.Range(0, 100);
         if (rand < rare_pro)
             return item_Rare[UnityEngine.Random.Range(0, item_Rare.Count)];
-        else if (rand < rare_pro + advenced_pro)
+        else 
             return item_Advanced[UnityEngine.Random.Range(0, item_Advanced.Count)];
-        else
-            return null;
     }
 
     #endregion
@@ -393,7 +398,14 @@ public class DunGeonManager_New : MonoBehaviour
 
     public void OnPause(bool isPause)
     {
-        Time.timeScale = isPause ? 0 : isFasty ? 2 : 1;
+        pauseStack += isPause ? 1 : -1;
+        Time.timeScale = pauseStack > 0 ? 0 : isFasty ? 2 : 1;
+    }
+
+    public void ResetPause()
+    {
+        pauseStack = 0;
+        Time.timeScale = 1;
     }
 
     public void OpenGameClearPanel()

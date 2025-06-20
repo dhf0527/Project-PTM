@@ -22,8 +22,8 @@ public class CameraMove : MonoBehaviour
 
         princess = DunGeonManager_New.instance.princess;
 
-        min_x = DunGeonManager_New.instance.boundary_Min_x / 2.18f;
-        max_x = DunGeonManager_New.instance.boundary_Max_x / 2.18f;
+        min_x = DunGeonManager_New.instance.boundary_Min_x / 2f;
+        max_x = DunGeonManager_New.instance.boundary_Max_x / 2f;
     }
 
     private void Update()

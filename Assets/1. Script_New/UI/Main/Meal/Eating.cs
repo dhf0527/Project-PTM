@@ -10,7 +10,7 @@ public class Eating : MonoBehaviour
     public Image loading_Bar;
     public TMP_Text loading_Text;
 
-    float loadingTime = 3;
+    [SerializeField] float loadingTime = 2;
     string origin_Text;
 
     private void OnEnable()

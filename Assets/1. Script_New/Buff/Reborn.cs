@@ -9,7 +9,6 @@ public class Reborn : Buff
     float attackSpeed_Increase_Percent;
     float hp_Decrease_Per_Sec;
 
-    float moveSpeed_Increase;
     float attackSpeed_Increase;
 
     protected override void Init()
@@ -38,7 +37,7 @@ public class Reborn : Buff
     {
         base.BuffStart();
         //이동속도 증가
-        unit.unitStatData_st.moveSpeed_Square *= (1 + moveSpeed_Increase * 0.01f);
+        unit.unitStatData_st.moveSpeed_PlusPercent += moveSpeed_Increase_Percent;
         //공격속도 증가
         attackSpeed_Increase = unit.ud.attack_Speed * attackSpeed_Increase_Percent * 0.01f;
         unit.unitStatData_st.attackSpeed_Plus += attackSpeed_Increase;
@@ -50,7 +49,7 @@ public class Reborn : Buff
     {
         base.BuffEnd();
         //이동속도 복구
-        unit.unitStatData_st.moveSpeed_Square *= (1 - moveSpeed_Increase * 0.01f);
+        unit.unitStatData_st.moveSpeed_PlusPercent -= moveSpeed_Increase_Percent;
         //공격속도 복구
         unit.unitStatData_st.attackSpeed_Plus -= attackSpeed_Increase;
         //체력 감소 삭제
