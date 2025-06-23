@@ -34,6 +34,8 @@ public abstract class Projectile : MonoBehaviour
     protected AttackType attackType;
     //관통 공격 여부
     protected bool isPenetration;
+    //고정 공격 여부
+    protected bool isTrueDamage;
 
     //이동 속도
     protected float move_Speed = 8f;
@@ -133,15 +135,42 @@ public abstract class Projectile : MonoBehaviour
 
         //최종 피해량
         float totalDamage;
+
+        //고정공격일 경우
+        if (isTrueDamage)
+            totalDamage = damage;
         //관통공격일 경우
-        if (isPenetration)
+        else if (isPenetration)
             totalDamage = damage * type_weak;
         else
-            totalDamage = (damage - target_Unit.Armor) * (type_res * type_weak);
+            totalDamage = (damage - target_Unit.Armor)
+                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f);
 
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
         target_Unit.TakeDamage(totalDamage);
+
+        //유닛 처치 골드
+        if (target_Unit.Cur_Hp <= 0)
+        {
+            int getGold = 0;
+            if (target_Unit.GetComponent<BossGuard>())
+                getGold = 500;
+            else
+            {
+                if (this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
+                    getGold = 30;
+                else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
+                    getGold = 50;
+                else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
+                    getGold = 150;
+            }
+
+            if (GameManager.Instance.current_Meal?.code == 1)
+                getGold *= 2;
+
+            DunGeonManager_New.instance.GetGold(getGold);
+        }
 
         FxManager.Instance.Hit(transform.position);
     }
@@ -158,6 +187,7 @@ public abstract class Projectile : MonoBehaviour
         accuracy = unit.Accuracy;
         attackType = unit.ud.attack_Type;
         isPenetration = unit.isPenetration;
+        isTrueDamage = unit.isTrueDamage;
     }
 
     //투사체를 삭제하는 함수

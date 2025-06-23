@@ -148,6 +148,15 @@ public class Card_new : MonoBehaviour
         }
         #endregion
 
+        #region 식사 효과 적용
+        //유리비늘 생선구이
+        if (GameManager.Instance.current_Meal?.code == 0 && unit.ud.armor == 0)
+            unit.unitStatData_st.armor_Plus += (int)GameManager.Instance.current_Meal.mealValue;
+        //로즈베리 케이크
+        else if (GameManager.Instance.current_Meal?.code == 6)
+            unit.isTrueDamage = true;
+        #endregion
+
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
         spawnCount_Text.text = $"X {unit.SpawnCount}";
         unitLevel_Text.text = $"LV.{unit.ud.level}";

@@ -103,12 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813c8d4aaec4c4a45a0218e2c28f4170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 4fb78700692db1f4091233ec1b34262e, type: 2}
   isHpText: 0
   hitParent: {fileID: 6538522769307570844}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
@@ -177,7 +179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &4037527648560711161
 Rigidbody2D:

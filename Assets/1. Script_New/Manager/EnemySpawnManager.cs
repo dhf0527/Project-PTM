@@ -143,6 +143,14 @@ public class EnemySpawnManager : MonoBehaviour
         //ÆÀ ¼³Á¤
         spawned_Unit.IsTeam = false;
 
+        //½Ä»ç È¿°ú(²Éºù¼ö)
+
+        if(GameManager.Instance.current_Meal?.code == 4)
+        {
+            spawned_Unit.unitStatData_st.moveSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
+            spawned_Unit.unitStatData_st.attackSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
+        }
+
         return spawned_Unit;
     }
 

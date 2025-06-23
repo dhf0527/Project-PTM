@@ -154,6 +154,11 @@ public class DunGeonManager_New : MonoBehaviour
 
         //베이스 1레벨 표시
         teamBase.Base_level = 1;
+
+        //식사 효과(잿빛 후추 라면)
+        if (GameManager.Instance.current_Meal?.code == 7)
+            for (int i = 0; i < GameManager.Instance.current_Meal.mealValue - 1; i++)
+                BaseLevelUp();
     }
 
     private void Update()
@@ -196,8 +201,18 @@ public class DunGeonManager_New : MonoBehaviour
     //실제로 생산을 하는 함수
     IEnumerator C_SpawnUnit(int index)
     {
+        int spawnCount = spawnUnits[index].SpawnCount;
+
+        //쌍둥이 꼬치
+        if (GameManager.Instance.current_Meal?.code == 2)
+        {
+            int rand = UnityEngine.Random.Range(0, 100);
+            if (rand < GameManager.Instance.current_Meal.mealValue)
+                spawnCount++;
+        }    
+
         //생산 수만큼 반복
-        for (int i = 0; i < spawnUnits[index].SpawnCount; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             //유닛 하나 생성 및 설정
             Unit unit = Instantiate(spawnUnits[index], spawn_Trans);
@@ -206,9 +221,14 @@ public class DunGeonManager_New : MonoBehaviour
             unit.transform.parent = unit_Parent;
             unit.IsTeam = true;
 
+            //용병 업그레이드 효과(용병단 깃발)
             int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 8);
             if (upgradeLv != 0)
                 unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
+
+            //식사 효과(숙성 참치회)
+            if (GameManager.Instance.current_Meal?.code == 9)
+                unit.unitStatData_st.attack_Plus += EnemySpawnManager.instance.cur_Wave * (GameManager.Instance.current_Meal.mealValue);
 
         //생산 딜레이
         yield return new WaitForSeconds(0.5f);
@@ -255,13 +275,18 @@ public class DunGeonManager_New : MonoBehaviour
         if (Cur_Gold >= base_UpgradeCost)
         {
             Cur_Gold -= base_UpgradeCost;
-            //요새 레벨업 처리
-            teamBase.Base_LevelUp();
-            //골드 관련 레벨업 처리
-            Set_GoldByBaseLevel();
-
-            AudioManager.instance.PlayerSfx(SFX_Enum.TowerUpGrade);
+            BaseLevelUp();
         }
+    }
+
+    void BaseLevelUp()
+    {
+        //요새 레벨업 처리
+        teamBase.Base_LevelUp();
+        //골드 관련 레벨업 처리
+        Set_GoldByBaseLevel();
+
+        AudioManager.instance.PlayerSfx(SFX_Enum.TowerUpGrade);
     }
 
     //아군 요새 레벨에 따라 골드 관련 변수 설정

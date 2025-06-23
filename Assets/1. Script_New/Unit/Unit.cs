@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour
 {
     public float AttackDamage { get { return Mathf.Max((ud.damage * (1 + unitStatData_st.attack_PlusPercent * 0.01f)) + unitStatData_st.attack_Plus, 0); }}
-    public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed + unitStatData_st.attackSpeed_Plus, 0.1f); } }
+    public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed * (1 + unitStatData_st.attackSpeed_PlusPercent * 0.01f) + unitStatData_st.attackSpeed_Plus, 0.001f); } }
     public int Accuracy { get { return Mathf.Max(ud.accuracy + unitStatData_st.accuracy_Plus, 0);} }
     public int TargetCount { get { return Mathf.Max(ud.target_Count + unitStatData_st.targetCount_Plus, 1); } }
     public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); } }
@@ -25,8 +25,10 @@ public abstract class Unit : MonoBehaviour
         public float attack_Plus;
         //공격력 증감(비율)
         public float attack_PlusPercent;
-        //공격속도 증감
+        //공격속도 증감(절대값)
         public float attackSpeed_Plus;
+        //공격속도 증감(비율)
+        public float attackSpeed_PlusPercent;
         //주는 피해량 증감
         public float attackBoost_PlusPercent;
         //명중률 증감
@@ -114,6 +116,8 @@ public abstract class Unit : MonoBehaviour
     protected RaycastHit2D hit;
     //관통 공격 여부
     [HideInInspector] public bool isPenetration;
+    //고정 공격 여부
+    [HideInInspector] public bool isTrueDamage;
     #endregion
     #region 피격 변수
     //현재 체력
@@ -138,7 +142,7 @@ public abstract class Unit : MonoBehaviour
                 DunGeonManager_New.instance.princessHpPanel.SetHpBar(this);
 
             //체력바 갱신
-            hpBar.SetHpBar();
+            hpBar?.SetHpBar();
         }
     }
     protected HpBar_new hpBar;
@@ -423,14 +427,20 @@ public abstract class Unit : MonoBehaviour
     //공격 명중 시 피해를 주는 함수
     protected virtual void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
+        if (target_Unit.Cur_Hp <= 0)
+            return;
+
         float type_res = attackType == target_Unit.ud.resistance_Type ? 0.5f : 1;
         float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
 
         //최종 피해량
         float totalDamage;
 
+        //고정공격일 경우
+        if (isTrueDamage)
+            totalDamage = damage;
         //관통공격일 경우
-        if (isPenetration)
+        else if (isPenetration)
             totalDamage = damage * type_weak;
         else
             totalDamage = (damage - target_Unit.Armor)
@@ -439,6 +449,28 @@ public abstract class Unit : MonoBehaviour
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
         target_Unit.TakeDamage(totalDamage);
+
+        //유닛 처치 골드
+        if(target_Unit.Cur_Hp <= 0)
+        {
+            int getGold = 0;
+            if (target_Unit.GetComponent<BossGuard>())
+                getGold = 500;
+            else
+            {
+                if (this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
+                    getGold = 30;
+                else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
+                    getGold = 50;
+                else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
+                    getGold = 150;
+            }
+
+            if (GameManager.Instance.current_Meal?.code == 1)
+                getGold *= 2;
+
+            DunGeonManager_New.instance.GetGold(getGold);
+        }
 
         //피격 이펙트 생성
         FxManager.Instance.Hit(hitParent.position);
@@ -593,6 +625,10 @@ public abstract class Unit : MonoBehaviour
     //체력 회복
     public void GetHp(float amount)
     {
+        //식사 효과 (칠면조 바비큐)
+        if (GameManager.Instance.current_Meal?.code == 3)
+            amount *= (1 + GameManager.Instance.current_Meal.mealValue * 0.01f);
+
         if (Cur_Hp + amount > Max_Hp)
             Cur_Hp = Max_Hp;
             Cur_Hp += amount;

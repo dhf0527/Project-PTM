@@ -14,6 +14,7 @@ public class GameClearPanel : MonoBehaviour
     [SerializeField] TMP_Text reward_Text;
 
     [SerializeField] Sprite[] rank_Sprites;
+    [SerializeField] bool isWin;
 
     int resultTime;
     int reward;
@@ -28,7 +29,12 @@ public class GameClearPanel : MonoBehaviour
 
         string dungeonNumber = $"{stage}-{order}";
         //소울 보상 계산
-        reward = resultTime * (3 + stage) * 2;
+        reward = resultTime * (3 + stage);
+
+        if(isWin)
+            //식사 효과(모험가의 주먹밥)
+            reward *= GameManager.Instance.current_Meal?.code == 5 ? (int)GameManager.Instance.current_Meal.mealValue : 2;
+
         //보상 지급
         PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);
 
