@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class Princess : Unit
 {
@@ -90,6 +91,24 @@ public class Princess : Unit
         unitStatData_st.moveSpeed_Plus += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "4"));
         unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "5"));
         unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "6"));
+
+        #region 식사 효과
+        //불사조 닭발
+        if (GameManager.Instance.current_Meal?.code == 100)
+            unitStatData_st.attack_PlusPercent += GameManager.Instance.current_Meal.mealValue;
+        //든든 국밥
+        else if (GameManager.Instance.current_Meal?.code == 101)
+        {
+            unitStatData_st.avoidance_Plus += (int)GameManager.Instance.current_Meal.mealValue;
+            unitStatData_st.accuracy_Plus += (int)GameManager.Instance.current_Meal.mealValue2;
+        }
+        //크라운 스테이크
+        else if (GameManager.Instance.current_Meal?.code == 103)
+        {
+            unitStatData_st.totalDamage_PlusPercent += 100;
+            unitStatData_st.totalDamageReduction_PlusPercent += 50;
+        }
+        #endregion
     }
 
     #region readOnly

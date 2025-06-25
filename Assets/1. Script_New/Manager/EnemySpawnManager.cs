@@ -127,7 +127,14 @@ public class EnemySpawnManager : MonoBehaviour
 
                 //해당 유닛 번호가 비어있으면 유닛을 생산하지 않음
                 if (spawn_Units[cur_Wave, i])
-                    Spawn_Unit(spawn_Units[cur_Wave, i]);
+                {
+                    //크라운 스테이크
+                    if (GameManager.Instance.current_Meal?.code == 103)
+                        StartCoroutine(C_Spawn_Unit(spawn_Units[cur_Wave, i]));
+                    else
+                        Spawn_Unit(spawn_Units[cur_Wave, i]);
+
+                }
             }
         }
     }
@@ -144,7 +151,6 @@ public class EnemySpawnManager : MonoBehaviour
         spawned_Unit.IsTeam = false;
 
         //식사 효과(꽃빙수)
-
         if(GameManager.Instance.current_Meal?.code == 4)
         {
             spawned_Unit.unitStatData_st.moveSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
@@ -154,6 +160,12 @@ public class EnemySpawnManager : MonoBehaviour
         return spawned_Unit;
     }
 
+    IEnumerator C_Spawn_Unit(Unit unit)
+    {
+        Spawn_Unit(unit);
+        yield return new WaitForSeconds(0.5f);
+        Spawn_Unit(unit);
+    }
     #endregion
 
     #region 웨이브 함수

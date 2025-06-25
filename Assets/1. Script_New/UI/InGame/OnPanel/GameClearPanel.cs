@@ -12,6 +12,8 @@ public class GameClearPanel : MonoBehaviour
     [SerializeField] Image rank_Image;
     [SerializeField] TMP_Text newRecord_Text;
     [SerializeField] TMP_Text reward_Text;
+    [SerializeField] TMP_Text info_Text;
+    [SerializeField] Image meal_Image;
 
     [SerializeField] Sprite[] rank_Sprites;
     [SerializeField] bool isWin;
@@ -31,9 +33,24 @@ public class GameClearPanel : MonoBehaviour
         //소울 보상 계산
         reward = resultTime * (3 + stage);
 
-        if(isWin)
-            //식사 효과(모험가의 주먹밥)
-            reward *= GameManager.Instance.current_Meal?.code == 5 ? (int)GameManager.Instance.current_Meal.mealValue : 2;
+        if (isWin)
+        {
+            //모험가의 주먹밥
+            if (GameManager.Instance.current_Meal?.code == 5)
+            {
+                reward *= 5;
+                meal_Image.sprite = GameManager.Instance.current_Meal.mealIcon;
+                meal_Image.gameObject.SetActive(true);
+                info_Text.text = "(승리 보너스X5)";
+            }
+            else
+            {
+                reward *= 2;
+                meal_Image.gameObject.SetActive(false);
+                info_Text.text = "(승리 보너스X2)";
+            }
+        }
+            
 
         //보상 지급
         PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);

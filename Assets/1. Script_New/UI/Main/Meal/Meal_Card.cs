@@ -29,6 +29,7 @@ public class Meal_Card : MonoBehaviour
         mealName_Text.text = Md.mealName;
 
         string mealDsc = Regex.Replace(Md.mealDescription, @"\{value\}", Md.mealValue.ToString());
+        mealDsc = Regex.Replace(mealDsc, @"\{value2\}", Md.mealValue2.ToString());
         mealDescription_Text.text = mealDsc;
     }
 

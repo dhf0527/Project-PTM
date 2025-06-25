@@ -364,6 +364,18 @@ public class DunGeonManager_New : MonoBehaviour
 
         #endregion
 
+        //정체불명 햄버거
+        if(GameManager.Instance.current_Meal?.code == 102)
+        {
+            unitUnlock.cards[1].gameObject.SetActive(false);
+            unitUnlock.cards[2].gameObject.SetActive(false);
+        }
+        else
+        {
+            foreach (var item in unitUnlock.cards)
+                item.gameObject.SetActive(true);
+        }
+
         //해금에 나올 유닛들 수동으로 설정(테스트용)
         for (int i = 0; i < unitUnlock.cards.Count; i++)
         {

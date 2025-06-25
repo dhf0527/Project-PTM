@@ -9,6 +9,7 @@ public class MealData : ScriptableObject
     public string mealName;
     public Sprite mealIcon;
     public float mealValue;
+    public float mealValue2;
     public string mealDescription;
     public MealRarity mealRarity;
 }

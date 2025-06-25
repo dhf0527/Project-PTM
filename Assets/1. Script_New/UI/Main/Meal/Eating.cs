@@ -55,4 +55,13 @@ public class Eating : MonoBehaviour
             yield return null;
         }
     }
+
+    public void Test_Complete()
+    {
+        meal.OpenGo(meal.gameObjects[3]);
+        StopAllCoroutines();
+        loading_Text.text = origin_Text;
+
+        MainManager.instance.OnMeal(true);
+    }
 }

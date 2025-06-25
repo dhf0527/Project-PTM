@@ -69617,13 +69617,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1849161599}
-        m_TargetAssemblyTypeName: Meal, Assembly-CSharp
-        m_MethodName: OpenGo
-        m_Mode: 2
+      - m_Target: {fileID: 788647341}
+        m_TargetAssemblyTypeName: Eating, Assembly-CSharp
+        m_MethodName: Test_Complete
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 360927904}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -73637,6 +73637,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8e0f9b4649ebdf4d960f0ac972041d1, type: 2}
   - {fileID: 11400000, guid: 6714d0ac1900f454aaab5cec28f3b82d, type: 2}
   - {fileID: 11400000, guid: 96a563ac23c2df744b0a62e69951e240, type: 2}
+  - {fileID: 11400000, guid: 27556bb32fd3e9e448acf0e2bd1b5f5b, type: 2}
+  - {fileID: 11400000, guid: 87fefda263b73d146aba657d3c0c0088, type: 2}
+  - {fileID: 11400000, guid: e92e4d3904ef5dd4e9d7842efc402aea, type: 2}
+  - {fileID: 11400000, guid: f7d74ea2955b1af43b9cc8fd5f8f3063, type: 2}
   gameObjects:
   - {fileID: 1021302093}
   - {fileID: 755655000}

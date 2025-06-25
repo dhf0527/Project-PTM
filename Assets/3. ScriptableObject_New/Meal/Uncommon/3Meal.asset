@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53b9fdb48c38264fa02c06c8362137f, type: 3}
+  m_Name: 3Meal
+  m_EditorClassIdentifier: 
+  code: 3
+  mealName: "\uCE60\uBA74\uC870 \uBC14\uBE44\uD050"
+  mealIcon: {fileID: 21300032, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  mealValue: 100
+  mealDescription: "\uBAA8\uB4E0 \uC544\uAD70\uC758 \uC0DD\uBA85\uB825 \uD68C\uBCF5\uB7C9
+    {value}% \uC99D\uAC00"
+  mealRarity: 0

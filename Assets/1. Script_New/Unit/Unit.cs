@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class Unit : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public abstract class Unit : MonoBehaviour
     //스탯의 증감치를 담는 구조체
     public struct UnitStatData_Struct
     {
+        //최종 데미지 증감(비율)
+        public float totalDamage_PlusPercent;
         //공격력 증감(절대값)
         public float attack_Plus;
         //공격력 증감(비율)
@@ -36,6 +39,8 @@ public abstract class Unit : MonoBehaviour
         //타겟 수 증감
         public int targetCount_Plus;
 
+        //최종 피해량 증감
+        public float totalDamageReduction_PlusPercent;
         //최대체력 증감
         public float max_Hp_Plus;
         //방어력 증감(절대값)
@@ -178,7 +183,6 @@ public abstract class Unit : MonoBehaviour
 
     protected void Update()
     {
-
         if (isDead || isKnockBacking)
             return;
 
@@ -445,6 +449,9 @@ public abstract class Unit : MonoBehaviour
         else
             totalDamage = (damage - target_Unit.Armor)
                 * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f);
+
+        totalDamage *= 1 + unitStatData_st.totalDamage_PlusPercent * 0.01f;
+        totalDamage *= 1 - unitStatData_st.totalDamageReduction_PlusPercent * 0.01f;
 
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;

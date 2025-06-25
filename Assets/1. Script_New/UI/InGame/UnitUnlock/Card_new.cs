@@ -149,12 +149,28 @@ public class Card_new : MonoBehaviour
         #endregion
 
         #region 식사 효과 적용
-        //유리비늘 생선구이
-        if (GameManager.Instance.current_Meal?.code == 0 && unit.ud.armor == 0)
-            unit.unitStatData_st.armor_Plus += (int)GameManager.Instance.current_Meal.mealValue;
-        //로즈베리 케이크
-        else if (GameManager.Instance.current_Meal?.code == 6)
-            unit.isTrueDamage = true;
+        if (GameManager.Instance.current_Meal)
+        {
+            MealData md = GameManager.Instance.current_Meal;
+            //유리비늘 생선구이
+            if (md.code == 0 && unit.ud.armor == 0)
+                unit.unitStatData_st.armor_Plus += (int)md.mealValue;
+            //로즈베리 케이크
+            else if (md.code == 6)
+                unit.isTrueDamage = true;
+            //불사조 닭발
+            else if (md.code == 100)
+                unit.unitStatData_st.attack_PlusPercent += md.mealValue2;
+            //든든 국밥
+            else if (md.code == 101)
+            {
+                unit.unitStatData_st.avoidance_Plus += (int)md.mealValue;
+                unit.unitStatData_st.accuracy_Plus += (int)md.mealValue2;
+            }
+            //정체불명 햄버거
+            else if (md.code == 102)
+                unit.unitStatData_st.cost_MinusPercent += md.mealValue;
+        }
         #endregion
 
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
