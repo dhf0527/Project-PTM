@@ -16,7 +16,6 @@ public class UnitUpgrade : MonoBehaviour
     public TMP_Text upgrade_Name;
     public TMP_Text upgrade_Cost;
     public TMP_Text upgrade_Detail;
-    public List<Image> level_Images;
 
     //선택된 업그레이드 요소들
     public GameObject selectedUpgrade_Go;   
@@ -71,21 +70,6 @@ public class UnitUpgrade : MonoBehaviour
         }
         upgrade_Detail.text = uud.upgradeDescription.Replace("{value}", $"({replace_Word})" );
 
-        //레벨 표시
-        for (int i = 0; i < level_Images.Count; i++)
-        {
-            if(i < uud.upgradeValue.Count)
-            {
-                level_Images[i].gameObject.SetActive(true);
-                if (i < uuc_level)
-                    level_Images[i].sprite = star_Sprites[1];
-                else
-                    level_Images[i].sprite = star_Sprites[0];
-            }
-            else
-                level_Images[i].gameObject.SetActive(false);
-        }
-
         //스타가 부족하거나 업그레이드 최대치일 때 업그레이드 비활성
         upgrade_Button.interactable = Star >= 2 && uuc_level != uud.upgradeValue.Count;
 
@@ -101,6 +85,9 @@ public class UnitUpgrade : MonoBehaviour
             selected_UnitUpgradeContent.Level++;
             SetUpgrade(selected_UnitUpgradeContent);
             Star -= 2;
+            AudioManager.instance.PlayerSfx(SFX_Enum.HeroUpgrade);
+            upgrade_Button.GetComponent<Animation>().Stop();
+            upgrade_Button.GetComponent<Animation>().Play();
         }
     }
 
