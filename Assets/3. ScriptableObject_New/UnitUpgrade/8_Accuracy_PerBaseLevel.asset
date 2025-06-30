@@ -19,4 +19,4 @@ MonoBehaviour:
   - 2
   - 4
   upgradeDescription: "\uC544\uAD70 \uC694\uC0C8 \uB808\uBCA8 \uB2F9 \uC6A9\uBCD1\uC758
-    \uBA85\uC911\uB960 2/4 \uC99D\uAC00"
+    \uBA85\uC911\uB960 {value} \uC99D\uAC00"

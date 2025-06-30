@@ -37,4 +37,9 @@ public class Meal_Card : MonoBehaviour
     {
         mask_Go.SetActive(isActive);
     }
+
+    public void OnClickSound()
+    {
+        AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+    }
 }

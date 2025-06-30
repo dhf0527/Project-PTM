@@ -54,6 +54,8 @@ public class GameClearPanel : MonoBehaviour
 
         //보상 지급
         PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);
+        //식사 효과 제거
+        GameManager.Instance.current_Meal = null;
 
         dungeonNumber_Text.text = dungeonNumber;
         resultTime_Text.text = $"0s";

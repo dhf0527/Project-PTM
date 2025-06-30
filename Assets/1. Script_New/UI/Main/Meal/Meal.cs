@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,8 +15,12 @@ public class Meal : MonoBehaviour
     public TMP_Text eat_Meal_Text;
     public Meal_Card eat_Meal_Card;
     public Button selectConfirm_Button;
+    public Button reroll_Button;
+    public TMP_Text nextDate_Text;
 
     MealData selected_md;
+    const string LastRerollKey = "LastRerollDate";
+
     public void OpenGo(GameObject go)
     {
         foreach (var item in gameObjects)
@@ -38,10 +43,50 @@ public class Meal : MonoBehaviour
         //마스크 초기화
         foreach (var item in meal_Cards)
             item.OnMask(false);
+
+        reroll_Button.interactable = CanDailyReroll();
     }
 
+    #region 새로고침
     //새로고침 버튼을 눌렀을 때 호출
-    public void OnResetMealData()
+    public void OnRerollMealData()
+    {
+        if(CanDailyReroll())
+        {
+            RerollMealData();
+
+            //날짜 업데이트
+            PlayerPrefs.SetString(LastRerollKey, DateTime.Now.ToString());
+            CanDailyReroll();
+        }
+    }
+
+    //하루 한 번 실행하도록 확인하는 함수
+    bool CanDailyReroll()
+    {
+        bool canReroll;
+
+        string lastRerollDate = PlayerPrefs.GetString(LastRerollKey, "");
+
+        //최초 실행 체크
+        if (string.IsNullOrEmpty(lastRerollDate))
+            canReroll = true;
+        else
+        {
+            DateTime lastDate = DateTime.Parse(lastRerollDate);
+            DateTime currentDate = DateTime.Now;
+
+            canReroll = lastDate.Date != currentDate.Date;
+        }
+
+        nextDate_Text.gameObject.SetActive(!canReroll);
+        reroll_Button.interactable = canReroll;
+
+        return canReroll;
+    }
+
+    //새로고침
+    public void RerollMealData()
     {
         List<MealData> inputMealDatas = new List<MealData>(mealDatas);
         int k = meal_Cards.Count;
@@ -55,13 +100,21 @@ public class Meal : MonoBehaviour
             meal_Cards[i].Md = rand_Mds[i];
     }
 
+    //테스트 - 리롤 날짜 초기화
+    public void TestResetDate()
+    {
+        PlayerPrefs.SetString(LastRerollKey, "");
+        reroll_Button.interactable = CanDailyReroll();
+    }
+    #endregion
+
     //식사 k개 무작위로 뽑기 - FisherYates알고리즘
     List<MealData> GetRandomMealData(List<MealData> inputMds, int k)
     {
         List<MealData> mds = new List<MealData>(inputMds);
         for (int i = inputMds.Count - 1; i > 0; i--)
         {
-            int j = Random.Range(0, i + 1);
+            int j = UnityEngine.Random.Range(0, i + 1);
 
             MealData tmp_md = mds[j];
             mds[j] = mds[i];

@@ -19,6 +19,7 @@ public class MealDetail : MonoBehaviour
         mealName_Text.text = md.mealName;
 
         string mealDsc = Regex.Replace(md.mealDescription, @"\{value\}", md.mealValue.ToString());
+        mealDsc = Regex.Replace(mealDsc, @"\{value2\}", md.mealValue2.ToString());
         mealDescription_Text.text = mealDsc;
     }
 }

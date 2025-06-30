@@ -8,6 +8,8 @@ using static UnityEngine.UI.CanvasScaler;
 
 public class Princess : Unit
 {
+    [Header("방패 강타 데미지 비율(%)")]
+    [SerializeField] float skill1_Damage;
     [SerializeField] float skill1_coolTime;
     [SerializeField] float skill2_coolTime;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
@@ -277,7 +279,7 @@ public class Princess : Unit
             //넉백
             target_Unit.OnStartKnockBack();
             //데미지 부여
-            float dmg = 3 * AttackDamage * (1+ unitStatData_st.attackBoost_PlusPercent * 0.01f);
+            float dmg = (skill1_Damage * 0.01f) * AttackDamage * (1+ unitStatData_st.attackBoost_PlusPercent * 0.01f);
             ApplyAttack(target_Unit, dmg, AttackType.Physical);
             //디버프 처리
             target_Unit.AddComponent<ShieldSmiteDebuff>();
