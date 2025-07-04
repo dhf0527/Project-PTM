@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector] public MealData current_Meal;
+    [HideInInspector] public DungeonData current_Dungeon;
 
     private void Awake()
     {

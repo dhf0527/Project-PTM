@@ -35,6 +35,8 @@ public class EnemySpawnManager : MonoBehaviour
     public float[] phase1_SpawnTimes = new float[3];
     public float[] phase2_SpawnTimes = new float[3];
 
+    [Header("유닛 수동 설정")]
+    public bool isManualSetUnit;
     [Header("적 유닛(임시)")]
     public Unit[] wave1_enemy = new Unit[3];
     public Unit[] wave2_enemy = new Unit[3];
@@ -75,12 +77,24 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        //스폰할 유닛 데이터 삽입(임시)
-        for (int i = 0; i < spawn_Units.GetLength(0); i++)
+        if (isManualSetUnit || !GameManager.Instance.current_Dungeon)
         {
-            spawn_Units[0, i] = wave1_enemy[i];
-            spawn_Units[1, i] = wave2_enemy[i];
-            spawn_Units[2, i] = wave3_enemy[i];
+            //스폰할 유닛 데이터 삽입(임시)
+            for (int i = 0; i < spawn_Units.GetLength(0); i++)
+            {
+                spawn_Units[0, i] = wave1_enemy[i];
+                spawn_Units[1, i] = wave2_enemy[i];
+                spawn_Units[2, i] = wave3_enemy[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < spawn_Units.GetLength(0); i++)
+            {
+                spawn_Units[0, i] = GameManager.Instance.current_Dungeon.units_Wave1[i];
+                spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
+                spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
+            }
         }
 
         Spawn_Unit(spawn_Units[0, 0]);

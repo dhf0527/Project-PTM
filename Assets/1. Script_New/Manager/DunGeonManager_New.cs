@@ -108,6 +108,13 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("아군 요새의 (Element + 1)레벨 능력치")]
     public List<AbillitiesByLevel> base_abillitiesByLevels;
     #endregion
+    #region 세력 변수
+    [Header("세력 (왕국,요정,마왕,묘지기순)")]
+    public List<Sprite> bridge_Sprites;
+    public List<Sprite> base_Sprites;
+    public SpriteRenderer bridge_Sr;
+    public SpriteRenderer base_Sr;
+    #endregion
     #region 디버깅
     [Header("(테스트용)고용할 유닛들")]
     [SerializeField] Unit[] test_Units = new Unit[3];
@@ -154,6 +161,13 @@ public class DunGeonManager_New : MonoBehaviour
 
         //베이스 1레벨 표시
         teamBase.Base_level = 1;
+
+        //다리 밑 베이스 스프라이트 변경
+        if (GameManager.Instance.current_Dungeon)
+        {
+            bridge_Sr.sprite = bridge_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
+            base_Sr.sprite = base_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
+        }
 
         //식사 효과(잿빛 후추 라면)
         if (GameManager.Instance.current_Meal?.code == 7)
@@ -406,7 +420,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     #endregion
 
-    #region 공주 관련 함수
+    #region 공주
     //공주 부활을 쿨타임 설정하는 함수
     public void PrincessCoolDown()
     {
@@ -425,6 +439,7 @@ public class DunGeonManager_New : MonoBehaviour
     }
     #endregion
 
+    #region 배속
     //2배속 함수
     public void OnFasty()
     {
@@ -444,7 +459,9 @@ public class DunGeonManager_New : MonoBehaviour
         pauseStack = 0;
         Time.timeScale = 1;
     }
+    #endregion
 
+    #region 결과창
     public void OpenGameClearPanel()
     {
         EnemySpawnManager.instance.StopWarn();
@@ -460,4 +477,7 @@ public class DunGeonManager_New : MonoBehaviour
         GameClearPanel.gameObject.SetActive(false);
         GameOverPanel.SetClearPanel();
     }
+    #endregion
+
+
 }

@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 1
   number: 2
-  bossUnit: {fileID: 11400000, guid: d2745a8df907b3b4d97a3080282a4284, type: 2}
-  units:
-  - {fileID: 11400000, guid: d2745a8df907b3b4d97a3080282a4284, type: 2}
+  bossUnit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
+  units_Wave1:
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  units_Wave2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  units_Wave3:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  stage_Faction: 2

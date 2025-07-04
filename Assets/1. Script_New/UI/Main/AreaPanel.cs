@@ -13,6 +13,6 @@ public class AreaPanel : MonoBehaviour
     public void SetData(DungeonData dd)
     {
         stage_Text.text = $"{dd.stage}-{dd.number}";
-        boss_Image.sprite = dd.bossUnit.unit_Sprite;
+        boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
     }
 }
