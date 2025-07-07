@@ -8,4 +8,6 @@ public static class ReadOnlyData
     
     public readonly static string statGrade = "statGrade";
     public readonly static string unitUpgrade = "unitUpgrade";
+    public readonly static string dungeonClearTime = "dungeonClear";
+
 }

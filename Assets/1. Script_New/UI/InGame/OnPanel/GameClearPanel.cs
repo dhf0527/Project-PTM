@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
 public class GameClearPanel : MonoBehaviour
@@ -9,7 +11,7 @@ public class GameClearPanel : MonoBehaviour
     [SerializeField] Image backGround_Image;
     [SerializeField] TMP_Text dungeonNumber_Text;
     [SerializeField] TMP_Text resultTime_Text;
-    [SerializeField] Image rank_Image;
+    [SerializeField] Image star_Image;
     [SerializeField] TMP_Text newRecord_Text;
     [SerializeField] TMP_Text reward_Text;
     [SerializeField] TMP_Text info_Text;
@@ -25,11 +27,11 @@ public class GameClearPanel : MonoBehaviour
         Time.timeScale = 1;
 
         //임시
-        int stage = 1;
-        int order = 1;
+        int stage = GameManager.Instance.current_Dungeon.stage;
+        int number = GameManager.Instance.current_Dungeon.number;
         resultTime = (int)DunGeonManager_New.instance.inGamePlayTime;
 
-        string dungeonNumber = $"{stage}-{order}";
+        string dungeonNumber = $"{stage}-{number}";
         //소울 보상 계산
         reward = resultTime * (3 + stage);
 
@@ -49,8 +51,33 @@ public class GameClearPanel : MonoBehaviour
                 meal_Image.gameObject.SetActive(false);
                 info_Text.text = "(승리 보너스X2)";
             }
+
+            //랭크 스타 이미지 변경
+            int clear_Rank = resultTime == 0 ? 0 : resultTime < 200 ? 3 : resultTime < 300 ? 2 : 1;
+            if (clear_Rank == 0)
+                star_Image.gameObject.SetActive(false);
+            else
+            {
+                star_Image.gameObject.SetActive(true);
+                star_Image.sprite = rank_Sprites[clear_Rank - 1];
+            }    
+
+            //클리어 정보 전달
+            string clearData_Key = ReadOnlyData.dungeonClearTime + $"{stage},{number}";
+            int pre_Record = PlayerPrefs.GetInt(clearData_Key);
+            //신기록 처리
+            if (resultTime < pre_Record || pre_Record == 0 )
+            {
+                //스타 획득
+                int pre_Rank = pre_Record == 0 ? 0 : pre_Record < 200 ? 3 : pre_Record < 300 ? 2 : 1;
+                PlayerPrefs.SetInt("Star", PlayerPrefs.GetInt("Star") + clear_Rank - pre_Rank); 
+
+                PlayerPrefs.SetInt(clearData_Key, resultTime);
+                newRecord_Text.gameObject.SetActive(true);
+            }
+            else
+                newRecord_Text.gameObject.SetActive(false);
         }
-            
 
         //보상 지급
         PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);
