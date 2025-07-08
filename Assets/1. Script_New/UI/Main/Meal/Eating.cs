@@ -13,6 +13,8 @@ public class Eating : MonoBehaviour
     [SerializeField] float loadingTime = 2;
     string origin_Text;
 
+    AudioSource playingSfxChannel;
+
     private void OnEnable()
     {
         origin_Text = loading_Text.text;
@@ -23,6 +25,8 @@ public class Eating : MonoBehaviour
 
     IEnumerator C_LoadingBar()
     {
+        playingSfxChannel = AudioManager.Instance.PlayerSfx(SFX_Enum.Eating);
+
         loading_Bar.fillAmount = 0;
         float t = 0;
         while (t < loadingTime)
@@ -36,6 +40,9 @@ public class Eating : MonoBehaviour
         loading_Text.text = origin_Text;
 
         MainManager.instance.OnMeal(true);
+
+        playingSfxChannel.Stop();
+        AudioManager.Instance.PlayerSfx(SFX_Enum.MealComplete);
     }
 
     IEnumerator C_LoadingText()

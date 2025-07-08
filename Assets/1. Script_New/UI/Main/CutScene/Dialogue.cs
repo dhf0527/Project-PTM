@@ -34,7 +34,7 @@ public class Dialogue : MonoBehaviour
         StringBuilder sb = new StringBuilder();
 
         //타이핑 효과음 재생
-        text_AudioSource = AudioManager.instance.PlayerSfx_Source(SFX_Enum.Dialogue2);
+        text_AudioSource = AudioManager.Instance.PlayerSfx_Source(SFX_Enum.Dialogue2);
         text_AudioSource.loop = true;
 
         for (int i = 0; i < input_text.Length; i++)
@@ -69,7 +69,7 @@ public class Dialogue : MonoBehaviour
             cutSceneManager.PrintNextDialogue();
         }
 
-        AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
     }
 
     public void EndTyping()

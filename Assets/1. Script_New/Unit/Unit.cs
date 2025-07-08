@@ -17,7 +17,7 @@ public abstract class Unit : MonoBehaviour
     public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
     public float SpawnCoolDown { get { return ud.cost * 0.04f * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
 
-    public Unit_Size size;
+    [HideInInspector] public Unit_Size size;
 
     //스탯의 증감치를 담는 구조체
     public struct UnitStatData_Struct
@@ -346,7 +346,7 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
-    void MeleeAttack()
+    virtual protected void MeleeAttack()
     {
         //방향 설정
         Vector2 rayDir = IsTeam ? Vector2.right : Vector2.left;
@@ -361,28 +361,21 @@ public abstract class Unit : MonoBehaviour
             Unit target_Unit = hits[i].collider.GetComponent<Unit>();
             if (TryAttack(target_Unit))
             {
-                float dmg = AttackDamage * (1 + unitStatData_st.attackBoost_PlusPercent * 0.01f);
-
-                if (target_Unit.GetComponent<BossGuard>())
-                {
-                    int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 9);
-                    if (upgradeLv != 0)
-                        dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1]) * 0.01f);
-                }
-
+                //추가데미지 계산
+                float dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + CalculateAttackBoost(target_Unit)) * 0.01f);
                 ApplyAttack(target_Unit, dmg, ud.attack_Type);
                 switch (ud.attack_Type)
                 {
                     case AttackType.None:
                         break;
                     case AttackType.Physical:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Physic);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Physic);
                         break;
                     case AttackType.Magical:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Magic);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Magic);
                         break;
                     case AttackType.Fire:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Fire);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Fire);
                         break;
                     default:
                         break;
@@ -390,12 +383,12 @@ public abstract class Unit : MonoBehaviour
             }
             else
             {
-                AudioManager.instance.PlayerSfx(SFX_Enum.Avoid);
+                AudioManager.Instance.PlayerSfx(SFX_Enum.Avoid);
             }
         }
     }
 
-    void RangedAttack()
+    virtual protected void RangedAttack()
     {
         //바라보는 방향에 따라 투사체 생성 위치 조정
         Vector3 spawn_Pos = ranged_Projectile_Pos.position;
@@ -412,7 +405,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     //공격 전달 판정을 반환
-    bool TryAttack(Unit target_Unit)
+    protected bool TryAttack(Unit target_Unit)
     {
         //명중 확률
         float pro;
@@ -481,6 +474,22 @@ public abstract class Unit : MonoBehaviour
 
         //피격 이펙트 생성
         FxManager.Instance.Hit(hitParent.position);
+    }
+
+    //데미지 증가량 반환 함수
+    virtual protected float CalculateAttackBoost(Unit target_Unit)
+    {
+        float dmgBoost = 0;
+
+        //유닛 업그레이드 효과 보스 추가 데미지
+        if (target_Unit.GetComponent<BossGuard>())
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 9);
+            if (upgradeLv != 0)
+                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1];
+        }
+
+        return dmgBoost;
     }
 
     //공격 딜레이를 구현하는 함수

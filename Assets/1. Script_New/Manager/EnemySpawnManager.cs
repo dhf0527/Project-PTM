@@ -357,7 +357,7 @@ public class EnemySpawnManager : MonoBehaviour
         if (!isBossSpawned)
         {
             backGround_Anim.SetTrigger("SpawnBoss");
-            AudioManager.instance.PlayerBgm(BGM_Enum.Boss);
+            AudioManager.Instance.PlayerBgm(BGM_Enum.Boss);
             isBossSpawned = true;
         }
     }

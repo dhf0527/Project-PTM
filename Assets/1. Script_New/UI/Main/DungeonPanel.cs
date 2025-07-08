@@ -53,11 +53,15 @@ public class DungeonPanel : MonoBehaviour
         int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 200 ? 3 : clear_Time < 300 ? 2 : 1;
 
         if (clear_Rank == 0)
+        {
             star_Image.gameObject.SetActive(false);
+            record_Text.text = "---";
+        }
         else
         {
             star_Image.gameObject.SetActive(true);
             star_Image.sprite = star_Sprites[clear_Rank - 1];
+            record_Text.text = $"{clear_Time}sec";
         }
 
         GameManager.Instance.current_Dungeon = dd;

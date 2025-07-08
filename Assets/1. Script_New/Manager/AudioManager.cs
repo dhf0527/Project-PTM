@@ -1,14 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using static AudioManager;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    #region ΩÃ±€≈Ê
+    private static AudioManager instance;
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject go = new GameObject("AudioManager");
+                instance = go.AddComponent<AudioManager>();
+            }
+
+            return instance;
+        }
+    }
+    #endregion
 
     public int startBGMIndex;
     #region BGM
@@ -31,12 +46,19 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         Init();
     }
 
     private void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+            Destroy(gameObject);
+
         PlayerBgm((BGM_Enum)startBGMIndex);
 
         LoadVolumes();
@@ -81,7 +103,7 @@ public class AudioManager : MonoBehaviour
         bgm_Player.Play();
     }
 
-    public void PlayerSfx(SFX_Enum sfx_enum)
+    public AudioSource PlayerSfx(SFX_Enum sfx_enum)
     {
         for (int i = 0; i < channels; i++)
         {
@@ -98,8 +120,9 @@ public class AudioManager : MonoBehaviour
 
             //ø¿µø¿ ¿Áª˝
             sfx_Players[loopIndex].Play();
-            break;
+            return sfx_Players[loopIndex];
         }
+        return null;
     }
 
     public AudioSource PlayerSfx_Source(SFX_Enum sfx_enum)

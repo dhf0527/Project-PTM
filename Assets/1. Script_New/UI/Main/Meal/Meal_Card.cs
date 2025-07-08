@@ -41,6 +41,6 @@ public class Meal_Card : MonoBehaviour
     public void OnClickSound(bool isOn)
     {
         if(isOn)
-            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
     }
 }

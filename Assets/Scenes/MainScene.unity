@@ -15994,10 +15994,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
-      propertyPath: sfx_Clips.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: sliders.Array.data[0]
       value: 
       objectReference: {fileID: 1166613124}
@@ -16009,10 +16005,6 @@ PrefabInstance:
       propertyPath: sliders.Array.data[2]
       value: 
       objectReference: {fileID: 1484731966}
-    - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
-      propertyPath: sfx_Clips.Array.data[14]
-      value: 
-      objectReference: {fileID: 8300000, guid: 926f292828659dd488d0ee2ebe7e9d94, type: 3}
     - target: {fileID: 8970180194823996693, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -37719,7 +37711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57c6a0e13f627f4a8c2c989763a5614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfx_enum: 0
+  sfx_enum: 17
   isButtonDown: 0
 --- !u!1 &976568070
 GameObject:

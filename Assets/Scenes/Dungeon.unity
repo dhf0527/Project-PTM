@@ -2478,17 +2478,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98031187}
   m_CullTransparentMesh: 1
---- !u!114 &104193632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
-  m_PrefabInstance: {fileID: 4345733284807497838}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4b9569f7e7bff40aac449b1fa2d7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &113365854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4585,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSetVolume_SFX
         m_Mode: 0
@@ -5902,8 +5891,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a8fec6ebbe9a2b2429a31069ff4c72b0, type: 3}
   - {fileID: 21300000, guid: 126ec4e3f1fe9604e83213fcfad83b10, type: 3}
   - {fileID: 21300000, guid: 9cd41d4a8f7fa434ebac70629b1a16c0, type: 3}
+  backGround_Sprites:
+  - {fileID: 21300000, guid: 0d68e3ccb492e6b4c9f909aa0f14f235, type: 3}
+  - {fileID: 21300000, guid: 0d68e3ccb492e6b4c9f909aa0f14f235, type: 3}
+  - {fileID: 21300000, guid: 6d26ed33a1eba394286f79f39940bbe4, type: 3}
+  - {fileID: 21300000, guid: 0a7020323b24f2b49a1d7655c7a2fbef, type: 3}
   bridge_Sr: {fileID: 1696529102}
   base_Sr: {fileID: 963480812}
+  backGround_Sr: {fileID: 973086256}
   test_Units: []
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
@@ -9273,7 +9268,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSetVolume_BGM
         m_Mode: 0
@@ -12389,7 +12384,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlaySfx_By_Int
         m_Mode: 3
@@ -17646,7 +17641,7 @@ GameObject:
   - component: {fileID: 973086257}
   - component: {fileID: 973086258}
   m_Layer: 0
-  m_Name: BackGround_Image
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17661,8 +17656,8 @@ Transform:
   m_GameObject: {fileID: 973086254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 2.84, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 478544262}
@@ -17708,12 +17703,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d5c93b536ca542e44838bf38482aed03, type: 3}
-  m_Color: {r: 0.5746315, g: 0.83308953, b: 0.9547169, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0d68e3ccb492e6b4c9f909aa0f14f235, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 25, y: 6.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -18355,7 +18350,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSaveVolumes
         m_Mode: 1
@@ -20867,7 +20862,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlaySfx_By_Int
         m_Mode: 3
@@ -24621,7 +24616,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSetVolume_Master
         m_Mode: 0
@@ -25913,7 +25908,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlaySfx_By_Int
         m_Mode: 3
@@ -31793,7 +31788,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSaveVolumes
         m_Mode: 1
@@ -32016,7 +32011,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 104193632}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: OnSaveVolumes
         m_Mode: 1
@@ -39040,6 +39035,10 @@ PrefabInstance:
     - target: {fileID: 265878759567852831, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 265878759567852831, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: sliders.Array.size

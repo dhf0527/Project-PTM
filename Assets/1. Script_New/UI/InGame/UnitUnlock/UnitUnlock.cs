@@ -76,7 +76,7 @@ public class UnitUnlock : MonoBehaviour
             DunGeonManager_New.instance.OnPause(true);
             gameObject.SetActive(true);
 
-            AudioManager.instance.PlayerSfx(SFX_Enum.CardAppear);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.CardAppear);
         }
         else
         {

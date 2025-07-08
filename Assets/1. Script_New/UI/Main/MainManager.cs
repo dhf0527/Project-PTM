@@ -47,6 +47,7 @@ public class MainManager : MonoBehaviour
     private void Start()
     {
         Soul = PlayerPrefs.GetInt("Soul");
+        OnMeal(GameManager.Instance?.current_Meal != null);
     }
 
     private void Update()

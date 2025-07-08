@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 8BabyDragon
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: 1706793863, guid: 0f28cbaab3ff5fb49b60b7a43dcd740b, type: 3}
+  unit_Code: 108
+  level: 1
+  unit_Name: "\uC0C8\uB07C \uC6A9"
+  unit_SubName: 
+  faction: 2
+  move_Speed: 200
+  hp: 60
+  damage: 8
+  attack_Speed: 5
+  accuracy: 60
+  avoidance: 40
+  armor: 0
+  attack_RangeType: 1
+  target_Count: 1
+  attack_Type: 3
+  weak_Type: 0
+  resistance_Type: 0
+  spawn_Count: 1
+  size: 0
+  cost: 120
+  passive1: "\uD3ED\uD48D \uC131\uC7A5"
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
+  attack_Range: 0.8

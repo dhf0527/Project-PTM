@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 6GriffinKnight
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: -485092069, guid: 992fd5c451a58174b8fbc52cae333859, type: 3}
+  unit_Code: 306
+  level: 3
+  unit_Name: "\uADF8\uB9AC\uD3F0 \uAE30\uC0AC"
+  unit_SubName: 
+  faction: 0
+  move_Speed: 300
+  hp: 240
+  damage: 35
+  attack_Speed: 5
+  accuracy: 60
+  avoidance: 60
+  armor: 8
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 1
+  weak_Type: 0
+  resistance_Type: 0
+  spawn_Count: 1
+  size: 1
+  cost: 500
+  passive1: "\uBE44\uD589"
+  passive1_Detail: "\uBE44\uD589\uD558\uC9C0 \uBABB\uD558\uB294 \uADFC\uAC70\uB9AC
+    \uACF5\uACA9 \uC720\uB2DB\uC758 \uACF5\uACA9\uC744 \uBC1B\uC744 \uB54C \uD68C\uD53C\uC728\uC774
+    \uB450\uBC30\uB85C \uC801\uC6A9\uB41C\uB2E4."
+  passive2: "\uADF8\uB9AC\uD3F0 \uBC1C\uD1B1"
+  passive2_Detail: "\uC911\uD615, \uB300\uD615 \uC801\uC5D0\uAC8C \uC8FC\uB294 \uD53C\uD574\uAC00
+    *b50*% \uC99D\uAC00\uD55C\uB2E4."
+  attack_Range: 1

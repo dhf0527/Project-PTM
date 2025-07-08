@@ -53,7 +53,7 @@ public class UpGrade : MonoBehaviour
         {
             MainManager.instance.FloatMessage("소울이 부족합니다.");
 
-            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
             return;
         }
 
@@ -66,9 +66,9 @@ public class UpGrade : MonoBehaviour
         }
 
         if(totalCost == 0)
-            AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
         else
-            AudioManager.instance.PlayerSfx(SFX_Enum.HeroUpgrade);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.HeroUpgrade);
 
         MainManager.instance.Soul -= totalCost;
         TotalCost = 0;

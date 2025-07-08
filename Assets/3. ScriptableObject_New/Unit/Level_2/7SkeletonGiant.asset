@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 7SkeletonGiant
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: -1710332013, guid: 071f5c2f56006ed4392201eeb97a7315, type: 3}
+  unit_Code: 207
+  level: 2
+  unit_Name: "\uD574\uACE8 \uAC70\uC778"
+  unit_SubName: 
+  faction: 3
+  move_Speed: 80
+  hp: 180
+  damage: 40
+  attack_Speed: 2
+  accuracy: 60
+  avoidance: 20
+  armor: 6
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 1
+  weak_Type: 3
+  resistance_Type: 0
+  spawn_Count: 1
+  size: 2
+  cost: 300
+  passive1: "\uD574\uACE8 \uAECD\uC9C8"
+  passive1_Detail: 
+  passive2: "\uC2DC\uCCB4 \uC218\uC9D1"
+  passive2_Detail: 
+  attack_Range: 2.5

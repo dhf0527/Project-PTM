@@ -112,8 +112,10 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("세력 (왕국,요정,마왕,묘지기순)")]
     public List<Sprite> bridge_Sprites;
     public List<Sprite> base_Sprites;
+    public List<Sprite> backGround_Sprites;
     public SpriteRenderer bridge_Sr;
     public SpriteRenderer base_Sr;
+    public SpriteRenderer backGround_Sr;
     #endregion
     #region 디버깅
     [Header("(테스트용)고용할 유닛들")]
@@ -162,11 +164,12 @@ public class DunGeonManager_New : MonoBehaviour
         //베이스 1레벨 표시
         teamBase.Base_level = 1;
 
-        //다리 밑 베이스 스프라이트 변경
+        //배경, 요새 스프라이트 변경
         if (GameManager.Instance.current_Dungeon)
         {
             bridge_Sr.sprite = bridge_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
             base_Sr.sprite = base_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
+            backGround_Sr.sprite = backGround_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
         }
 
         //식사 효과(잿빛 후추 라면)
@@ -206,10 +209,10 @@ public class DunGeonManager_New : MonoBehaviour
             StartCoroutine(C_SpawnUnit(index));
             Cur_Gold -= cost;
             unitSpawnButton[index].SetCoolDown();
-            AudioManager.instance.PlayerSfx(SFX_Enum.UnitEmploy);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.UnitEmploy);
         }
         else
-            AudioManager.instance.PlayerSfx(SFX_Enum.Deny);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.Deny);
     }
 
     //실제로 생산을 하는 함수
@@ -300,7 +303,7 @@ public class DunGeonManager_New : MonoBehaviour
         //골드 관련 레벨업 처리
         Set_GoldByBaseLevel();
 
-        AudioManager.instance.PlayerSfx(SFX_Enum.TowerUpGrade);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.TowerUpGrade);
     }
 
     //아군 요새 레벨에 따라 골드 관련 변수 설정

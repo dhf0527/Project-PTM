@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 8VampireCount
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: 125290895, guid: bcf23d87cf79fd4499faaf85a1ce6ae7, type: 3}
+  unit_Code: 308
+  level: 3
+  unit_Name: "\uD761\uD608\uADC0 \uBC31\uC791"
+  unit_SubName: 
+  faction: 3
+  move_Speed: 200
+  hp: 160
+  damage: 30
+  attack_Speed: 7
+  accuracy: 60
+  avoidance: 80
+  armor: 6
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 2
+  weak_Type: 3
+  resistance_Type: 1
+  spawn_Count: 1
+  size: 1
+  cost: 500
+  passive1: "\uC601\uC6D0\uD560 \uAC08\uC99D"
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
+  attack_Range: 1

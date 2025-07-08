@@ -286,7 +286,7 @@ public class Princess : Unit
         }
         StartCoroutine(C_Skill1_CoolDown());
 
-        AudioManager.instance.PlayerSfx(SFX_Enum.ShieldSmite);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.ShieldSmite);
     }
 
     IEnumerator C_Skill1_CoolDown()
@@ -343,7 +343,7 @@ public class Princess : Unit
         }
         StartCoroutine(C_Skill2_CoolDown());
 
-        AudioManager.instance.PlayerSfx(SFX_Enum.BrokenHeroSword);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.BrokenHeroSword);
     }
 
     IEnumerator C_Skill2_CoolDown()

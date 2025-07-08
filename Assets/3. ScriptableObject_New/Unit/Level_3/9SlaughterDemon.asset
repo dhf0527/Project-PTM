@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
+  m_Name: 9SlaughterDemon
+  m_EditorClassIdentifier: 
+  unit_Sprite: {fileID: 1929808394, guid: 8081fb37d847152478356b9947388192, type: 3}
+  unit_Code: 309
+  level: 3
+  unit_Name: "\uD559\uC0B4 \uB9C8\uADC0"
+  unit_SubName: 
+  faction: 2
+  move_Speed: 150
+  hp: 320
+  damage: 60
+  attack_Speed: 3
+  accuracy: 80
+  avoidance: 60
+  armor: 12
+  attack_RangeType: 0
+  target_Count: 1
+  attack_Type: 3
+  weak_Type: 0
+  resistance_Type: 3
+  spawn_Count: 1
+  size: 2
+  cost: 700
+  passive1: "\uD559\uC0B4 \uBCF8\uB2A5"
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
+  attack_Range: 0

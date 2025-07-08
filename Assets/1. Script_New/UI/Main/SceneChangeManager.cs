@@ -11,12 +11,14 @@ public class SceneChangeManager : MonoBehaviour
 
     public void OnToMainScene()
     {
+        AudioManager.Instance.PlayerBgm(BGM_Enum.WorldMap);
         SceneManager.LoadScene(mainSceneName);
         Time.timeScale = 1f;
     }
 
     public void OnToDungeonScene()
     {
+        AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
         SceneManager.LoadScene(dungeonSceneName);
         Time.timeScale = 1f;
     }

@@ -15,7 +15,7 @@ public class ClickAudio : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
             return;
 
         if(!isButtonDown)
-            AudioManager.instance.PlayerSfx(sfx_enum);
+            AudioManager.Instance.PlayerSfx(sfx_enum);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -24,6 +24,6 @@ public class ClickAudio : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
             return;
 
         if (isButtonDown)
-            AudioManager.instance.PlayerSfx(sfx_enum);
+            AudioManager.Instance.PlayerSfx(sfx_enum);
     }
 }

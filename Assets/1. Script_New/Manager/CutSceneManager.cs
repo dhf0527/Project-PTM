@@ -127,7 +127,7 @@ public class CutSceneManager : MonoBehaviour
         EndCutScene();
         cutScene_Go.SetActive(false);
 
-        AudioManager.instance.PlayerSfx(SFX_Enum.Touch);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
     }
 
     public void EndCutScene()

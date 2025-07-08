@@ -85,7 +85,7 @@ public class UnitUpgrade : MonoBehaviour
             selected_UnitUpgradeContent.Level++;
             SetUpgrade(selected_UnitUpgradeContent);
             Star -= 2;
-            AudioManager.instance.PlayerSfx(SFX_Enum.HeroUpgrade);
+            AudioManager.Instance.PlayerSfx(SFX_Enum.HeroUpgrade);
             upgrade_Button.GetComponent<Animation>().Stop();
             upgrade_Button.GetComponent<Animation>().Play();
         }

@@ -44,7 +44,7 @@ public enum BGM_Enum
 public enum SFX_Enum 
 { 
     Touch , CardAppear, TowerUpGrade , UnitConfirm, UnitCoolDown , Deny , UnitEmploy , Hit_Physic , Hit_Magic, Hit_Fire 
-        , Avoid , ShieldSmite, BrokenHeroSword , Dialogue2, HeroUpgrade
+        , Avoid , ShieldSmite, BrokenHeroSword , Dialogue2, HeroUpgrade, Eating, MealComplete , StartStage
 }
 
 public enum EMixer

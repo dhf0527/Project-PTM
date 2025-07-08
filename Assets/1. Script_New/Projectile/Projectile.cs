@@ -96,20 +96,20 @@ public abstract class Projectile : MonoBehaviour
                     case AttackType.None:
                         break;
                     case AttackType.Physical:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Physic);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Physic);
                         break;
                     case AttackType.Magical:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Magic);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Magic);
                         break;
                     case AttackType.Fire:
-                        AudioManager.instance.PlayerSfx(SFX_Enum.Hit_Fire);
+                        AudioManager.Instance.PlayerSfx(SFX_Enum.Hit_Fire);
                         break;
                     default:
                         break;
                 }
             }
             else
-                AudioManager.instance.PlayerSfx(SFX_Enum.Avoid);
+                AudioManager.Instance.PlayerSfx(SFX_Enum.Avoid);
 
             //최대 대상 수만큼 공격 전달을 완료했으면 투사체 삭제
             if (--target_Count <= 0)
