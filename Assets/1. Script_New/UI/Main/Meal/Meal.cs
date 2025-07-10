@@ -9,7 +9,7 @@ public class Meal : MonoBehaviour
 {
     public List<MealData> mealDatas;
 
-    [Header("panel, select, eating, complete순")]
+    [Header("panel, select, eating, complete, full순")]
     public List<GameObject> gameObjects;
     public List<Meal_Card> meal_Cards;
     public TMP_Text eat_Meal_Text;
@@ -21,12 +21,27 @@ public class Meal : MonoBehaviour
     MealData selected_md;
     const string LastRerollKey = "LastRerollDate";
 
+
     public void OpenGo(GameObject go)
     {
-        foreach (var item in gameObjects)
+        if (go == gameObjects[0])
         {
-            item.SetActive(false);
+            string lastEatTime = PlayerPrefs.GetString(ReadOnlyData.mealCompleteTime, "");
+
+            //최초 실행 체크
+            if (!string.IsNullOrEmpty(lastEatTime))
+            {
+                //마지막 식사 완료 시간 체크
+                DateTime lastTime = DateTime.Parse(lastEatTime);
+                DateTime nowTime = DateTime.Now;
+                TimeSpan difference = nowTime - lastTime;
+                if (difference.TotalMinutes < 2)
+                    go = gameObjects[4];
+            }
         }
+
+        foreach (var item in gameObjects)
+            item.SetActive(false);
         go.SetActive(true);
     }
 
@@ -146,6 +161,14 @@ public class Meal : MonoBehaviour
         eat_Meal_Card.Md = selected_md;
 
         GameManager.Instance.current_Meal = selected_md;
+
+        //식사 완료 시간 기록
+        PlayerPrefs.SetString(ReadOnlyData.mealCompleteTime, DateTime.Now.ToString());
+    }
+
+    public void TestResetMealTime()
+    {
+        PlayerPrefs.SetString(ReadOnlyData.mealCompleteTime, "");
     }
 }
 

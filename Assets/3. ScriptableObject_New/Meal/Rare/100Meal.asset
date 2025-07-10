@@ -18,5 +18,5 @@ MonoBehaviour:
   mealValue: -25
   mealValue2: 35
   mealDescription: "\uC601\uC6C5 \uACF5\uACA9\uB825 {value}%, \uC6A9\uBCD1 \uACF5\uACA9\uB825
-    {value2}%"
+    +{value2}%"
   mealRarity: 1

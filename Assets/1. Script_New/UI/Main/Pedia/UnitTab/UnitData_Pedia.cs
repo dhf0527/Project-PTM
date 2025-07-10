@@ -17,6 +17,7 @@ public class UnitData_Pedia : MonoBehaviour
     public Image faction_Image;
     public Image character_Image;
     public Image attackType_Image;
+    public TMP_Text spawnCount_Text;
 
     public TMP_Text name_Text;
     public TMP_Text level_Text;
@@ -34,6 +35,7 @@ public class UnitData_Pedia : MonoBehaviour
         faction_Image.sprite = faction_Sprites[(int)ud.faction];
         character_Image.sprite = ud.unit_Sprite;
         attackType_Image.sprite = attackType_Sprites[(int)ud.attack_Type - 1];
+        spawnCount_Text.text = "X " + ud.spawn_Count.ToString();
 
         name_Text.text = ud.unit_Name;
         level_Text.text = "Lv." + ud.level.ToString();

@@ -65,6 +65,8 @@ public class Card_new : MonoBehaviour
 
         SetFrame();
 
+        unit.unitStatData_st = new();
+
         #region 아이템 효과 적용
         //아이템 효과 적용
         switch (item?.ItemCode)
