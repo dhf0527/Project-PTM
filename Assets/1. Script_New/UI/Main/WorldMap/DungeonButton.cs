@@ -45,7 +45,7 @@ public class DungeonButton : MonoBehaviour
             return;
 
         //다음 스테이지 오픈
-        if(clearCount >= 2)
+        if(clearCount >= 3)
         {
             nextStage_DungeonButton.ActiveButton(true);
             nextStage_DungeonButton.CheckClear();
