@@ -59,6 +59,7 @@ public class UnitUpgradeContent : MonoBehaviour
 
     public int ResetLevel()
     {
+        Level = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString());
         int returnValue = Level * 2;
         Level = 0;
         return returnValue;

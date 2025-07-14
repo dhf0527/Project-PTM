@@ -50,7 +50,7 @@ public class DungeonPanel : MonoBehaviour
         boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
 
         int clear_Time = PlayerPrefs.GetInt(ReadOnlyData.dungeonClearTime + $"{dd.stage},{dd.number}");
-        int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 200 ? 3 : clear_Time < 300 ? 2 : 1;
+        int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
 
         if (clear_Rank == 0)
         {

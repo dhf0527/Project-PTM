@@ -69,7 +69,7 @@ public class GameClearPanel : MonoBehaviour
             if (resultTime < pre_Record || pre_Record == 0 )
             {
                 //½ºÅ¸ È¹µæ
-                int pre_Rank = pre_Record == 0 ? 0 : pre_Record < 200 ? 3 : pre_Record < 300 ? 2 : 1;
+                int pre_Rank = pre_Record == 0 ? 0 : pre_Record < 300 ? 3 : pre_Record < 480 ? 2 : 1;
                 PlayerPrefs.SetInt("Star", PlayerPrefs.GetInt("Star") + clear_Rank - pre_Rank); 
 
                 PlayerPrefs.SetInt(clearData_Key, resultTime);

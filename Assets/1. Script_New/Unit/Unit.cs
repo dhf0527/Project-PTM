@@ -647,6 +647,7 @@ public abstract class Unit : MonoBehaviour
 
         if (Cur_Hp + amount > Max_Hp)
             Cur_Hp = Max_Hp;
+        else
             Cur_Hp += amount;
     }
 }

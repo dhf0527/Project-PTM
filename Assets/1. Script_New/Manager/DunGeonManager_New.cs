@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 
@@ -231,25 +232,32 @@ public class DunGeonManager_New : MonoBehaviour
         //생산 수만큼 반복
         for (int i = 0; i < spawnCount; i++)
         {
-            //유닛 하나 생성 및 설정
-            Unit unit = Instantiate(spawnUnits[index], spawn_Trans);
-            unit.transform.position += SpawnY(unit) + Vector3.forward * spawn_Z;
-            spawn_Z += 0.001f;
-            unit.transform.parent = unit_Parent;
-            unit.IsTeam = true;
+            SpawnUnit(spawnUnits[index]);
 
-            //용병 업그레이드 효과(용병단 깃발)
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 8);
-            if (upgradeLv != 0)
-                unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
-
-            //식사 효과(숙성 참치회)
-            if (GameManager.Instance.current_Meal?.code == 9)
-                unit.unitStatData_st.attack_Plus += EnemySpawnManager.instance.cur_Wave * (GameManager.Instance.current_Meal.mealValue);
-
-        //생산 딜레이
-        yield return new WaitForSeconds(0.5f);
+            //생산 딜레이
+            yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public Unit SpawnUnit(Unit spawnUnit)
+    {
+        //유닛 하나 생성 및 설정
+        Unit unit = Instantiate(spawnUnit, spawn_Trans);
+        unit.transform.position += SpawnY(unit) + Vector3.forward * spawn_Z;
+        spawn_Z += 0.001f;
+        unit.transform.parent = unit_Parent;
+        unit.IsTeam = true;
+
+        //용병 업그레이드 효과(용병단 깃발)
+        int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 8);
+        if (upgradeLv != 0)
+            unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
+
+        //식사 효과(숙성 참치회)
+        if (GameManager.Instance.current_Meal?.code == 9)
+            unit.unitStatData_st.attack_Plus += EnemySpawnManager.instance.cur_Wave * (GameManager.Instance.current_Meal.mealValue);
+
+        return unit;
     }
 
     public void SetUnitSpawnButton(int index)

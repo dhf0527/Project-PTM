@@ -7,7 +7,7 @@ public class SceneChangeManager : MonoBehaviour
 {
     readonly static string mainSceneName = "MainScene";
     readonly static string dungeonSceneName = "Dungeon";
-
+    readonly static string testSceneName = "TestScene";
 
     public void OnToMainScene()
     {
@@ -20,6 +20,13 @@ public class SceneChangeManager : MonoBehaviour
     {
         AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
         SceneManager.LoadScene(dungeonSceneName);
+        Time.timeScale = 1f;
+    }
+
+    public void OnToTestScene()
+    {
+        AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
+        SceneManager.LoadScene(testSceneName);
         Time.timeScale = 1f;
     }
 

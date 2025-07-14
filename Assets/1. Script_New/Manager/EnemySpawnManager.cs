@@ -97,7 +97,8 @@ public class EnemySpawnManager : MonoBehaviour
             }
         }
 
-        Spawn_Unit(spawn_Units[0, 0]);
+        if(!isStopSpawn)
+            Spawn_Unit(spawn_Units[0, 0]);
     }
 
     private void Update()
@@ -154,7 +155,7 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     //À¯´Ö »ý»ê ÇÔ¼ö
-    Unit Spawn_Unit(Unit unit)
+    public Unit Spawn_Unit(Unit unit)
     {
         //À¯´Ö »ý»ê
         Unit spawned_Unit = Instantiate(unit, spawn_Trans);
