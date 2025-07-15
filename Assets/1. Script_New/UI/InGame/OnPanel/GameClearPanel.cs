@@ -53,7 +53,7 @@ public class GameClearPanel : MonoBehaviour
             }
 
             //랭크 스타 이미지 변경
-            int clear_Rank = resultTime == 0 ? 0 : resultTime < 200 ? 3 : resultTime < 300 ? 2 : 1;
+            int clear_Rank = resultTime == 0 ? 0 : resultTime < 300 ? 3 : resultTime < 480 ? 2 : 1;
             if (clear_Rank == 0)
                 star_Image.gameObject.SetActive(false);
             else
@@ -87,6 +87,27 @@ public class GameClearPanel : MonoBehaviour
         dungeonNumber_Text.text = dungeonNumber;
         resultTime_Text.text = $"0s";
         reward_Text.text = $"0";
+
+        //전투 결과 효과음
+        StartCoroutine(C_SetSound());
+    }
+
+    IEnumerator C_SetSound()
+    {
+        float origin_Volume;
+        AudioManager.Instance.mixer.GetFloat(EMixer.BGM.ToString(), out origin_Volume);
+        float t = 0;
+
+        while (t < 2)
+        {
+            t += Time.unscaledDeltaTime;
+            AudioManager.Instance.mixer.SetFloat(EMixer.BGM.ToString(), Mathf.Lerp(origin_Volume, -80 , t / 2));
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        //전투 결과 효과음
+        AudioManager.Instance.PlayerSfx(SFX_Enum.Victory);
     }
 
     public void OnSetPlayTime()

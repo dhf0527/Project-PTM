@@ -28,6 +28,9 @@ public class TestItemButton : MonoBehaviour
 
     public void OnItemClick()
     {
-        us.selected_Id = id;
+        if(us.selected_Id == id)
+            us.selected_Id = null;
+        else
+            us.selected_Id = id;
     }
 }

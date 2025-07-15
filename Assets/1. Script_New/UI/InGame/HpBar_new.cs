@@ -27,7 +27,7 @@ public class HpBar_new : MonoBehaviour
         fill_Image.fillAmount = (unit.Cur_Hp / unit.Max_Hp);
         if (unit.isHpText)
         {
-            hp_Text.text = $"{unit.Cur_Hp / 1} / {unit.Max_Hp / 1}";
+            hp_Text.text = $"{(int)unit.Cur_Hp} / {(int)unit.Max_Hp}";
         }
     }
 

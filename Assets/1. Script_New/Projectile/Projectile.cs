@@ -173,6 +173,8 @@ public abstract class Projectile : MonoBehaviour
         }
 
         FxManager.Instance.Hit(transform.position);
+
+        FxManager.Instance?.DamageText(target_Unit.transform.position + Vector3.up * 1.2f, totalDamage, attackType);
     }
 
 

@@ -474,6 +474,9 @@ public abstract class Unit : MonoBehaviour
 
         //피격 이펙트 생성
         FxManager.Instance.Hit(hitParent.position);
+
+        //데미지 텍스트 생성
+        FxManager.Instance.DamageText(target_Unit.transform.position + Vector3.up * 1.2f, totalDamage, attackType);
     }
 
     //데미지 증가량 반환 함수

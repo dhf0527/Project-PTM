@@ -5350,6 +5350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit_prf: {fileID: 2024584082555695141, guid: 3dcecf6e4d2bbf545b49feeb6d01d957, type: 3}
   fxParent: {fileID: 359409966}
+  damagText_prf: {fileID: 3280679680724444694, guid: c7f643cefaa5d0043be1f779ec46280e, type: 3}
+  worldCanvas: {fileID: 1937814460}
 --- !u!4 &203163637
 Transform:
   m_ObjectHideFlags: 0

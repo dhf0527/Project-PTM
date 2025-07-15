@@ -4025,6 +4025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit_prf: {fileID: 2024584082555695141, guid: 3dcecf6e4d2bbf545b49feeb6d01d957, type: 3}
   fxParent: {fileID: 359409966}
+  damagText_prf: {fileID: 0}
+  worldCanvas: {fileID: 0}
 --- !u!4 &203163637
 Transform:
   m_ObjectHideFlags: 0
@@ -17760,7 +17762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1dbe2540ef224ab23729b6baa1c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
 --- !u!1 &975434761
 GameObject:
   m_ObjectHideFlags: 0
