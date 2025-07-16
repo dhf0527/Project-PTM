@@ -61,7 +61,7 @@ public class DetailPanel : MonoBehaviour
         unit_Image.sprite = unit.ud.unit_Sprite;
         attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
         spawnCount_Text.text = $"X {unit.ud.spawn_Count}";
-        level_Text.text = $"{unit.ud.level}";
+        level_Text.text = $"Lv.{unit.ud.level}";
         faction_Text.text = unit.ud.faction == Faction.Guild ? "¡ﬂæ” ø’±π"
             : unit.ud.faction == Faction.Fairy ? "ø‰¡§ Ω£"
             : unit.ud.faction == Faction.Demon ? "∏∂ø’±∫"

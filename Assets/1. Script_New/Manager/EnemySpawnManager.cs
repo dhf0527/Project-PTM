@@ -95,6 +95,7 @@ public class EnemySpawnManager : MonoBehaviour
                 spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
                 spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
             }
+            boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
         }
 
         if(!isStopSpawn)
@@ -382,10 +383,10 @@ public class EnemySpawnManager : MonoBehaviour
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정
-        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * 3;
+        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * (1 + GameManager.Instance.current_Dungeon.number * 0.5f);
         bossUnit.Cur_Hp = bossUnit.Max_Hp;
-        bossUnit.unitStatData_st.attack_PlusPercent += 50;
-        bossUnit.unitStatData_st.targetCount_Plus += 2;
+        bossUnit.unitStatData_st.attack_PlusPercent += GameManager.Instance.current_Dungeon.number * 25f;
+        bossUnit.unitStatData_st.targetCount_Plus += bossUnit.ud.target_Count;
 
         //보스의 수호 버프 부여
         bossUnit.AddComponent<BossGuard>();

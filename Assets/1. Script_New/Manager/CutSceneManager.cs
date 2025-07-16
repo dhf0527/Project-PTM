@@ -22,7 +22,7 @@ public class CutSceneManager : MonoBehaviour
         public bool isRight;
         public bool isPause;
         public bool isSpeak;
-        public CharacterData character_Speak;
+        public string character_Speak;
         public CharacterData character_Show;
         [TextArea(0,3)]
         public string dialogue;
@@ -89,7 +89,7 @@ public class CutSceneManager : MonoBehaviour
             //대사 출력
             dialogue.StartTypeText(list_Dialogue[i].dialogue);
             //인물 이름 변경
-            characterName_Text.text = list_Dialogue[i].character_Speak.characterName;
+            characterName_Text.text = list_Dialogue[i].character_Speak;
 
             Image target_Image;
             //방향 설정
@@ -196,7 +196,7 @@ public class CutSceneManager : MonoBehaviour
             DialogueData dd = new DialogueData
             {
                 isRight = values[1].Trim() == "오른쪽",
-                character_Speak = NameToEnum(values[2].Trim()),
+                character_Speak = values[2],
                 character_Show = NameToEnum(values[3].Trim()),
                 dialogue = values[7],
                 isSpeak = true,
@@ -238,7 +238,7 @@ public class CutSceneManager : MonoBehaviour
                 isPause = !(values[2].Trim() == "X"),
                 isSpeak = !(values[3].Trim() == "X"),
                 isRight = values[6].Trim() == "오른쪽",
-                character_Speak = NameToEnum(values[8].Trim()),
+                character_Speak = values[8],
                 character_Show = NameToEnum(values[9].Trim()),
                 dialogue = values[10] + "\n" + values[11] + "\n" + values[12]
             };

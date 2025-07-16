@@ -46,12 +46,11 @@ public class DungeonButton : MonoBehaviour
 
         //다음 스테이지 오픈
         if(clearCount >= 3)
-        {
             nextStage_DungeonButton.ActiveButton(true);
-            nextStage_DungeonButton.CheckClear();
-        }
         else
             nextStage_DungeonButton.ActiveButton(false);
+
+        nextStage_DungeonButton.CheckClear();
     }
 
     void ActiveButton(bool isActive)
@@ -69,5 +68,14 @@ public class DungeonButton : MonoBehaviour
         }
 
         CheckClear();
+    }
+
+    public void Test_StageOpen()
+    {
+        if (nextStage_DungeonButton == null)
+            return;
+
+        nextStage_DungeonButton.ActiveButton(true);
+        nextStage_DungeonButton.Test_StageOpen();
     }
 }

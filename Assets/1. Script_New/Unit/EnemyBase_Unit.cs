@@ -23,13 +23,13 @@ public class EnemyBase_Unit : Unit
                 Dead();
             }
             //체력에 따라 다음 웨이브로 넘어감
-            else if (Cur_Hp <= Max_Hp * 0.8f)
+            else if (Cur_Hp <= Max_Hp * 0.7f)
                 EnemySpawnManager.instance.ToNextWave(2);
-            else if (Cur_Hp <= Max_Hp * 0.4f)
+            else if (Cur_Hp <= Max_Hp * 0.3f)
                 EnemySpawnManager.instance.ToNextWave(3);
 
-            //체력이 50% 이하가 되면 보스 스폰
-            if (cur_Hp <= 0.5f * Max_Hp)
+            //체력이 30% 이하가 되면 보스 스폰
+            if (cur_Hp <= 0.3f * Max_Hp)
                 EnemySpawnManager.instance.OnBossSpawn();
 
             //공주일 경우 전용 체력바 갱신

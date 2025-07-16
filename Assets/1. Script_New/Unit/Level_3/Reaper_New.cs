@@ -6,7 +6,7 @@ public class Reaper_New : Unit
 {
     float healAmount = 10f;
 
-    protected override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
+    public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
         //체력 비율이 30% 이하라면 즉시 처치
         if (target_Unit.Cur_Hp / target_Unit.Max_Hp <= 0.3f && !target_Unit.GetComponent<TeamBase_Unit>() && !target_Unit.GetComponent<EnemyBase_Unit>())

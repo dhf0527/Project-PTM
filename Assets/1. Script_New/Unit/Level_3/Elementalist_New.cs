@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class Elementalist_New : Unit
 {
-    float healAmount = 10;
+     public float healAmount = 10;
 
     public void Heal()
     {
@@ -30,7 +31,13 @@ public class Elementalist_New : Unit
                 healTarget_Unit = target_Unit;
         }
 
-        healTarget_Unit.Cur_Hp += healAmount;
         healTarget_Unit.GetHp(healAmount);
     }
+
+    public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
+    {
+        base.ApplyAttack(target_Unit, damage, ud.attack_Type);
+        Heal();
+    }
+
 }

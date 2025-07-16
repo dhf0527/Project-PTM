@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MagicWarrior_New : Unit
 {
-    protected override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
+    public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
         target_Unit.AddComponent<CuttedArmor>();
 

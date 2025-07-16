@@ -43,7 +43,6 @@ public class Eating : MonoBehaviour
 
         playingSfxChannel.Stop();
         AudioManager.Instance.PlayerSfx(SFX_Enum.MealComplete);
-        Debug.Log("¿Ï·áÀ½");
     }
 
     IEnumerator C_LoadingText()

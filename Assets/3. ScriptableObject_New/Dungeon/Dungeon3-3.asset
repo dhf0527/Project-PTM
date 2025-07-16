@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862f5ed4d484991409bdd61e042db398, type: 3}
+  m_Name: Dungeon3-3
+  m_EditorClassIdentifier: 
+  stage: 3
+  number: 3
+  bossUnit: {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
+  units_Wave1:
+  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  units_Wave2:
+  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  units_Wave3:
+  - {fileID: 0}
+  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
+  - {fileID: 0}
+  stage_Faction: 3

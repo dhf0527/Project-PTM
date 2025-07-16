@@ -363,6 +363,7 @@ public abstract class Unit : MonoBehaviour
             {
                 //추가데미지 계산
                 float dmg = AttackDamage * (1 + (unitStatData_st.attackBoost_PlusPercent + CalculateAttackBoost(target_Unit)) * 0.01f);
+
                 ApplyAttack(target_Unit, dmg, ud.attack_Type);
                 switch (ud.attack_Type)
                 {
@@ -394,6 +395,7 @@ public abstract class Unit : MonoBehaviour
         Vector3 spawn_Pos = ranged_Projectile_Pos.position;
         //투사체 생성
         Projectile projectile = Instantiate(ranged_Projectile_Prefabs);
+        projectile.unit = this;
         //투사체 부모 및 위치 설정
         projectile.transform.SetParent(DunGeonManager_New.instance.projectile_Parent);
         projectile.transform.position = spawn_Pos;
@@ -422,7 +424,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     //공격 명중 시 피해를 주는 함수
-    protected virtual void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
+    public virtual void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
         if (target_Unit.Cur_Hp <= 0)
             return;
@@ -473,14 +475,15 @@ public abstract class Unit : MonoBehaviour
         }
 
         //피격 이펙트 생성
-        FxManager.Instance.Hit(hitParent.position);
+        if(hitParent)
+            FxManager.Instance.Hit(hitParent.position);
 
         //데미지 텍스트 생성
         FxManager.Instance.DamageText(target_Unit.transform.position + Vector3.up * 1.2f, totalDamage, attackType);
     }
 
     //데미지 증가량 반환 함수
-    virtual protected float CalculateAttackBoost(Unit target_Unit)
+    virtual public float CalculateAttackBoost(Unit target_Unit)
     {
         float dmgBoost = 0;
 

@@ -51,6 +51,8 @@ public abstract class Projectile : MonoBehaviour
     Collider2D col;
     SpriteRenderer sr;
 
+    [HideInInspector] public Unit unit;
+
     private void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -89,8 +91,9 @@ public abstract class Projectile : MonoBehaviour
             //공격 전달
             if (TryAttack(target_Unit))
             {
+                float dmg = unit.AttackDamage * (1 + (unit.unitStatData_st.attackBoost_PlusPercent + unit.CalculateAttackBoost(target_Unit)) * 0.01f);
                 //공격 명중
-                ApplyAttack(target_Unit);
+                unit.ApplyAttack(target_Unit, dmg, unit.ud.attack_Type);
                 switch (attackType)
                 {
                     case AttackType.None:
@@ -111,6 +114,8 @@ public abstract class Projectile : MonoBehaviour
             else
                 AudioManager.Instance.PlayerSfx(SFX_Enum.Avoid);
 
+            FxManager.Instance.Hit(transform.position);
+
             //최대 대상 수만큼 공격 전달을 완료했으면 투사체 삭제
             if (--target_Count <= 0)
                 DestoryProjectile();
@@ -126,57 +131,6 @@ public abstract class Projectile : MonoBehaviour
         pro = pro > 5 ? pro : 5;
         return Random.Range(0, 100) < pro;
     }
-
-    //공격 명중 시 피해를 주는 함수
-    protected virtual void ApplyAttack(Unit target_Unit)
-    {
-        float type_res = attackType== target_Unit.ud.resistance_Type ? 0.5f : 1;
-        float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
-
-        //최종 피해량
-        float totalDamage;
-
-        //고정공격일 경우
-        if (isTrueDamage)
-            totalDamage = damage;
-        //관통공격일 경우
-        else if (isPenetration)
-            totalDamage = damage * type_weak;
-        else
-            totalDamage = (damage - target_Unit.Armor)
-                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f);
-
-        //최소 피해량 1
-        totalDamage = totalDamage < 1 ? 1 : totalDamage;
-        target_Unit.TakeDamage(totalDamage);
-
-        //유닛 처치 골드
-        if (target_Unit.Cur_Hp <= 0)
-        {
-            int getGold = 0;
-            if (target_Unit.GetComponent<BossGuard>())
-                getGold = 500;
-            else
-            {
-                if (this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
-                    getGold = 30;
-                else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
-                    getGold = 50;
-                else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
-                    getGold = 150;
-            }
-
-            if (GameManager.Instance.current_Meal?.code == 1)
-                getGold *= 2;
-
-            DunGeonManager_New.instance.GetGold(getGold);
-        }
-
-        FxManager.Instance.Hit(transform.position);
-
-        FxManager.Instance?.DamageText(target_Unit.transform.position + Vector3.up * 1.2f, totalDamage, attackType);
-    }
-
 
     //unit에게 데이터를 받아오는 함수
     public virtual void SetData(Unit unit)

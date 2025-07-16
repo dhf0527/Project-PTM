@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Bat_New : Unit
 {
-    protected override void ApplyAttack(Unit target_Unit, float attackDamage, AttackType attackType)
+    public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
-        base.ApplyAttack(target_Unit, attackDamage, attackType);
+        base.ApplyAttack(target_Unit, damage, attackType);
         target_Unit.AddComponent<EarringDebuff>();
     }
 }

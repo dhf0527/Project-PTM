@@ -5,7 +5,7 @@ using UnityEngine;
 public class GriffinKnight : Unit
 {
     //데미지 증가량 반환 함수
-    override protected float CalculateAttackBoost(Unit target_Unit)
+    override public float CalculateAttackBoost(Unit target_Unit)
     {
         float dmgBoost = 0;
 
