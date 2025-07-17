@@ -16,11 +16,12 @@ MonoBehaviour:
   unit_Code: 103
   level: 1
   unit_Name: "\uACE0\uBE14\uB9B0"
+  unit_SubName: 
   faction: 2
   move_Speed: 200
   hp: 60
-  damage: 8
-  attack_Speed: 5
+  damage: 10
+  attack_Speed: 4
   accuracy: 40
   avoidance: 60
   armor: 0

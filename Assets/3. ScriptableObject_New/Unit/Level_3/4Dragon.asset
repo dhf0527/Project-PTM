@@ -16,6 +16,7 @@ MonoBehaviour:
   unit_Code: 304
   level: 3
   unit_Name: "\uB4DC\uB798\uACE4"
+  unit_SubName: 
   faction: 2
   move_Speed: 150
   hp: 320
@@ -31,9 +32,9 @@ MonoBehaviour:
   resistance_Type: 0
   spawn_Count: 1
   size: 2
-  cost: 500
+  cost: 700
   passive1: 
   passive1_Detail: 
   passive2: 
   passive2_Detail: 
-  attack_Range: 0
+  attack_Range: 3

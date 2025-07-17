@@ -16,10 +16,11 @@ MonoBehaviour:
   unit_Code: 302
   level: 3
   unit_Name: "\uB098\uBB34 \uAC70\uC778"
+  unit_SubName: 
   faction: 1
   move_Speed: 80
   hp: 480
-  damage: 60
+  damage: 50
   attack_Speed: 2
   accuracy: 60
   avoidance: 20
@@ -36,4 +37,4 @@ MonoBehaviour:
   passive1_Detail: 
   passive2: 
   passive2_Detail: 
-  attack_Range: 0
+  attack_Range: 1.2

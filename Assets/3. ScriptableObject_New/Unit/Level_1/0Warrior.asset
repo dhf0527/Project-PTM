@@ -16,11 +16,12 @@ MonoBehaviour:
   unit_Code: 100
   level: 1
   unit_Name: "\uAC80\uC0AC"
+  unit_SubName: 
   faction: 0
   move_Speed: 150
-  hp: 80
-  damage: 10
-  attack_Speed: 4
+  hp: 100
+  damage: 12
+  attack_Speed: 3
   accuracy: 60
   avoidance: 40
   armor: 4

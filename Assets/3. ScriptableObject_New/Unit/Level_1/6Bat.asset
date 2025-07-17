@@ -16,11 +16,12 @@ MonoBehaviour:
   unit_Code: 106
   level: 1
   unit_Name: "\uC2DC\uCCB4 \uBC15\uC950"
+  unit_SubName: 
   faction: 3
   move_Speed: 300
-  hp: 20
-  damage: 7
-  attack_Speed: 5
+  hp: 30
+  damage: 8
+  attack_Speed: 4
   accuracy: 60
   avoidance: 40
   armor: 0

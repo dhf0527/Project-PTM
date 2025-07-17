@@ -16,13 +16,14 @@ MonoBehaviour:
   unit_Code: 105
   level: 1
   unit_Name: "\uD574\uACE8 \uC804\uC0AC"
+  unit_SubName: 
   faction: 3
   move_Speed: 120
   hp: 60
-  damage: 8
+  damage: 10
   attack_Speed: 4
-  accuracy: 40
-  avoidance: 40
+  accuracy: 60
+  avoidance: 20
   armor: 2
   attack_RangeType: 0
   target_Count: 1
@@ -31,7 +32,7 @@ MonoBehaviour:
   resistance_Type: 0
   spawn_Count: 1
   size: 0
-  cost: 100
+  cost: 120
   passive1: "\uBD88\uC644\uC804\uD55C \uBD80\uD65C"
   passive1_Detail: "\uCC98\uC74C\uC73C\uB85C \uC0AC\uB9DD\uD558\uBA74 \uB2E4\uC2DC
     \uCD5C\uB300 \uC0DD\uBA85\uB825\uC73C\uB85C \uB418\uC0B4\uC544\uB09C\uB2E4. \uB418\uC0B4\uC544\uB09C
