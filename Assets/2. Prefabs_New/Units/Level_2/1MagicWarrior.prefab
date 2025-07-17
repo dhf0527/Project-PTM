@@ -103,16 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9a3393a71cb1e43bc86115dc9b1361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 8e69e0e3d8d69a94187c93e68b31372f, type: 2}
   isHpText: 0
   hitParent: {fileID: 2126467615957502722}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
+  buff_Time: 6
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

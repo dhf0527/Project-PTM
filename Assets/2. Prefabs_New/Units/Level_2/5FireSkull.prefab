@@ -103,14 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611d3aebfc884a34eba560195a4c114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 50f5da919e1d199458cb0f69a844d732, type: 2}
   isHpText: 0
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: -6458632999849278288, guid: 7058502c843cdab46b144ef34566ba88, type: 3}
   isPenetration: 0
+  isTrueDamage: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
+  buff_Time: 6
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -168,7 +173,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.1999999, y: 1.1999999}
+    oldSize: {x: 1.7595308, y: 1.7595308}
     newSize: {x: 1.5, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

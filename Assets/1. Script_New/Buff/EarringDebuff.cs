@@ -9,7 +9,6 @@ public class EarringDebuff : Buff
 
     protected override void Init()
     {
-        buff_Time = 4;
         buffIcon_Index = 6;
     }
 

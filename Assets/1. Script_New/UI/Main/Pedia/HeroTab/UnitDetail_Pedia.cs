@@ -103,4 +103,51 @@ public class UnitDetail_Pedia : MonoBehaviour
         newPd.SetNameText(passiveName);
         newPd.SetDetailText(passiveDetail);
     }
+
+    public void OnSetBossData()
+    {
+        UnitData ud = GameManager.Instance.current_Dungeon.bossUnit.ud;
+        int number = GameManager.Instance.current_Dungeon.number;
+
+        cost_Image_go.SetActive(true);
+        cost_Text.text = ud.cost.ToString();
+        level_Text.text = "Lv." + ud.level.ToString();
+
+        attackRangeType_Image.sprite = attackRange_Sprites[(int)ud.attack_RangeType];
+        faction_Image.sprite = faction_Sprites[(int)ud.faction];
+        character_Image.sprite = ud.unit_Sprite;
+        attackType_Image.sprite = attackType_Sprites[(int)ud.attack_Type - 1];
+
+        weakType_Image.gameObject.SetActive(ud.weak_Type != AttackType.None);
+        weakType_Image.sprite = ud.weak_Type == AttackType.None ? null :
+            attackType_Sprites[(int)ud.weak_Type - 1];
+
+        resistType_Image.gameObject.SetActive(ud.resistance_Type != AttackType.None);
+        resistType_Image.sprite = ud.resistance_Type == AttackType.None ? null :
+            attackType_Sprites[(int)ud.resistance_Type - 1];
+
+        name_Text.text = ud.unit_Name + " 보스";
+        armor_Text.text = ud.armor.ToString();
+        hp_Text.text = (ud.hp * (2 + (number * 0.5f))).ToString();
+        damage_Text.text = (ud.damage * (1 + (number * 0.25f))).ToString();
+        attackSpeed_Text.text = ud.attack_Speed.ToString();
+        unitSize_Text.text = ud.size == Unit_Size.Small ? "중형" : "대형";
+
+        targetCount_Text.text = (ud.target_Count * 2).ToString();
+        accuracy_Text.text = ud.accuracy.ToString();
+        avoidance_Text.text = ud.avoidance.ToString();
+        moveSpeed_Text.text = ud.move_Speed.ToString();
+
+        spawnCount_Text.text = "-";
+
+        //원래 있던 패시브 설명창 삭제
+        foreach (Transform child in passive_Parent)
+            Destroy(child.gameObject);
+
+        if (ud.passive1 != "")
+            MakeNewDetail(ud.passive1, ud.passive1_Detail);
+
+        if (ud.passive2 != "")
+            MakeNewDetail(ud.passive2, ud.passive2_Detail);
+    }
 }

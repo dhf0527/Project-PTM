@@ -9,7 +9,6 @@ public class ShieldSmiteDebuff : Buff
 
     protected override void Init()
     {
-        buff_Time = 4f;
         buffIcon_Index = 0;
         move_Decrease = 80;
         attackSpeed_Decrease = 80;

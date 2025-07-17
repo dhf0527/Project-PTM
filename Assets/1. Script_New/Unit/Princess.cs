@@ -11,7 +11,9 @@ public class Princess : Unit
     [Header("방패 강타 데미지 비율(%)")]
     [SerializeField] float skill1_Damage;
     [SerializeField] float skill1_coolTime;
+    [SerializeField] float skill1_buff_Time;
     [SerializeField] float skill2_coolTime;
+    [SerializeField] float skill2_buff_Time;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
 
     float nonCombatTime = 0;
@@ -282,7 +284,7 @@ public class Princess : Unit
             float dmg = (skill1_Damage * 0.01f) * AttackDamage * (1+ unitStatData_st.attackBoost_PlusPercent * 0.01f);
             ApplyAttack(target_Unit, dmg, AttackType.Physical);
             //디버프 처리
-            target_Unit.AddComponent<ShieldSmiteDebuff>();
+            target_Unit.AddComponent<ShieldSmiteDebuff>().buff_Time = skill1_buff_Time;
         }
         StartCoroutine(C_Skill1_CoolDown());
 
@@ -338,8 +340,8 @@ public class Princess : Unit
                 continue;
 
             Unit target_Unit = item.collider.GetComponent<Unit>();
-            target_Unit.AddComponent<BrokenHeroSword>();
             //버프 처리
+            target_Unit.AddComponent<BrokenHeroSword>().buff_Time = skill2_buff_Time;
         }
         StartCoroutine(C_Skill2_CoolDown());
 

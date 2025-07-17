@@ -9,7 +9,6 @@ public class CuttedArmor : Buff
 
     protected override void Init()
     {
-        buff_Time = 4;
         buffIcon_Index = 2;
         armor_Decrease_percent = 50;
     }

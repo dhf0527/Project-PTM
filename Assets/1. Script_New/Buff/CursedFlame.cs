@@ -13,7 +13,6 @@ public class CursedFlame : Buff
 
     protected override void Init()
     {
-        buff_Time = 4;
         buffIcon_Index = 4;
 
         damage_Delay = 0.5f;

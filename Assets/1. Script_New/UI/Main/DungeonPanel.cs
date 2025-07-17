@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ public class DungeonPanel : MonoBehaviour
 
         //중복 제거
         stageUnits = stageUnits.Distinct().ToList();
+        //유닛코드 오름차순으로 정렬
+        stageUnits.Sort((Unit a, Unit b) => { return a.ud.unit_Code > b.ud.unit_Code ? 1 : 0; });
 
         for (int i = 0; i < 3; i++)
         {
