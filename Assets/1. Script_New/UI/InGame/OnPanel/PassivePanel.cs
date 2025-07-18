@@ -94,7 +94,7 @@ public class PassivePanel : MonoBehaviour
                 passive_Detail = $"명중률, 회피율 {ColorText("-20",color_Red)}";
                 break;
             case reborn:
-                passive_Detail = $"이동 속도, 공격 속도 {ColorText("+50", color_Blue)}, 초당 최대 체력의 {ColorText("10% 감소", color_Red)}";
+                passive_Detail = $"이동 속도, 공격 속도 {ColorText("+100%", color_Blue)}, 초당 최대 체력의 {ColorText("10% 감소", color_Red)}";
                 break;
             case cursedFlame:
                 passive_Detail = $"0.5초당 {ColorText("2",color_Red)}의 피해. 받는 모든 회복 효과가 {ColorText("절반",color_Red)}으로 {ColorText("감소",color_Red)}.";

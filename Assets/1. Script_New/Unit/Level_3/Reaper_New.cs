@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Reaper_New : Unit
 {
-    float healAmount = 10f;
+    public float attack_Increase;
+    public int accuracy_Increase;
+    public float buff_Time;
+    public float healAmount = 10f;
 
     public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
@@ -20,7 +23,10 @@ public class Reaper_New : Unit
         if (target_Unit.Cur_Hp <= 0)
         {
             GetHp(healAmount);
-            gameObject.AddComponent<ReapedSpirit>();
+            ReapedSpirit reapedSpirit = gameObject.AddComponent<ReapedSpirit>();
+            reapedSpirit.buff_Time = buff_Time;
+            reapedSpirit.attack_Increase = attack_Increase;
+            reapedSpirit.accuracy_Increase = accuracy_Increase;
         }
     }
 }

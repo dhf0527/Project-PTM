@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Reborn : Buff
 {
-    float moveSpeed_Increase_Percent;
-    float attackSpeed_Increase_Percent;
-    float hp_Decrease_Per_Sec;
+    [HideInInspector]public float moveSpeed_Increase_Percent;
+    [HideInInspector]public float attackSpeed_Increase_Percent;
+    [HideInInspector]public float hp_Decrease_Per_Sec;
 
     float attackSpeed_Increase;
 
@@ -15,10 +15,6 @@ public class Reborn : Buff
     {
         buff_Time = 9999;
         buffIcon_Index = 3;
-
-        moveSpeed_Increase_Percent = 50;
-        attackSpeed_Increase_Percent = 50;
-        hp_Decrease_Per_Sec = 10;
     }
 
     protected override bool PreventStack()

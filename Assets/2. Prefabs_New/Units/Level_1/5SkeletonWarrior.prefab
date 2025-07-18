@@ -103,17 +103,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39ccfbc62903a04c8ae8aa6ab91ebe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 71fcff609148b3a49a6a3f15b1c05021, type: 2}
   isHpText: 0
   hitParent: {fileID: 4072123553006537372}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   reborn_anim: {fileID: 9100000, guid: abab83798f6f587428d0721506a89330, type: 2}
+  attackSpeed_Increase_Percent: 100
+  moveSpeed_Increase_Percent: 100
+  hp_Decrease_Per_Sec: 10
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

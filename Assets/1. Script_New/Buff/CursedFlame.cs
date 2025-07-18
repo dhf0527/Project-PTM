@@ -7,17 +7,15 @@ public class CursedFlame : Buff
     //피해를 받는 주기
     float damage_Delay;
     //주기당 피해
-    float damage;
+    [HideInInspector] public float damage;
     //회복 감소량
-    float heal_Decrease;
+    [HideInInspector] public float heal_Decrease;
 
     protected override void Init()
     {
         buffIcon_Index = 4;
 
         damage_Delay = 0.5f;
-        damage = 2;
-        heal_Decrease = 50f;
     }
 
     protected override bool PreventStack()

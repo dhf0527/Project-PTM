@@ -5,7 +5,7 @@ using UnityEngine;
 public class BrokenHeroSword : Buff
 {
     //명중률 증가량
-    [SerializeField] int accuracy_increase = 40;
+    [HideInInspector] public int accuracy_increase;
 
     protected override void Init()
     {

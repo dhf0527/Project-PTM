@@ -116,6 +116,8 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   buff_Time: 6
+  armor_Decrease_percent: 20
+  avoidance_Decrease: 20
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

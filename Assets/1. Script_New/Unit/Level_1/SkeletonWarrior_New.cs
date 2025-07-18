@@ -6,6 +6,9 @@ public class SkeletonWarrior_New : Unit
 {
     //부활 후 애니메이션
     [SerializeField] RuntimeAnimatorController reborn_anim;
+    public float attackSpeed_Increase_Percent;
+    public float moveSpeed_Increase_Percent;
+    public float hp_Decrease_Per_Sec;
     bool isReborn;
 
     public override void Dead()
@@ -23,7 +26,10 @@ public class SkeletonWarrior_New : Unit
             animator.runtimeAnimatorController = reborn_anim;
 
             //'부활 상태' 부여
-            gameObject.AddComponent<Reborn>();
+            Reborn reborn = gameObject.AddComponent<Reborn>();
+            reborn.attackSpeed_Increase_Percent = attackSpeed_Increase_Percent;
+            reborn.moveSpeed_Increase_Percent = moveSpeed_Increase_Percent;
+            reborn.hp_Decrease_Per_Sec = hp_Decrease_Per_Sec;
         }
         else
         {

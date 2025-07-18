@@ -253,8 +253,11 @@ MonoBehaviour:
   skill1_Damage: 0
   skill1_coolTime: 30
   skill1_buff_Time: 6
+  skill1_move_Decrease: 80
+  skill1_attackSpeed_Decrease: 80
   skill2_coolTime: 60
   skill2_buff_Time: 12
+  skill2_accuracy_increase: 40
   skillIcons:
   - {fileID: 0}
   - {fileID: 0}

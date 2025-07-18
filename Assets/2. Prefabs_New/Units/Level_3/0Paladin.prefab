@@ -103,14 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 0c4afdbe8bf4bab4aa09ab2e638a055a, type: 2}
   isHpText: 0
   hitParent: {fileID: 5800865651852311824}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
+  canKnockBack: 1
+  isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
+  armorIncrease: 4
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -168,7 +173,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.05}
-    oldSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 1.7595308, y: 1.7595308}
     newSize: {x: 1.1999999, y: 1.1999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

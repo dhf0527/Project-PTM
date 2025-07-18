@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ShieldSmiteDebuff : Buff
 {
-    float move_Decrease;
-    float attackSpeed_Decrease;
+    [HideInInspector]public float move_Decrease;
+    [HideInInspector]public float attackSpeed_Decrease;
 
     protected override void Init()
     {
         buffIcon_Index = 0;
-        move_Decrease = 80;
-        attackSpeed_Decrease = 80;
     }
 
     protected override void BuffStart()

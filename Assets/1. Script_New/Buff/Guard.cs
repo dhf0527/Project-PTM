@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Guard : Buff
 {
-    int armorIncrease;
+    [HideInInspector]public int armorIncrease;
 
     protected override void Init()
     {
         buff_Time = 0.1f;
-
-        armorIncrease = 4;
     }
 
     protected override bool PreventStack()

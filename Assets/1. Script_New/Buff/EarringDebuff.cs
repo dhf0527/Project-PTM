@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EarringDebuff : Buff
 {
-    int accuracy_Decrease = 20;
-    int avoidance_Decrease = 20;
+    [HideInInspector] public int accuracy_Decrease;
+    [HideInInspector] public int avoidance_Decrease;
 
     protected override void Init()
     {

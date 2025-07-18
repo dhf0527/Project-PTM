@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ReapedSpirit : Buff
 {
-    float attack_Increase;
-    int accuracy_Increase;
+    [HideInInspector]public float attack_Increase;
+    [HideInInspector]public int accuracy_Increase;
 
     protected override void Init()
     {
-        buff_Time = 6f;
         buffIcon_Index = 5;
-
-        attack_Increase = 20;
-        accuracy_Increase = 40;
     }
 
     protected override bool PreventStack()

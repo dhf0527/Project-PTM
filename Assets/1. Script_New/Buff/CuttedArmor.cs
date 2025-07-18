@@ -5,12 +5,11 @@ using UnityEngine;
 public class CuttedArmor : Buff
 {
     //방어 감소 비율(%)
-    int armor_Decrease_percent;
+    [HideInInspector]public int armor_Decrease_percent;
 
     protected override void Init()
     {
         buffIcon_Index = 2;
-        armor_Decrease_percent = 50;
     }
 
     protected override bool PreventStack()

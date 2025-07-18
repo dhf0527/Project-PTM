@@ -15,12 +15,15 @@ public class DungeonPanel : MonoBehaviour
     public List<Sprite> star_Sprites;
     public TMP_Text record_Text;
 
+    public List<Unit> stageUnits = new();
+    public UnitDetail_Pedia detail_Panel;
+
     public void SetData(DungeonData dd)
     {
         boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
         stage_Text.text = $"{dd.stage}-{dd.number}";
 
-        List<Unit> stageUnits = new();
+        stageUnits.Clear();
 
         foreach (var item in dd.units_Wave1)
             if (item)
@@ -68,5 +71,10 @@ public class DungeonPanel : MonoBehaviour
         }
 
         GameManager.Instance.current_Dungeon = dd;
+    }
+
+    public void OnSetStageUnitData(int index)
+    {
+        detail_Panel.SetData(stageUnits[index].ud, false);
     }
 }

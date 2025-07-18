@@ -12,8 +12,12 @@ public class Princess : Unit
     [SerializeField] float skill1_Damage;
     [SerializeField] float skill1_coolTime;
     [SerializeField] float skill1_buff_Time;
+    [SerializeField] float skill1_move_Decrease;
+    [SerializeField] float skill1_attackSpeed_Decrease;
+
     [SerializeField] float skill2_coolTime;
     [SerializeField] float skill2_buff_Time;
+    [SerializeField] int skill2_accuracy_increase;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
 
     float nonCombatTime = 0;
@@ -284,7 +288,10 @@ public class Princess : Unit
             float dmg = (skill1_Damage * 0.01f) * AttackDamage * (1+ unitStatData_st.attackBoost_PlusPercent * 0.01f);
             ApplyAttack(target_Unit, dmg, AttackType.Physical);
             //디버프 처리
-            target_Unit.AddComponent<ShieldSmiteDebuff>().buff_Time = skill1_buff_Time;
+            ShieldSmiteDebuff shieldSmiteDebuff = target_Unit.AddComponent<ShieldSmiteDebuff>();
+            shieldSmiteDebuff.buff_Time = skill1_buff_Time;
+            shieldSmiteDebuff.attackSpeed_Decrease = skill1_attackSpeed_Decrease;
+            shieldSmiteDebuff.move_Decrease = skill1_move_Decrease;
         }
         StartCoroutine(C_Skill1_CoolDown());
 
@@ -341,7 +348,9 @@ public class Princess : Unit
 
             Unit target_Unit = item.collider.GetComponent<Unit>();
             //버프 처리
-            target_Unit.AddComponent<BrokenHeroSword>().buff_Time = skill2_buff_Time;
+            BrokenHeroSword brokenHeroSword = target_Unit.AddComponent<BrokenHeroSword>();
+            brokenHeroSword.buff_Time = skill2_buff_Time;
+            brokenHeroSword.accuracy_increase = skill2_accuracy_increase;
         }
         StartCoroutine(C_Skill2_CoolDown());
 

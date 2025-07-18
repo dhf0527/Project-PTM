@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Paladin_New : Unit
 {
+    public int armorIncrease;
+
     private void Update()
     {
         base.Update();
@@ -21,7 +23,8 @@ public class Paladin_New : Unit
                 continue;
 
             Unit target_Unit = item.collider.GetComponent<Unit>();
-            target_Unit.AddComponent<Guard>();
+            Guard guard = target_Unit.AddComponent<Guard>();
+            guard.armorIncrease = armorIncrease;
             //버프 처리
         }
     }
