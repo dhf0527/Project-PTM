@@ -28,7 +28,7 @@ public class DungeonButton : MonoBehaviour
             int number = i + 1;
 
             //클리어 정보(0 = 미클리어, 1 = 노란 별, 2 파란 별, 3 빛나는 별)
-            int clear_Time = PlayerPrefs.GetInt(ReadOnlyData.dungeonClearTime + $"{stage},{number}");
+            int clear_Time = PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{stage},{number}");
             int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
 
             if (clear_Rank != 0)
@@ -64,7 +64,7 @@ public class DungeonButton : MonoBehaviour
         for (int i = 0; i < star_Images.Count; i++)
         {
             int number = i + 1;
-            PlayerPrefs.SetInt(ReadOnlyData.dungeonClearTime + $"{stage},{number}" , 0);
+            PlayerPrefs.SetInt(ConstData.dungeonClearTime + $"{stage},{number}" , 0);
         }
 
         CheckClear();

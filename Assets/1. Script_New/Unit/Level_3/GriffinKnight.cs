@@ -12,7 +12,7 @@ public class GriffinKnight : Unit
         //유닛 업그레이드 효과(보스 추가 데미지)
         if (target_Unit.GetComponent<BossGuard>())
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 9);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 9);
             if (upgradeLv != 0)
                 dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1];
         }

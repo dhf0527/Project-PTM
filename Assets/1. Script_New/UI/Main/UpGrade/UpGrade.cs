@@ -38,7 +38,7 @@ public class UpGrade : MonoBehaviour
         for (int i = 0; i < statBars.Count; i++)
         {
             //강화 수치 로드
-            statBars[i].Grade = PlayerPrefs.GetInt(ReadOnlyData.statGrade + i.ToString());
+            statBars[i].Grade = PlayerPrefs.GetInt(ConstData.statGrade + i.ToString());
             //비용 설정 및 버튼 활성화
             statBars[i].SetCostTextAndButton();
         }
@@ -62,7 +62,7 @@ public class UpGrade : MonoBehaviour
             //업그레이드 확정
             statBars[i].ConfirmUpgrade();
             //강화 수치 저장
-            PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), statBars[i].Grade);
+            PlayerPrefs.SetInt(ConstData.statGrade + i.ToString(), statBars[i].Grade);
         }
 
         if(totalCost == 0)
@@ -90,7 +90,7 @@ public class UpGrade : MonoBehaviour
         for (int i = 0; i < statBars.Count; i++)
         {
             //강화 수치 초기화
-            PlayerPrefs.SetInt(ReadOnlyData.statGrade + i.ToString(), 0);
+            PlayerPrefs.SetInt(ConstData.statGrade + i.ToString(), 0);
 
             //비용 반환
             MainManager.instance.Soul += (((int)Mathf.Pow(2, statBars[i].Grade) - 1) * 500);

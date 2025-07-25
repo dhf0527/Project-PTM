@@ -102,49 +102,49 @@ public class Card_new : MonoBehaviour
         //신입 모집
         if (unit.ud.level == 1)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 0);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 0);
             if (upgradeLv != 0)
                 unit.unitStatData_st.cost_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1];
         }
         //군사 훈련
         else if (unit.ud.level == 2)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 1);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 1);
             if (upgradeLv != 0)
                 unit.unitStatData_st.attackSpeed_Plus += DunGeonManager_New.instance.unitUpgradeDatas[1].upgradeValue[upgradeLv - 1];
         }
         //성과 대우
         else if (unit.ud.level == 3)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 2);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 2);
             if (upgradeLv != 0)
                 unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
         }
         //장갑 보상
         if (unit.ud.attack_RangeType == AttackRange.Melee)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 3);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 3);
             if (upgradeLv != 0)
                 unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1];
         }
         //사격 훈련
         if (unit.ud.attack_RangeType == AttackRange.Ranged)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 4);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 4);
             if (upgradeLv != 0)
                 unit.unitStatData_st.attack_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[4].upgradeValue[upgradeLv - 1];
         }
         //개인 침낭
         if (unit.ud.size == Unit_Size.Small)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 5);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 5);
             if (upgradeLv != 0)
                 unit.unitStatData_st.avoidance_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[5].upgradeValue[upgradeLv - 1];
         }
         //대형 텐트
         if (unit.ud.size == Unit_Size.Medium || unit.ud.size == Unit_Size.Large)
         {
-            int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 6);
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 6);
             if (upgradeLv != 0)
                 unit.unitStatData_st.moveSpeed_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1];
         }

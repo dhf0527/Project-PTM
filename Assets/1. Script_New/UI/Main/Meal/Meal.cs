@@ -26,7 +26,7 @@ public class Meal : MonoBehaviour
     {
         if (go == gameObjects[0])
         {
-            string lastEatTime = PlayerPrefs.GetString(ReadOnlyData.mealCompleteTime, "");
+            string lastEatTime = PlayerPrefs.GetString(ConstData.mealCompleteTime, "");
 
             //최초 실행 체크
             if (!string.IsNullOrEmpty(lastEatTime))
@@ -163,12 +163,12 @@ public class Meal : MonoBehaviour
         GameManager.Instance.current_Meal = selected_md;
 
         //식사 완료 시간 기록
-        PlayerPrefs.SetString(ReadOnlyData.mealCompleteTime, DateTime.Now.ToString());
+        PlayerPrefs.SetString(ConstData.mealCompleteTime, DateTime.Now.ToString());
     }
 
     public void TestResetMealTime()
     {
-        PlayerPrefs.SetString(ReadOnlyData.mealCompleteTime, "");
+        PlayerPrefs.SetString(ConstData.mealCompleteTime, "");
     }
 }
 

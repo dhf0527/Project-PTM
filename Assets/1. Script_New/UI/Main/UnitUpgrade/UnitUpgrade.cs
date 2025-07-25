@@ -55,7 +55,7 @@ public class UnitUpgrade : MonoBehaviour
     {
         selected_UnitUpgradeContent = uuc;
         UnitUpgradeData uud = uuc.unitUpgradeData;
-        int uuc_level = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + uud.code);
+        int uuc_level = PlayerPrefs.GetInt(ConstData.unitUpgrade + uud.code);
 
         upgrade_Icon.sprite = uud.upgradeIcon;
         upgrade_Name.text = uud.upgradeName;

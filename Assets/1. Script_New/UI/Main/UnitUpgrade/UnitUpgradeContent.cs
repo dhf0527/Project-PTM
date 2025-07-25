@@ -30,7 +30,7 @@ public class UnitUpgradeContent : MonoBehaviour
         SetUpgradeData(unitUpgradeData);
         GetComponent<Button>().onClick.AddListener(() => unitUpgrade.SetUpgrade(this));
 
-        Level = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString());
+        Level = PlayerPrefs.GetInt(ConstData.unitUpgrade + unitUpgradeData.code.ToString());
     }
 
     public void SetUpgradeData(UnitUpgradeData uud)
@@ -41,7 +41,7 @@ public class UnitUpgradeContent : MonoBehaviour
 
     public void SetLevel(int value)
     {
-        PlayerPrefs.SetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString(), value);
+        PlayerPrefs.SetInt(ConstData.unitUpgrade + unitUpgradeData.code.ToString(), value);
 
         //레벨 이미지 설정
         for (int i = 0; i < level_Images.Count; i++)
@@ -59,7 +59,7 @@ public class UnitUpgradeContent : MonoBehaviour
 
     public int ResetLevel()
     {
-        Level = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + unitUpgradeData.code.ToString());
+        Level = PlayerPrefs.GetInt(ConstData.unitUpgrade + unitUpgradeData.code.ToString());
         int returnValue = Level * 2;
         Level = 0;
         return returnValue;

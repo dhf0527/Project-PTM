@@ -16,7 +16,7 @@ public class Full : MonoBehaviour
 
     void Update()
     {
-        DateTime lastEat = DateTime.Parse(PlayerPrefs.GetString(ReadOnlyData.mealCompleteTime));
+        DateTime lastEat = DateTime.Parse(PlayerPrefs.GetString(ConstData.mealCompleteTime));
         DateTime now = DateTime.Now;
         TimeSpan difference = now - lastEat;
 

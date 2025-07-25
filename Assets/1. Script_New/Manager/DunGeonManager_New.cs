@@ -249,7 +249,7 @@ public class DunGeonManager_New : MonoBehaviour
         unit.IsTeam = true;
 
         //용병 업그레이드 효과(용병단 깃발)
-        int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 8);
+        int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 8);
         if (upgradeLv != 0)
             unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
 
@@ -318,7 +318,7 @@ public class DunGeonManager_New : MonoBehaviour
     public void Set_GoldByBaseLevel()
     {
         Gold_Per_Sec = base_abillitiesByLevels[teamBase.Base_level - 1].base_GoldPerSec_By_Level;
-        int upgradeLv = PlayerPrefs.GetInt(ReadOnlyData.unitUpgrade + 7);
+        int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 7);
         if (upgradeLv != 0)
             Gold_Per_Sec += unitUpgradeDatas[7].upgradeValue[upgradeLv - 1] * teamBase.Base_level;
 
@@ -380,7 +380,8 @@ public class DunGeonManager_New : MonoBehaviour
         for (int k = 0; k < unitUnlock.cards.Count; k++)
         {
             //아이템 설정
-            unitUnlock.cards[k].item = GetRandomItem();
+            if(PlayerPrefs.GetInt(ConstData.unitItem_Unlock) == 1)
+                unitUnlock.cards[k].item = GetRandomItem();
 
             int index = UnityEngine.Random.Range(0, numbers.Count);
             unitUnlock.cards[k].SetData(targetLevel_Units[numbers[index]]);

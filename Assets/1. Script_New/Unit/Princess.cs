@@ -92,13 +92,13 @@ public class Princess : Unit
         IsTeam = true;
         moveDir = Vector3.zero;
 
-        unitStatData_st.armor_Plus += (2 * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "0"));
-        unitStatData_st.max_Hp_Plus += (ud.hp * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "1"));
-        unitStatData_st.attack_Plus += (ud.damage * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "2"));
-        unitStatData_st.attackSpeed_Plus += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "3"));
-        unitStatData_st.moveSpeed_Plus += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "4"));
-        unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "5"));
-        unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ReadOnlyData.statGrade + "6"));
+        unitStatData_st.armor_Plus += (2 * PlayerPrefs.GetInt(ConstData.statGrade + "0"));
+        unitStatData_st.max_Hp_Plus += (ud.hp * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "1"));
+        unitStatData_st.attack_Plus += (ud.damage * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "2"));
+        unitStatData_st.attackSpeed_Plus += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "3"));
+        unitStatData_st.moveSpeed_Plus += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "4"));
+        unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ConstData.statGrade + "5"));
+        unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ConstData.statGrade + "6"));
 
         #region 식사 효과
         //불사조 닭발

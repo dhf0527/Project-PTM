@@ -63,11 +63,57 @@ public class GameClearPanel : MonoBehaviour
             }    
 
             //클리어 정보 전달
-            string clearData_Key = ReadOnlyData.dungeonClearTime + $"{stage},{number}";
+            string clearData_Key = ConstData.dungeonClearTime + $"{stage},{number}";
             int pre_Record = PlayerPrefs.GetInt(clearData_Key);
             //신기록 처리
             if (resultTime < pre_Record || pre_Record == 0 )
             {
+                #region 해금 처리
+                if(pre_Record == 0)
+                {
+                    if (stage == 1 && number == 1)
+                    {
+                        PlayerPrefs.SetInt(ConstData.unitItem_Unlock, 1);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.unitItem_Unlock);
+                    }
+                    else if (stage == 1 && number == 2)
+                    { 
+                        PlayerPrefs.SetInt(ConstData.heroUpgrade_Unlock, 1);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.heroUpgrade_Unlock);
+                    }
+                    else if (stage == 1 && number == 3)
+                    {
+                        PlayerPrefs.SetInt(ConstData.meal_Unlock, 1);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.meal_Unlock);
+                    }
+                    else if (stage == 2 && number == 1 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 0)
+                    {
+                        PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 1);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.unitUpgrade_Unlock + "1");
+                    }
+                    else if (stage == 2 && number == 2)
+                    {
+                        PlayerPrefs.SetInt(ConstData.pedia_Unlock, 1);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock);
+                    }
+                    else if (stage == 2 && number == 3 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 1)
+                    {
+                        PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 2);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "2");
+                    }
+                    else if (stage == 3 && number == 1 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 2)
+                    {
+                        PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 3);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "3");
+                    }
+                    else if (stage == 3 && number == 3 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 3)
+                    {
+                        PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 4);
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "4");
+                    }
+                }
+                #endregion
+
                 //스타 획득
                 int pre_Rank = pre_Record == 0 ? 0 : pre_Record < 300 ? 3 : pre_Record < 480 ? 2 : 1;
                 PlayerPrefs.SetInt("Star", PlayerPrefs.GetInt("Star") + clear_Rank - pre_Rank); 

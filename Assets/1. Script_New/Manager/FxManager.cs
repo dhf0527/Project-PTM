@@ -49,13 +49,13 @@ public class FxManager : MonoBehaviour
 
     public void ActiveDamageText(bool isActive)
     {
-        PlayerPrefs.SetInt(ReadOnlyData.activeDamageText, isActive ? 1 : 0);
+        PlayerPrefs.SetInt(ConstData.activeDamageText, isActive ? 1 : 0);
     }
 
     //오브젝트 풀링
     public void DamageText(Vector3 pos , float damage, AttackType attackType)
     {
-        if (!damagText_prf || PlayerPrefs.GetInt(ReadOnlyData.activeDamageText) == 0)
+        if (!damagText_prf || PlayerPrefs.GetInt(ConstData.activeDamageText) == 0)
             return;
 
         DamageText cur_DamageText;
