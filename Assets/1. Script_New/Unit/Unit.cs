@@ -305,7 +305,7 @@ public abstract class Unit : MonoBehaviour
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? EnemyLayer : TeamLayer; 
         //레이캐스트 발사
-        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
+        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range * 0.9f, LayerMask.GetMask(target_Layer));
         //rayCast 가시화(디버깅)
         Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * ud.attack_Range, IsTeam ? Color.blue : Color.red, Time.deltaTime);
 

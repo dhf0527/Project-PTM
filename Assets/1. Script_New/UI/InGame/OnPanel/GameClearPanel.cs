@@ -99,17 +99,17 @@ public class GameClearPanel : MonoBehaviour
                     else if (stage == 2 && number == 3 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 1)
                     {
                         PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 2);
-                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "2");
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.unitUpgrade_Unlock + "2");
                     }
                     else if (stage == 3 && number == 1 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 2)
                     {
                         PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 3);
-                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "3");
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.unitUpgrade_Unlock + "3");
                     }
                     else if (stage == 3 && number == 3 && PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 3)
                     {
                         PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, 4);
-                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.pedia_Unlock + "4");
+                        PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.unitUpgrade_Unlock + "4");
                     }
                 }
                 #endregion

@@ -16,6 +16,11 @@ public class UnlockManager : MonoBehaviour
     public TMP_Text notification_Text_1;
     public TMP_Text notification_Text_2;
 
+    public GameObject notification_heroUpgrade;
+    public GameObject notification_meal;
+    public List<GameObject> notification_unitUpgrades;
+    public GameObject notification_pedia;
+
     private void Awake()
     {
         instance = this;
@@ -44,6 +49,7 @@ public class UnlockManager : MonoBehaviour
 
     public void TestUnlock(bool isUnlock)
     {
+        PlayerPrefs.SetInt(ConstData.unitItem_Unlock, isUnlock ? 1 : 0);
         PlayerPrefs.SetInt(ConstData.heroUpgrade_Unlock, isUnlock ? 1 : 0);
         PlayerPrefs.SetInt(ConstData.meal_Unlock, isUnlock ? 1 : 0);
         PlayerPrefs.SetInt(ConstData.pedia_Unlock, isUnlock ? 1 : 0);
@@ -63,7 +69,6 @@ public class UnlockManager : MonoBehaviour
         else
         {
             notification.SetActive(true);
-
             switch (new_Unlock)
             {
                 case ConstData.unitItem_Unlock:
@@ -73,33 +78,43 @@ public class UnlockManager : MonoBehaviour
                 case ConstData.heroUpgrade_Unlock:
                     notification_Text_1.text = "영웅 업그레이드 기능이 해금 되었습니다!";
                     notification_Text_2.text = "전투를 하며 모은 소울을 소모해 영웅을 강화할 수 있습니다.";
+                    notification_heroUpgrade.SetActive(true);
                     break;
                 case ConstData.meal_Unlock:
                     notification_Text_1.text = "식사 기능이 해금 되었습니다!";
                     notification_Text_2.text = "전투를 시작하기 전, 식사를 통해 요리의 효과를 받을 수 있습니다.";
+                    notification_meal.SetActive(true);
                     break;
                 case ConstData.unitUpgrade_Unlock + "1":
                     notification_Text_1.text = "용병단 업그레이드 기능이 해금 되었습니다!";
                     notification_Text_2.text = "기록을 달성하며 모은 스타를 소모해 용병들을 강화할 수 있습니다.";
+                    notification_unitUpgrades[0].SetActive(true);
                     break;
                 case ConstData.pedia_Unlock:
                     notification_Text_1.text = "도감 기능이 해금 되었습니다!";
                     notification_Text_2.text = "도감을 통해 유닛의 능력치를 포함한 다양한 정보를 확인할 수 있습니다.";
+                    notification_pedia.SetActive(true);
                     break;
-                case ConstData.unitItem_Unlock + "2":
+                case ConstData.unitUpgrade_Unlock + "2":
                     notification_Text_1.text = "용병단 업그레이드의 새로운 카테고리가 추가 되었습니다!";
                     notification_Text_2.text = "이제 공격 유형 별로 용병들을 강화할 수 있습니다.";
+                    notification_unitUpgrades[0].SetActive(true);
+                    notification_unitUpgrades[1].SetActive(true);
                     break;
-                case ConstData.unitItem_Unlock + "3":
+                case ConstData.unitUpgrade_Unlock + "3":
                     notification_Text_1.text = "용병단 업그레이드의 새로운 카테고리가 추가 되었습니다!";
                     notification_Text_2.text = "이제 크기 별로 용병들을 강화할 수 있습니다.";
+                    notification_unitUpgrades[0].SetActive(true);
+                    notification_unitUpgrades[2].SetActive(true);
                     break;
-                case ConstData.unitItem_Unlock + "4":
+                case ConstData.unitUpgrade_Unlock + "4":
                     notification_Text_1.text = "용병단 업그레이드의 새로운 카테고리가 추가 되었습니다!";
                     notification_Text_2.text = "이제 용병단 업그레이드의 모든 카테고리를 확인할 수 있습니다.";
+                    notification_unitUpgrades[0].SetActive(true);
+                    notification_unitUpgrades[3].SetActive(true);
                     break;
                 default:
-                    Debug.LogError("잘못된 new_Unlock값");
+                    Debug.LogError($"잘못된 new_Unlock값 :{new_Unlock}");
                     break;
             }
 

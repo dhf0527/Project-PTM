@@ -68,3 +68,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+# Ignore Unity Muse account settings to avoid per-user conflicts
+ProjectSettings/Packages/com.unity.muse.common/Settings.json
