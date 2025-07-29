@@ -32,6 +32,7 @@ public class PrincessHpPanel : MonoBehaviour
             coolDown_Text.gameObject.SetActive(false);
             character_Image.color = Color.white;
             DunGeonManager_New.instance.PrincessRivive();
+            Debug.Log("33");
         }
     }
 

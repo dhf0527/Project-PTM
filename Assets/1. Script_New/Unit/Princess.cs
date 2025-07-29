@@ -234,6 +234,8 @@ public class Princess : Unit
         GetComponent<Collider2D>().enabled = false;
         isDead = true;
         isSkilling = false;
+
+        AudioManager.Instance.PlayerSfx(SFX_Enum.HeroDie);
     }
 
     public override void OnDead()
@@ -251,6 +253,8 @@ public class Princess : Unit
         isDead = false;
         GetComponent<Collider2D>().enabled = true;
         SetAnim(AnimState.Idle);
+
+        AudioManager.Instance.PlayerSfx(SFX_Enum.HeroRevive);
     }
     #endregion
 

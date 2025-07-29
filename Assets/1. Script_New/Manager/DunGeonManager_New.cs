@@ -302,6 +302,8 @@ public class DunGeonManager_New : MonoBehaviour
             Cur_Gold -= base_UpgradeCost;
             BaseLevelUp();
         }
+        else
+            AudioManager.Instance.PlayerSfx(SFX_Enum.BaseUpgrade_Fail);
     }
 
     void BaseLevelUp()
@@ -311,7 +313,7 @@ public class DunGeonManager_New : MonoBehaviour
         //골드 관련 레벨업 처리
         Set_GoldByBaseLevel();
 
-        AudioManager.Instance.PlayerSfx(SFX_Enum.TowerUpGrade);
+        AudioManager.Instance.PlayerSfx(SFX_Enum.BaseUpgrade);
     }
 
     //아군 요새 레벨에 따라 골드 관련 변수 설정

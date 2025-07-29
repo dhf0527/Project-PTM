@@ -68,7 +68,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dccba851ffb4eea4184b91440a64c352, type: 3}
   - {fileID: 8300000, guid: 3a72521f195e83342a158c5a58781c40, type: 3}
   - {fileID: 8300000, guid: ff5a43598eef708449d30a784771f548, type: 3}
-  - {fileID: 8300000, guid: 7b8640a1dc1b2a045b4e8e8d14bada42, type: 3}
-  channels: 8
+  - {fileID: 8300000, guid: 5a919bd936f96894385decbbea2d2f38, type: 3}
+  - {fileID: 8300000, guid: ad3250fb6f9a4a2409e6947ec361dcf5, type: 3}
+  - {fileID: 8300000, guid: 6b2f98446ee36b04788e6f2649fd590a, type: 3}
+  - {fileID: 8300000, guid: 7e58bf0c6266b3643bb2fc78e2148166, type: 3}
+  channels: 16
   mixer: {fileID: 24100000, guid: d7568e8727449d647a13e223f6540691, type: 2}
-  sliders: []

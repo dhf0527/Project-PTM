@@ -42,7 +42,6 @@ public class AudioManager : MonoBehaviour
     int channel_Index = 0;
     #endregion
     public AudioMixer mixer;
-    public Slider[] sliders;
 
     private void Awake()
     {
@@ -62,12 +61,6 @@ public class AudioManager : MonoBehaviour
         PlayerBgm((BGM_Enum)startBGMIndex);
 
         LoadVolumes();
-        for (int i = 0; i < sliders.Length; i++)
-        {
-            float dbValue;
-            mixer.GetFloat(((EMixer)i).ToString(), out dbValue);
-            sliders[i].value = Mathf.Pow(10, dbValue / 20f);
-        }
     }
 
     public void Init()
@@ -157,18 +150,21 @@ public class AudioManager : MonoBehaviour
     {
         //오디오 믹서 값이 -80 ~ 0의 log이므로 0.0001~ 의 log10 * 20을 사용
         mixer.SetFloat(EMixer.Master.ToString(), Mathf.Log10(volume) * 20);
+        OnSaveVolumes();
     }
 
     public void OnSetVolume_BGM(float volume)
     {
         //오디오 믹서 값이 -80 ~ 0의 log이므로 0.0001~ 의 log10 * 20을 사용
         mixer.SetFloat(EMixer.BGM.ToString(), Mathf.Log10(volume) * 20);
+        OnSaveVolumes();
     }
 
     public void OnSetVolume_SFX(float volume)
     {
         //오디오 믹서 값이 -80 ~ 0의 log이므로 0.0001~ 의 log10 * 20을 사용
         mixer.SetFloat(EMixer.SFX.ToString(), Mathf.Log10(volume) * 20);
+        OnSaveVolumes();
     }
 
     //음량 설정을 저장하는 함수
