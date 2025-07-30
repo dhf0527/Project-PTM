@@ -70,3 +70,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 # Ignore Unity Muse account settings to avoid per-user conflicts
 ProjectSettings/Packages/com.unity.muse.common/Settings.json
+ProjectSettings/EditorSettings.asset
+ProjectSettings/UnityConnectSettings.asset
+UserSettings/

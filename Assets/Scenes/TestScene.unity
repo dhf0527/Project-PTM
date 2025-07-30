@@ -17376,10 +17376,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: OnSaveVolumes
-        m_Mode: 1
+      - m_Target: {fileID: 283656905}
+        m_TargetAssemblyTypeName: DunGeonManager_New, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

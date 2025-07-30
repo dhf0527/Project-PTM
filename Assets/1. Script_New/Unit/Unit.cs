@@ -160,6 +160,9 @@ public abstract class Unit : MonoBehaviour
     protected bool isKnockBacking = false;
     protected bool isDead = false;
     Coroutine cor_knockBack;
+
+    protected Vector2 originColliderSize;
+    protected Vector2 originColliderOffset;
     #endregion
     #region 애니메이션 변수
     [HideInInspector] public float origin_Scale = 1;
@@ -172,6 +175,7 @@ public abstract class Unit : MonoBehaviour
     #region 컴포넌트
     SpriteRenderer sr;
     protected Animator animator;
+    BoxCollider2D boxCollider2D;
     #endregion
 
     private void Awake()
@@ -193,7 +197,11 @@ public abstract class Unit : MonoBehaviour
     private void LateUpdate()
     {
         if (animator)
+        {
             transform.localScale = origin_Scale * scaleVector;
+            boxCollider2D.size = new Vector2(originColliderSize.x / scaleVector.x, originColliderSize.y / scaleVector.y);
+            boxCollider2D.offset = new Vector2(originColliderOffset.x / scaleVector.x, originColliderOffset.y / scaleVector.y);
+        }
     }
 
     #region 초기화
@@ -211,6 +219,10 @@ public abstract class Unit : MonoBehaviour
 
         origin_Scale = 1;
         scaleVector = Vector3.one;
+
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        originColliderSize = boxCollider2D.size;
+        originColliderOffset = boxCollider2D.offset;
     }
 
     //체력바 생성 및 설정
@@ -305,7 +317,7 @@ public abstract class Unit : MonoBehaviour
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? EnemyLayer : TeamLayer; 
         //레이캐스트 발사
-        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range * 0.9f, LayerMask.GetMask(target_Layer));
+        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
         //rayCast 가시화(디버깅)
         Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * ud.attack_Range, IsTeam ? Color.blue : Color.red, Time.deltaTime);
 
