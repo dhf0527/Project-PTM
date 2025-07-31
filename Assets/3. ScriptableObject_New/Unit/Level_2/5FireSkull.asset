@@ -16,10 +16,11 @@ MonoBehaviour:
   unit_Code: 205
   level: 2
   unit_Name: "\uBD88\uD0C0\uB294 \uD574\uACE8"
+  unit_SubName: 
   faction: 3
   move_Speed: 200
   hp: 120
-  damage: 20
+  damage: 15
   attack_Speed: 3
   accuracy: 60
   avoidance: 40
@@ -27,7 +28,7 @@ MonoBehaviour:
   attack_RangeType: 1
   target_Count: 3
   attack_Type: 3
-  weak_Type: 0
+  weak_Type: 2
   resistance_Type: 3
   spawn_Count: 1
   size: 1

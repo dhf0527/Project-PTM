@@ -16,14 +16,15 @@ MonoBehaviour:
   unit_Code: 300
   level: 3
   unit_Name: "\uC131\uAE30\uC0AC"
+  unit_SubName: 
   faction: 0
   move_Speed: 150
   hp: 480
-  damage: 60
+  damage: 55
   attack_Speed: 3
   accuracy: 60
   avoidance: 60
-  armor: 12
+  armor: 10
   attack_RangeType: 0
   target_Count: 1
   attack_Type: 2
@@ -37,4 +38,4 @@ MonoBehaviour:
     \uC544\uAD70 \uC720\uB2DB\uB4E4\uC758 \uBC29\uC5B4\uB3C4\uB97C *b4*\uC99D\uAC00\uC2DC\uD0A8\uB2E4."
   passive2: 
   passive2_Detail: 
-  attack_Range: 0
+  attack_Range: 1

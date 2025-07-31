@@ -19,17 +19,17 @@ MonoBehaviour:
   unit_SubName: 
   faction: 1
   move_Speed: 200
-  hp: 120
-  damage: 24
-  attack_Speed: 6
-  accuracy: 120
+  hp: 160
+  damage: 28
+  attack_Speed: 5
+  accuracy: 80
   avoidance: 80
   armor: 0
   attack_RangeType: 1
   target_Count: 1
   attack_Type: 2
   weak_Type: 0
-  resistance_Type: 1
+  resistance_Type: 0
   spawn_Count: 1
   size: 0
   cost: 500
@@ -37,7 +37,7 @@ MonoBehaviour:
   passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uBA85\uC911\uD560
     \uB54C\uB9C8\uB2E4 \uC790\uC2E0 \uC8FC\uBCC0\uC758 200 \uBC94\uC704\uC5D0 \uC0DD\uBA85\uB825\uC758
     \uBE44\uC728\uC774 \uAC00\uC7A5 \uB0AE\uC740 \uC544\uAD70 \uC720\uB2DB\uC758
-    \uC0DD\uBA85\uB825\uC744 *b10*\uD68C\uBCF5\uD55C\uB2E4."
+    \uC0DD\uBA85\uB825\uC744 *b15*\uD68C\uBCF5\uD55C\uB2E4."
   passive2: 
   passive2_Detail: 
   attack_Range: 2

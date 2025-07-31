@@ -19,7 +19,7 @@ MonoBehaviour:
   unit_SubName: 
   faction: 2
   move_Speed: 150
-  hp: 320
+  hp: 400
   damage: 45
   attack_Speed: 2
   accuracy: 60

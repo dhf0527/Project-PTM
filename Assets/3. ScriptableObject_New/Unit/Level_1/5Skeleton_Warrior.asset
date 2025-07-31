@@ -19,9 +19,9 @@ MonoBehaviour:
   unit_SubName: 
   faction: 3
   move_Speed: 120
-  hp: 60
-  damage: 10
-  attack_Speed: 4
+  hp: 80
+  damage: 12
+  attack_Speed: 3
   accuracy: 60
   avoidance: 20
   armor: 2
