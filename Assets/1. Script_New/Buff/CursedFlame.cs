@@ -37,7 +37,7 @@ public class CursedFlame : Buff
         //회복 감소
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         CancelInvoke();
@@ -46,6 +46,6 @@ public class CursedFlame : Buff
 
     void TickDamage()
     {
-        unit.Cur_Hp -= damage;
+        unit.TakeDamage(damage, false);
     }
 }

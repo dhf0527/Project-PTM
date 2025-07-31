@@ -173,6 +173,7 @@ public class EnemySpawnManager : MonoBehaviour
             spawned_Unit.unitStatData_st.attackSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
         }
 
+        DunGeonManager_New.instance.onStageUnits_Test.Add(spawned_Unit);
         return spawned_Unit;
     }
 

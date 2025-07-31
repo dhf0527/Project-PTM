@@ -33,7 +33,7 @@ public class BossGuard : Buff
         DunGeonManager_New.instance.enemyBase.isImmune = true;
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         DunGeonManager_New.instance.enemyBase.isImmune = false;

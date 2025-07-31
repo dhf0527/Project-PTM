@@ -31,7 +31,7 @@ public class CuttedArmor : Buff
 
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         unit.unitStatData_st.armor_PlusPercent += armor_Decrease_percent;

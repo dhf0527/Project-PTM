@@ -51,7 +51,7 @@ public abstract class Buff : MonoBehaviour
     {
         unit.SetBuffIcon(buffIcon_Index, true);
     }
-    protected virtual void BuffEnd()
+    public virtual void BuffEnd()
     {
         unit.SetBuffIcon(buffIcon_Index, false);
     }

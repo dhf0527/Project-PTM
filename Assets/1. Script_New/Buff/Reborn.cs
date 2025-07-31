@@ -41,7 +41,7 @@ public class Reborn : Buff
         InvokeRepeating("HpDecrease", 1, 1);
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         //이동속도 복구

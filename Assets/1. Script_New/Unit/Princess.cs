@@ -170,10 +170,10 @@ public class Princess : Unit
         isKnockBacking = false;
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, bool isCanKnockBackDamage = true)
     {
         nonCombatTime = 0;
-        base.TakeDamage(damage);
+        base.TakeDamage(damage, isCanKnockBackDamage);
     }
     #endregion
 
@@ -234,6 +234,13 @@ public class Princess : Unit
         GetComponent<Collider2D>().enabled = false;
         isDead = true;
         isSkilling = false;
+
+        moveDir.x = 0;
+
+        //버프 제거
+        Buff[] buffs = GetComponents<Buff>();
+        foreach (var buff in buffs)
+            buff.BuffEnd();
 
         AudioManager.Instance.PlayerSfx(SFX_Enum.HeroDie);
     }

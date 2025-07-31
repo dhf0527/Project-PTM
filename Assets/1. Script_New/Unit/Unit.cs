@@ -140,7 +140,8 @@ public abstract class Unit : MonoBehaviour
             if (cur_Hp <= 0)
             {
                 cur_Hp = 0;
-                Dead();
+                if(!isDead)
+                    Dead();
             }
             //공주일 경우 전용 체력바 갱신
             if (ud.unit_Code == 0)
@@ -150,7 +151,7 @@ public abstract class Unit : MonoBehaviour
             hpBar?.SetHpBar();
         }
     }
-    protected HpBar_new hpBar;
+    [HideInInspector]public HpBar_new hpBar;
 
     //체력으로 인한 넉백을 당할 수 있는 횟수
     protected int knockBack_Count = 3;
@@ -532,14 +533,14 @@ public abstract class Unit : MonoBehaviour
     #endregion
 
     #region 피격
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, bool isCanKnockBackDamage = true)
     {
         if (isImmune)
             return;
 
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
-        if (canKnockBack && damage >= (Max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
+        if (isCanKnockBackDamage && canKnockBack && damage >= (Max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
         {
             OnStartKnockBack();
             knockBack_Count--;
@@ -552,8 +553,16 @@ public abstract class Unit : MonoBehaviour
     {
         canKnockBack = false;
         SetAnim(AnimState.Die);
-        hpBar.gameObject.SetActive(false);
+        Destroy(hpBar.gameObject);
         GetComponent<Collider2D>().enabled = false;
+
+        //버프 제거
+        Buff[] buffs = GetComponents<Buff>();
+        foreach (var buff in buffs)
+            buff.BuffEnd();
+
+        DunGeonManager_New.instance.onStageUnits_Test.Remove(this);
+
         isDead = true;
     }
 

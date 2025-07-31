@@ -19,7 +19,7 @@ public class ShieldSmiteDebuff : Buff
         unit.unitStatData_st.attackSpeed_PlusPercent -= attackSpeed_Decrease;
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         unit.unitStatData_st.moveSpeed_PlusPercent += 80;

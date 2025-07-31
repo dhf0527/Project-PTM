@@ -20,7 +20,7 @@ public class BrokenHeroSword : Buff
         unit.isPenetration = true;
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         unit.unitStatData_st.accuracy_Plus -= accuracy_increase;

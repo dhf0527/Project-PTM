@@ -31,7 +31,7 @@ public class ReapedSpirit : Buff
         unit.unitStatData_st.accuracy_Plus += accuracy_Increase;
     }
 
-    protected override void BuffEnd()
+    public override void BuffEnd()
     {
         base.BuffEnd();
         unit.unitStatData_st.attack_Plus -= attack_Increase;

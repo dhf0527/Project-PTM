@@ -121,6 +121,8 @@ public class DunGeonManager_New : MonoBehaviour
     #region 디버깅
     [Header("(테스트용)고용할 유닛들")]
     [SerializeField] Unit[] test_Units = new Unit[3];
+
+    public List<Unit> onStageUnits_Test;
     #endregion
 
     //총 전투 시간
@@ -257,6 +259,7 @@ public class DunGeonManager_New : MonoBehaviour
         if (GameManager.Instance.current_Meal?.code == 9)
             unit.unitStatData_st.attack_Plus += EnemySpawnManager.instance.cur_Wave * (GameManager.Instance.current_Meal.mealValue);
 
+        onStageUnits_Test.Add(unit);
         return unit;
     }
 
@@ -493,5 +496,13 @@ public class DunGeonManager_New : MonoBehaviour
     }
     #endregion
 
-
+    public void OnStageUnitDelete_Test()
+    {
+        foreach (var onStageUnit in onStageUnits_Test)
+        {
+            Destroy(onStageUnit.gameObject);
+            Destroy(onStageUnit.hpBar.gameObject);
+        }
+        onStageUnits_Test.Clear();
+    }
 }
