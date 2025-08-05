@@ -5980,6 +5980,7 @@ MonoBehaviour:
   base_Sr: {fileID: 963480812}
   backGround_Sr: {fileID: 973086256}
   test_Units: []
+  onStageUnits_Test: []
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
@@ -12814,6 +12815,7 @@ MonoBehaviour:
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
   isTrueDamage: 0
+  hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
@@ -17806,6 +17808,7 @@ MonoBehaviour:
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
   isTrueDamage: 0
+  hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
@@ -18180,7 +18183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973086254}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85e1dbe2540ef224ab23729b6baa1c6a, type: 3}
   m_Name: 

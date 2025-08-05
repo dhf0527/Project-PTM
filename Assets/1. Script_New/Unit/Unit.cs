@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
     public float MoveSpeed { get { return Mathf.Max(ud.move_Speed * (1 + unitStatData_st.moveSpeed_PlusPercent * 0.01f) + unitStatData_st.moveSpeed_Plus, ud.move_Speed * 0.1f); } }
     public int Cost { get { return Mathf.Max((int)(ud.cost * (1 - unitStatData_st.cost_MinusPercent * 0.01f)), 0);  } }
     public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
-    public float SpawnCoolDown { get { return ud.cost * 0.04f * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
+    public float SpawnCoolDown { get { return ud.level * (3 + ud.level) * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
 
     [HideInInspector] public Unit_Size size;
 
@@ -154,7 +154,8 @@ public abstract class Unit : MonoBehaviour
     [HideInInspector]public HpBar_new hpBar;
 
     //체력으로 인한 넉백을 당할 수 있는 횟수
-    protected int knockBack_Count = 3;
+    protected int knockBack_Count = 2;
+    protected float knockBack_Hp = 0;
     [HideInInspector] public bool canKnockBack = true;
     [HideInInspector] public bool isImmune = false;
     protected bool canKnockBack_By_Hp = true;
@@ -224,6 +225,8 @@ public abstract class Unit : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         originColliderSize = boxCollider2D.size;
         originColliderOffset = boxCollider2D.offset;
+
+        knockBack_Hp = Max_Hp * 0.65f;
     }
 
     //체력바 생성 및 설정
@@ -540,10 +543,11 @@ public abstract class Unit : MonoBehaviour
 
         Cur_Hp -= damage;
         //체력 감소로 인한 넉백
-        if (isCanKnockBackDamage && canKnockBack && damage >= (Max_Hp / 5) && canKnockBack_By_Hp && knockBack_Count > 0) 
+        if (isCanKnockBackDamage && canKnockBack && Cur_Hp <= knockBack_Hp && canKnockBack_By_Hp && knockBack_Count > 0) 
         {
             OnStartKnockBack();
             knockBack_Count--;
+            knockBack_Hp = Cur_Hp;
             StartCoroutine(C_KnockBack_CoolDown());
         }
     }
@@ -618,7 +622,7 @@ public abstract class Unit : MonoBehaviour
     IEnumerator C_KnockBack_CoolDown()
     {
         canKnockBack_By_Hp = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         canKnockBack_By_Hp = true;
     }
     #endregion

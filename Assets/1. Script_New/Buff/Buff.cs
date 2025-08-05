@@ -28,11 +28,16 @@ public abstract class Buff : MonoBehaviour
         //초기화
         Init();
 
+        
+
+        BuffStart();
+    }
+
+    private void Awake()
+    {
         //버프 중복 방지
         if (PreventStack())
             return;
-
-        BuffStart();
     }
 
     protected void Update()
@@ -53,7 +58,7 @@ public abstract class Buff : MonoBehaviour
     }
     public virtual void BuffEnd()
     {
-        unit.SetBuffIcon(buffIcon_Index, false);
+        unit?.SetBuffIcon(buffIcon_Index, false);
     }
     protected abstract bool PreventStack();
 }

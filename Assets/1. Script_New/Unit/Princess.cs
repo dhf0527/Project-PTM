@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.CanvasScaler;
 
 public class Princess : Unit
 {
@@ -60,26 +56,28 @@ public class Princess : Unit
         {
             unitStatData_st.moveSpeed_PlusPercent += !test_Is1 ? 400 : -400f;
             test_Is1 = !test_Is1;
+            Debug.Log("이동 속도 증가" + (test_Is1 ? "On" : "Off"));
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
             unitStatData_st.accuracy_Plus += !test_Is2 ? 1000 : -1000;
             test_Is2 = !test_Is2;
+            Debug.Log("명중률 증가" + (test_Is2 ? "On" : "Off"));
         }
         if (Input.GetKeyDown(KeyCode.F3))
         {
             unitStatData_st.avoidance_Plus += !test_Is3 ? 1000 : -1000;
             test_Is3 = !test_Is3;
+            Debug.Log("회피율 증가" + (test_Is3 ? "On" : "Off"));
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
             unitStatData_st.attack_Plus += !test_Is4 ? 1000 : - 1000;
             test_Is4 = !test_Is4;
+            Debug.Log("공격력 증가" + (test_Is4 ? "On" : "Off"));
         }
         if (Input.GetKeyDown(KeyCode.F5))
-        {
             DunGeonManager_New.instance.Cur_Gold = DunGeonManager_New.instance.Max_Gold;
-        }
         if (Input.GetKeyDown(KeyCode.F6))
             DunGeonManager_New.instance.OpenGameClearPanel();
         if (Input.GetKeyDown(KeyCode.F7))
@@ -91,6 +89,7 @@ public class Princess : Unit
         base.Init();
         IsTeam = true;
         moveDir = Vector3.zero;
+        knockBack_Count = 0;
 
         unitStatData_st.armor_Plus += (2 * PlayerPrefs.GetInt(ConstData.statGrade + "0"));
         unitStatData_st.max_Hp_Plus += (ud.hp * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "1"));
