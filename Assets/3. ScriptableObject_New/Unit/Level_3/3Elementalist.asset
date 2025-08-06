@@ -32,7 +32,7 @@ MonoBehaviour:
   resistance_Type: 0
   spawn_Count: 1
   size: 0
-  cost: 500
+  cost: 700
   passive1: "\uC815\uB839 \uD68C\uADC0"
   passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uBA85\uC911\uD560
     \uB54C\uB9C8\uB2E4 \uC790\uC2E0 \uC8FC\uBCC0\uC758 200 \uBC94\uC704\uC5D0 \uC0DD\uBA85\uB825\uC758

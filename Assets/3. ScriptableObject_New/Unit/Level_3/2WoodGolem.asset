@@ -32,7 +32,7 @@ MonoBehaviour:
   resistance_Type: 2
   spawn_Count: 1
   size: 2
-  cost: 500
+  cost: 700
   passive1: 
   passive1_Detail: 
   passive2: 

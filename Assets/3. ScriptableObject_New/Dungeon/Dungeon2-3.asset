@@ -18,13 +18,13 @@ MonoBehaviour:
   units_Wave1:
   - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   units_Wave2:
   - {fileID: 0}
   - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   - {fileID: 1016416261767919602, guid: fe7a5d7d04064f14f8d2fef19a2dcedf, type: 3}
   units_Wave3:
-  - {fileID: 0}
   - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
+  - {fileID: 0}
   - {fileID: 1016416261767919602, guid: fe7a5d7d04064f14f8d2fef19a2dcedf, type: 3}
   stage_Faction: 1
