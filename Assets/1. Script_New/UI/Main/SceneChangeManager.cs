@@ -26,7 +26,8 @@ public class SceneChangeManager : MonoBehaviour
     public void OnToTestScene()
     {
         AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
-        SceneManager.LoadScene(testSceneName);
+        SceneManager.LoadScene(testSceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(dungeonSceneName, LoadSceneMode.Additive);
         Time.timeScale = 1f;
     }
 

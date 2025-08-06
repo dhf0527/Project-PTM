@@ -62,4 +62,10 @@ public class TestUnitSpawn : MonoBehaviour
                 break;
         }
     }
+
+    public void TestUnitDelete()
+    {
+        DunGeonManager_New.instance.OnStageUnitDelete_Test();
+    }
+    
 }

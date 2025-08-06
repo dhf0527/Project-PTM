@@ -239,7 +239,12 @@ public class Princess : Unit
         //버프 제거
         Buff[] buffs = GetComponents<Buff>();
         foreach (var buff in buffs)
-            buff.BuffEnd();
+        {
+            if (buff.unit)
+                buff.BuffEnd();
+            else
+                Destroy(buff);
+        }
 
         AudioManager.Instance.PlayerSfx(SFX_Enum.HeroDie);
     }

@@ -562,8 +562,9 @@ public abstract class Unit : MonoBehaviour
 
         //버프 제거
         Buff[] buffs = GetComponents<Buff>();
+
         foreach (var buff in buffs)
-            buff.BuffEnd();
+            Destroy(buff);
 
         DunGeonManager_New.instance.onStageUnits_Test.Remove(this);
 

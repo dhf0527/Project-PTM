@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Buff : MonoBehaviour
 {
-    protected Unit unit;
+    [SerializeField]public Unit unit;
 
     //버프 지속 시간
     public float buff_Time;
@@ -58,7 +58,7 @@ public abstract class Buff : MonoBehaviour
     }
     public virtual void BuffEnd()
     {
-        unit?.SetBuffIcon(buffIcon_Index, false);
+        unit.SetBuffIcon(buffIcon_Index, false);
     }
     protected abstract bool PreventStack();
 }

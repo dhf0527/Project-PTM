@@ -43,6 +43,8 @@ public class EnemySpawnManager : MonoBehaviour
     public Unit[] wave3_enemy = new Unit[3];
     public Unit boss_Unit;
 
+    [HideInInspector] public bool isBossDead;
+
     //보스 오라 이펙트
     public GameObject bossAura;
 
@@ -125,6 +127,14 @@ public class EnemySpawnManager : MonoBehaviour
         //주기적으로 유닛 생산
         if(!isStopSpawn)
             Spawn_Timer();
+
+        if(isBossSpawned)
+        {
+            if (!isBossDead)
+                DunGeonManager_New.instance.enemyBase.isImmune = true;
+            else
+                DunGeonManager_New.instance.enemyBase.isImmune = false;
+        }
         
     }
 
@@ -158,6 +168,9 @@ public class EnemySpawnManager : MonoBehaviour
     //유닛 생산 함수
     public Unit Spawn_Unit(Unit unit)
     {
+        if (!unit)
+            return null;
+
         //유닛 생산
         Unit spawned_Unit = Instantiate(unit, spawn_Trans);
         spawned_Unit.transform.position += DunGeonManager_New.instance.SpawnY(spawned_Unit);

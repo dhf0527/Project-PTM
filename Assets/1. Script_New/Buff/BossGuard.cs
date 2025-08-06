@@ -30,17 +30,15 @@ public class BossGuard : Buff
     protected override void BuffStart()
     {
         base.BuffStart();
-        DunGeonManager_New.instance.enemyBase.isImmune = true;
     }
 
     public override void BuffEnd()
     {
         base.BuffEnd();
-        DunGeonManager_New.instance.enemyBase.isImmune = false;
     }
 
     private void OnDestroy()
     {
-        BuffEnd();
+        EnemySpawnManager.instance.isBossDead = true;
     }
 }

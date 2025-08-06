@@ -12,10 +12,15 @@ public class BackGroundMove : MonoBehaviour
     private void Start()
     {
         width = GetComponent<SpriteRenderer>().size.x;
-        clone = new GameObject("BackGroundClone");
+        clone = Instantiate(gameObject, transform.parent);
+        Destroy(clone.GetComponent<BackGroundMove>());
+        Destroy(clone.GetComponent<Animator>());
+
+        /*
         clone.AddComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
         clone.GetComponent<SpriteRenderer>().drawMode = GetComponent<SpriteRenderer>().drawMode;
         clone.GetComponent<SpriteRenderer>().size = GetComponent<SpriteRenderer>().size;
+        */
     }
 
     private void Update()
@@ -32,6 +37,8 @@ public class BackGroundMove : MonoBehaviour
             isCloneRight = !isCloneRight;
         }
         clone.transform.position = transform.position + Vector3.right * width * (isCloneRight ? -1 : 1);
+
+        clone.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
     }
 
 }
