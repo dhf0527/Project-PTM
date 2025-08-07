@@ -473,15 +473,15 @@ public abstract class Unit : MonoBehaviour
         {
             int getGold = 0;
             if (target_Unit.GetComponent<BossGuard>())
-                getGold = 500;
+                getGold = DunGeonManager_New.instance.killGold_Boss;
             else
             {
                 if (this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
-                    getGold = 30;
+                    getGold = DunGeonManager_New.instance.killGolds[0];
                 else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
-                    getGold = 50;
+                    getGold = DunGeonManager_New.instance.killGolds[1];
                 else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
-                    getGold = 150;
+                    getGold = DunGeonManager_New.instance.killGolds[2];
             }
 
             if (GameManager.Instance.current_Meal?.code == 1)

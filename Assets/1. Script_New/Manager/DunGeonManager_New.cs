@@ -63,6 +63,9 @@ public class DunGeonManager_New : MonoBehaviour
     float spawn_Z = 0;
     #endregion
     #region 골드 변수
+    [Header("유닛 순서별 처치 골드")]
+    public List<int> killGolds;
+    public int killGold_Boss;
     float max_Gold;
     public float Max_Gold
     {
@@ -124,6 +127,8 @@ public class DunGeonManager_New : MonoBehaviour
 
     public List<Unit> onStageUnits_Test;
     #endregion
+    [Header("보상 배수(게임 시간 * (multiply + 지역 번호))")]
+    public float reward_Multiply;
 
     //총 전투 시간
     [HideInInspector] public float inGamePlayTime;

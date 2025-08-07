@@ -5915,6 +5915,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  killGolds: 1e0000003200000096000000
+  killGold_Boss: 500
   base_abillitiesByLevels:
   - base_Hp_By_Level: 500
     base_Armor_By_Level: 0
@@ -5981,6 +5983,7 @@ MonoBehaviour:
   backGround_Sr: {fileID: 973086256}
   test_Units: []
   onStageUnits_Test: []
+  reward_Multiply: 3
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
   princess: {fileID: 0}
@@ -6073,6 +6076,10 @@ MonoBehaviour:
   - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
+  boss_Hp1: 2
+  boss_Hp2: 1
+  boss_Attack1: 1
+  boss_Attack2: 0.5
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
@@ -21129,7 +21136,7 @@ Transform:
   m_GameObject: {fileID: 1145465301}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
