@@ -43,6 +43,13 @@ public class EnemySpawnManager : MonoBehaviour
     public Unit[] wave3_enemy = new Unit[3];
     public Unit boss_Unit;
 
+    [Header("보스 능력치 배수(Hp1+(번호*Hp2))")]
+    public float boss_Hp1;
+    public float boss_Hp2;
+    public float boss_Attack1;
+    public float boss_Attack2;
+
+
     [HideInInspector] public bool isBossDead;
 
     //보스 오라 이펙트
@@ -397,9 +404,9 @@ public class EnemySpawnManager : MonoBehaviour
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정
-        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * (1 + GameManager.Instance.current_Dungeon.number * 0.5f);
+        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * ((boss_Hp1 - 1) + GameManager.Instance.current_Dungeon.stage * boss_Hp2);
         bossUnit.Cur_Hp = bossUnit.Max_Hp;
-        bossUnit.unitStatData_st.attack_PlusPercent += GameManager.Instance.current_Dungeon.number * 25f;
+        bossUnit.unitStatData_st.attack_PlusPercent += ((boss_Attack1 - 1) + GameManager.Instance.current_Dungeon.number * boss_Attack2) * 100;
         bossUnit.unitStatData_st.targetCount_Plus += bossUnit.ud.target_Count;
 
         //보스의 수호 버프 부여

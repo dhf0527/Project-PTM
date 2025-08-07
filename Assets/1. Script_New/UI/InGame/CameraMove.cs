@@ -43,7 +43,7 @@ public class CameraMove : MonoBehaviour
     {
         Vector3 tmp_Pos = transform.position;
         //경계선 보정
-        tmp_Pos.x = Mathf.Clamp(move_Pos_X, min_x, max_x);
+        tmp_Pos.x = Mathf.Clamp(move_Pos_X, min_x, max_x + 0.5f);
         transform.position = tmp_Pos;
     }
 
