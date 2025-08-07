@@ -22,6 +22,7 @@ public class BossGuard : Buff
             //지속 시간 초기화
             GetComponent<BossGuard>().cur_BuffTime = 0;
             Destroy(this);
+            Debug.Log("bossGuard 중복 오류");
             return true;
         }
         return false;
@@ -37,7 +38,7 @@ public class BossGuard : Buff
         base.BuffEnd();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EnemySpawnManager.instance.isBossDead = true;
     }
