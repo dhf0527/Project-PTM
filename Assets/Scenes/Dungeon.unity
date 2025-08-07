@@ -5915,8 +5915,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  killGolds: 1e0000003200000096000000
-  killGold_Boss: 500
   base_abillitiesByLevels:
   - base_Hp_By_Level: 500
     base_Armor_By_Level: 0
@@ -6080,6 +6078,8 @@ MonoBehaviour:
   boss_Hp2: 1
   boss_Attack1: 1
   boss_Attack2: 0.5
+  killGolds: 1e0000003200000096000000
+  killGold_Boss: 500
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
@@ -12828,6 +12828,7 @@ MonoBehaviour:
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
+  killGold: 0
 --- !u!1 &670904439
 GameObject:
   m_ObjectHideFlags: 0
@@ -17821,6 +17822,7 @@ MonoBehaviour:
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
+  killGold: 0
 --- !u!1 &963843912
 GameObject:
   m_ObjectHideFlags: 0

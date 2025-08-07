@@ -63,9 +63,6 @@ public class DunGeonManager_New : MonoBehaviour
     float spawn_Z = 0;
     #endregion
     #region °ñµå º¯¼ö
-    [Header("À¯´Ö ¼ø¼­º° Ã³Ä¡ °ñµå")]
-    public List<int> killGolds;
-    public int killGold_Boss;
     float max_Gold;
     public float Max_Gold
     {

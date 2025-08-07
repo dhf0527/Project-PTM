@@ -49,6 +49,9 @@ public class EnemySpawnManager : MonoBehaviour
     public float boss_Attack1;
     public float boss_Attack2;
 
+    [Header("유닛 순서별 처치 골드")]
+    public List<int> killGolds;
+    public int killGold_Boss;
 
     [HideInInspector] public bool isBossDead;
 
@@ -103,6 +106,13 @@ public class EnemySpawnManager : MonoBehaviour
                 spawn_Units[0, i] = GameManager.Instance.current_Dungeon.units_Wave1[i];
                 spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
                 spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
+
+                if(spawn_Units[0, i])
+                    spawn_Units[0, i].killGold = killGolds[i];
+                if (spawn_Units[1, i])
+                    spawn_Units[1, i].killGold = killGolds[i];
+                if (spawn_Units[2, i])
+                    spawn_Units[2, i].killGold = killGolds[i];
             }
             boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
         }
@@ -408,7 +418,7 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.Cur_Hp = bossUnit.Max_Hp;
         bossUnit.unitStatData_st.attack_PlusPercent += ((boss_Attack1 - 1) + GameManager.Instance.current_Dungeon.number * boss_Attack2) * 100;
         bossUnit.unitStatData_st.targetCount_Plus += bossUnit.ud.target_Count;
-
+        bossUnit.killGold = killGold_Boss;
         //보스의 수호 버프 부여
         bossUnit.AddComponent<BossGuard>();
         //아우라 생성

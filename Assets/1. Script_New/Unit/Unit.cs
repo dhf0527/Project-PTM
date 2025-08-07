@@ -179,6 +179,7 @@ public abstract class Unit : MonoBehaviour
     protected Animator animator;
     BoxCollider2D boxCollider2D;
     #endregion
+    [HideInInspector] public int killGold;
 
     private void Awake()
     {
@@ -469,25 +470,29 @@ public abstract class Unit : MonoBehaviour
         target_Unit.TakeDamage(totalDamage);
 
         //유닛 처치 골드
-        if(target_Unit.Cur_Hp <= 0)
+        if(target_Unit.Cur_Hp <= 0 && !target_Unit.IsTeam)
         {
-            int getGold = 0;
+            int getGold = target_Unit.killGold;
+            /*
             if (target_Unit.GetComponent<BossGuard>())
                 getGold = DunGeonManager_New.instance.killGold_Boss;
             else
             {
-                if (this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
+                if ( this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
                     getGold = DunGeonManager_New.instance.killGolds[0];
                 else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
                     getGold = DunGeonManager_New.instance.killGolds[1];
                 else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
                     getGold = DunGeonManager_New.instance.killGolds[2];
+                else
+                    Debug.Log("오류");
             }
-
+            */
             if (GameManager.Instance.current_Meal?.code == 1)
                 getGold *= 2;
 
             DunGeonManager_New.instance.GetGold(getGold);
+            Debug.Log("처치 + " + getGold + "Gold");
         }
 
         //피격 이펙트 생성

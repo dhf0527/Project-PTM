@@ -153,7 +153,7 @@ public class GameClearPanel : MonoBehaviour
         }
 
         //전투 결과 효과음
-        AudioManager.Instance.PlayerSfx(SFX_Enum.Victory);
+        AudioManager.Instance.PlayerSfx(isWin ? SFX_Enum.Victory : SFX_Enum.Defeated);
     }
 
     public void OnSetPlayTime()

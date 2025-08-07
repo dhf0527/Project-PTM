@@ -17751,6 +17751,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
+      propertyPath: sfx_Clips.Array.size
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: sliders.Array.data[0]
       value: 
       objectReference: {fileID: 1166613124}
@@ -17762,6 +17766,10 @@ PrefabInstance:
       propertyPath: sliders.Array.data[2]
       value: 
       objectReference: {fileID: 1484731966}
+    - target: {fileID: 8374309605669539923, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
+      propertyPath: sfx_Clips.Array.data[22]
+      value: 
+      objectReference: {fileID: 8300000, guid: f53d79bca3a84944292ffee1791b5041, type: 3}
     - target: {fileID: 8970180194823996693, guid: 9fef1dd0ca6b23f47bf93f8f97a9f33f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
