@@ -16,5 +16,6 @@ MonoBehaviour:
   mealName: "\uC7BF\uBE5B \uD6C4\uCD94 \uB77C\uBA74"
   mealIcon: {fileID: 21300040, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
   mealValue: 4
+  mealValue2: 0
   mealDescription: "\uC544\uAD70 \uC694\uC0C8\uAC00 Lv{value}\uB85C \uC2DC\uC791"
   mealRarity: 0
