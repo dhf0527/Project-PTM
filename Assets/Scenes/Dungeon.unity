@@ -5919,47 +5919,47 @@ MonoBehaviour:
   - base_Hp_By_Level: 500
     base_Armor_By_Level: 0
     base_UpgradeCost_By_Level: 50
-    base_GoldPerSec_By_Level: 10
+    base_GoldPerSec_By_Level: 8
     base_MaxGold_By_Level: 100
   - base_Hp_By_Level: 700
     base_Armor_By_Level: 1
     base_UpgradeCost_By_Level: 100
-    base_GoldPerSec_By_Level: 15
+    base_GoldPerSec_By_Level: 12
     base_MaxGold_By_Level: 300
   - base_Hp_By_Level: 900
     base_Armor_By_Level: 2
     base_UpgradeCost_By_Level: 200
-    base_GoldPerSec_By_Level: 20
+    base_GoldPerSec_By_Level: 16
     base_MaxGold_By_Level: 600
   - base_Hp_By_Level: 1100
     base_Armor_By_Level: 3
     base_UpgradeCost_By_Level: 400
-    base_GoldPerSec_By_Level: 25
+    base_GoldPerSec_By_Level: 20
     base_MaxGold_By_Level: 1000
   - base_Hp_By_Level: 1300
     base_Armor_By_Level: 4
     base_UpgradeCost_By_Level: 800
-    base_GoldPerSec_By_Level: 30
+    base_GoldPerSec_By_Level: 25
     base_MaxGold_By_Level: 1800
   - base_Hp_By_Level: 1500
     base_Armor_By_Level: 5
     base_UpgradeCost_By_Level: 1600
-    base_GoldPerSec_By_Level: 40
+    base_GoldPerSec_By_Level: 30
     base_MaxGold_By_Level: 2800
   - base_Hp_By_Level: 1700
     base_Armor_By_Level: 6
     base_UpgradeCost_By_Level: 3200
-    base_GoldPerSec_By_Level: 50
+    base_GoldPerSec_By_Level: 35
     base_MaxGold_By_Level: 4000
   - base_Hp_By_Level: 1900
     base_Armor_By_Level: 7
     base_UpgradeCost_By_Level: 6400
-    base_GoldPerSec_By_Level: 60
+    base_GoldPerSec_By_Level: 40
     base_MaxGold_By_Level: 6300
   - base_Hp_By_Level: 2100
     base_Armor_By_Level: 8
     base_UpgradeCost_By_Level: 0
-    base_GoldPerSec_By_Level: 80
+    base_GoldPerSec_By_Level: 50
     base_MaxGold_By_Level: 10000
   bridge_Sprites:
   - {fileID: 21300000, guid: 1531d8ff54ab86c42a573e4fc007fe7d, type: 3}
@@ -6075,11 +6075,11 @@ MonoBehaviour:
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_Hp1: 2
-  boss_Hp2: 1
+  boss_Hp2: 2
   boss_Attack1: 1
   boss_Attack2: 0.5
-  killGolds: 1e0000003200000096000000
-  killGold_Boss: 500
+  killGolds: 190000003200000064000000
+  killGold_Boss: 1000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
