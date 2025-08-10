@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 4
   mealName: "\uAF43\uBE59\uC218"
-  mealIcon: {fileID: 21300034, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+  mealIcon: {fileID: -17762584, guid: a7b369ae85250b34f9a7652acf001d1d, type: 3}
   mealValue: 30
+  mealValue2: 0
   mealDescription: "\uBAA8\uB4E0 \uC801\uC758 \uC774\uB3D9 \uC18D\uB3C4, \uACF5\uACA9
     \uC18D\uB3C4 -{value}%"
   mealRarity: 0
