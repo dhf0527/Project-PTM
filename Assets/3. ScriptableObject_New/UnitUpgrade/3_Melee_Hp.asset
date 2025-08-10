@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3_Melee_Hp
   m_EditorClassIdentifier: 
   code: 3
-  upgradeName: "\uC7A5\uAC11 \uBCF4\uC0C1"
+  upgradeName: "\uC7A5\uAC11 \uBCF4\uAC15"
   upgradeIcon: {fileID: -255467591, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
   upgradeValue:
   - 8
