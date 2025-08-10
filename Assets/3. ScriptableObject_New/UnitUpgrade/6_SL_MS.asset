@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: 6
   upgradeName: "\uB300\uD615 \uD150\uD2B8"
-  upgradeIcon: {fileID: 0}
+  upgradeIcon: {fileID: -1935044010, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
   upgradeValue:
   - 20
   - 30

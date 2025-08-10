@@ -28,6 +28,9 @@ public class SceneChangeManager : MonoBehaviour
         AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
         SceneManager.LoadScene(testSceneName, LoadSceneMode.Single);
         SceneManager.LoadScene(dungeonSceneName, LoadSceneMode.Additive);
+
+        //테스트 씬 오류를 방지하기 위해 임시로 첫 번째 던전의 값을 삽입
+        GameManager.Instance.current_Dungeon = MainManager.instance.dungeonDatas[0];
         Time.timeScale = 1f;
     }
 
