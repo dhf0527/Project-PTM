@@ -59,6 +59,8 @@ public class StatBar : MonoBehaviour
         tmpGrade++;
         SetCostTextAndButton();
         SetCell();
+
+        AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
     }
 
     //레벨에 따라 코스트를 표시
@@ -70,7 +72,7 @@ public class StatBar : MonoBehaviour
         {
             upgradeButton.interactable = false;
             cost_Text.text = "MAX";
-            AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
+            //AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
         }
         else
         {

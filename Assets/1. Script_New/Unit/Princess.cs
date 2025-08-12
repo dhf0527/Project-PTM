@@ -16,6 +16,8 @@ public class Princess : Unit
     [SerializeField] int skill2_accuracy_increase;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
 
+    [SerializeField] ParticleSystem move_Particle;
+
     float nonCombatTime = 0;
 
     bool canSkill1 = true;
@@ -206,6 +208,8 @@ public class Princess : Unit
             {
                 SetAnim(AnimState.Idle);
             }
+            move_Particle.Stop();
+
             return;
         }
 
@@ -223,6 +227,9 @@ public class Princess : Unit
 
         //이동 애니메이션
         SetAnim(AnimState.Move);
+
+        if(!move_Particle.isPlaying)
+            move_Particle.Play();
     }
     #endregion
 
