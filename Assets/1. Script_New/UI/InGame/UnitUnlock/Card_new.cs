@@ -157,8 +157,11 @@ public class Card_new : MonoBehaviour
             //유리비늘 생선구이
             if (md.code == 0 && unit.ud.armor == 0)
                 unit.unitStatData_st.armor_Plus += (int)md.mealValue;
+            //칠면조 바비큐
+            else if (md.code == 3)
+                unit.unitStatData_st.max_Hp_Plus += md.mealValue;
             //로즈베리 케이크
-            else if (md.code == 6)
+            else if (md.code == 104)
                 unit.isTrueDamage = true;
             //불사조 닭발
             else if (md.code == 100)

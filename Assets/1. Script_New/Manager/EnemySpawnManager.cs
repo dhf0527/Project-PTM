@@ -49,7 +49,7 @@ public class EnemySpawnManager : MonoBehaviour
     public float boss_Attack1;
     public float boss_Attack2;
 
-    [Header("À¯´Ö ¼ø¼­º° Ã³Ä¡ °ñµå")]
+    [Header("À¯´Ö ·¹º§º° Ã³Ä¡ °ñµå")]
     public List<int> killGolds;
     public int killGold_Boss;
 
@@ -107,12 +107,9 @@ public class EnemySpawnManager : MonoBehaviour
                 spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
                 spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
 
-                if(spawn_Units[0, i])
-                    spawn_Units[0, i].killGold = killGolds[i];
-                if (spawn_Units[1, i])
-                    spawn_Units[1, i].killGold = killGolds[i];
-                if (spawn_Units[2, i])
-                    spawn_Units[2, i].killGold = killGolds[i];
+                spawn_Units[0, i].killGold = killGolds[spawn_Units[0,i].ud.level - 1];
+                spawn_Units[1, i].killGold = killGolds[spawn_Units[1,i].ud.level - 1];
+                spawn_Units[2, i].killGold = killGolds[spawn_Units[2,i].ud.level - 1];
             }
             boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
         }

@@ -6088,8 +6088,8 @@ MonoBehaviour:
   boss_Hp2: 3
   boss_Attack1: 1
   boss_Attack2: 0.5
-  killGolds: 1e0000003c0000003c000000
-  killGold_Boss: 1000
+  killGolds: 2300000064000000fa000000
+  killGold_Boss: 3000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
@@ -38599,6 +38599,30 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_hp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_armor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_accuracy
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_avoidance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]
       value: 
       objectReference: {fileID: 19880594}
@@ -38606,6 +38630,10 @@ PrefabInstance:
       propertyPath: skillIcons.Array.data[1]
       value: 
       objectReference: {fileID: 1293619350}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: upgradeValue_attackSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4750957064542608633, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: m_Name
       value: Princess

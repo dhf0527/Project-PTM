@@ -195,6 +195,7 @@ public abstract class Unit : MonoBehaviour
 
         ScanEnemy();
         Move();
+        animator.SetFloat("AttackSpeed", Mathf.Max(AttackSpeed / ud.attack_Speed, 1));
     }
 
     private void LateUpdate()
@@ -489,7 +490,7 @@ public abstract class Unit : MonoBehaviour
             }
             */
             if (GameManager.Instance.current_Meal?.code == 1)
-                getGold *= 2;
+                getGold *= (int)GameManager.Instance.current_Meal.mealValue;
 
             DunGeonManager_New.instance.GetGold(getGold);
             Debug.Log("처치 + " + getGold + "Gold");
@@ -681,7 +682,7 @@ public abstract class Unit : MonoBehaviour
     {
         //식사 효과 (칠면조 바비큐)
         if (GameManager.Instance.current_Meal?.code == 3)
-            amount *= (1 + GameManager.Instance.current_Meal.mealValue * 0.01f);
+            amount *= (1 + GameManager.Instance.current_Meal.mealValue2 * 0.01f);
 
         if (Cur_Hp + amount > Max_Hp)
             Cur_Hp = Max_Hp;

@@ -16,6 +16,15 @@ public class Princess : Unit
     [SerializeField] int skill2_accuracy_increase;
     [SerializeField] PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
 
+    [Header("영웅 업그레이드 수치(방어도 제외 %수치)")]
+    [SerializeField] float upgradeValue_moveSpeed;
+    [SerializeField] float upgradeValue_hp;
+    [SerializeField] float upgradeValue_attack;
+    [SerializeField] float upgradeValue_attackSpeed;
+    [SerializeField] float upgradeValue_accuracy;
+    [SerializeField] float upgradeValue_avoidance;
+    [SerializeField] int upgradeValue_armor;
+
     [SerializeField] ParticleSystem move_Particle;
 
     float nonCombatTime = 0;
@@ -49,6 +58,7 @@ public class Princess : Unit
         }
 
         animator.SetFloat("MoveSpeed", MoveSpeed / 200);
+        animator.SetFloat("AttackSpeed", Mathf.Max(AttackSpeed / ud.attack_Speed, 1));
     }
 
     //테스트 함수
@@ -93,13 +103,13 @@ public class Princess : Unit
         moveDir = Vector3.zero;
         knockBack_Count = 0;
 
-        unitStatData_st.armor_Plus += (2 * PlayerPrefs.GetInt(ConstData.statGrade + "0"));
-        unitStatData_st.max_Hp_Plus += (ud.hp * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "1"));
-        unitStatData_st.attack_Plus += (ud.damage * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "2"));
-        unitStatData_st.attackSpeed_Plus += (ud.attack_Speed * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "3"));
-        unitStatData_st.moveSpeed_Plus += (ud.move_Speed * 0.1f * PlayerPrefs.GetInt(ConstData.statGrade + "4"));
-        unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * 0.1f) * PlayerPrefs.GetInt(ConstData.statGrade + "5"));
-        unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * 0.1f) * PlayerPrefs.GetInt(ConstData.statGrade + "6"));
+        unitStatData_st.armor_Plus += (upgradeValue_armor * PlayerPrefs.GetInt(ConstData.statGrade + "0"));
+        unitStatData_st.max_Hp_Plus += (ud.hp * upgradeValue_hp * 0.01f * PlayerPrefs.GetInt(ConstData.statGrade + "1"));
+        unitStatData_st.attack_Plus += (ud.damage * upgradeValue_attack * 0.01f * PlayerPrefs.GetInt(ConstData.statGrade + "2"));
+        unitStatData_st.attackSpeed_Plus += (ud.attack_Speed * upgradeValue_attackSpeed * 0.01f * PlayerPrefs.GetInt(ConstData.statGrade + "3"));
+        unitStatData_st.moveSpeed_Plus += (ud.move_Speed * upgradeValue_moveSpeed * 0.01f * PlayerPrefs.GetInt(ConstData.statGrade + "4"));
+        unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * upgradeValue_accuracy * 0.01f) * PlayerPrefs.GetInt(ConstData.statGrade + "5"));
+        unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * upgradeValue_avoidance * 0.01f) * PlayerPrefs.GetInt(ConstData.statGrade + "6"));
 
         #region 식사 효과
         //불사조 닭발
@@ -114,8 +124,10 @@ public class Princess : Unit
         //크라운 스테이크
         else if (GameManager.Instance.current_Meal?.code == 103)
         {
-            unitStatData_st.totalDamage_PlusPercent += 100;
-            unitStatData_st.totalDamageReduction_PlusPercent += 50;
+            unitStatData_st.max_Hp_Plus += 100;
+            unitStatData_st.attack_PlusPercent += 100;
+            unitStatData_st.armor_PlusPercent += 100;
+            unitStatData_st.attackSpeed_PlusPercent += 100;
         }
         #endregion
     }
