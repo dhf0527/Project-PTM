@@ -6085,10 +6085,10 @@ MonoBehaviour:
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_Hp1: 2
-  boss_Hp2: 2
+  boss_Hp2: 3
   boss_Attack1: 1
   boss_Attack2: 0.5
-  killGolds: 1e0000003c00000078000000
+  killGolds: 1e0000003c0000003c000000
   killGold_Boss: 1000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
