@@ -207,6 +207,9 @@ public class DunGeonManager_New : MonoBehaviour
     //생산 버튼을 눌렀을 때 호출될 함수
     public void OnSpawnUnit(int index)
     {
+        if (!spawnUnits[index])
+            return;
+
         int cost = spawnUnits[index].Cost;
 
         if (!unitSpawnButton[index].isCoolDown && Cur_Gold >= cost)

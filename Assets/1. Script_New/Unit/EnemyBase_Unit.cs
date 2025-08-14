@@ -24,9 +24,9 @@ public class EnemyBase_Unit : Unit
             }
             //체력에 따라 다음 웨이브로 넘어감
             else if (Cur_Hp <= Max_Hp * EnemySpawnManager.instance.wave_BaseHps[0] * 0.01f)
-                EnemySpawnManager.instance.ToNextWave(2);
+                EnemySpawnManager.instance.ToNextWave(1);
             else if (Cur_Hp <= Max_Hp * EnemySpawnManager.instance.wave_BaseHps[1] * 0.01f)
-                EnemySpawnManager.instance.ToNextWave(3);
+                EnemySpawnManager.instance.ToNextWave(2);
 
             //체력이 30% 이하가 되면 보스 스폰
             if (cur_Hp <= EnemySpawnManager.instance.boss_BaseHp * 0.01f * Max_Hp)

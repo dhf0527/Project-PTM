@@ -378,7 +378,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (!isBossSpawned)
         {
-            ToNextWave(3);
+            ToNextWave(2);
             backGround_Anim.SetTrigger("SpawnBoss");
             AudioManager.Instance.PlayerBgm(BGM_Enum.Boss);
             isBossSpawned = true;

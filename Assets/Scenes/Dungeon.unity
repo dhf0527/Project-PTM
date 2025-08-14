@@ -5998,6 +5998,7 @@ MonoBehaviour:
   teamBase: {fileID: 0}
   enemyBase: {fileID: 0}
   isFasty: 0
+  pauseStack: 0
 --- !u!4 &283656906
 Transform:
   m_ObjectHideFlags: 0
@@ -6070,20 +6071,11 @@ MonoBehaviour:
   - 4
   - 12
   - 20
-  isManualSetUnit: 0
-  wave1_enemy:
-  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
-  - {fileID: 0}
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  wave2_enemy:
-  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: 0}
-  wave3_enemy:
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  wave_BaseHps:
+  - 70
+  - 30
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
+  boss_BaseHp: 30
   boss_Hp1: 2
   boss_Hp2: 3
   boss_Attack1: 1

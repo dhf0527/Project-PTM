@@ -57,5 +57,5 @@ public class UnitData : ScriptableObject
     public string passive2_Detail;
 
     //공격범위
-    [HideInInspector] public float attack_Range;
+    public float attack_Range;
 }
