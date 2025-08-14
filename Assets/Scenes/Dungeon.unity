@@ -38592,35 +38592,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_coolTime
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_coolTime
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_hp
-      value: 10
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill2_buff_Time
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_armor
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_attack
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_accuracy
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_avoidance
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_moveSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]
