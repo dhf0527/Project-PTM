@@ -139,7 +139,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     [HideInInspector] public bool isFasty;
 
-    int pauseStack = 0;
+    [HideInInspector] public int pauseStack = 0;
 
     //ΩÃ±€≈Ê
     public static DunGeonManager_New instance;

@@ -35,13 +35,13 @@ public class EnemySpawnManager : MonoBehaviour
     public float[] phase1_SpawnTimes = new float[3];
     public float[] phase2_SpawnTimes = new float[3];
 
-    [Header("유닛 수동 설정")]
-    public bool isManualSetUnit;
-    [Header("적 유닛(임시)")]
-    public Unit[] wave1_enemy = new Unit[3];
-    public Unit[] wave2_enemy = new Unit[3];
-    public Unit[] wave3_enemy = new Unit[3];
-    public Unit boss_Unit;
+    [Header("웨이브 변화 조건 - 요새 체력(%, 내림차순)")]
+    public float[] wave_BaseHps = new float[2];
+
+    [HideInInspector] public Unit boss_Unit;
+
+    [Header("보스 소환 조건 - 요새 체력(%)")]
+    public float boss_BaseHp;
 
     [Header("보스 능력치 배수(Hp1+(번호*Hp2))")]
     public float boss_Hp1;
@@ -61,7 +61,7 @@ public class EnemySpawnManager : MonoBehaviour
     //현재 웨이브-1
     [HideInInspector] public int cur_Wave = 0;
     int cur_Phase = 0;
-
+    int target_Wave = 0;
 
     //C_SetWarnText를 담는 코루틴
     Coroutine cor_warn;
@@ -89,33 +89,20 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
-        if (isManualSetUnit || !GameManager.Instance.current_Dungeon)
+        for (int i = 0; i < spawn_Units.GetLength(0); i++)
         {
-            //스폰할 유닛 데이터 삽입(임시)
-            for (int i = 0; i < spawn_Units.GetLength(0); i++)
-            {
-                spawn_Units[0, i] = wave1_enemy[i];
-                spawn_Units[1, i] = wave2_enemy[i];
-                spawn_Units[2, i] = wave3_enemy[i];
-            }
-        }
-        else
-        {
-            for (int i = 0; i < spawn_Units.GetLength(0); i++)
-            {
-                spawn_Units[0, i] = GameManager.Instance.current_Dungeon.units_Wave1[i];
-                spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
-                spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
+            spawn_Units[0, i] = GameManager.Instance.current_Dungeon.units_Wave1[i];
+            spawn_Units[1, i] = GameManager.Instance.current_Dungeon.units_Wave2[i];
+            spawn_Units[2, i] = GameManager.Instance.current_Dungeon.units_Wave3[i];
 
-                if(spawn_Units[0, i])
-                    spawn_Units[0, i].killGold = killGolds[spawn_Units[0,i].ud.level - 1];
-                if (spawn_Units[1, i])
-                    spawn_Units[1, i].killGold = killGolds[spawn_Units[1,i].ud.level - 1];
-                if (spawn_Units[2, i])
-                    spawn_Units[2, i].killGold = killGolds[spawn_Units[2,i].ud.level - 1];
-            }
-            boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
+            if(spawn_Units[0, i])
+                spawn_Units[0, i].killGold = killGolds[spawn_Units[0,i].ud.level - 1];
+            if (spawn_Units[1, i])
+                spawn_Units[1, i].killGold = killGolds[spawn_Units[1,i].ud.level - 1];
+            if (spawn_Units[2, i])
+                spawn_Units[2, i].killGold = killGolds[spawn_Units[2,i].ud.level - 1];
         }
+        boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
 
         if(!isStopSpawn)
             Spawn_Unit(spawn_Units[0, 0]);
@@ -140,6 +127,9 @@ public class EnemySpawnManager : MonoBehaviour
 
         //웨이브 시간 확인
         CheckWaveTime();
+
+        if (DunGeonManager_New.instance.pauseStack == 0 && target_Wave > cur_Wave)
+            ToNextWave();
 
         //주기적으로 유닛 생산
         if(!isStopSpawn)
@@ -315,8 +305,7 @@ public class EnemySpawnManager : MonoBehaviour
     //(wave)웨이브 이전이라면 다음 웨이브로 넘어가는 함수
     public void ToNextWave(int wave)
     {
-        if (cur_Wave < wave - 1)
-            ToNextWave();
+        target_Wave = wave;
     }
 
     void InitTexts(int index)
@@ -389,6 +378,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (!isBossSpawned)
         {
+            ToNextWave(3);
             backGround_Anim.SetTrigger("SpawnBoss");
             AudioManager.Instance.PlayerBgm(BGM_Enum.Boss);
             isBossSpawned = true;
