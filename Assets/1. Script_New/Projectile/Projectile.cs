@@ -138,7 +138,7 @@ public abstract class Projectile : MonoBehaviour
         IsTeam = unit.IsTeam;
         target_Count = unit.TargetCount;
         //사거리는 공격한 유닛의 사거리 + 0.1f
-        max_range = unit.ud.attack_Range + 0.1f;
+        max_range = unit.AttackRange + 0.1f;
         damage = unit.AttackDamage * (1 + unit.unitStatData_st.attackBoost_PlusPercent * 0.01f);
         accuracy = unit.Accuracy;
         attackType = unit.ud.attack_Type;
