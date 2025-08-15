@@ -25,6 +25,10 @@ public class Princess : Unit
     [SerializeField] float upgradeValue_avoidance;
     [SerializeField] int upgradeValue_armor;
 
+    [Header("비전투 회복 회복 (단위=초, 초당 회복량%)")]
+    [SerializeField] float recoveryTime;
+    [SerializeField] float recoveryAmount;
+
     [SerializeField] ParticleSystem move_Particle;
 
     float nonCombatTime = 0;
@@ -51,10 +55,10 @@ public class Princess : Unit
         Move();
 
         nonCombatTime += Time.deltaTime;
-        if (nonCombatTime > 4f)
+        if (nonCombatTime > recoveryTime)
         {
             nonCombatTime -= 1;
-            GetHp((4 + (EnemySpawnManager.instance.cur_Wave + 1) * 4) / 100f * Max_Hp);
+            GetHp(recoveryAmount / 100f * Max_Hp);
         }
 
         animator.SetFloat("MoveSpeed", MoveSpeed / 200);

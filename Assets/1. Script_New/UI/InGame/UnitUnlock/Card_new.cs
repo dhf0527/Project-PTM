@@ -121,14 +121,14 @@ public class Card_new : MonoBehaviour
                 unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
         }
         //¿Â∞© ∫∏ªÛ
-        if (unit.ud.attack_RangeType == AttackRange.Melee)
+        if (unit.ud.attack_RangeType == AttackRangeType.Melee)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 3);
             if (upgradeLv != 0)
                 unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1];
         }
         //ªÁ∞› »∆∑√
-        if (unit.ud.attack_RangeType == AttackRange.Ranged)
+        if (unit.ud.attack_RangeType == AttackRangeType.Ranged)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 4);
             if (upgradeLv != 0)

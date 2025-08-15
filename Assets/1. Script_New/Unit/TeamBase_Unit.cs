@@ -34,7 +34,7 @@ public class TeamBase_Unit : Unit
     public override void Init()
     {
         //유닛 공격 유형/사이즈별 공격 범위 설정
-        if (ud.attack_RangeType == AttackRange.Melee)
+        if (ud.attack_RangeType == AttackRangeType.Melee)
             ud.attack_Range = ud.size == Unit_Size.Small ? 0.8f : ud.size == Unit_Size.Medium ? 1f : 1.2f;
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;

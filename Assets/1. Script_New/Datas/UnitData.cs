@@ -32,7 +32,7 @@ public class UnitData : ScriptableObject
     //방어도
     public int armor;
     //공격 유형(원,근)
-    public AttackRange attack_RangeType;
+    public AttackRangeType attack_RangeType;
     //최대 공격 수
     public int target_Count;
     //피해 유형(물,마)
@@ -57,5 +57,5 @@ public class UnitData : ScriptableObject
     public string passive2_Detail;
 
     //공격범위
-    public float attack_Range;
+    [HideInInspector] public float attack_Range;
 }

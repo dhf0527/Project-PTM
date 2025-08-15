@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour
     public int Cost { get { return Mathf.Max((int)(ud.cost * (1 - unitStatData_st.cost_MinusPercent * 0.01f)), 0);  } }
     public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
     public float SpawnCoolDown { get { return ud.level * (3 + ud.level) * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
+    public float AttackRange { get { return GetAttackRange(); } }
 
     [HideInInspector] public Unit_Size size;
 
@@ -211,11 +212,13 @@ public abstract class Unit : MonoBehaviour
     #region 초기화
     public virtual void Init()
     {
+        /*
         //유닛 공격 유형/사이즈별 공격 범위 설정
-        if (ud.attack_RangeType == AttackRange.Melee)
+        if (ud.attack_RangeType == AttackRangeType.Melee)
             ud.attack_Range = ud.size == Unit_Size.Small ? 0.8f : ud.size == Unit_Size.Medium ? 1f : 1.2f;
         else
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
+        */
 
         size = ud.size;
 
@@ -252,6 +255,20 @@ public abstract class Unit : MonoBehaviour
         gameObject.tag = IsTeam ? TeamTag : EnemyTag;
         //레이어 설정
         gameObject.layer = LayerMask.NameToLayer(IsTeam ? TeamLayer : EnemyLayer);
+    }
+
+    public float GetAttackRange()
+    {
+        float returnValue;
+        if (ud.attack_RangeType == AttackRangeType.Melee)
+            returnValue = DunGeonManager_New.instance.attackRanges_Melee_BySize[(int)size] / 200f;
+        else
+            returnValue = DunGeonManager_New.instance.attackRanges_Ranged_ByLevel[ud.level - 1] / 200f;
+
+        if (returnValue == 0)
+            Debug.LogError("사거리 이상");
+
+        return returnValue;
     }
     #endregion
 
@@ -323,12 +340,12 @@ public abstract class Unit : MonoBehaviour
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? EnemyLayer : TeamLayer; 
         //레이캐스트 발사
-        hit = Physics2D.Raycast(rayPos, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
+        hit = Physics2D.Raycast(rayPos, rayDir, AttackRange, LayerMask.GetMask(target_Layer));
         //rayCast 가시화(디버깅)
-        Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * ud.attack_Range, IsTeam ? Color.blue : Color.red, Time.deltaTime);
+        Debug.DrawRay(rayPos + (IsTeam ? Vector3.up * 0.5f : Vector3.zero), rayDir * AttackRange, IsTeam ? Color.blue : Color.red, Time.deltaTime);
 
         //스캔된 적이 있고, 일정 거리 내에 있으면 멈춤
-        if (hit.collider != null && (transform.position.x - hit.transform.position.x) < ud.attack_Range + 0.3f)
+        if (hit.collider != null && (transform.position.x - hit.transform.position.x) < AttackRange + 0.3f)
             isMoving = false;
         //스캔된 적이 없고 공격중이 아니면 다시 움직임
         else if (!isAttacking)
@@ -352,10 +369,10 @@ public abstract class Unit : MonoBehaviour
     {
         switch (ud.attack_RangeType)
         {
-            case AttackRange.Melee:
+            case AttackRangeType.Melee:
                 MeleeAttack();
                 break;
-            case AttackRange.Ranged:
+            case AttackRangeType.Ranged:
                 RangedAttack();
                 break;
             default:
@@ -370,7 +387,7 @@ public abstract class Unit : MonoBehaviour
         Vector2 rayDir = IsTeam ? Vector2.right : Vector2.left;
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? EnemyLayer : TeamLayer;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, rayDir, ud.attack_Range, LayerMask.GetMask(target_Layer));
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, rayDir, AttackRange, LayerMask.GetMask(target_Layer));
 
         //공격할 대상의 수
         int target_Count = hits.Length < ud.target_Count ? hits.Length : ud.target_Count;
@@ -431,7 +448,7 @@ public abstract class Unit : MonoBehaviour
         float pro;
 
         string fly = "비행";
-        if (target_Unit.ud.passive1 == fly || target_Unit.ud.passive2 == fly && ud.attack_RangeType == AttackRange.Melee && ud.passive1 != fly && ud.passive2 != fly)
+        if (target_Unit.ud.passive1 == fly || target_Unit.ud.passive2 == fly && ud.attack_RangeType == AttackRangeType.Melee && ud.passive1 != fly && ud.passive2 != fly)
             pro = Accuracy - (target_Unit.Avoidance * 2) + 50;
         else
             pro = Accuracy - target_Unit.Avoidance + 50f;
@@ -474,21 +491,7 @@ public abstract class Unit : MonoBehaviour
         if(target_Unit.Cur_Hp <= 0 && !target_Unit.IsTeam)
         {
             int getGold = target_Unit.killGold;
-            /*
-            if (target_Unit.GetComponent<BossGuard>())
-                getGold = DunGeonManager_New.instance.killGold_Boss;
-            else
-            {
-                if ( this == EnemySpawnManager.instance.wave1_enemy[0] || this == EnemySpawnManager.instance.wave2_enemy[0] || this == EnemySpawnManager.instance.wave3_enemy[0])
-                    getGold = DunGeonManager_New.instance.killGolds[0];
-                else if (this == EnemySpawnManager.instance.wave1_enemy[1] || this == EnemySpawnManager.instance.wave2_enemy[1] || this == EnemySpawnManager.instance.wave3_enemy[1])
-                    getGold = DunGeonManager_New.instance.killGolds[1];
-                else if (this == EnemySpawnManager.instance.wave1_enemy[2] || this == EnemySpawnManager.instance.wave2_enemy[2] || this == EnemySpawnManager.instance.wave3_enemy[2])
-                    getGold = DunGeonManager_New.instance.killGolds[2];
-                else
-                    Debug.Log("오류");
-            }
-            */
+
             if (GameManager.Instance.current_Meal?.code == 1)
                 getGold *= (int)GameManager.Instance.current_Meal.mealValue;
 

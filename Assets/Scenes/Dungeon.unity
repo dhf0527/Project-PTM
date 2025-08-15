@@ -5994,6 +5994,14 @@ MonoBehaviour:
   reward_Multiply: 3
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
+  attackRanges_Melee_BySize:
+  - 150
+  - 200
+  - 250
+  attackRanges_Ranged_ByLevel:
+  - 400
+  - 500
+  - 600
   princess: {fileID: 0}
   teamBase: {fileID: 0}
   enemyBase: {fileID: 0}

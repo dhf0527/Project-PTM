@@ -17,7 +17,7 @@ public enum AttackType
     Fire
 }
 
-public enum AttackRange
+public enum AttackRangeType
 {
     Melee,
     Ranged

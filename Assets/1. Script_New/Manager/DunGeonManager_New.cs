@@ -133,6 +133,11 @@ public class DunGeonManager_New : MonoBehaviour
     //투사체 부모
     public Transform projectile_Parent;
 
+    [Header("유닛 공격 사거리(px)")]
+    public List<float> attackRanges_Melee_BySize;
+    public List<float> attackRanges_Ranged_ByLevel;
+
+
     [HideInInspector] public Princess princess;
     [HideInInspector] public TeamBase_Unit teamBase;
     [HideInInspector] public EnemyBase_Unit enemyBase;
