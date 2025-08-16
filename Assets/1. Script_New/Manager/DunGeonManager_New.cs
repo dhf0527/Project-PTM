@@ -449,9 +449,9 @@ public class DunGeonManager_New : MonoBehaviour
 
     #region 공주
     //공주 부활을 쿨타임 설정하는 함수
-    public void PrincessCoolDown()
+    public void PrincessCoolDown(float coolTime)
     {
-        princessHpPanel.rest_Time = 3f;
+        princessHpPanel.rest_Time = coolTime;
     }
 
     //공주 부활

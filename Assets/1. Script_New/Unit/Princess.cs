@@ -29,6 +29,9 @@ public class Princess : Unit
     [SerializeField] float recoveryTime;
     [SerializeField] float recoveryAmount;
 
+    [Header("부활 시간")]
+    [SerializeField] float reviveCoolTime;
+
     [SerializeField] ParticleSystem move_Particle;
 
     float nonCombatTime = 0;
@@ -114,6 +117,7 @@ public class Princess : Unit
         unitStatData_st.moveSpeed_Plus += (ud.move_Speed * upgradeValue_moveSpeed * 0.01f * PlayerPrefs.GetInt(ConstData.statGrade + "4"));
         unitStatData_st.accuracy_Plus += ((int)(ud.accuracy * upgradeValue_accuracy * 0.01f) * PlayerPrefs.GetInt(ConstData.statGrade + "5"));
         unitStatData_st.avoidance_Plus += ((int)(ud.avoidance * upgradeValue_avoidance * 0.01f) * PlayerPrefs.GetInt(ConstData.statGrade + "6"));
+        Cur_Hp = Max_Hp;
 
         #region 식사 효과
         //불사조 닭발
@@ -274,7 +278,7 @@ public class Princess : Unit
 
     public override void OnDead()
     {
-        DunGeonManager_New.instance.PrincessCoolDown();
+        DunGeonManager_New.instance.PrincessCoolDown(reviveCoolTime);
         DunGeonManager_New.instance.cameraMove.isPrincessDead = true;
 
         //안보이는 곳으로 옮기기
