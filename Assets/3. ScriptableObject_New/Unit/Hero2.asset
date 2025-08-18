@@ -16,6 +16,7 @@ MonoBehaviour:
   unit_Code: 0
   level: 0
   unit_Name: "2\uBC88\uC9F8 \uC601\uC6C5"
+  unit_SubName: 
   faction: 3
   move_Speed: 120
   hp: 123
@@ -36,4 +37,4 @@ MonoBehaviour:
   passive1_Detail: 
   passive2: 
   passive2_Detail: 
-  attack_Range: 1
+  attack_Range: 0

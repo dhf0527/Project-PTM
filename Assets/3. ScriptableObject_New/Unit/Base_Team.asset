@@ -16,6 +16,7 @@ MonoBehaviour:
   unit_Code: 1
   level: 0
   unit_Name: "\uC544\uAD70 \uC694\uC0C8"
+  unit_SubName: 
   faction: 0
   move_Speed: 0
   hp: 500
@@ -32,4 +33,8 @@ MonoBehaviour:
   spawn_Count: 0
   size: 1
   cost: 0
-  attack_Range: 0
+  passive1: 
+  passive1_Detail: 
+  passive2: 
+  passive2_Detail: 
+  attack_Range: 1
