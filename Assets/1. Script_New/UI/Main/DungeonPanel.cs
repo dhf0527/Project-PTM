@@ -18,6 +18,23 @@ public class DungeonPanel : MonoBehaviour
     public List<Unit> stageUnits = new();
     public UnitDetail_Pedia detail_Panel;
 
+    #region 던전 별 변경 사항
+    [Header("던전 별 변경")]
+    [SerializeField] Image top_Image;
+    [SerializeField] List<Image> side1_Images;
+    [SerializeField] List<Image> side2_Images;
+    [SerializeField] TMP_Text title_Text;
+    [SerializeField] List<Image> sideScroll_Images;
+    [SerializeField] Image panel_Image;
+
+    [Header("길드, 요정, 마계, 묘지")]
+    [SerializeField] List<Sprite> top_Sprites;
+    [SerializeField] List<Sprite> side1_Sprites;
+    [SerializeField] List<Sprite> side2_Sprites;
+    [SerializeField] List<Sprite> panel_Sprites;
+    
+    #endregion
+
     public void SetData(DungeonData dd)
     {
         boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
@@ -70,11 +87,41 @@ public class DungeonPanel : MonoBehaviour
             record_Text.text = $"{clear_Time}sec";
         }
 
+        SetDungeonPanelData(dd.stage_Faction);
+
         GameManager.Instance.current_Dungeon = dd;
     }
 
     public void OnSetStageUnitData(int index)
     {
         detail_Panel.SetData(stageUnits[index].ud, false);
+    }
+
+    void SetDungeonPanelData(Faction factionIndex)
+    {
+        top_Image.sprite = top_Sprites[(int)factionIndex];
+        foreach (var item in side1_Images)
+            item.sprite = side1_Sprites[(int)factionIndex];
+        foreach (var item in side2_Images)
+            item.sprite = side2_Sprites[(int)factionIndex];
+
+        switch (factionIndex)
+        {
+            case Faction.Guild:
+                title_Text.text = "중앙 왕국";
+                break;
+            case Faction.Fairy:
+                title_Text.text = "요정 숲";
+                break;
+            case Faction.Demon:
+                title_Text.text = "마계";
+                break;
+            case Faction.Graveyard:
+                title_Text.text = "버려진 묘지";
+                break;
+            default:
+                Debug.Log("세력 오류");
+                break;
+        }
     }
 }

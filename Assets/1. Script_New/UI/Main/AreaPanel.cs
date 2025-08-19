@@ -6,25 +6,41 @@ using UnityEngine.UI;
 
 public class AreaPanel : MonoBehaviour
 {
-    public Image boss_Image;
-    public TMP_Text stage_Text;
-    public Image star_Image;
-    public List<Sprite> star_Sprites;
+    [SerializeField] Image top_Image;
+    [SerializeField] List<Image> side1_Images;
+    [SerializeField] List<Image> side2_Images;
+    [SerializeField] TMP_Text title_Text;
 
-    public void SetData(DungeonData dd)
+    [Header("±æµå, ¿äÁ¤, ¸¶°è, ¹¦Áö")]
+    [SerializeField] List<Sprite> top_Sprites;
+    [SerializeField] List<Sprite> side1_Sprites;
+    [SerializeField] List<Sprite> side2_Sprites;
+
+    public void SetAreaPanelData(Faction factionIndex)
     {
-        stage_Text.text = $"{dd.stage}-{dd.number}";
-        boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
+        top_Image.sprite = top_Sprites[(int)factionIndex];
+        foreach (var item in side1_Images)
+            item.sprite = side1_Sprites[(int)factionIndex];
+        foreach (var item in side2_Images)
+            item.sprite = side2_Sprites[(int)factionIndex];
 
-        int clear_Time = PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{dd.stage},{dd.number}");
-        int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
-        
-        if(clear_Rank == 0)
-            star_Image.gameObject.SetActive(false);
-        else
-        { 
-            star_Image.gameObject.SetActive(true);
-            star_Image.sprite = star_Sprites[clear_Rank - 1];
+        switch (factionIndex)
+        {
+            case Faction.Guild:
+                title_Text.text = "Áß¾Ó ¿Õ±¹";
+                break;
+            case Faction.Fairy:
+                title_Text.text = "¿äÁ¤ ½£";
+                break;
+            case Faction.Demon:
+                title_Text.text = "¸¶°è";
+                break;
+            case Faction.Graveyard:
+                title_Text.text = "¹ö·ÁÁø ¹¦Áö";
+                break;
+            default:
+                Debug.Log("¼¼·Â ¿À·ù");
+                break;
         }
     }
 }

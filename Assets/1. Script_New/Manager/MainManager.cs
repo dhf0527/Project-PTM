@@ -10,7 +10,8 @@ public class MainManager : MonoBehaviour
     public static MainManager instance;
 
     public DungeonData[] dungeonDatas;
-    public AreaPanel[] areaPanels;
+    public AreaPanel areaPanel;
+    public Area_Page[] areaPages;
     public DungeonPanel dungeonPanel;
 
     public TMP_Text soul_Text;
@@ -67,8 +68,9 @@ public class MainManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            areaPanels[i].SetData(dungeonDatas[stage * 3 + i]);
+            areaPages[i].SetData(dungeonDatas[stage * 3 + i]);
         }
+        areaPanel.SetAreaPanelData(dungeonDatas[stage * 3].stage_Faction);
     }
 
     //dungeonPanel에 던전 데이터 삽입

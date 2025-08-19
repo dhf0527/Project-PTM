@@ -70,7 +70,7 @@ public class UnitUnlock : MonoBehaviour
     public void OpenUnitUnlock(bool isOpen)
     {
         Init();
-        unlock_Text.text = $"Lv.{level + 1} 용병 해금!";
+        unlock_Text.text = $"Lv.{level + 1} 용병 모집!";
         if (isOpen)
         {
             DunGeonManager_New.instance.OnPause(true);

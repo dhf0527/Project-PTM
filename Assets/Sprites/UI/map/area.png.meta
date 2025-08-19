@@ -132,7 +132,7 @@ TextureImporter:
         height: 365
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 61, y: 70, z: 70, w: 72}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -295,7 +295,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3273
-        y: 3662
+        y: 3464
         width: 352
         height: 538
       alignment: 0
@@ -317,8 +317,8 @@ TextureImporter:
         serializedVersion: 2
         x: 4001
         y: 3881
-        width: 201
-        height: 174
+        width: 427
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,27 +328,6 @@ TextureImporter:
       bones: []
       spriteID: d48173850ecc04c4283ac825373f85c1
       internalID: 1325982840
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: area_10
-      rect:
-        serializedVersion: 2
-        x: 4240
-        y: 3891
-        width: 188
-        height: 191
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22d6e647bacbe17458d5a76191bd8602
-      internalID: 1743346657
       vertices: []
       indices: 
       edges: []
@@ -505,7 +484,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3286
-        y: 3037
+        y: 2648
         width: 315
         height: 587
       alignment: 0
@@ -567,8 +546,8 @@ TextureImporter:
       name: area_21
       rect:
         serializedVersion: 2
-        x: 3198
-        y: 2459
+        x: 3200
+        y: 1952
         width: 603
         height: 598
       alignment: 0
@@ -590,8 +569,8 @@ TextureImporter:
         serializedVersion: 2
         x: 4220
         y: 2698
-        width: 132
-        height: 239
+        width: 396
+        height: 244
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,27 +580,6 @@ TextureImporter:
       bones: []
       spriteID: 0b6a84a7da45f0d4eac6baef6c94f77b
       internalID: -1179551251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: area_23
-      rect:
-        serializedVersion: 2
-        x: 4483
-        y: 2698
-        width: 131
-        height: 239
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96e063e22d43831408086117c7287470
-      internalID: 889018723
       vertices: []
       indices: 
       edges: []

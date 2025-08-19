@@ -10,6 +10,7 @@ public class CutSceneManager : MonoBehaviour
     public static CutSceneManager instance;
 
     public GameObject canvas_2;
+    public Image circleMask_Image;
     public Transform mask_trans;
 
     public List<GameObject> list_Point;
@@ -164,6 +165,12 @@ public class CutSceneManager : MonoBehaviour
         point_go = Instantiate(target_go, target_go.transform.parent);
         point_go.transform.SetParent(mask_trans);
         point_go.GetComponent<Button>().onClick.AddListener(PrintNextDialogue);
+
+        circleMask_Image.transform.position = target_go.transform.position;
+
+        RectTransform target_RectTransform = target_go.GetComponent<RectTransform>();
+        Vector2 worldSize = target_RectTransform.rect.size * 1.5f;
+        circleMask_Image.rectTransform.sizeDelta = new Vector2(worldSize.x, worldSize.y);
     }
 
     #region CSV ÇÔ¼ö
