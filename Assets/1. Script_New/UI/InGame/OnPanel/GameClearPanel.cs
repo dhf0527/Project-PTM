@@ -33,7 +33,7 @@ public class GameClearPanel : MonoBehaviour
 
         string dungeonNumber = $"{stage}-{number}";
         //소울 보상 계산
-        reward = (int)(resultTime * (DunGeonManager_New.instance.reward_Multiply + stage));
+        reward = (200 + resultTime) * (stage + number);
 
         if (isWin)
         {

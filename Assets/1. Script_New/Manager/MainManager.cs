@@ -63,14 +63,19 @@ public class MainManager : MonoBehaviour
     public void OnSetDungeonDatas(int stage)
     {
         //스테이지는 1부터 시작하므로 인덱스로 변환
-        stage -= 1;
-        cur_Stage_Index = stage;
+        int stageIndex = stage - 1;
+        cur_Stage_Index = stageIndex;
 
         for (int i = 0; i < 3; i++)
         {
-            areaPages[i].SetData(dungeonDatas[stage * 3 + i]);
+            int number = i + 1;
+            areaPages[i].SetData(dungeonDatas[stageIndex * 3 + i]);
+            if (i != 0 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{stage},{number - 1}") == 0)
+                PageLock(i, true);
+            else
+                PageLock(i, false);
         }
-        areaPanel.SetAreaPanelData(dungeonDatas[stage * 3].stage_Faction);
+        areaPanel.SetAreaPanelData(dungeonDatas[stageIndex * 3].stage_Faction);
     }
 
     //dungeonPanel에 던전 데이터 삽입
@@ -107,5 +112,14 @@ public class MainManager : MonoBehaviour
         meal_Icon.transform.parent.gameObject.SetActive(isActive);
         if (isActive)
             meal_Icon.sprite = GameManager.Instance.current_Meal.mealIcon;
+    }
+
+    void PageLock(int number, bool isLock)
+    {
+        areaPages[number].GetComponent<Button>().interactable = !isLock;
+        Color targetColor = isLock ? new Color(100 / 255f, 100 / 255f, 100 / 255f) : Color.white;
+
+        foreach (var item in areaPages[number].GetComponentsInChildren<Image>())
+            item.color = targetColor;
     }
 }

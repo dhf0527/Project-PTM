@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnlockManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class UnlockManager : MonoBehaviour
     public GameObject notification_meal;
     public List<GameObject> notification_unitUpgrades;
     public GameObject notification_pedia;
+
+    public List<Button> pages;
 
     private void Awake()
     {
