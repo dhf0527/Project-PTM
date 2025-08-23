@@ -27,6 +27,7 @@ public class CutSceneManager : MonoBehaviour
         public CharacterData character_Show;
         [TextArea(0,3)]
         public string dialogue;
+        public TutorialType tutorialType;
     }
     public List<CharacterData> characterDatas;
 
@@ -244,10 +245,11 @@ public class CutSceneManager : MonoBehaviour
             {
                 isPause = !(values[2].Trim() == "X"),
                 isSpeak = !(values[3].Trim() == "X"),
-                isRight = values[6].Trim() == "오른쪽",
-                character_Speak = values[8],
-                character_Show = NameToEnum(values[9].Trim()),
-                dialogue = values[10] + "\n" + values[11] + "\n" + values[12]
+                tutorialType = StringToTutorialType(values[7]),
+                isRight = values[8].Trim() == "오른쪽",
+                character_Speak = values[10],
+                character_Show = NameToEnum(values[11].Trim()),
+                dialogue = values[12] + "\n" + values[13] + "\n" + values[14]
             };
             dds.Add(dd);
         }
@@ -264,6 +266,23 @@ public class CutSceneManager : MonoBehaviour
                 return characterDatas[i];
         }
         return null;
+    }
+
+    TutorialType StringToTutorialType(string input)
+    {
+        switch (input)
+        {
+            case "대기":
+                return TutorialType.Wait;
+            case "골드 확보":
+                return TutorialType.GetGold;
+            case "오브젝트 활성화":
+                return TutorialType.ObjectActive;
+            case "오브젝트 비활성화":
+                return TutorialType.ObjectInactive;
+            default:
+                return TutorialType.None;
+        }
     }
     #endregion
 }

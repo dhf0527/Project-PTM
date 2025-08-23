@@ -18,7 +18,7 @@ public class ImageAnimation : MonoBehaviour
 
     private void Update()
     {
-        curTime += Time.deltaTime;
+        curTime += Time.unscaledDeltaTime;
         if (curTime > period)
         {
             index++;

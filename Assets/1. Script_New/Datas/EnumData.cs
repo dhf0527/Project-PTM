@@ -58,3 +58,8 @@ public enum MealRarity
     Uncommon,
     Rare
 }
+
+public enum TutorialType
+{
+    None, PointUI, Wait,  GetGold, ObjectActive, ObjectInactive
+}

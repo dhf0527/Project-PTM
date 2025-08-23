@@ -204,7 +204,6 @@ public class DunGeonManager_New : MonoBehaviour
                 pauseMask.SetActive(Time.timeScale != 0);
                 OnPause(Time.timeScale != 0);
             });
-
         }
     }
 

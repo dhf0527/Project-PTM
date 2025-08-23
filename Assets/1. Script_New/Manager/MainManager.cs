@@ -22,6 +22,8 @@ public class MainManager : MonoBehaviour
     Coroutine c_Floating;
     bool isFloating;
 
+    bool isOpenStage = false;
+
     [HideInInspector] public MealData mealData;
     int cur_Stage_Index;
     int soul;
@@ -70,7 +72,7 @@ public class MainManager : MonoBehaviour
         {
             int number = i + 1;
             areaPages[i].SetData(dungeonDatas[stageIndex * 3 + i]);
-            if (i != 0 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{stage},{number - 1}") == 0)
+            if (!isOpenStage && i != 0 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{stage},{number - 1}") == 0)
                 PageLock(i, true);
             else
                 PageLock(i, false);
@@ -117,9 +119,14 @@ public class MainManager : MonoBehaviour
     void PageLock(int number, bool isLock)
     {
         areaPages[number].GetComponent<Button>().interactable = !isLock;
-        Color targetColor = isLock ? new Color(100 / 255f, 100 / 255f, 100 / 255f) : Color.white;
+        Color targetColor = isLock ? new Color(150 / 255f, 150 / 255f, 150 / 255f) : Color.white;
 
         foreach (var item in areaPages[number].GetComponentsInChildren<Image>())
             item.color = targetColor;
+    }
+
+    public void TestOpenStage(bool isOpen)
+    {
+        isOpenStage = isOpen;
     }
 }
