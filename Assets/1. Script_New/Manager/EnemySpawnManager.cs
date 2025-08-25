@@ -78,8 +78,9 @@ public class EnemySpawnManager : MonoBehaviour
     //스폰 시간 카운터
     float[] spawn_Time_Count = new float[3];
     //보스 소환 판별 변수
-    bool isBossSpawned = false;
-    
+    [HideInInspector] public bool isBossSpawned = false;
+    //보스 유닛
+    [HideInInspector] public Unit bossUnit;
 
     private void Awake()
     {
@@ -392,7 +393,7 @@ public class EnemySpawnManager : MonoBehaviour
         //충격파 발생
         MakeShockWave();
         //보스 소환
-        Unit bossUnit = Spawn_Unit(boss_Unit);
+        bossUnit = Spawn_Unit(boss_Unit);
         //넉백 방지
         bossUnit.canKnockBack = false;
         //크기 조정

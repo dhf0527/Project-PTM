@@ -496,7 +496,6 @@ public abstract class Unit : MonoBehaviour
                 getGold *= (int)GameManager.Instance.current_Meal.mealValue;
 
             DunGeonManager_New.instance.GetGold(getGold);
-            Debug.Log("처치 + " + getGold + "Gold");
         }
 
         //피격 이펙트 생성

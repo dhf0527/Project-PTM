@@ -51449,10 +51449,9 @@ MonoBehaviour:
   canvas_2: {fileID: 1420094415}
   circleMask_Image: {fileID: 1567510821}
   mask_trans: {fileID: 1363779866}
-  list_Point:
+  list_PointUI:
   - {fileID: 1878431059}
   - {fileID: 151516703}
-  - {fileID: 975628376}
   characterDatas:
   - {fileID: 11400000, guid: c51e0caa161e65b499ba15d82603bc7d, type: 2}
   - {fileID: 11400000, guid: ad01d08c4956e7f4cad6588a97e066fd, type: 2}
@@ -51460,6 +51459,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc0e7adbca8eae84b95036249f4cabc4, type: 2}
   - {fileID: 11400000, guid: 91ab89d1147a36d44a5ec63fc8aed213, type: 2}
   - {fileID: 11400000, guid: 11072338739048140b9a30ac1f13e2e5, type: 2}
+  - {fileID: 11400000, guid: 7fbb3b461c44b3d468983fb338fb79ff, type: 2}
   cutScene_Go: {fileID: 273130281}
   dialogue: {fileID: 1825137024}
   characterName_Text: {fileID: 319649646}
