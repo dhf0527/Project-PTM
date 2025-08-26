@@ -31,6 +31,9 @@ public class DungeonPanel : MonoBehaviour
     [SerializeField] List<Sprite> top_Sprites;
     [SerializeField] List<Sprite> side1_Sprites;
     [SerializeField] List<Sprite> side2_Sprites;
+
+    [Header("번호 별 변경")]
+    [SerializeField] List<Sprite> sideScroll_Sprites;
     [SerializeField] List<Sprite> panel_Sprites;
     
     #endregion
@@ -87,8 +90,8 @@ public class DungeonPanel : MonoBehaviour
             record_Text.text = $"{clear_Time}sec";
         }
 
-        SetDungeonPanelData(dd.stage_Faction);
-
+        SetDungeonPanelSprite(dd.stage_Faction);
+        SetDungeonPanelSpriteByNumber(dd.number);
         GameManager.Instance.current_Dungeon = dd;
     }
 
@@ -97,7 +100,7 @@ public class DungeonPanel : MonoBehaviour
         detail_Panel.SetData(stageUnits[index].ud, false);
     }
 
-    void SetDungeonPanelData(Faction factionIndex)
+    void SetDungeonPanelSprite(Faction factionIndex)
     {
         top_Image.sprite = top_Sprites[(int)factionIndex];
         foreach (var item in side1_Images)
@@ -123,5 +126,12 @@ public class DungeonPanel : MonoBehaviour
                 Debug.Log("세력 오류");
                 break;
         }
+    }
+
+    void SetDungeonPanelSpriteByNumber(int number)
+    {
+        foreach (var item in sideScroll_Images)
+            item.sprite = sideScroll_Sprites[number - 1];
+        panel_Image.sprite = panel_Sprites[number - 1];
     }
 }
