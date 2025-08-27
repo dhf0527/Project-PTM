@@ -63,3 +63,8 @@ public enum TutorialType
 {
     None, PointUI, Wait,  GetGold, ObjectActive, ObjectInactive
 }
+
+public enum SearchKey
+{
+    Dungeon1, Area1, GameStartButton
+}

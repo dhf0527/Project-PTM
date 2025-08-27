@@ -17,8 +17,6 @@ public class CutSceneManager : MonoBehaviour
 
     public List<GameObject> list_PointUI;
     int index;
-    //강조된 UI
-    GameObject point_go;
     List<Action> actions = new();
 
     Button target_Button;
@@ -63,7 +61,10 @@ public class CutSceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
             StartCutScene("1-1");
         if (Input.GetKeyDown(KeyCode.T))
-            StartTutorial("tutorial_1");
+        {
+            Tutorial_WorldMap_1();
+            StartTutorial_New("Tutorial_WorldMap_1");
+        }
         if (Input.GetKeyDown(KeyCode.Y))
         {
             Tutorial_Tmp();
@@ -74,12 +75,6 @@ public class CutSceneManager : MonoBehaviour
     //다음 대사 출력
     public void PrintNextDialogue()
     {
-        if (point_go)
-        {
-            Destroy(point_go);
-            point_go = null;
-        }
-
         //마지막 문장일때
         if (i == list_Dialogue.Count)
         {
@@ -92,7 +87,12 @@ public class CutSceneManager : MonoBehaviour
         if (list_Dialogue[i].isPause)
             Time.timeScale = 0;
         else
-            Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+        {
+            if (DunGeonManager_New.instance)
+                Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+            else
+                Time.timeScale = 1;
+        }
 
         if (list_Dialogue[i].isSpeak)
         {
@@ -127,7 +127,6 @@ public class CutSceneManager : MonoBehaviour
         {
             cutScene_Go.SetActive(false);
             actions[index++].Invoke();
-            //PointUI(list_PointUI[index]);
         }
 
         i++;
@@ -184,7 +183,7 @@ public class CutSceneManager : MonoBehaviour
         pointUi_Canvas.sortingOrder = 2;
         target_go.AddComponent<GraphicRaycaster>();
 
-       
+        target_Button = null;
         if (target_go.TryGetComponent(out target_Button))
         {
             target_Button.onClick.AddListener(ListenerPrintNextDialogue);
@@ -217,8 +216,8 @@ public class CutSceneManager : MonoBehaviour
 
     void ListenerPrintNextDialogue()
     {
-        PrintNextDialogue();
         target_Button.onClick.RemoveListener(ListenerPrintNextDialogue);
+        PrintNextDialogue();
     }
     void ToggleListenerPrintNextDialogue(bool isOn)
     {
@@ -431,29 +430,18 @@ public class CutSceneManager : MonoBehaviour
         PrintNextDialogue();
     }
 
-    void EventByTutorialType(TutorialType tutorialType)
+    #region Tutorial_WorldMap_1
+    public void Tutorial_WorldMap_1()
     {
-        switch (tutorialType)
-        {
-            case TutorialType.None:
-                break;
-            case TutorialType.PointUI:
-                PointUI(list_PointUI[index]);
-                break;
-            case TutorialType.Wait:
-                break;
-            case TutorialType.GetGold:
-                break;
-            case TutorialType.ObjectActive:
-                break;
-            case TutorialType.ObjectInactive:
-                break;
-            default:
-                break;
-        }
+        actions.Clear();
+
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Dungeon1))); //3
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Area1))); //4
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.GameStartButton))); //7
     }
 
-    #region tutorial_Tmp
+    #endregion
+    #region Tutorial_Tmp
     public void Tutorial_Tmp()
     {
         actions.Clear();

@@ -8371,6 +8371,7 @@ GameObject:
   - component: {fileID: 151516706}
   - component: {fileID: 151516705}
   - component: {fileID: 151516707}
+  - component: {fileID: 151516708}
   m_Layer: 5
   m_Name: Dungeon1
   m_TagString: Untagged
@@ -8513,6 +8514,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_enum: 0
   isButtonDown: 0
+--- !u!114 &151516708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151516703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9021a4d737ebd4ca54e603afb8769b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchKey: 1
 --- !u!1 &163766906
 GameObject:
   m_ObjectHideFlags: 0
@@ -31392,7 +31406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076293945, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1162.8665, y: 589.8179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757297127
@@ -41657,6 +41671,7 @@ GameObject:
   - component: {fileID: 975628379}
   - component: {fileID: 975628378}
   - component: {fileID: 975628381}
+  - component: {fileID: 975628382}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -41804,6 +41819,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_enum: 17
   isButtonDown: 0
+--- !u!114 &975628382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975628376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9021a4d737ebd4ca54e603afb8769b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchKey: 2
 --- !u!1 &976568070
 GameObject:
   m_ObjectHideFlags: 0
@@ -51490,6 +51518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1217430388}
   - component: {fileID: 1217430387}
+  - component: {fileID: 1217430389}
   m_Layer: 0
   m_Name: CutSceneManager
   m_TagString: Untagged
@@ -51543,6 +51572,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217430389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217430386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913e7180086a683469a86e2ac5db7906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1222043871
 GameObject:
   m_ObjectHideFlags: 0
@@ -80241,6 +80282,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157f50349665eff449442570a176f0b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1878431070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878431059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9021a4d737ebd4ca54e603afb8769b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchKey: 0
 --- !u!114 &1880335401 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7171601898975806334, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
@@ -96046,6 +96100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Dungeon :: Button'
       objectReference: {fileID: 0}
+    - target: {fileID: 1363075449861046385, guid: 132e07f775483fd439a601741aefcef5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6577160690831653856, guid: 132e07f775483fd439a601741aefcef5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -96089,7 +96147,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1363075449861046385, guid: 132e07f775483fd439a601741aefcef5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1878431070}
   m_SourcePrefab: {fileID: 100100000, guid: 132e07f775483fd439a601741aefcef5, type: 3}
 --- !u!114 &7399106111706401003
 MonoBehaviour:
