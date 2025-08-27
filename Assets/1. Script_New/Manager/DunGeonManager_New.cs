@@ -50,6 +50,8 @@ public class DunGeonManager_New : MonoBehaviour
     public List<Unit> units_Level_1;
     public List<Unit> units_Level_2;
     public List<Unit> units_Level_3;
+    [Header("레벨에 따른 유닛 생산 대기 시간")]
+    public List<float> spawnCoolTimesByLevel;
     [Header("유닛 아이템")]
     public List<ItemData> item_Advanced;
     public List<ItemData> item_Rare;
@@ -122,7 +124,7 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("(테스트용)고용할 유닛들")]
     [SerializeField] Unit[] test_Units = new Unit[3];
 
-    public List<Unit> onStageUnits_Test;
+    [HideInInspector] public List<Unit> onStageUnits_Test;
     #endregion
 
     //총 전투 시간

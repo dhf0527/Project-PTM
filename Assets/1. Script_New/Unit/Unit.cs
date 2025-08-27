@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
     public float MoveSpeed { get { return Mathf.Max(ud.move_Speed * (1 + unitStatData_st.moveSpeed_PlusPercent * 0.01f) + unitStatData_st.moveSpeed_Plus, ud.move_Speed * 0.1f); } }
     public int Cost { get { return Mathf.Max((int)(ud.cost * (1 - unitStatData_st.cost_MinusPercent * 0.01f)), 0);  } }
     public int SpawnCount { get { return Mathf.Max(ud.spawn_Count + unitStatData_st.spawnCount_Plus, 1); } }
-    public float SpawnCoolDown { get { return ud.level * (3 + ud.level) * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
+    public float SpawnCoolDown { get { return DunGeonManager_New.instance.spawnCoolTimesByLevel[ud.level - 1] * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
     public float AttackRange { get { return ud.attack_Range == 0 ? GetAttackRange() : ud.attack_Range; } }
 
     [HideInInspector] public Unit_Size size;
