@@ -7583,10 +7583,10 @@ MonoBehaviour:
   - 120
   - 360
   phaseTimes:
-  - 60
-  - 60
+  - 30
+  - 30
   phase0_SpawnTimes:
-  - 10
+  - 8
   - 20
   - 30
   phase1_SpawnTimes:
@@ -50570,7 +50570,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryTime
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: move_Particle
@@ -50582,7 +50582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: reviveCoolTime
@@ -50623,6 +50623,10 @@ PrefabInstance:
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_moveSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill2_accuracy_increase
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]
