@@ -22,7 +22,7 @@ public class DamageText : MonoBehaviour
 
     public void SetText(float damage, AttackType attackType)
     {
-        dmg_Text.text = damage.ToString();
+        dmg_Text.text = ((int)damage).ToString();
 
         switch (attackType)
         {

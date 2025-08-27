@@ -120,12 +120,12 @@ public class Card_new : MonoBehaviour
             if (upgradeLv != 0)
                 unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
         }
-        //¿Â∞© ∫∏ªÛ
+        //¿Â∞© ∫∏∞≠
         if (unit.ud.attack_RangeType == AttackRangeType.Melee)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 3);
             if (upgradeLv != 0)
-                unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1] * 0.01f * unit.ud.hp;
         }
         //ªÁ∞› »∆∑√
         if (unit.ud.attack_RangeType == AttackRangeType.Ranged)
@@ -224,7 +224,7 @@ public class Card_new : MonoBehaviour
 
     void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
     {
-        text.text = value.ToString();
+        text.text = ((int)value).ToString();
 
         if (value == originValue)
         {

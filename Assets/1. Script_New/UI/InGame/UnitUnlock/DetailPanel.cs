@@ -96,7 +96,7 @@ public class DetailPanel : MonoBehaviour
 
     void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
     {
-        text.text = value.ToString();
+        text.text = ((int)value).ToString();
 
         if (value == originValue)
         {
