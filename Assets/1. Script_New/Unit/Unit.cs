@@ -212,6 +212,11 @@ public abstract class Unit : MonoBehaviour
     #region 초기화
     public virtual void Init()
     {
+        if (DunGeonManager_New.instance.isTutorial_1 || DunGeonManager_New.instance.isTutorial_2)
+        {
+            unitStatData_st.accuracy_Plus += 9999;
+            unitStatData_st.avoidance_Plus -= 9999;
+        }
         /*
         //유닛 공격 유형/사이즈별 공격 범위 설정
         if (ud.attack_RangeType == AttackRangeType.Melee)

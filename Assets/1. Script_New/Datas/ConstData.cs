@@ -8,7 +8,7 @@ public static class ConstData
     
     public const string statGrade = "statGrade";
     public const string unitUpgrade = "unitUpgrade";
-    public const string dungeonClearTime = "dungeonClear";
+    public const string dungeonClearTime = "dungeonClear";  //ConstData.dungeonClearTime + $"{dd.stage},{dd.number}"
     public const string mealCompleteTime = "mealCompleteTime";
     public const string activeDamageText = "activeDamageText";
 

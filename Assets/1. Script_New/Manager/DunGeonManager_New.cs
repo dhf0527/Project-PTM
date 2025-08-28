@@ -40,6 +40,7 @@ public class DunGeonManager_New : MonoBehaviour
     public GameClearPanel GameClearPanel;
 
     public GameObject pauseMask;
+    public GameObject touchBlocker;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]
@@ -119,6 +120,10 @@ public class DunGeonManager_New : MonoBehaviour
     public SpriteRenderer bridge_Sr;
     public SpriteRenderer base_Sr;
     public SpriteRenderer backGround_Sr;
+    #endregion
+    #region 튜토리얼 변수
+    [HideInInspector] public bool isTutorial_1;
+    [HideInInspector] public bool isTutorial_2;
     #endregion
     #region 디버깅
     [Header("(테스트용)고용할 유닛들")]
@@ -366,7 +371,7 @@ public class DunGeonManager_New : MonoBehaviour
         unitUnlock.OpenUnitUnlock(true);
     }
 
-    //해금 유닛 데이터 설정
+    //모집 유닛 데이터 설정
     public void SetUnlockData(int unitLevel)
     {
         List<Unit> targetLevel_Units;
@@ -387,26 +392,50 @@ public class DunGeonManager_New : MonoBehaviour
                 break;
         }
 
-        #region 해당 레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
-        List<int> numbers = new List<int>();
-        for (int i = 0; i < targetLevel_Units.Count; i++)
-            numbers.Add(i);
-
-        for (int k = 0; k < unitUnlock.cards.Count; k++)
+        //모집 유닛 뽑기
+        if(isTutorial_1 && unitLevel == 1)
         {
-            //아이템 설정
-            if(PlayerPrefs.GetInt(ConstData.unitItem_Unlock) == 1)
-                unitUnlock.cards[k].item = GetRandomItem();
+            unitUnlock.cards[0].SetData(units_Level_1[1]);  //도적
+            unitUnlock.cards[1].SetData(units_Level_1[0]);  //검사
+            unitUnlock.cards[2].SetData(units_Level_1[4]);  //슬라임
+        }
+        else if (isTutorial_2 && unitLevel == 1)
+        {
+            unitUnlock.cards[0].SetData(units_Level_1[6]);  //시체 박쥐
+            unitUnlock.cards[1].item = item_Advanced[3];    //참나무 방패
+            unitUnlock.cards[1].SetData(units_Level_1[4]);  //슬라임
+            unitUnlock.cards[2].SetData(units_Level_1[1]);  //도적
+        }
+        else if (isTutorial_2 && unitLevel == 2)
+        {
+            unitUnlock.cards[0].SetData(units_Level_2[4]);  //골렘
+            unitUnlock.cards[1].SetData(units_Level_2[1]);  //마검사
+            unitUnlock.cards[2].SetData(units_Level_2[5]);  //불타는 해골
+        }
+        else
+        {
+            #region 해당 레벨 유닛 중 중복 없이 카드 개수만큼 뽑기
+            List<int> numbers = new List<int>();
+            for (int i = 0; i < targetLevel_Units.Count; i++)
+                numbers.Add(i);
 
-            int index = UnityEngine.Random.Range(0, numbers.Count);
-            unitUnlock.cards[k].SetData(targetLevel_Units[numbers[index]]);
-            numbers.RemoveAt(index);
+            for (int k = 0; k < unitUnlock.cards.Count; k++)
+            {
+                //아이템 설정
+                if (PlayerPrefs.GetInt(ConstData.unitItem_Unlock) == 1)
+                    unitUnlock.cards[k].item = GetRandomItem();
+
+                int index = UnityEngine.Random.Range(0, numbers.Count);
+                unitUnlock.cards[k].SetData(targetLevel_Units[numbers[index]]);
+                numbers.RemoveAt(index);
+            }
+
+            #endregion
         }
 
-        #endregion
 
         //정체불명 햄버거
-        if(GameManager.Instance.current_Meal?.code == 102)
+        if (GameManager.Instance.current_Meal?.code == 102)
         {
             unitUnlock.cards[1].gameObject.SetActive(false);
             unitUnlock.cards[2].gameObject.SetActive(false);

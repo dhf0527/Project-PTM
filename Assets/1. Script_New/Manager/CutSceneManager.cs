@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutSceneManager : MonoBehaviour
@@ -15,8 +16,7 @@ public class CutSceneManager : MonoBehaviour
     public Image circleMask_Image;
     public Transform mask_trans;
 
-    public List<GameObject> list_PointUI;
-    int index;
+    int action_index;
     List<Action> actions = new();
 
     Button target_Button;
@@ -49,11 +49,16 @@ public class CutSceneManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        if (DunGeonManager_New.instance && GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{1}") == 0)
+            Tutorial_Dungeon_1();
+        else if (DunGeonManager_New.instance && GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{2}") == 0)
+            Tutorial_Dungeon_2();
     }
 
     private void Start()
     {
-        //StartCutScene("1-1");
+        
     }
 
     private void Update()
@@ -63,12 +68,10 @@ public class CutSceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             Tutorial_WorldMap_1();
-            StartTutorial_New("Tutorial_WorldMap_1");
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            Tutorial_Tmp();
-            StartTutorial_New("tutorial_Tmp");
+            Tutorial_Dungeon_1();
         }
     }
 
@@ -89,7 +92,10 @@ public class CutSceneManager : MonoBehaviour
         else
         {
             if (DunGeonManager_New.instance)
-                Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+            {
+                if(DunGeonManager_New.instance.pauseStack == 0)
+                    Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+            }
             else
                 Time.timeScale = 1;
         }
@@ -126,7 +132,7 @@ public class CutSceneManager : MonoBehaviour
         else
         {
             cutScene_Go.SetActive(false);
-            actions[index++].Invoke();
+            actions[action_index++].Invoke();
         }
 
         i++;
@@ -145,7 +151,7 @@ public class CutSceneManager : MonoBehaviour
     public void EndCutScene()
     {
         i = 0;
-        index = 0;
+        action_index = 0;
         completeFunc?.Invoke();
 
         canvas_2.SetActive(false);
@@ -160,13 +166,6 @@ public class CutSceneManager : MonoBehaviour
         PrintNextDialogue();
 
         completeFunc = onComplete;
-    }
-
-    public void StartTutorial(string eventName, Action onComplete = null)
-    {
-        list_Dialogue = GetTutorialDatasByCsv(eventName);
-        cutScene_Go.SetActive(true);
-        PrintNextDialogue();
     }
 
     //특정 UI를 강조하는 함수
@@ -338,7 +337,7 @@ public class CutSceneManager : MonoBehaviour
     #endregion
 
     #region 리뉴얼
-    public void StartTutorial_New(string eventName, Action onComplete = null)
+    public void StartTutorial(string eventName, Action onComplete = null)
     {
         list_Dialogue = GetTutorialDatasByCsv_New(eventName);
         cutScene_Go.SetActive(true);
@@ -356,8 +355,8 @@ public class CutSceneManager : MonoBehaviour
         //csv파일의 데이터를 한 줄씩 저장
         string[] lines = csvFile.text.Split('\n');
 
-        //첫 줄은 헤더이므로 i=1
-        for (int i = 1; i < lines.Length; i++)
+        //1,2줄은 헤더이므로 i=2
+        for (int i = 2; i < lines.Length; i++)
         {
             //공백 건너뛰기
             if (string.IsNullOrWhiteSpace(lines[i]))
@@ -372,13 +371,13 @@ public class CutSceneManager : MonoBehaviour
 
             DialogueData dd = new DialogueData
             {
-                isPause = !(values[2].Trim() == "X"),
-                isSpeak = !(values[3].Trim() == "X"),
-                tutorialType = StringToTutorialType(values[7]),
-                isRight = values[8].Trim() == "오른쪽",
-                character_Speak = values[10],
-                character_Show = NameToEnum(values[11].Trim()),
-                dialogue = values[12] + "\n" + values[13] + "\n" + values[14]
+                isPause = !(values[3].Trim() == "X"),
+                isSpeak = !(values[4].Trim() == "X"),
+                tutorialType = StringToTutorialType(values[8]),
+                isRight = values[9].Trim() == "오른쪽",
+                character_Speak = values[11],
+                character_Show = NameToEnum(values[12].Trim()),
+                dialogue = values[13] + "\n" + values[14] + "\n" + values[15]
             };
             dds.Add(dd);
         }
@@ -404,8 +403,20 @@ public class CutSceneManager : MonoBehaviour
     
     IEnumerator C_TutorialGetGold(int targetGold)
     {
+        GameObject goldPanel = SearchManager.Instance.Search(SearchKey.GoldPanel);
+
+        DunGeonManager_New.instance.pauseMask.SetActive(true);
+
+        Canvas pointUi_Canvas = goldPanel.AddComponent<Canvas>();
+        pointUi_Canvas.overrideSorting = true;
+        pointUi_Canvas.sortingOrder = 2;
+
         yield return new WaitUntil(() => DunGeonManager_New.instance.Cur_Gold >= targetGold);
+        DunGeonManager_New.instance.pauseMask.SetActive(false);
+        Destroy(pointUi_Canvas);
+
         PrintNextDialogue();
+
     }
 
     void TutorialObjectActive(GameObject go)
@@ -438,66 +449,66 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Dungeon1))); //3
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Area1))); //4
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.GameStartButton))); //7
+
+        StartTutorial("Tutorial_WorldMap_1");
     }
 
     #endregion
-    #region Tutorial_Tmp
-    public void Tutorial_Tmp()
+    #region Tutorial_Dungeon_1
+    public void Tutorial_Dungeon_1()
     {
+        DunGeonManager_New.instance.isTutorial_1 = true;
         actions.Clear();
 
         actions.Add(() => TutorialWait(1f));    //1
-        actions.Add(() => PointUI(list_PointUI[0]));    //5
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.CardSelectButton)));    //5     검사 용병 모집 버튼
         actions.Add(() => TutorialGetGold(100));    //10
-        actions.Add(() => PointUI(list_PointUI[1]));    //11
-        actions.Add(() => Tutorial_Tmp1());    //13
-        actions.Add(() => TutorialGetGold(50));    //16
-        actions.Add(() => PointUI(list_PointUI[2]));    //17
-        actions.Add(() => Tutorial_Tmp2());    //21
-        actions.Add(() => Tutorial_Tmp3());    //26
-        actions.Add(() => Tutorial_Tmp4());    //27
-        actions.Add(() => Tutorial_Tmp5());    //35
-        actions.Add(() => Tutorial_Tmp4());    //36
-        actions.Add(() => TutorialObjectActive(list_PointUI[3]));    //38
-        actions.Add(() => TutorialWait(3f));    //39
-        actions.Add(() => PointUI(list_PointUI[4]));    //43
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.UnitSpawnButton1)));    //11    검사 고용 버튼
+        actions.Add(() => TutorialGetGold(50));    //15
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.BaseLevelUpButton)));    //16    요새 레벨업 버튼
+        actions.Add(() => Tutorial_Dungeon1_1());    //20   웨이브2 대기
+        actions.Add(() => Tutorial_Dungeon_1_2());    //25  보스 대기
+        actions.Add(() => Tutorial_Dungeon_1_3());    //26  보스로 시점 이동
+        actions.Add(() => Tutorial_Dungeon_1_4());    //34  보스 처치 대기
+        actions.Add(() => TutorialWait(2f));    //35
+        actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.GameClearPanel.gameObject));    //37   전투 결과 화면 대기
+        actions.Add(() => TutorialWait(2f));    //39
+
+        StartTutorial("Tutorial_Dungeon_1");
     }
 
-    void Tutorial_Tmp1()
+    //웨이브2 대기
+    void Tutorial_Dungeon1_1()
     {
-        //적 도적 유닛 등장
-        //적 유닛에게로 시점 이동
-        TutorialWait(10f);
-    }
-    void Tutorial_Tmp2()
-    {
-        StartCoroutine(C_Tutorial_Tmp2());
+        StartCoroutine(C_Tutorial_Dungeon_1_1());
     }
 
-    IEnumerator C_Tutorial_Tmp2()
+    IEnumerator C_Tutorial_Dungeon_1_1()
     {
         yield return new WaitUntil(() => EnemySpawnManager.instance.cur_Wave > 0);
         PrintNextDialogue();
     }
 
-    void Tutorial_Tmp3()
+    //보스 대기
+    void Tutorial_Dungeon_1_2()
     {
-        StartCoroutine(C_Tutorial_Tmp3());
+        StartCoroutine(C_Tutorial_Dungeon_1_2());
     }
 
-    IEnumerator C_Tutorial_Tmp3()
+    IEnumerator C_Tutorial_Dungeon_1_2()
     {
         //보스 소환까지 대기
         yield return new WaitUntil(() => EnemySpawnManager.instance.bossUnit);
         PrintNextDialogue();
     }
 
-    void Tutorial_Tmp4()
+    //보스로 시점 이동
+    void Tutorial_Dungeon_1_3()
     {
-        StartCoroutine(C_Tutorial_Tmp4());
+        StartCoroutine(C_Tutorial_Dungeon_1_3());
     }
 
-    IEnumerator C_Tutorial_Tmp4()
+    IEnumerator C_Tutorial_Dungeon_1_3()
     {
         //보스에게로 시점 이동
         DunGeonManager_New.instance.cameraMove.isChasePrincess = false;
@@ -507,13 +518,13 @@ public class CutSceneManager : MonoBehaviour
         PrintNextDialogue();
     }
 
-    void Tutorial_Tmp5()
+    //보스 처치 대기
+    void Tutorial_Dungeon_1_4()
     {
-        //보스 처치까지 대기
-        StartCoroutine(C_Tutorial_Tmp5());
+        StartCoroutine(C_Tutorial_Dungeon_1_4());
     }
 
-    IEnumerator C_Tutorial_Tmp5()
+    IEnumerator C_Tutorial_Dungeon_1_4()
     {
         //보스 소환까지 대기
         yield return new WaitUntil(() => EnemySpawnManager.instance.isBossDead);
@@ -521,6 +532,36 @@ public class CutSceneManager : MonoBehaviour
     }
 
 
+    #endregion
+    #region Tutorial_Dungeon_2
+    public void Tutorial_Dungeon_2()
+    {
+        DunGeonManager_New.instance.isTutorial_2 = true;
+        actions.Clear();
+
+        actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.unitUnlock.gameObject));    //1  용병 모집 대기
+        actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.cards[1].gameObject));    //7     슬라임 클릭 대기
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.CardSelectButton)));    //8     확정 버튼 클릭 대기
+        actions.Add(() => Tutorial_Dungeon2_1());    //11    웨이브2 대기
+        actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.cards[0].gameObject));    //16     골렘 클릭 대기
+        actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.detail_Button.gameObject));    //17    상세 확인 버튼 클릭 대기
+        actions.Add(() => TutorialWait(1f));    //18
+        actions.Add(() => Tutorial_Dungeon_1_2());    //24      
+
+        StartTutorial("Tutorial_Dungeon_2");
+    }
+
+    //웨이브2 대기
+    void Tutorial_Dungeon2_1()
+    {
+        StartCoroutine(C_Tutorial_Dungeon_2_1());
+    }
+
+    IEnumerator C_Tutorial_Dungeon_2_1()
+    {
+        yield return new WaitUntil(() => EnemySpawnManager.instance.cur_Wave > 0);
+        PrintNextDialogue();
+    }
     #endregion
     #endregion
 }
