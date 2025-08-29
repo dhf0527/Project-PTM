@@ -10,7 +10,8 @@ public class UpGrade : MonoBehaviour
 
     public List<StatBar> statBars;
     public TMP_Text totalCost_Text;
-
+    //Æ©Åä¸®¾ó ÄÆ¾À¸Å´ÏÀú¿ë
+    public GameObject confirmButton;
     
 
     int totalCost;

@@ -804,7 +804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6752,6 +6752,7 @@ MonoBehaviour:
   - {fileID: 1185340978}
   - {fileID: 168461064}
   totalCost_Text: {fileID: 174613057}
+  confirmButton: {fileID: 113513621}
 --- !u!1 &112435780
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,9 +6864,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -185, y: 13}
+  m_AnchoredPosition: {x: -235, y: 12.999985}
   m_SizeDelta: {x: 100, y: 66}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113513623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22571,7 +22572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31661,7 +31662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37487,6 +37488,7 @@ GameObject:
   - component: {fileID: 896922122}
   - component: {fileID: 896922121}
   - component: {fileID: 896922123}
+  - component: {fileID: 896922124}
   m_Layer: 5
   m_Name: Dungeon2
   m_TagString: Untagged
@@ -37629,6 +37631,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_enum: 0
   isButtonDown: 0
+--- !u!114 &896922124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896922119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9021a4d737ebd4ca54e603afb8769b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchKey: 8
 --- !u!1 &899967943
 GameObject:
   m_ObjectHideFlags: 0
@@ -42620,7 +42635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17.099976, y: -12.577026}
+  m_AnchoredPosition: {x: -17.100098, y: -12.577026}
   m_SizeDelta: {x: 127.5634, y: 105.6599}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1005391998
@@ -47913,7 +47928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51541,9 +51556,6 @@ MonoBehaviour:
   canvas_2: {fileID: 1420094415}
   circleMask_Image: {fileID: 1567510821}
   mask_trans: {fileID: 1363779866}
-  list_PointUI:
-  - {fileID: 1878431059}
-  - {fileID: 151516703}
   characterDatas:
   - {fileID: 11400000, guid: c51e0caa161e65b499ba15d82603bc7d, type: 2}
   - {fileID: 11400000, guid: ad01d08c4956e7f4cad6588a97e066fd, type: 2}
@@ -53633,7 +53645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69489,7 +69501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78605,7 +78617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 39.999878, y: -25}
+  m_AnchoredPosition: {x: 40, y: -25}
   m_SizeDelta: {x: -120.00025, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825137022
@@ -94264,7 +94276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1509710670356375023, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50.357147
+      value: 50.357143
       objectReference: {fileID: 0}
     - target: {fileID: 1509710670356375023, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -94408,7 +94420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994901809523085807, guid: 9432d5da1a3b31540a7cf4732b96b5f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.390007
+      value: -25.390005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

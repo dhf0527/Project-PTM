@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutSceneManager : MonoBehaviour
@@ -67,7 +65,7 @@ public class CutSceneManager : MonoBehaviour
             StartCutScene("1-1");
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Tutorial_WorldMap_1();
+            Tutorial_WorldMap_2();
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -172,11 +170,6 @@ public class CutSceneManager : MonoBehaviour
     public void PointUI(GameObject target_go)
     {
         canvas_2.SetActive(true);
-        /*
-        point_go = Instantiate(target_go, target_go.transform.parent);
-        point_go.transform.SetParent(mask_trans);
-        point_go.GetComponent<Button>().onClick.AddListener(PrintNextDialogue);
-        */
         Canvas pointUi_Canvas = target_go.AddComponent<Canvas>();
         pointUi_Canvas.overrideSorting = true;
         pointUi_Canvas.sortingOrder = 2;
@@ -205,6 +198,7 @@ public class CutSceneManager : MonoBehaviour
 
         if (circleMask_Image)
         {
+            circleMask_Image.gameObject.SetActive(true);
             circleMask_Image.transform.position = target_go.transform.position;
 
             RectTransform target_RectTransform = target_go.GetComponent<RectTransform>();
@@ -216,6 +210,7 @@ public class CutSceneManager : MonoBehaviour
     void ListenerPrintNextDialogue()
     {
         target_Button.onClick.RemoveListener(ListenerPrintNextDialogue);
+        circleMask_Image.gameObject.SetActive(false);
         PrintNextDialogue();
     }
     void ToggleListenerPrintNextDialogue(bool isOn)
@@ -447,13 +442,65 @@ public class CutSceneManager : MonoBehaviour
         actions.Clear();
 
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Dungeon1))); //3
-        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Area1))); //4
+        actions.Add(() => PointUI(MainManager.instance.areaPages[0].gameObject)); //4
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.GameStartButton))); //7
 
         StartTutorial("Tutorial_WorldMap_1");
     }
 
     #endregion
+    #region Tutorial_WorldMap_2
+    public void Tutorial_WorldMap_2()
+    {
+        actions.Clear();
+
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Dungeon1))); //3
+        actions.Add(() => PointUI(MainManager.instance.areaPages[1].gameObject)); //3
+        actions.Add(() => TutorialWait(2f)); //3
+        actions.Add(() => PointUI(UnlockManager.instance.heroUpgrade_Button)); //7
+        actions.Add(() => Tutorial_WorldMap_2_1()); //8 모든 능력치 버튼 강조
+        actions.Add(() => PointUI(UpGrade.instance.confirmButton)); //9
+
+        StartTutorial("Tutorial_WorldMap_2");
+    }
+
+    void Tutorial_WorldMap_2_1()
+    {
+        canvas_2.SetActive(true);
+        circleMask_Image.gameObject.SetActive(true);
+        for (int i = 0; i < UpGrade.instance.statBars.Count; i++)
+        {
+            Button upgradeButton = UpGrade.instance.statBars[i].upgradeButton;
+            GameObject upgradeButton_go = upgradeButton.gameObject;
+
+            canvas_2.SetActive(true);
+            Canvas pointUi_Canvas = upgradeButton_go.AddComponent<Canvas>();
+            pointUi_Canvas.overrideSorting = true;
+            pointUi_Canvas.sortingOrder = 2;
+            upgradeButton_go.AddComponent<GraphicRaycaster>();
+
+            {
+                upgradeButton.onClick.AddListener(ListenerTutorial_WorldMap_2_1);
+                upgradeButton.onClick.AddListener(() => Destroy(upgradeButton_go.GetComponent<GraphicRaycaster>()));
+                upgradeButton.onClick.AddListener(() => Destroy(pointUi_Canvas));
+            }
+        }
+    }
+
+    void ListenerTutorial_WorldMap_2_1()
+    {
+        PrintNextDialogue();
+        for (int i = 0; i < UpGrade.instance.statBars.Count; i++)
+        {
+            Button upgradeButton = UpGrade.instance.statBars[i].upgradeButton;
+            upgradeButton.onClick.RemoveListener(ListenerTutorial_WorldMap_2_1);
+            Destroy(upgradeButton.GetComponent<GraphicRaycaster>());
+            Destroy(upgradeButton.GetComponent<Canvas>());
+        }
+    }
+
+    #endregion
+
     #region Tutorial_Dungeon_1
     public void Tutorial_Dungeon_1()
     {
@@ -461,18 +508,19 @@ public class CutSceneManager : MonoBehaviour
         actions.Clear();
 
         actions.Add(() => TutorialWait(1f));    //1
-        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.CardSelectButton)));    //5     검사 용병 모집 버튼
-        actions.Add(() => TutorialGetGold(100));    //10
-        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.UnitSpawnButton1)));    //11    검사 고용 버튼
-        actions.Add(() => TutorialGetGold(50));    //15
-        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.BaseLevelUpButton)));    //16    요새 레벨업 버튼
-        actions.Add(() => Tutorial_Dungeon1_1());    //20   웨이브2 대기
-        actions.Add(() => Tutorial_Dungeon_1_2());    //25  보스 대기
-        actions.Add(() => Tutorial_Dungeon_1_3());    //26  보스로 시점 이동
-        actions.Add(() => Tutorial_Dungeon_1_4());    //34  보스 처치 대기
-        actions.Add(() => TutorialWait(2f));    //35
-        actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.GameClearPanel.gameObject));    //37   전투 결과 화면 대기
-        actions.Add(() => TutorialWait(2f));    //39
+        actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.cards[1].gameObject));    //5     검사 클릭 버튼
+        actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.select_Button.gameObject));    //6     확정 버튼
+        actions.Add(() => TutorialGetGold(100));    //11
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.UnitSpawnButton1)));    //12    검사 고용 버튼
+        actions.Add(() => TutorialGetGold(50));    //16
+        actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.BaseLevelUpButton)));    //17    요새 레벨업 버튼
+        actions.Add(() => Tutorial_Dungeon1_1());    //21   웨이브2 대기
+        actions.Add(() => Tutorial_Dungeon_1_2());    //26  보스 대기
+        actions.Add(() => Tutorial_Dungeon_1_3());    //28  보스로 시점 이동
+        actions.Add(() => Tutorial_Dungeon_1_4());    //35  보스 처치 대기
+        actions.Add(() => TutorialWait(2f));    //36
+        actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.GameClearPanel.gameObject));    //38   전투 결과 화면 대기
+        actions.Add(() => TutorialWait(2f));    //40
 
         StartTutorial("Tutorial_Dungeon_1");
     }
