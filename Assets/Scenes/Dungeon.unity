@@ -50739,7 +50739,7 @@ PrefabInstance:
       objectReference: {fileID: 172278284}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_Damage
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
@@ -50767,7 +50767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_armor
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_attack

@@ -27432,7 +27432,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 82f35b3412ea81247a2aa8236c6916fc, type: 3}
   - {fileID: 21300000, guid: 3446e1a5a2d8f0c4190f695b81af81c0, type: 3}
   - {fileID: 21300000, guid: 816cf217e45e1ff49b15b0002d09b503, type: 3}
-  period: 0.5
+  period: 0.8
 --- !u!1 &633691882
 GameObject:
   m_ObjectHideFlags: 0
