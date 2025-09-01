@@ -46,10 +46,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         Init();
-    }
 
-    private void Start()
-    {
         if (instance == null)
         {
             instance = this;
@@ -57,7 +54,10 @@ public class AudioManager : MonoBehaviour
         }
         else if (instance != this)
             Destroy(gameObject);
+    }
 
+    private void Start()
+    {
         PlayerBgm((BGM_Enum)startBGMIndex);
 
         LoadVolumes();

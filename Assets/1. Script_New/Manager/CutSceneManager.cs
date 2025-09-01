@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutSceneManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class CutSceneManager : MonoBehaviour
 
     int action_index;
     List<Action> actions = new();
+    bool isTutorial;
+    TutorialKey cur_TutorialKey;
 
     Button target_Button;
     Toggle target_Toggle;
@@ -29,7 +32,6 @@ public class CutSceneManager : MonoBehaviour
         public CharacterData character_Show;
         [TextArea(0,3)]
         public string dialogue;
-        public TutorialType tutorialType;
     }
     public List<CharacterData> characterDatas;
 
@@ -39,19 +41,23 @@ public class CutSceneManager : MonoBehaviour
     public Image character_Image_Left;
     public Image character_Image_Right;
 
-    Action completeFunc;
-
     List<DialogueData> list_Dialogue;
-    int i = 0;
+    int dialogue_index = 0;
 
     private void Awake()
     {
         instance = this;
-
-        if (DunGeonManager_New.instance && GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{1}") == 0)
-            Tutorial_Dungeon_1();
-        else if (DunGeonManager_New.instance && GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{2}") == 0)
-            Tutorial_Dungeon_2();
+        
+         //튜토리얼
+        if(SceneManager.GetActiveScene().name == "Dungeon")
+        {
+            if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_1) == 0)
+                Tutorial_Dungeon_1();
+            else if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_2) == 0)
+                Tutorial_Dungeon_2();
+        }
+        else if(SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
+            CheckTutorial_MainScene();
     }
 
     private void Start()
@@ -73,11 +79,19 @@ public class CutSceneManager : MonoBehaviour
         }
     }
 
+    public void CheckTutorial_MainScene()
+    {
+        if (PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_1) == 0)
+            Tutorial_WorldMap_1();
+        else if (PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{2}") != 0 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_2) == 0)
+            Tutorial_WorldMap_2();
+    }
+
     //다음 대사 출력
     public void PrintNextDialogue()
     {
         //마지막 문장일때
-        if (i == list_Dialogue.Count)
+        if (dialogue_index == list_Dialogue.Count)
         {
             //컷씬 종료
             cutScene_Go.SetActive(false);
@@ -85,32 +99,32 @@ public class CutSceneManager : MonoBehaviour
             return;
         }
 
-        if (list_Dialogue[i].isPause)
+        if (list_Dialogue[dialogue_index].isPause)
             Time.timeScale = 0;
         else
         {
             if (DunGeonManager_New.instance)
             {
                 if(DunGeonManager_New.instance.pauseStack == 0)
-                    Time.timeScale = DunGeonManager_New.instance.isFasty ? 2 : 1;
+                    Time.timeScale = DunGeonManager_New.instance.isFasty ? DunGeonManager_New.instance.fastValue : 1;
             }
             else
                 Time.timeScale = 1;
         }
 
-        if (list_Dialogue[i].isSpeak)
+        if (list_Dialogue[dialogue_index].isSpeak)
         {
             cutScene_Go.SetActive(true); 
             canvas_2.SetActive(false);
 
             //대사 출력
-            dialogue.StartTypeText(list_Dialogue[i].dialogue);
+            dialogue.StartTypeText(list_Dialogue[dialogue_index].dialogue);
             //인물 이름 변경
-            characterName_Text.text = list_Dialogue[i].character_Speak;
+            characterName_Text.text = list_Dialogue[dialogue_index].character_Speak;
 
             Image target_Image;
             //방향 설정
-            if (list_Dialogue[i].isRight)
+            if (list_Dialogue[dialogue_index].isRight)
             {
                 //오른쪽
                 target_Image = character_Image_Right;
@@ -125,7 +139,7 @@ public class CutSceneManager : MonoBehaviour
                 character_Image_Left.gameObject.SetActive(true);
             }
             //스프라이트 변경
-            target_Image.sprite = list_Dialogue[i].character_Show.characterSprite;
+            target_Image.sprite = list_Dialogue[dialogue_index].character_Show.characterSprite;
         }
         else
         {
@@ -133,7 +147,7 @@ public class CutSceneManager : MonoBehaviour
             actions[action_index++].Invoke();
         }
 
-        i++;
+        dialogue_index++;
     }
 
     //스킵 버튼
@@ -148,22 +162,22 @@ public class CutSceneManager : MonoBehaviour
 
     public void EndCutScene()
     {
-        i = 0;
+        dialogue_index = 0;
         action_index = 0;
-        completeFunc?.Invoke();
-
+        //컷씬 열람 기록
+        PlayerPrefs.SetInt(ConstData.tutorialComplete + cur_TutorialKey, 1);
         canvas_2.SetActive(false);
     }
 
-    public void StartCutScene(string eventName, Action onComplete = null)
+    public void StartCutScene(string eventName)
     {
+        isTutorial = false;
         canvas_2.SetActive(true);
 
         list_Dialogue = GetDialogueDatasByCsv(eventName);
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
 
-        completeFunc = onComplete;
     }
 
     //특정 UI를 강조하는 함수
@@ -210,7 +224,7 @@ public class CutSceneManager : MonoBehaviour
     void ListenerPrintNextDialogue()
     {
         target_Button.onClick.RemoveListener(ListenerPrintNextDialogue);
-        circleMask_Image.gameObject.SetActive(false);
+        circleMask_Image?.gameObject.SetActive(false);
         PrintNextDialogue();
     }
     void ToggleListenerPrintNextDialogue(bool isOn)
@@ -312,28 +326,12 @@ public class CutSceneManager : MonoBehaviour
         }
         return null;
     }
-
-    TutorialType StringToTutorialType(string input)
-    {
-        switch (input)
-        {
-            case "대기":
-                return TutorialType.Wait;
-            case "골드 확보":
-                return TutorialType.GetGold;
-            case "오브젝트 활성화":
-                return TutorialType.ObjectActive;
-            case "오브젝트 비활성화":
-                return TutorialType.ObjectInactive;
-            default:
-                return TutorialType.None;
-        }
-    }
     #endregion
 
-    #region 리뉴얼
+    #region 튜토리얼
     public void StartTutorial(string eventName, Action onComplete = null)
     {
+        isTutorial = true;
         list_Dialogue = GetTutorialDatasByCsv_New(eventName);
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
@@ -368,7 +366,6 @@ public class CutSceneManager : MonoBehaviour
             {
                 isPause = !(values[3].Trim() == "X"),
                 isSpeak = !(values[4].Trim() == "X"),
-                tutorialType = StringToTutorialType(values[8]),
                 isRight = values[9].Trim() == "오른쪽",
                 character_Speak = values[11],
                 character_Show = NameToEnum(values[12].Trim()),
@@ -446,6 +443,7 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.GameStartButton))); //7
 
         StartTutorial("Tutorial_WorldMap_1");
+        cur_TutorialKey = TutorialKey.WorldMap_1;
     }
 
     #endregion
@@ -462,6 +460,8 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => PointUI(UpGrade.instance.confirmButton)); //9
 
         StartTutorial("Tutorial_WorldMap_2");
+        cur_TutorialKey = TutorialKey.WorldMap_2;
+
     }
 
     void Tutorial_WorldMap_2_1()
@@ -523,6 +523,7 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => TutorialWait(2f));    //40
 
         StartTutorial("Tutorial_Dungeon_1");
+        cur_TutorialKey = TutorialKey.Dungeon_1;
     }
 
     //웨이브2 대기
@@ -597,6 +598,7 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => Tutorial_Dungeon_1_2());    //24      
 
         StartTutorial("Tutorial_Dungeon_2");
+        cur_TutorialKey = TutorialKey.Dungeon_2;
     }
 
     //웨이브2 대기
@@ -611,5 +613,30 @@ public class CutSceneManager : MonoBehaviour
         PrintNextDialogue();
     }
     #endregion
+    #endregion
+
+    #region 테스트
+    public void Test_Tutorial(int keyIndex)
+    {
+        //모두 클리어 처리
+        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
+            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
+
+        PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)keyIndex, 0);
+    }
+
+    //튜토리얼 열람 초기화
+    public void Test_ResetTutorial()
+    {
+        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
+            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 0);
+    }
+
+    //튜토리얼 읽음 처리
+    public void Test_TutorialComplete()
+    {
+        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
+            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
+    }
     #endregion
 }

@@ -148,6 +148,7 @@ public class DunGeonManager_New : MonoBehaviour
     [HideInInspector] public EnemyBase_Unit enemyBase;
 
     [HideInInspector] public bool isFasty;
+    [HideInInspector] public float fastValue = 1.5f;
 
     [HideInInspector] public int pauseStack = 0;
 
@@ -199,17 +200,6 @@ public class DunGeonManager_New : MonoBehaviour
 
         //0.1ÃÊ¸¶´Ù °ñµå È¹µæ
         GetGoldPerSec();
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            pauseMask.SetActive(Time.timeScale != 0);
-            OnPause(Time.timeScale != 0);
-            princess.OnMove(0);
-            CutSceneManager.instance.StartCutScene("1-1" , ()=> {
-                pauseMask.SetActive(Time.timeScale != 0);
-                OnPause(Time.timeScale != 0);
-            });
-        }
     }
 
     #region À¯´Ö »ý»ê ÇÔ¼ö(°ñµå Æ÷ÇÔ)
@@ -500,14 +490,14 @@ public class DunGeonManager_New : MonoBehaviour
     public void OnFasty()
     {
         isFasty = !isFasty;
-        Time.timeScale = isFasty ? 2 : 1;
+        Time.timeScale = isFasty ? fastValue : 1;
         fasty_Mask.SetActive(isFasty);
     }
 
     public void OnPause(bool isPause)
     {
         pauseStack += isPause ? 1 : -1;
-        Time.timeScale = pauseStack > 0 ? 0 : isFasty ? 2 : 1;
+        Time.timeScale = pauseStack > 0 ? 0 : isFasty ? fastValue : 1;
     }
 
     public void ResetPause()

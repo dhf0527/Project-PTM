@@ -59,9 +59,9 @@ public enum MealRarity
     Rare
 }
 
-public enum TutorialType
+public enum TutorialKey
 {
-    None, PointUI, Wait,  GetGold, ObjectActive, ObjectInactive
+    WorldMap_1, WorldMap_2, WorldMap_3, Dungeon_1, Dungeon_2,
 }
 
 public enum SearchKey

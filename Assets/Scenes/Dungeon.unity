@@ -7560,6 +7560,7 @@ MonoBehaviour:
   teamBase: {fileID: 0}
   enemyBase: {fileID: 0}
   isFasty: 0
+  fastValue: 1.5
   pauseStack: 0
 --- !u!4 &283656906
 Transform:
@@ -17595,6 +17596,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 308641163}
+        m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
+        m_MethodName: ResetSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &681865466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19954,7 +19967,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2\uBC30\uC18D\n"
+  m_text: 'FAST!
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a4a30f7b54a185a4a915796f382f3110, type: 2}
   m_sharedMaterial: {fileID: -5080774239886890811, guid: a4a30f7b54a185a4a915796f382f3110, type: 2}
@@ -39871,6 +39886,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1259631751}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
         m_MethodName: OnToMainScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 847852303}
+        m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
+        m_MethodName: ResetSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

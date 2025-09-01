@@ -18,4 +18,5 @@ public static class ConstData
     public const string unitUpgrade_Unlock = "unitUpgrade_Unlock";
     public const string pedia_Unlock = "pedia_Unlock";
     public const string new_Unlock = "new_Unlock";
+    public const string tutorialComplete = "tutorialClear";    //ConstData.tutorialComplete + TutorialKey.Dungeon_1
 }
