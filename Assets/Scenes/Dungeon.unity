@@ -7446,9 +7446,9 @@ MonoBehaviour:
   - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
   spawnCoolTimesByLevel:
-  - 1
-  - 2
-  - 3
+  - 4
+  - 8
+  - 16
   item_Advanced:
   - {fileID: 11400000, guid: 93bf9ea72f57a0740b7bf28246d21502, type: 2}
   - {fileID: 11400000, guid: 912fac0ab16d0974a88ea604f9edee2f, type: 2}
@@ -7622,16 +7622,16 @@ MonoBehaviour:
   - 30
   - 30
   phase0_SpawnTimes:
-  - 8
-  - 20
-  - 30
-  phase1_SpawnTimes:
   - 6
   - 15
+  - 30
+  phase1_SpawnTimes:
+  - 5
+  - 10
   - 25
   phase2_SpawnTimes:
   - 4
-  - 12
+  - 8
   - 20
   wave_BaseHps:
   - 70
@@ -7642,7 +7642,7 @@ MonoBehaviour:
   boss_Hp2: 3
   boss_Attack1: 1
   boss_Attack2: 0.5
-  killGolds: 2300000064000000fa000000
+  killGolds: 190000004b000000af000000
   killGold_Boss: 1500
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
