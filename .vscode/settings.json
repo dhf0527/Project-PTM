@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "DefenseProject.sln"
+    "dotnet.defaultSolution": "Project-PTM.sln"
 }

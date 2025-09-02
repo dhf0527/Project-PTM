@@ -22,6 +22,8 @@ public class GameClearPanel : MonoBehaviour
 
     int resultTime;
     int reward;
+    float origin_Volume;
+
     public void SetClearPanel()
     {
         Time.timeScale = 1;
@@ -140,10 +142,10 @@ public class GameClearPanel : MonoBehaviour
 
     IEnumerator C_SetSound()
     {
-        float origin_Volume;
         AudioManager.Instance.mixer.GetFloat(EMixer.BGM.ToString(), out origin_Volume);
         float t = 0;
 
+        //배경음악 페이드 아웃
         while (t < 2)
         {
             t += Time.unscaledDeltaTime;
@@ -154,6 +156,11 @@ public class GameClearPanel : MonoBehaviour
 
         //전투 결과 효과음
         AudioManager.Instance.PlayerSfx(isWin ? SFX_Enum.Victory : SFX_Enum.Defeated);
+    }
+
+    public void ResetSound()
+    {
+        AudioManager.Instance.mixer.SetFloat(EMixer.BGM.ToString(), origin_Volume);
     }
 
     public void OnSetPlayTime()
