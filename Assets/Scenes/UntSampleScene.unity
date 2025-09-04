@@ -3286,6 +3286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit_prf: {fileID: 2024584082555695141, guid: 3dcecf6e4d2bbf545b49feeb6d01d957, type: 3}
   fxParent: {fileID: 203163637}
+  damagText_prf: {fileID: 0}
+  worldCanvas: {fileID: 0}
 --- !u!4 &203163637
 Transform:
   m_ObjectHideFlags: 0
@@ -4428,6 +4430,8 @@ MonoBehaviour:
   princessHpPanel: {fileID: 521670939}
   GameOverPanel: {fileID: 847852303}
   GameClearPanel: {fileID: 308641163}
+  pauseMask: {fileID: 0}
+  touchBlocker: {fileID: 0}
   spawn_Trans: {fileID: 1470081848}
   unit_Parent: {fileID: 813430772}
   units_Level_1:
@@ -4452,7 +4456,7 @@ MonoBehaviour:
   - {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
   - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
-  spawn_Y: 0.03
+  spawnCoolTimesByLevel: []
   item_Advanced:
   - {fileID: 11400000, guid: 93bf9ea72f57a0740b7bf28246d21502, type: 2}
   - {fileID: 11400000, guid: 912fac0ab16d0974a88ea604f9edee2f, type: 2}
@@ -4467,6 +4471,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d0b8c66b1d276141b38399b428170e3, type: 2}
   - {fileID: 11400000, guid: 0a8e5bd00b4276f43b9da61ed87d95de, type: 2}
   - {fileID: 11400000, guid: 9463f64d0cd2b8546ba76dee9f39a85a, type: 2}
+  unitUpgradeDatas: []
   itemDatas:
   - {fileID: 0}
   - {fileID: 0}
@@ -4517,14 +4522,27 @@ MonoBehaviour:
     base_UpgradeCost_By_Level: 0
     base_GoldPerSec_By_Level: 50
     base_MaxGold_By_Level: 8100
+  bridge_Sprites: []
+  base_Sprites: []
+  backGround_Sprites: []
+  bridge_Sr: {fileID: 0}
+  base_Sr: {fileID: 0}
+  backGround_Sr: {fileID: 0}
+  isTutorial_1: 0
+  isTutorial_2: 0
   test_Units:
   - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
+  onStageUnits_Test: []
   inGamePlayTime: 0
   projectile_Parent: {fileID: 283831844}
+  attackRanges_Melee_BySize: []
+  attackRanges_Ranged_ByLevel: []
   princess: {fileID: 0}
   teamBase: {fileID: 0}
   enemyBase: {fileID: 0}
   isFasty: 0
+  fastValue: 1.5
+  pauseStack: 0
 --- !u!4 &283656906
 Transform:
   m_ObjectHideFlags: 0
@@ -4570,6 +4588,7 @@ MonoBehaviour:
   enemy_Unit_Parent: {fileID: 1045928008}
   wavePanel: {fileID: 1139534701}
   shockWave_prf: {fileID: 2387810802357558423, guid: afb4eb0b52eb4fc448d6580e770e98c6, type: 3}
+  waveProgress_Image: {fileID: 0}
   isStopSpawn: 1
   backGround_Anim: {fileID: 973086257}
   warnText_Image: {fileID: 1241100437}
@@ -4596,21 +4615,22 @@ MonoBehaviour:
   - 6
   - 12
   - 24
-  wave1_enemy:
-  - {fileID: 3459655382489656938, guid: 2007654c129dba345b650bb8cecea8bd, type: 3}
-  - {fileID: 1198370873967010812, guid: ae8002818a9d4834ba59d8088d18da60, type: 3}
-  - {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
-  wave2_enemy:
-  - {fileID: -7464574810850663169, guid: 21282c881a5b94b44a289ab425e3e386, type: 3}
-  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
-  - {fileID: 4541328312039694865, guid: 9cf2054573ff09b49ae17c3422b410d9, type: 3}
-  wave3_enemy:
-  - {fileID: -5261022507513659052, guid: 8e9e90117372f294cb1e8d3805a93f47, type: 3}
-  - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
+  wave_BaseHps:
+  - 0
+  - 0
   boss_Unit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
+  boss_BaseHp: 0
+  boss_Hp1: 0
+  boss_Hp2: 0
+  boss_Attack1: 0
+  boss_Attack2: 0
+  killGolds: 
+  killGold_Boss: 0
+  isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
+  isBossSpawned: 0
+  bossUnit: {fileID: 0}
 --- !u!1 &283831843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5344,10 +5364,13 @@ MonoBehaviour:
   backGround_Image: {fileID: 1283399830}
   dungeonNumber_Text: {fileID: 41542951}
   resultTime_Text: {fileID: 211129234}
-  rank_Image: {fileID: 584332427}
+  star_Image: {fileID: 0}
   newRecord_Text: {fileID: 834300090}
   reward_Text: {fileID: 44405313}
+  info_Text: {fileID: 0}
+  meal_Image: {fileID: 0}
   rank_Sprites: []
+  isWin: 0
 --- !u!95 &308641165
 Animator:
   serializedVersion: 5
@@ -7458,6 +7481,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7575,6 +7599,18 @@ MonoBehaviour:
   isPrincessDead: 0
   isChasePrincess: 1
   shake_Pos: {x: 0, y: 0, z: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fce2d3258bac8b45b7c824bc29fb504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521670935
 GameObject:
   m_ObjectHideFlags: 0
@@ -9487,16 +9523,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0082e7d3f13f4b95a2f15def25f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 5c36f5331e2342540ad887958491bf84, type: 2}
   isHpText: 1
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
+  hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
+  killGold: 0
 --- !u!1 &670904439
 GameObject:
   m_ObjectHideFlags: 0
@@ -12441,10 +12481,13 @@ MonoBehaviour:
   backGround_Image: {fileID: 1369776953}
   dungeonNumber_Text: {fileID: 1311092065}
   resultTime_Text: {fileID: 1194187010}
-  rank_Image: {fileID: 1562317141}
+  star_Image: {fileID: 0}
   newRecord_Text: {fileID: 0}
   reward_Text: {fileID: 304329275}
+  info_Text: {fileID: 0}
+  meal_Image: {fileID: 0}
   rank_Sprites: []
+  isWin: 0
 --- !u!95 &847852304
 Animator:
   serializedVersion: 5
@@ -13720,16 +13763,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822a8fc1bd4dc1842a9395d5f8076b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
   ud: {fileID: 11400000, guid: 90423bc2f1aa034488039a8e4ba99975, type: 2}
   isHpText: 1
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
+  isTrueDamage: 0
+  hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
+  killGold: 0
 --- !u!1 &963843912
 GameObject:
   m_ObjectHideFlags: 0
