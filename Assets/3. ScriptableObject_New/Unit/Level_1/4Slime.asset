@@ -22,8 +22,8 @@ MonoBehaviour:
   hp: 60
   damage: 6
   attack_Speed: 5
-  accuracy: 40
-  avoidance: 40
+  accuracy: 20
+  avoidance: 20
   armor: 0
   attack_RangeType: 0
   target_Count: 1
