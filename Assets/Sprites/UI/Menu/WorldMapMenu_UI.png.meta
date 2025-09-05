@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d40b1049c99553841bd9a40f22447ec8
+guid: bdaafd705a904e04681eb54b696cb198
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,19 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cardUI_0
+      name: WorldMapSetting_UI_0
       rect:
         serializedVersion: 2
-        x: 186
-        y: 4465
-        width: 1774
-        height: 349
+        x: 77
+        y: 2252
+        width: 3390
+        height: 2693
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77a3af8ed2c282043ba20db93b166a36
-      internalID: 1542329866
+      spriteID: 42dae577aaf8e17439a73cbf30bf14a5
+      internalID: 399326450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_1
+      name: WorldMapSetting_UI_4
       rect:
         serializedVersion: 2
-        x: 2668
-        y: 4544
-        width: 143
-        height: 138
+        x: 140
+        y: 1558
+        width: 2898
+        height: 506
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5068839a6670dd54cbff053b404d4ef7
-      internalID: -512888545
+      spriteID: ad0041cded25527408adc3495ef20bf8
+      internalID: 1986997449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_2
+      name: WorldMapSetting_UI_7
       rect:
         serializedVersion: 2
-        x: 2999
-        y: 4540
-        width: 140
-        height: 137
+        x: 157
+        y: 779
+        width: 1422
+        height: 544
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f06edca60f0e94085ee92de1692559
-      internalID: 541129334
+      spriteID: 89f69c80e7bca724f90db69d8dfa1a0d
+      internalID: 2005490437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_3
+      name: WorldMapSetting_UI_9
       rect:
         serializedVersion: 2
-        x: 265
-        y: 4223
-        width: 1617
-        height: 160
+        x: 1740
+        y: 776
+        width: 1421
+        height: 547
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,103 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05520d838f53b54428ee31ca34a8249d
-      internalID: 849950081
+      spriteID: 08fad63ec512f904b9a1970f6e65e672
+      internalID: 1867530285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_4
+      name: WorldMapSetting_UI_14
       rect:
         serializedVersion: 2
-        x: 1031
-        y: 3860
-        width: 758
-        height: 287
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 33, y: 41, z: 33, w: 41}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31abdbed895536745b261ba78a839998
-      internalID: -651040586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_5
-      rect:
-        serializedVersion: 2
-        x: 2582
-        y: 3901
-        width: 455
-        height: 287
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 43, y: 44, z: 38, w: 39}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89985461d5f3ebf458c03399b98b5d1d
-      internalID: -535705393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_6
-      rect:
-        serializedVersion: 2
-        x: 3290
-        y: 3901
-        width: 451
-        height: 287
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 44, y: 44, z: 44, w: 44}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25146f6bb925b2e4c9bf86566d3752fe
-      internalID: 1399361595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_7
-      rect:
-        serializedVersion: 2
-        x: 1031
-        y: 3505
-        width: 758
-        height: 287
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 33, y: 41, z: 33, w: 41}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 006069da8ca90b14b9b1a3069701c102
-      internalID: 1153962734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_8
-      rect:
-        serializedVersion: 2
-        x: 2582
-        y: 3361
-        width: 1207
+        x: 166
+        y: 133
+        width: 1417
         height: 410
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -305,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93b254ad7ac8058438ea8442e4984f5c
-      internalID: 206672459
+      spriteID: 2b19e461acc60294480c8c68d93789b2
+      internalID: 393941225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_9
+      name: WorldMapSetting_UI_18
       rect:
         serializedVersion: 2
-        x: 188
-        y: 2978
-        width: 1772
-        height: 346
+        x: 1772
+        y: 231
+        width: 130
+        height: 232
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,41 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 802ebf719fda5b24f9893373d9c3cec8
-      internalID: 2026909127
+      spriteID: 88e1f48a86611624b8ed4be5706a820b
+      internalID: 1004842248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_10
+      name: WorldMapSetting_UI_19
       rect:
         serializedVersion: 2
-        x: 2585
-        y: 2729
-        width: 2239
-        height: 404
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 108, y: 108, z: 108, w: 108}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd164d5f86ffdae4f82af2fa24a24122
-      internalID: -866676867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_11
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 2732
-        width: 1614
-        height: 161
+        x: 1929
+        y: 282
+        width: 55
+        height: 133
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d63b7d334f6dbad499f37a7249e41dd6
-      internalID: 2139594836
+      spriteID: 25b56a90a5850aa4ea9e7a25a138efd1
+      internalID: 965663644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_12
+      name: WorldMapSetting_UI_20
       rect:
         serializedVersion: 2
-        x: 1048
-        y: 2370
-        width: 755
-        height: 286
+        x: 1974
+        y: 234
+        width: 72
+        height: 226
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,41 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d37a497ab1471f94993fdb78ccbf76a1
-      internalID: -1059288469
+      spriteID: d036d800834a4c4479b64114ffec35ed
+      internalID: -925734467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_13
+      name: WorldMapSetting_UI_21
       rect:
         serializedVersion: 2
-        x: 1048
-        y: 2011
-        width: 755
-        height: 287
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 44, y: 44, z: 44, w: 44}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4cac3b0d84eb07b4ba66a027a1e17bc9
-      internalID: -1137483167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cardUI_14
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 1454
-        width: 1774
-        height: 349
+        x: 2235
+        y: 226
+        width: 246
+        height: 264
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b42e773970de9aa458b255ee292a4420
-      internalID: 1516928091
+      spriteID: ebf7c4d0776b5c64ba132dd9ed732c9d
+      internalID: -1502834720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_15
+      name: WorldMapSetting_UI_22
       rect:
         serializedVersion: 2
-        x: 265
-        y: 1201
-        width: 1617
-        height: 161
+        x: 2671
+        y: 231
+        width: 261
+        height: 229
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -452,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4a266453b888d54ab08ae3fea9e925b
-      internalID: -1994441904
+      spriteID: 6950cc3877a431544adc3e311dcdb2ef
+      internalID: -1035840916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_16
+      name: WorldMapSetting_UI_24
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 836
-        width: 759
-        height: 287
+        x: 3136
+        y: 226
+        width: 227
+        height: 261
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68e33bac433115245ae94c470a0e74ac
-      internalID: -1634179573
+      spriteID: 58ba3828a73c7c44abbff271f9ffcba1
+      internalID: -628188130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cardUI_17
+      name: WorldMapSetting_UI_25
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 480
-        width: 759
-        height: 287
+        x: 3495
+        y: 238
+        width: 2105
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -494,8 +355,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77930e101d7220d45a2f2df61261a1b2
-      internalID: 2138508906
+      spriteID: c3db4e0d624a3c546845ce05837dbaed
+      internalID: -1474042260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WorldMapSetting_UI_26
+      rect:
+        serializedVersion: 2
+        x: 5799
+        y: 258
+        width: 330
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a828b3552b95d42aa92cdbc17aab5a
+      internalID: -1604498620
       vertices: []
       indices: 
       edges: []
@@ -511,24 +393,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cardUI_0: 1542329866
-      cardUI_1: -512888545
-      cardUI_10: -866676867
-      cardUI_11: 2139594836
-      cardUI_12: -1059288469
-      cardUI_13: -1137483167
-      cardUI_14: 1516928091
-      cardUI_15: -1994441904
-      cardUI_16: -1634179573
-      cardUI_17: 2138508906
-      cardUI_2: 541129334
-      cardUI_3: 849950081
-      cardUI_4: -651040586
-      cardUI_5: -535705393
-      cardUI_6: 1399361595
-      cardUI_7: 1153962734
-      cardUI_8: 206672459
-      cardUI_9: 2026909127
+      WorldMapSetting_UI_0: 399326450
+      WorldMapSetting_UI_1: -1569970719
+      WorldMapSetting_UI_10: -1598299979
+      WorldMapSetting_UI_11: -1725542586
+      WorldMapSetting_UI_12: 1873238954
+      WorldMapSetting_UI_13: 1489516543
+      WorldMapSetting_UI_14: 393941225
+      WorldMapSetting_UI_15: -1199209236
+      WorldMapSetting_UI_16: 1094760213
+      WorldMapSetting_UI_17: 1195163697
+      WorldMapSetting_UI_18: 1004842248
+      WorldMapSetting_UI_19: 965663644
+      WorldMapSetting_UI_2: -458882314
+      WorldMapSetting_UI_20: -925734467
+      WorldMapSetting_UI_21: -1502834720
+      WorldMapSetting_UI_22: -1035840916
+      WorldMapSetting_UI_23: 635328199
+      WorldMapSetting_UI_24: -628188130
+      WorldMapSetting_UI_25: -1474042260
+      WorldMapSetting_UI_26: -1604498620
+      WorldMapSetting_UI_27: 1832297668
+      WorldMapSetting_UI_28: -517326031
+      WorldMapSetting_UI_3: -1519213683
+      WorldMapSetting_UI_4: 1986997449
+      WorldMapSetting_UI_5: 2050219125
+      WorldMapSetting_UI_6: 686072887
+      WorldMapSetting_UI_7: 2005490437
+      WorldMapSetting_UI_8: 1036957835
+      WorldMapSetting_UI_9: 1867530285
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

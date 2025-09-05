@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8de95ce8fcdb99148812d5ed9ceaa2a1
+guid: 8715e2ff663294748904d29972f6854a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,131 +93,144 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_Guide_0
+      name: DungeonMenu_UI_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 3500
-        width: 5773
-        height: 3422
+        x: 67
+        y: 3483
+        width: 5821
+        height: 3462
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d21f7750cf127a4da7ace1d7232e744
-      internalID: -492366238
+      spriteID: db056a15bb448b24fb94a8730308bcc6
+      internalID: 787647345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_Guide_1
+      name: DungeonMenu_UI_4
       rect:
         serializedVersion: 2
-        x: 5973
-        y: 4602
-        width: 197
-        height: 2238
+        x: 5970
+        y: 4593
+        width: 203
+        height: 2247
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d6ab4649b1939478d5b8292b1d59a9
-      internalID: -238118066
+      spriteID: ff6b8d533ddc9ac4d9c1b33319a8f173
+      internalID: 1874468744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_Guide_2
+      name: DungeonMenu_UI_5
       rect:
         serializedVersion: 2
-        x: 6352
-        y: 6553
-        width: 157
-        height: 287
+        x: 6348
+        y: 6541
+        width: 161
+        height: 299
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 93, z: 0, w: 35}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4018c4657fd77694f8c62e7d9adbdc8b
-      internalID: -789032351
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_Guide_3
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 901
-        width: 5230
-        height: 2491
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96090eb3c8fc4bc4a88393ed5eff0817
-      internalID: 135611174
+      spriteID: dd0ea52abda38764d8906b256d1320c7
+      internalID: -680780963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_Guide_4
+      name: DungeonMenu_UI_13
       rect:
         serializedVersion: 2
-        x: 162
-        y: 231
-        width: 660
-        height: 437
+        x: 133
+        y: 871
+        width: 5259
+        height: 2536
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 102dc107ecf65564cbaeb08e3c3d75fc
-      internalID: -1589519908
+      spriteID: 917a99bf84028bd4f975d3995911c275
+      internalID: 1470222891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_Guide_5
+      name: DungeonMenu_UI_19
       rect:
         serializedVersion: 2
-        x: 1037
-        y: 224
-        width: 445
-        height: 441
+        x: 137
+        y: 229
+        width: 707
+        height: 458
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15b7de3392d80514d8471c87e7c13989
-      internalID: 734886507
+      spriteID: d42097b2851d9cf4da4467653f5d0d63
+      internalID: -1719686429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonMenu_UI_26
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 202
+        width: 495
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ead329b2ea686645aa28491c2d60f41
+      internalID: 992274313
       vertices: []
       indices: 
       edges: []
@@ -233,12 +246,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ui_Guide_0: -492366238
-      ui_Guide_1: -238118066
-      ui_Guide_2: -789032351
-      ui_Guide_3: 135611174
-      ui_Guide_4: -1589519908
-      ui_Guide_5: 734886507
+      DungeonMenu_UI_0: 787647345
+      DungeonMenu_UI_1: 1921662394
+      DungeonMenu_UI_10: -1295439971
+      DungeonMenu_UI_11: 1056958295
+      DungeonMenu_UI_12: 718729706
+      DungeonMenu_UI_13: 1470222891
+      DungeonMenu_UI_14: 1565843718
+      DungeonMenu_UI_15: -1582958320
+      DungeonMenu_UI_16: -1255856631
+      DungeonMenu_UI_17: 1589709693
+      DungeonMenu_UI_18: 1298912914
+      DungeonMenu_UI_19: -1719686429
+      DungeonMenu_UI_2: -377895713
+      DungeonMenu_UI_20: 243992938
+      DungeonMenu_UI_21: 147559955
+      DungeonMenu_UI_22: -2008676410
+      DungeonMenu_UI_23: -877571495
+      DungeonMenu_UI_24: 1409511129
+      DungeonMenu_UI_25: 10265840
+      DungeonMenu_UI_26: 992274313
+      DungeonMenu_UI_27: -1538651244
+      DungeonMenu_UI_28: 2099683501
+      DungeonMenu_UI_29: 1462540092
+      DungeonMenu_UI_3: -1690400896
+      DungeonMenu_UI_4: 1874468744
+      DungeonMenu_UI_5: -680780963
+      DungeonMenu_UI_6: -820348533
+      DungeonMenu_UI_7: 404990268
+      DungeonMenu_UI_8: -332409102
+      DungeonMenu_UI_9: -1974841583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
