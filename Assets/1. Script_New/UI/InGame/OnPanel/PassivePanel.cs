@@ -16,8 +16,13 @@ public class PassivePanel : MonoBehaviour
     const string cuttedArmor = "절단된 갑옷";
     const string reapedSpirit = "수확한 영혼";
 
-    const string color_Red = "#CD3B3B";
-    const string color_Blue = "#3A43CD";
+    string Color_Red { get { return ColorToHex(color_Red_1); } }
+    /*= "#CD3B3B";*/
+    string Color_Blue {get{ return ColorToHex(color_Blue_1); }}
+    /*= "#3A43CD";*/
+
+    public Color color_Red_1;
+    public Color color_Blue_1;
 
     public void SetNameText(string setText)
     {
@@ -40,9 +45,9 @@ public class PassivePanel : MonoBehaviour
 
         //*b(단어)* = 파란색, *r(단어)* = 빨간색 단어 색상 변경
         foreach (var words_Blue in FindWords_Blue(setText))
-            setText = Regex.Replace(setText, $"\\*b{words_Blue}\\*", ColorText(words_Blue, color_Blue));
+            setText = Regex.Replace(setText, $"\\*b{words_Blue}\\*", ColorText(words_Blue, Color_Blue));
         foreach (var words_Blue in FindWords_Red(setText))
-            setText = Regex.Replace(setText, $"\\*r{words_Blue}\\*", ColorText(words_Blue, color_Red));
+            setText = Regex.Replace(setText, $"\\*r{words_Blue}\\*", ColorText(words_Blue, Color_Red));
 
         detailText.text = setText;
     }
@@ -91,19 +96,19 @@ public class PassivePanel : MonoBehaviour
         switch (word)
         {
             case earring:
-                passive_Detail = $"명중률, 회피율 {ColorText("-20",color_Red)}";
+                passive_Detail = $"명중률, 회피율 {ColorText("-20",Color_Red)}";
                 break;
             case reborn:
-                passive_Detail = $"이동 속도, 공격 속도 {ColorText("+100%", color_Blue)}, 초당 최대 체력의 {ColorText("10% 감소", color_Red)}";
+                passive_Detail = $"이동 속도, 공격 속도 {ColorText("+100%", Color_Blue)}, 초당 최대 체력의 {ColorText("10% 감소", Color_Red)}";
                 break;
             case cursedFlame:
-                passive_Detail = $"0.5초당 {ColorText("2",color_Red)}의 피해. 받는 모든 회복 효과가 {ColorText("절반",color_Red)}으로 {ColorText("감소",color_Red)}.";
+                passive_Detail = $"0.5초당 {ColorText("2",Color_Red)}의 피해. 받는 모든 회복 효과가 {ColorText("절반",Color_Red)}으로 {ColorText("감소",Color_Red)}.";
                 break;
             case cuttedArmor:
-                passive_Detail = $"방어도 {ColorText("-50%", color_Red)}";
+                passive_Detail = $"방어도 {ColorText("-50%", Color_Red)}";
                 break;
             case reapedSpirit:
-                passive_Detail = $"공격력 {ColorText("+20", color_Blue)}, 명중률 {ColorText("+40", color_Blue)}";
+                passive_Detail = $"공격력 {ColorText("+20", Color_Blue)}, 명중률 {ColorText("+40", Color_Blue)}";
                 break;
             default:
                 return;
@@ -116,5 +121,12 @@ public class PassivePanel : MonoBehaviour
     string ColorText(string word ,string color_Code)
     {
         return $"<color={color_Code}>{word}</color>";
+    }
+
+    string ColorToHex(Color color)
+    {
+        return "#" + Mathf.RoundToInt(color.r * 255f).ToString("X2") +
+                    Mathf.RoundToInt(color.g * 255f).ToString("X2") +
+                    Mathf.RoundToInt(color.b * 255f).ToString("X2");
     }
 }

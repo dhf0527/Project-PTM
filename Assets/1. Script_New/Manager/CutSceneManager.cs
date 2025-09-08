@@ -71,7 +71,7 @@ public class CutSceneManager : MonoBehaviour
             StartCutScene("1-1");
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Tutorial_WorldMap_2();
+            Tutorial_WorldMap_1();
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
