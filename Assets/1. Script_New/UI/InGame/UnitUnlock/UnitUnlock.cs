@@ -112,7 +112,7 @@ public class UnitUnlock : MonoBehaviour
         
         if (isOpen)
         {
-            detailPanel.SetDetail(selected_Card);
+            detailPanel.SetDetail(selected_Card.unit);
         }
     }
 }

@@ -23,6 +23,17 @@ public class PassivePanel : MonoBehaviour
 
     public Color color_Red_1;
     public Color color_Blue_1;
+    RectTransform r_Trans;
+
+    private void Awake()
+    {
+        r_Trans = GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        GetComponent<RectTransform>().sizeDelta = new Vector2(r_Trans.rect.width, detailText.rectTransform.rect.height + 70);
+    }
 
     public void SetNameText(string setText)
     {

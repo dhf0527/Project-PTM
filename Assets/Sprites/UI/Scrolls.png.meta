@@ -1,0 +1,649 @@
+fileFormatVersion: 2
+guid: a598739122b3f3245a56262f9be440b9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Scrolls_2
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 4467
+        width: 1774
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a020a782df3034844aacf26729b99011
+      internalID: 639457657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_4
+      rect:
+        serializedVersion: 2
+        x: 2671
+        y: 4541
+        width: 140
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8262c3381f7c69428573c7efad56ad2
+      internalID: -1716555044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_5
+      rect:
+        serializedVersion: 2
+        x: 2996
+        y: 4532
+        width: 143
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ba11950900ed14a97bbc5b72141e06
+      internalID: 1035343775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 4250
+        width: 1611
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf760c44452123e47a9eaea96923eb7c
+      internalID: 312495493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_10
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 3861
+        width: 753
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38671dc671971a743880180eab64bfe9
+      internalID: 1594705005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_11
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 3905
+        width: 453
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2bd89ea4e1ba043968655a6df63c9d
+      internalID: -1409824489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_13
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 3905
+        width: 451
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42c46338c942db439a41f8db6076119
+      internalID: 1491866944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_15
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 3508
+        width: 755
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1a0b1796da7e444a2b96642ab2673a
+      internalID: -60280861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_18
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 3363
+        width: 1205
+        height: 413
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bdbd24d335d1245bb0cbe3f1c6b630
+      internalID: 888319267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_23
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 2979
+        width: 1769
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3beac15c5d9254c8838b5a1783ce4f
+      internalID: -1271399706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_27
+      rect:
+        serializedVersion: 2
+        x: 2580
+        y: 2730
+        width: 2243
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e32e7042e9dc44f9d023f608399e69
+      internalID: 238904251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_33
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 2761
+        width: 1610
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d708787e435e84e846b882cc0d219d
+      internalID: 1450915980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_36
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 2374
+        width: 754
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db409817751abf3498f24a126bceac90
+      internalID: 2058394437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_38
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 2018
+        width: 755
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69bc652cf9cf1142b377883f7884960
+      internalID: 1847787672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_39
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 1457
+        width: 1772
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6556ad12e31434689ebfd0790710cb
+      internalID: -2099658276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_42
+      rect:
+        serializedVersion: 2
+        x: 2405
+        y: 1457
+        width: 1776
+        height: 346
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db9fa75812a27d4dbf0ce181ff2e8e1
+      internalID: 1415890743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_48
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 1239
+        width: 1611
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 8, z: 0, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db9799584fab134384f0d62ff3f15eb
+      internalID: -796546403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_50
+      rect:
+        serializedVersion: 2
+        x: 2488
+        y: 1237
+        width: 1613
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee12acf23de931e45976e74f01b460d0
+      internalID: -759745004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_56
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 854
+        width: 755
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20e1d786ea84fa41a6797dc10e18b33
+      internalID: 440697179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_57
+      rect:
+        serializedVersion: 2
+        x: 3250
+        y: 851
+        width: 758
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac97dad791b077845baeb9dbea8ab278
+      internalID: -2009136372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_58
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 497
+        width: 753
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6c97031c779c6498084754631d86d9
+      internalID: 1927615179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scrolls_59
+      rect:
+        serializedVersion: 2
+        x: 3251
+        y: 496
+        width: 755
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0f02cd9f58ae346a8ba95a342f48da
+      internalID: 123337793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Scrolls_0: 1649752790
+      Scrolls_1: 1182826958
+      Scrolls_10: 1594705005
+      Scrolls_11: -1409824489
+      Scrolls_12: 1775696062
+      Scrolls_13: 1491866944
+      Scrolls_14: 553778688
+      Scrolls_15: -60280861
+      Scrolls_16: -1548493485
+      Scrolls_17: 722986720
+      Scrolls_18: 888319267
+      Scrolls_19: -901360728
+      Scrolls_2: 639457657
+      Scrolls_20: 281017388
+      Scrolls_21: 1089837295
+      Scrolls_22: 43082052
+      Scrolls_23: -1271399706
+      Scrolls_24: 370786103
+      Scrolls_25: 537272389
+      Scrolls_26: -529342699
+      Scrolls_27: 238904251
+      Scrolls_28: 1693474832
+      Scrolls_29: -1628393836
+      Scrolls_3: 1009545623
+      Scrolls_30: -1787129171
+      Scrolls_31: 1157859215
+      Scrolls_32: -116210967
+      Scrolls_33: 1450915980
+      Scrolls_34: -916672130
+      Scrolls_35: -550885782
+      Scrolls_36: 2058394437
+      Scrolls_37: 291655881
+      Scrolls_38: 1847787672
+      Scrolls_39: -2099658276
+      Scrolls_4: -1716555044
+      Scrolls_40: 2142303295
+      Scrolls_41: 627717882
+      Scrolls_42: 1415890743
+      Scrolls_43: 468194749
+      Scrolls_44: -852457221
+      Scrolls_45: 1102179470
+      Scrolls_46: 1582918875
+      Scrolls_47: -245617122
+      Scrolls_48: -796546403
+      Scrolls_49: -1455769918
+      Scrolls_5: 1035343775
+      Scrolls_50: -759745004
+      Scrolls_51: -1672601366
+      Scrolls_52: 1505579334
+      Scrolls_53: -700322623
+      Scrolls_54: 1791327428
+      Scrolls_55: 1074308758
+      Scrolls_56: 440697179
+      Scrolls_57: -2009136372
+      Scrolls_58: 1927615179
+      Scrolls_59: 123337793
+      Scrolls_6: -1314262607
+      Scrolls_7: -362131389
+      Scrolls_8: 312495493
+      Scrolls_9: -1561691786
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

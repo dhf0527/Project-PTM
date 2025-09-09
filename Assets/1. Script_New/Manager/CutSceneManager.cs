@@ -14,6 +14,7 @@ public class CutSceneManager : MonoBehaviour
     public GameObject canvas_2;
     public Image circleMask_Image;
     public Transform mask_trans;
+    public GameObject touchBlocker;
 
     int action_index;
     List<Action> actions = new();
@@ -507,7 +508,8 @@ public class CutSceneManager : MonoBehaviour
         DunGeonManager_New.instance.isTutorial_1 = true;
         actions.Clear();
 
-        actions.Add(() => TutorialWait(1f));    //1
+        //actions.Add(() => TutorialWait(1f));    //1
+        actions.Add(() => Tutorial_Dungeon1_0());
         actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.cards[1].gameObject));    //5     검사 클릭 버튼
         actions.Add(() => PointUI(DunGeonManager_New.instance.unitUnlock.select_Button.gameObject));    //6     확정 버튼
         actions.Add(() => TutorialGetGold(100));    //11
@@ -524,6 +526,19 @@ public class CutSceneManager : MonoBehaviour
 
         StartTutorial("Tutorial_Dungeon_1");
         cur_TutorialKey = TutorialKey.Dungeon_1;
+    }
+
+    void Tutorial_Dungeon1_0()
+    {
+        StartCoroutine(C_Tutorial_Dungeon1_0());
+    }
+
+    IEnumerator C_Tutorial_Dungeon1_0()
+    {
+        touchBlocker.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(1f);
+        touchBlocker.gameObject.SetActive(false);
+        PrintNextDialogue();
     }
 
     //웨이브2 대기

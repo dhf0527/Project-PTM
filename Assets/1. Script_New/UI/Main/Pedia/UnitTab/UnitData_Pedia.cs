@@ -13,6 +13,20 @@ public class UnitData_Pedia : MonoBehaviour
     [Header("물리, 마법, 불")]
     public List<Sprite> attackType_Sprites;
 
+    [Space]
+    [SerializeField] Image main_Image;
+    [SerializeField] Image up_Image;
+    [SerializeField] Image down_Image;
+    [SerializeField] List<Image> panel_Images;
+    [SerializeField] Image name_Image;
+    [Header("중앙, 요정, 마왕, 묘지기")]
+    [SerializeField] List<Sprite> main_Sprites;
+    [SerializeField] List<Sprite> side_Sprites;
+    [SerializeField] List<Sprite> panel_Sprites;
+    [SerializeField] List<Sprite> name_Sprites;
+
+    [Space]
+
     public Image attackRangeType_Image;
     public Image faction_Image;
     public Image character_Image;
@@ -44,6 +58,14 @@ public class UnitData_Pedia : MonoBehaviour
         hp_Text.text = ud.hp.ToString();
         damage_Text.text = ud.damage.ToString();
         attackSpeed_Text.text = ud.attack_Speed.ToString();
+
+        main_Image.sprite = main_Sprites[(int)ud.faction];
+        up_Image.sprite = side_Sprites[(int)ud.faction];
+        down_Image.sprite = side_Sprites[(int)ud.faction];
+        name_Image.sprite = name_Sprites[(int)ud.faction];
+        foreach (var item in panel_Images)
+            item.sprite = panel_Sprites[(int)ud.faction];
+
 
         //패시브
         passive_Text[0].transform.parent.gameObject.SetActive(false);

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class DetailPanel : MonoBehaviour
 {
-    Unit unit;
-
     [SerializeField] Image attackType_Image;
     [SerializeField] Image weakType_Image;
     [SerializeField] Image resistType_Image;
@@ -48,50 +46,92 @@ public class DetailPanel : MonoBehaviour
     [SerializeField] List<Sprite> attackType_Sprites = new List<Sprite>();
 
 
-    public void SetDetail(Card_new selected_card)
+    public void SetDetail(Unit unit)
     {
-        unit = selected_card.unit;
-        ItemData item = selected_card.item;
+        UnitData ud = unit.ud;
+        SetFrame(ud);
 
-        SetFrame();
+        attackType_Image.sprite = attackType_Sprites[(int)ud.attack_Type];
+        weakType_Image.sprite = attackType_Sprites[(int)ud.weak_Type];
+        resistType_Image.sprite = attackType_Sprites[(int)ud.resistance_Type];
+        unit_Image.sprite = ud.unit_Sprite;
+        attackRangeType_Image.sprite = attackRangeType_Sprites[(int)ud.attack_RangeType];
+        spawnCount_Text.text = $"X {ud.spawn_Count}";
+        level_Text.text = $"Lv.{ud.level}";
+        faction_Text.text = ud.faction == Faction.Guild ? "중앙 왕국"
+            : ud.faction == Faction.Fairy ? "요정 숲"
+            : ud.faction == Faction.Demon ? "마왕군"
+            : ud.faction == Faction.Graveyard ? "묘지기" : "";
 
-        attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type];
-        weakType_Image.sprite = attackType_Sprites[(int)unit.ud.weak_Type];
-        resistType_Image.sprite = attackType_Sprites[(int)unit.ud.resistance_Type];
-        unit_Image.sprite = unit.ud.unit_Sprite;
-        attackRangeType_Image.sprite = attackRangeType_Sprites[(int)unit.ud.attack_RangeType];
-        spawnCount_Text.text = $"X {unit.ud.spawn_Count}";
-        level_Text.text = $"Lv.{unit.ud.level}";
-        faction_Text.text = unit.ud.faction == Faction.Guild ? "중앙 왕국"
-            : unit.ud.faction == Faction.Fairy ? "요정 숲"
-            : unit.ud.faction == Faction.Demon ? "마왕군"
-            : unit.ud.faction == Faction.Graveyard ? "묘지기" : "";
-
-        faction_Image.sprite = faction_Sprites[(int)unit.ud.faction];
-        name_Text.text = $"{unit.ud.unit_Name}";
-        SetTextColor(cost_Text, unit.Cost, unit.ud.cost, false);
-        SetTextColor(armor_Text, unit.Armor, unit.ud.armor);
-        SetTextColor(hp_Text, unit.Max_Hp, unit.ud.hp);
-        SetTextColor(attack_Text, unit.AttackDamage, unit.ud.damage);
-        SetTextColor(attackSpeed_Text, unit.AttackSpeed, unit.ud.attack_Speed);
-        targetCount_Text.text = $"{unit.ud.target_Count}";
-        SetTextColor(speed_Text, unit.MoveSpeed, unit.ud.move_Speed);
-        SetTextColor(accuracy_Text, unit.Accuracy, unit.ud.accuracy);
-        SetTextColor(avoidance_Text, unit.Avoidance, unit.ud.avoidance);
-        size_Text.text = unit.ud.size == Unit_Size.Small ? "소형" :
-            unit.ud.size == Unit_Size.Medium ? "중형"
-            : unit.ud.size == Unit_Size.Large ? "대형" : "";
-        SetTextColor(detail_SpawnCount_Text, unit.SpawnCount, unit.ud.spawn_Count);
+        faction_Image.sprite = faction_Sprites[(int)ud.faction];
+        name_Text.text = $"{ud.unit_Name}";
+        SetTextColor(cost_Text, unit.Cost, ud.cost, false);
+        SetTextColor(armor_Text, unit.Armor, ud.armor);
+        SetTextColor(hp_Text, unit.Max_Hp, ud.hp);
+        SetTextColor(attack_Text, unit.AttackDamage, ud.damage);
+        SetTextColor(attackSpeed_Text, unit.AttackSpeed, ud.attack_Speed);
+        targetCount_Text.text = $"{ud.target_Count}";
+        SetTextColor(speed_Text, unit.MoveSpeed, ud.move_Speed);
+        SetTextColor(accuracy_Text, unit.Accuracy, ud.accuracy);
+        SetTextColor(avoidance_Text, unit.Avoidance, ud.avoidance);
+        size_Text.text = ud.size == Unit_Size.Small ? "소형" :
+            ud.size == Unit_Size.Medium ? "중형"
+            : ud.size == Unit_Size.Large ? "대형" : "";
+        SetTextColor(detail_SpawnCount_Text, unit.SpawnCount, ud.spawn_Count);
 
         //원래 있던 패시브 설명창 삭제
         foreach (Transform child in passive_Parent)
             Destroy(child.gameObject);
 
-        if (unit.ud.passive1 != "")
-            MakeNewDetail(unit.ud.passive1, unit.ud.passive1_Detail);
+        if (ud.passive1 != "")
+            MakeNewDetail(ud.passive1, ud.passive1_Detail);
 
-        if (unit.ud.passive2 != "")
-            MakeNewDetail(unit.ud.passive2, unit.ud.passive2_Detail);
+        if (ud.passive2 != "")
+            MakeNewDetail(ud.passive2, ud.passive2_Detail);
+    }
+
+    public void SetDetail(UnitData ud)
+    {
+        SetFrame(ud);
+
+        attackType_Image.sprite = attackType_Sprites[(int)ud.attack_Type];
+        weakType_Image.sprite = attackType_Sprites[(int)ud.weak_Type];
+        resistType_Image.sprite = attackType_Sprites[(int)ud.resistance_Type];
+        unit_Image.sprite = ud.unit_Sprite;
+        attackRangeType_Image.sprite = attackRangeType_Sprites[(int)ud.attack_RangeType];
+        spawnCount_Text.text = $"X {ud.spawn_Count}";
+        level_Text.text = $"Lv.{ud.level}";
+        faction_Text.text = ud.faction == Faction.Guild ? "중앙 왕국"
+            : ud.faction == Faction.Fairy ? "요정 숲"
+            : ud.faction == Faction.Demon ? "마왕군"
+            : ud.faction == Faction.Graveyard ? "묘지기" : "";
+
+        faction_Image.sprite = faction_Sprites[(int)ud.faction];
+        name_Text.text = $"{ud.unit_Name}";
+
+        cost_Text.text = ud.cost.ToString();
+        armor_Text.text = ud.armor.ToString();
+        hp_Text.text = ud.hp.ToString();
+        attack_Text.text = ((int)ud.damage).ToString();
+        attackSpeed_Text.text = ((int)ud.attack_Speed).ToString();
+        targetCount_Text.text = $"{ud.target_Count}";
+        speed_Text.text = ((int)ud.move_Speed).ToString();
+        accuracy_Text.text = ud.accuracy.ToString();
+        avoidance_Text.text = ud.avoidance.ToString();
+        size_Text.text = ud.size == Unit_Size.Small ? "소형" :
+            ud.size == Unit_Size.Medium ? "중형"
+            : ud.size == Unit_Size.Large ? "대형" : "";
+        detail_SpawnCount_Text.text = ud.spawn_Count.ToString();
+
+        //원래 있던 패시브 설명창 삭제
+        foreach (Transform child in passive_Parent)
+            Destroy(child.gameObject);
+
+        if (ud.passive1 != "")
+            MakeNewDetail(ud.passive1, ud.passive1_Detail);
+
+        if (ud.passive2 != "")
+            MakeNewDetail(ud.passive2, ud.passive2_Detail);
     }
 
     void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
@@ -118,15 +158,15 @@ public class DetailPanel : MonoBehaviour
         newPd.SetDetailText(passiveDetail);
     }
 
-    public void SetFrame()
+    public void SetFrame(UnitData ud)
     {
         foreach (var item in upDownFrame_Image)
         {
-            item.sprite = upDownFrameByFaction_Sprite[(int)unit.ud.faction];
+            item.sprite = upDownFrameByFaction_Sprite[(int)ud.faction];
         }
         foreach (var item in backGroundFrame_Image)
         {
-            item.sprite = backGroundByFaction_Sprite[(int)unit.ud.faction];
+            item.sprite = backGroundByFaction_Sprite[(int)ud.faction];
         }
     }
 }

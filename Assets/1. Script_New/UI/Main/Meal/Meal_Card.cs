@@ -12,6 +12,15 @@ public class Meal_Card : MonoBehaviour
     public TMP_Text mealDescription_Text;
     public GameObject mask_Go;
 
+    [SerializeField] Image main_Image;
+    [SerializeField] Image up_Image;
+    [SerializeField] Image down_Image;
+    [SerializeField] List<Image> panel_Images; 
+    [Header("0°í±Þ, 1Èñ±Í")]
+    [SerializeField] List<Sprite> main_Sprites;
+    [SerializeField] List<Sprite> side_Sprites;
+    [SerializeField] List<Sprite> panel_Sprites;
+
     MealData md;
     public MealData Md 
     {
@@ -31,6 +40,14 @@ public class Meal_Card : MonoBehaviour
         string mealDsc = Regex.Replace(Md.mealDescription, @"\{value\}", Md.mealValue.ToString());
         mealDsc = Regex.Replace(mealDsc, @"\{value2\}", Md.mealValue2.ToString());
         mealDescription_Text.text = mealDsc;
+
+        int rarityIndex = (int)Md.mealRarity;
+        main_Image.sprite = main_Sprites[rarityIndex];
+        up_Image.sprite = side_Sprites[rarityIndex];
+        down_Image.sprite = side_Sprites[rarityIndex];
+
+        foreach (var item in panel_Images)
+            item.sprite = panel_Sprites[rarityIndex];
     }
 
     public void OnMask(bool isActive)

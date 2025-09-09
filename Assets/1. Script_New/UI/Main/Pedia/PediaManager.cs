@@ -34,7 +34,7 @@ public class PediaManager : MonoBehaviour
     public GameObject heroSkill_go;
     public GameObject heroDescription_go;
 
-    public UnitDetail_Pedia unitDetail;
+    public DetailPanel unitDetail;
     #endregion
 
     #region 유닛 탭 변수
@@ -114,7 +114,7 @@ public class PediaManager : MonoBehaviour
     public void SetHeroData(UnitData ud)
     {
         heroData.SetData(ud);
-        unitDetail.SetData(ud, true);
+        unitDetail.SetDetail(ud);
     }
 
     //영웅 클릭했을 때 heroCell에서 호출
@@ -151,7 +151,7 @@ public class PediaManager : MonoBehaviour
     {
         unitData.gameObject.SetActive(true);
         unitData.SetData(ud);
-        unitDetail.SetData(ud, false);
+        unitDetail.SetDetail(ud);
     }
     #endregion
 
