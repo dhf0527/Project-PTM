@@ -7355,8 +7355,8 @@ MonoBehaviour:
   fasty_Mask: {fileID: 621038298}
   cameraMove: {fileID: 519420035}
   princessHpPanel: {fileID: 521670939}
-  GameOverPanel: {fileID: 308641163}
-  GameClearPanel: {fileID: 847852303}
+  GameOverPanel: {fileID: 847852303}
+  GameClearPanel: {fileID: 308641163}
   pauseMask: {fileID: 1569105911}
   touchBlocker: {fileID: 1414417603}
   spawn_Trans: {fileID: 1470081848}
@@ -19452,7 +19452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &781918183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25880,7 +25880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1103504578
 RectTransform:
   m_ObjectHideFlags: 0
