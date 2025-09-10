@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemySpawnManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
     public Image waveProgress_Image;
 
     [Header("(테스트용)자동 스폰 중지")]
-    [SerializeField] bool isStopSpawn;
+    bool isStopSpawn;
     [SerializeField] Animator backGround_Anim;
 
     //경고 텍스트
@@ -105,8 +106,12 @@ public class EnemySpawnManager : MonoBehaviour
         }
         boss_Unit = GameManager.Instance.current_Dungeon.bossUnit;
 
-        if(!isStopSpawn)
+        if (SceneManager.GetActiveScene().name == "TestScene")
+        {
+            isStopSpawn = true;
             Spawn_Unit(spawn_Units[0, 0]);
+        }
+        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
     private void Update()
@@ -401,7 +406,7 @@ public class EnemySpawnManager : MonoBehaviour
         //소,중형 -> 중,대형
         if(bossUnit.ud.size != Unit_Size.Large)
         {
-            bossUnit.ud.size++;
+            bossUnit.size++;
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정

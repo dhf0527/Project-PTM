@@ -17,6 +17,9 @@ public class MainManager : MonoBehaviour
     public TMP_Text soul_Text;
 
     public Image meal_Icon;
+    public Image meal_Background;
+    [Header("0°í±Þ, 1Èñ±Í")]
+    [SerializeField] List<Sprite> meal_BackgroundSprites;
 
     public TMP_Text floatingMessage;
     Coroutine c_Floating;
@@ -113,7 +116,11 @@ public class MainManager : MonoBehaviour
     {
         meal_Icon.transform.parent.gameObject.SetActive(isActive);
         if (isActive)
-            meal_Icon.sprite = GameManager.Instance.current_Meal.mealIcon;
+        {
+            MealData md = GameManager.Instance.current_Meal;
+            meal_Icon.sprite = md.mealIcon;
+            meal_Background.sprite = meal_BackgroundSprites[(int)md.mealRarity];
+        }
     }
 
     void PageLock(int number, bool isLock)

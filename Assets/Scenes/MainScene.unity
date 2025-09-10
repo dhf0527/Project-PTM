@@ -24028,7 +24028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 740
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -25783,8 +25783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 17.5, y: 0}
+  m_SizeDelta: {x: -55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575404131
 GameObject:
@@ -27532,10 +27532,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1928083546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609086005
 MonoBehaviour:
@@ -51367,8 +51367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 17.5, y: 0}
+  m_SizeDelta: {x: -55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1196717230
 GameObject:
@@ -56034,8 +56034,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 17.5, y: 0}
+  m_SizeDelta: {x: -55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1295618804
 GameObject:
@@ -57958,6 +57958,10 @@ MonoBehaviour:
   dungeonPanel: {fileID: 250612749}
   soul_Text: {fileID: 96427140}
   meal_Icon: {fileID: 609086005}
+  meal_Background: {fileID: 1928083548}
+  meal_BackgroundSprites:
+  - {fileID: -1398692901, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
+  - {fileID: -2029484508, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
   floatingMessage: {fileID: 911467051}
   mealData: {fileID: 0}
 --- !u!114 &1330200282
@@ -74215,7 +74219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 740
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -96892,7 +96896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 740
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7429516383212376408, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
       propertyPath: m_LocalPosition.x
