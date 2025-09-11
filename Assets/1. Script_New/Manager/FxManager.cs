@@ -11,7 +11,6 @@ public class FxManager : MonoBehaviour
     public Transform fxParent;
 
     public DamageText damagText_prf;
-    public Transform worldCanvas;
 
     Queue<Hit> q_hit = new();
     Queue<DamageText> q_damageText = new();
@@ -62,7 +61,7 @@ public class FxManager : MonoBehaviour
         //대기중 damageText 없을 때 생성
         if (q_damageText.Count == 0)
         {
-            cur_DamageText = Instantiate(damagText_prf, worldCanvas);
+            cur_DamageText = Instantiate(damagText_prf, WorldCanavsManager.instance.worldCanvas_Trans);
         }
         //있을 때 풀링
         else
@@ -71,7 +70,7 @@ public class FxManager : MonoBehaviour
             cur_DamageText.gameObject.SetActive(true);
         }
 
-        cur_DamageText.transform.position = pos;
+        cur_DamageText.pos = pos;
 
         cur_DamageText.SetText(damage, attackType);
     }

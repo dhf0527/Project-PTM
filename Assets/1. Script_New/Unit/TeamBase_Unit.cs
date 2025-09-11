@@ -54,7 +54,7 @@ public class TeamBase_Unit : Unit
         //체력바 위치 설정
         hpBar.SetHpPos(2);
         //체력바 크기 설정
-        hpBar.transform.localScale *= 2;
+        hpBar.transform.localScale *= 1.5f;
 
         //체력 설정
         Cur_Hp = Max_Hp;

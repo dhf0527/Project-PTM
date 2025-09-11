@@ -9,10 +9,16 @@ public class DamageText : MonoBehaviour
     [SerializeField] List<Color> colors;
 
     public TMP_Text dmg_Text;
+    [HideInInspector] public Vector3 pos;
 
     private void OnEnable()
     {
         Invoke("DisableDamageText", 1.5f);
+    }
+
+    private void Update()
+    {
+        transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
     }
 
     public void DisableDamageText()

@@ -19,7 +19,7 @@ public class HpBar_new : MonoBehaviour
     [SerializeField] List<GameObject> buffIcons;
 
     //체력바가 위치할 높이
-    float up_Y = 1.2f;
+    float up_Y;
 
     //체력과 체력바를 연동하는 함수 (BaseUnit.CurHp에서 호출)
     public void SetHpBar()
@@ -38,11 +38,13 @@ public class HpBar_new : MonoBehaviour
     }
 
     //체력바 위치를 설정하는 함수
-    public void SetHpPos(float height)
+    public void SetHpPos(float height = 0)
     {
-        up_Y = height;
+        if(height != 0)
+            up_Y = height;
         //체력바 위치 설정
-        transform.position = unit.transform.position + Vector3.up * up_Y;
+        Vector3 pos = unit.transform.position + Vector3.up * up_Y;
+        transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
     }
 
     //버프 아이콘을 활성/비활성화하는 함수

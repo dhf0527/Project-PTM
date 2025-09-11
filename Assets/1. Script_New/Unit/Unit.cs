@@ -247,7 +247,7 @@ public abstract class Unit : MonoBehaviour
         //체력바 연동
         hpBar.unit = this;
         //체력바 위치 설정
-        hpBar.SetHpPos(ud.size == Unit_Size.Small ? 1.2f : ud.size == Unit_Size.Medium ? 1.2f : 1.5f);
+        hpBar.SetHpPos();
 
         //체력 설정
         Cur_Hp = Max_Hp;
