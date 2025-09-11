@@ -150,9 +150,18 @@ public abstract class Unit : MonoBehaviour
 
             //체력바 갱신
             hpBar?.SetHpBar();
+
+            if (cur_Hp != Max_Hp)
+            {
+                StopCoroutine(cor_HpBarInActive);
+                hpBar?.gameObject.SetActive(true);
+            }
+            else
+                cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
         }
     }
     [HideInInspector]public HpBar_new hpBar;
+    Coroutine cor_HpBarInActive;
 
     //체력으로 인한 넉백을 당할 수 있는 횟수
     protected int knockBack_Count = 2;
@@ -248,6 +257,8 @@ public abstract class Unit : MonoBehaviour
         hpBar.unit = this;
         //체력바 위치 설정
         hpBar.SetHpPos();
+        //체력바 생성 시 비활성화
+        hpBar.gameObject.SetActive(false);
 
         //체력 설정
         Cur_Hp = Max_Hp;
@@ -695,5 +706,11 @@ public abstract class Unit : MonoBehaviour
             Cur_Hp = Max_Hp;
         else
             Cur_Hp += amount;
+    }
+
+    IEnumerator C_HpBarInActive()
+    {
+        yield return new WaitForSeconds(3f);
+        hpBar?.gameObject.SetActive(false);
     }
 }

@@ -111,7 +111,6 @@ public class EnemySpawnManager : MonoBehaviour
             isStopSpawn = true;
             Spawn_Unit(spawn_Units[0, 0]);
         }
-        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
     private void Update()
