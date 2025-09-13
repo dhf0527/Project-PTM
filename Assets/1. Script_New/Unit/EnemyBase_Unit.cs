@@ -61,6 +61,7 @@ public class EnemyBase_Unit : Unit
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
 
         canKnockBack = false;
+        alwaysDisplayHpbar = true;
     }
 
     //체력바 생성 및 설정

@@ -54,7 +54,7 @@ AnimationClip:
     attribute: scaleVector.x
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   - serializedVersion: 2
     curve:
@@ -93,7 +93,7 @@ AnimationClip:
     attribute: scaleVector.y
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   - serializedVersion: 2
     curve:
@@ -123,13 +123,13 @@ AnimationClip:
     attribute: scaleVector.z
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -2138340034, guid: 538caaf021aa72247a8e3a21f0dbeb52, type: 3}
+      value: {fileID: -1749346123, guid: 992fd5c451a58174b8fbc52cae333859, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -145,7 +145,7 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 3002042476
-      script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+      script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -154,7 +154,7 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 3320363258
-      script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+      script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -172,14 +172,14 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 1558309184
-      script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+      script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -2138340034, guid: 538caaf021aa72247a8e3a21f0dbeb52, type: 3}
+    - {fileID: -1749346123, guid: 992fd5c451a58174b8fbc52cae333859, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -238,7 +238,7 @@ AnimationClip:
     attribute: scaleVector.x
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   - serializedVersion: 2
     curve:
@@ -277,7 +277,7 @@ AnimationClip:
     attribute: scaleVector.y
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   - serializedVersion: 2
     curve:
@@ -307,7 +307,7 @@ AnimationClip:
     attribute: scaleVector.z
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+    script: {fileID: 11500000, guid: 2f730c1904dabce4da498d9176246dcb, type: 3}
     flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0

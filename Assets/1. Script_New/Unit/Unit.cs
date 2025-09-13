@@ -151,16 +151,21 @@ public abstract class Unit : MonoBehaviour
             //체력바 갱신
             hpBar?.SetHpBar();
 
-            if (cur_Hp != Max_Hp)
+            //체력바 표시
+            if(!alwaysDisplayHpbar)
             {
-                StopCoroutine(cor_HpBarInActive);
-                hpBar?.gameObject.SetActive(true);
+                if (cur_Hp != Max_Hp)
+                {
+                    StopCoroutine(cor_HpBarInActive);
+                    hpBar?.gameObject.SetActive(true);
+                }
+                else
+                    cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
             }
-            else
-                cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
         }
     }
     [HideInInspector]public HpBar_new hpBar;
+    protected bool alwaysDisplayHpbar;
     Coroutine cor_HpBarInActive;
 
     //체력으로 인한 넉백을 당할 수 있는 횟수

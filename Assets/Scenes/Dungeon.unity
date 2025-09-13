@@ -16122,7 +16122,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.8393374}
+  m_Offset: {x: 0, y: 0.67377245}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -16133,7 +16133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.37, y: 3}
+  m_Size: {x: 1.37, y: 2.6688702}
   m_EdgeRadius: 0
 --- !u!114 &655837837
 MonoBehaviour:
@@ -23131,7 +23131,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.8548242}
+  m_Offset: {x: 0, y: 0.6793921}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -23142,7 +23142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 3}
+  m_Size: {x: 2, y: 2.649136}
   m_EdgeRadius: 0
 --- !u!114 &963480817
 MonoBehaviour:
@@ -34786,7 +34786,7 @@ MonoBehaviour:
   canvas_2: {fileID: 1569105911}
   circleMask_Image: {fileID: 0}
   mask_trans: {fileID: 1569105912}
-  touchBlocker: {fileID: 0}
+  touchBlocker: {fileID: 1414417603}
   characterDatas:
   - {fileID: 11400000, guid: c51e0caa161e65b499ba15d82603bc7d, type: 2}
   - {fileID: 11400000, guid: ad01d08c4956e7f4cad6588a97e066fd, type: 2}
@@ -39991,7 +39991,7 @@ SpriteRenderer:
   m_SortingLayerID: 505636305
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 1531d8ff54ab86c42a573e4fc007fe7d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5484bdaa3c97414ca0aff8b6d278655, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -58,9 +58,8 @@ public class HpBar_new : MonoBehaviour
         //체력바 텍스트 설정
         if (unit.isHpText)
             hp_Text.gameObject.SetActive(true);
-
-
-        up_Y = unit.GetComponent<BoxCollider2D>().bounds.max.y + 0.2f;
+        BoxCollider2D bc2d = unit.GetComponent<BoxCollider2D>();
+        up_Y = bc2d.offset.y + bc2d.size.y /2f + 0.2f;
     }
 
     private void Update()
