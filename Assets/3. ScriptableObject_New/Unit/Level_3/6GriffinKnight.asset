@@ -19,11 +19,11 @@ MonoBehaviour:
   unit_SubName: 
   faction: 0
   move_Speed: 300
-  hp: 240
-  damage: 35
-  attack_Speed: 5
+  hp: 280
+  damage: 40
+  attack_Speed: 4
   accuracy: 60
-  avoidance: 60
+  avoidance: 40
   armor: 8
   attack_RangeType: 0
   target_Count: 1
