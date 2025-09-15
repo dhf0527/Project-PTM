@@ -59,7 +59,7 @@ public class HpBar_new : MonoBehaviour
         if (unit.isHpText)
             hp_Text.gameObject.SetActive(true);
         BoxCollider2D bc2d = unit.GetComponent<BoxCollider2D>();
-        up_Y = bc2d.offset.y + bc2d.size.y /2f + 0.2f;
+        up_Y = (bc2d.offset.y + bc2d.size.y / 2f) * unit.transform.localScale.y + 0.2f;
     }
 
     private void Update()

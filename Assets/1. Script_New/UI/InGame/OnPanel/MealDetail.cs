@@ -9,7 +9,7 @@ public class MealDetail : MonoBehaviour
 {
     [SerializeField] Meal_Card meal_Card;
 
-    private void Start()
+    private void OnEnable()
     {
         MealData md = GameManager.Instance.current_Meal;
 
