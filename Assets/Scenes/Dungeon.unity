@@ -7052,16 +7052,16 @@ MonoBehaviour:
   - 30
   - 30
   phase0_SpawnTimes:
-  - 8
-  - 20
-  - 30
-  phase1_SpawnTimes:
   - 6
   - 15
+  - 30
+  phase1_SpawnTimes:
+  - 5
+  - 10
   - 25
   phase2_SpawnTimes:
   - 4
-  - 12
+  - 8
   - 20
   wave_BaseHps:
   - 70
