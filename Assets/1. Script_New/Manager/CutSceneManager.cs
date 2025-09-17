@@ -455,7 +455,7 @@ public class CutSceneManager : MonoBehaviour
 
         actions.Add(() => PointUI(SearchManager.Instance.Search(SearchKey.Dungeon1))); //3
         actions.Add(() => PointUI(MainManager.instance.areaPages[1].gameObject)); //3
-        actions.Add(() => TutorialWait(2f)); //3
+        actions.Add(() => Tutorial_WorldMap_2_0()); //3
         actions.Add(() => PointUI(UnlockManager.instance.heroUpgrade_Button)); //7
         actions.Add(() => Tutorial_WorldMap_2_1()); //8 모든 능력치 버튼 강조
         actions.Add(() => PointUI(UpGrade.instance.confirmButton)); //9
@@ -463,6 +463,19 @@ public class CutSceneManager : MonoBehaviour
         StartTutorial("Tutorial_WorldMap_2");
         cur_TutorialKey = TutorialKey.WorldMap_2;
 
+    }
+
+    void Tutorial_WorldMap_2_0()
+    {
+        StartCoroutine(C_Tutorial_WorldMap_2_0());
+    }
+
+    IEnumerator C_Tutorial_WorldMap_2_0()
+    {
+        touchBlocker.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(2f);
+        touchBlocker.gameObject.SetActive(false);
+        PrintNextDialogue();
     }
 
     void Tutorial_WorldMap_2_1()

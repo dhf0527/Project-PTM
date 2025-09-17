@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4594010318107249427}
   - component: {fileID: 8003577852541299673}
-  - component: {fileID: 1389032139517353308}
+  - component: {fileID: 117266106794276525}
   - component: {fileID: 5061897147921594596}
   - component: {fileID: 8313343597627569893}
   - component: {fileID: 104261604186431492}
   m_Layer: 6
-  m_Name: 6GriffinKnight
+  m_Name: 7UnicornRider
   m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1389032139517353308
+--- !u!114 &117266106794276525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +101,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 344319866593267813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 068fbee4a6e66a34189dd3dc21ac0468, type: 3}
+  m_Script: {fileID: 11500000, guid: 3844909b16fb8cc45b0f8df1863c8731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
-  ud: {fileID: 11400000, guid: a5cf8178f6d7dbb419f74dec72a991fd, type: 2}
+  ud: {fileID: 11400000, guid: b20d3128e8692494fb7e11be9c523bfe, type: 2}
   isHpText: 0
   hitParent: {fileID: 5800865651852311824}
   ranged_Projectile_Pos: {fileID: 0}
@@ -118,6 +118,8 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   killGold: 0
+  buff_Time: 6
+  accuracy_Decrease: 30
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

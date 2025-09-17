@@ -21,7 +21,7 @@ MonoBehaviour:
   move_Speed: 300
   hp: 200
   damage: 60
-  attack_Speed: 4
+  attack_Speed: 3
   accuracy: 200
   avoidance: 80
   armor: 0
@@ -34,7 +34,8 @@ MonoBehaviour:
   size: 1
   cost: 700
   passive1: "\uC21C\uACB0\uC758 \uBE5B"
-  passive1_Detail: 
+  passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC5D0 \uD53C\uACA9\uD55C \uC801\uC5D0\uAC8C
+    '\uB208\uBD80\uC2EC'\uC744 \uB0A8\uACA8 \uBA85\uC911\uB960\uC744 \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
   passive2: 
   passive2_Detail: 
   attack_Range: 0
