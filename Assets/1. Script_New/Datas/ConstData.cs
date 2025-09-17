@@ -10,7 +10,7 @@ public static class ConstData
     public const string unitUpgrade = "unitUpgrade";
     public const string dungeonClearTime = "dungeonClear";  //ConstData.dungeonClearTime + $"{dd.stage},{dd.number}"
     public const string mealCompleteTime = "mealCompleteTime";
-    public const string activeDamageText = "activeDamageText";
+    public const string inActiveDamageText = "inActiveDamageText";
 
     public const string unitItem_Unlock = "unitItem_Unlock";
     public const string heroUpgrade_Unlock = "heroUpgrade_Unlock";

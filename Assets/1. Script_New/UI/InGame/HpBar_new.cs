@@ -44,7 +44,8 @@ public class HpBar_new : MonoBehaviour
             up_Y = height;
         //체력바 위치 설정
         Vector3 pos = unit.transform.position + Vector3.up * up_Y;
-        transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
+        transform.position = pos;
+        //transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
     }
 
     //버프 아이콘을 활성/비활성화하는 함수

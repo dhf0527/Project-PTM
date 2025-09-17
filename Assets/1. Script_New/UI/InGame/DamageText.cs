@@ -18,7 +18,8 @@ public class DamageText : MonoBehaviour
 
     private void Update()
     {
-        transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
+        transform.position = pos;
+        //transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
     }
 
     public void DisableDamageText()

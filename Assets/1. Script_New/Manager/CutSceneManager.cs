@@ -86,6 +86,8 @@ public class CutSceneManager : MonoBehaviour
             Tutorial_WorldMap_1();
         else if (PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{2}") != 0 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_2) == 0)
             Tutorial_WorldMap_2();
+        else if (PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{3}") != 0 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_3) == 0)
+            Tutorial_WorldMap_3();
     }
 
     //다음 대사 출력
@@ -188,6 +190,8 @@ public class CutSceneManager : MonoBehaviour
         Canvas pointUi_Canvas = target_go.AddComponent<Canvas>();
         pointUi_Canvas.overrideSorting = true;
         pointUi_Canvas.sortingOrder = 2;
+        pointUi_Canvas.sortingLayerID = SortingLayer.NameToID("UI");
+        pointUi_Canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1;
         target_go.AddComponent<GraphicRaycaster>();
 
         target_Button = null;
@@ -403,6 +407,8 @@ public class CutSceneManager : MonoBehaviour
         Canvas pointUi_Canvas = goldPanel.AddComponent<Canvas>();
         pointUi_Canvas.overrideSorting = true;
         pointUi_Canvas.sortingOrder = 2;
+        pointUi_Canvas.sortingLayerID = SortingLayer.NameToID("UI");
+        pointUi_Canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1;
 
         yield return new WaitUntil(() => DunGeonManager_New.instance.Cur_Gold >= targetGold);
         DunGeonManager_New.instance.pauseMask.SetActive(false);
@@ -491,6 +497,8 @@ public class CutSceneManager : MonoBehaviour
             Canvas pointUi_Canvas = upgradeButton_go.AddComponent<Canvas>();
             pointUi_Canvas.overrideSorting = true;
             pointUi_Canvas.sortingOrder = 2;
+            pointUi_Canvas.sortingLayerID = SortingLayer.NameToID("UI");
+            pointUi_Canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1;
             upgradeButton_go.AddComponent<GraphicRaycaster>();
 
             {
@@ -513,6 +521,16 @@ public class CutSceneManager : MonoBehaviour
         }
     }
 
+    #endregion
+    #region Tutorial_WorldMap_3
+    public void Tutorial_WorldMap_3()
+    {
+        actions.Clear();
+
+        StartTutorial("Tutorial_WorldMap_3");
+        cur_TutorialKey = TutorialKey.WorldMap_3;
+
+    }
     #endregion
 
     #region Tutorial_Dungeon_1
