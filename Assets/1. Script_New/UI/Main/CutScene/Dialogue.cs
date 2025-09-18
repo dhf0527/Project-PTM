@@ -40,8 +40,18 @@ public class Dialogue : MonoBehaviour
         for (int i = 0; i < input_text.Length; i++)
         {
             sb.Append(input_text[i]);
+
+            //리치 텍스트는 한 번에 표시
+            if (input_text[i] == '<')
+            {
+                i++;
+                while (input_text[i] != '>')
+                    sb.Append(input_text[i++]);
+                sb.Append(input_text[i]);
+            }
+
             dialogue_Text.text = sb.ToString();
-            
+
             //텍스트가 출력될 속도
             yield return new WaitForSecondsRealtime(1 / textPerSec);
         }

@@ -116,19 +116,7 @@ public class EnemySpawnManager : MonoBehaviour
     private void Update()
     {
         //테스트
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Spawn_Unit(spawn_Units[0,0]);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            ToNextWave();
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            isBossSpawned = false;
-            OnBossSpawn();
-        }
+        //Test();
 
         //웨이브 시간 확인
         CheckWaveTime();
@@ -401,7 +389,7 @@ public class EnemySpawnManager : MonoBehaviour
         //넉백 방지
         bossUnit.canKnockBack = false;
         //크기 조정
-        bossUnit.origin_Scale = 1.2f;
+        bossUnit.origin_Scale = 1.5f;
         //소,중형 -> 중,대형
         if(bossUnit.ud.size != Unit_Size.Large)
         {
@@ -426,5 +414,20 @@ public class EnemySpawnManager : MonoBehaviour
     }
     #endregion
 
-
+    void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Spawn_Unit(spawn_Units[0, 0]);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            ToNextWave();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            isBossSpawned = false;
+            OnBossSpawn();
+        }
+    }
 }

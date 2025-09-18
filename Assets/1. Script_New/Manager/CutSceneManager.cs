@@ -66,20 +66,6 @@ public class CutSceneManager : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-            StartCutScene("1-1");
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Tutorial_WorldMap_1();
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            Tutorial_Dungeon_1();
-        }
-    }
-
     public void CheckTutorial_MainScene()
     {
         if (PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_1) == 0)
@@ -170,6 +156,14 @@ public class CutSceneManager : MonoBehaviour
         //ÄÆ¾À ¿­¶÷ ±â·Ï
         PlayerPrefs.SetInt(ConstData.tutorialComplete + cur_TutorialKey, 1);
         canvas_2.SetActive(false);
+
+        if (DunGeonManager_New.instance)
+        {
+            if (DunGeonManager_New.instance.pauseStack == 0)
+                Time.timeScale = DunGeonManager_New.instance.isFasty ? DunGeonManager_New.instance.fastValue : 1;
+        }
+        else
+            Time.timeScale = 1;
     }
 
     public void StartCutScene(string eventName)
@@ -374,12 +368,33 @@ public class CutSceneManager : MonoBehaviour
                 isRight = values[9].Trim() == "¿À¸¥ÂÊ",
                 character_Speak = values[11],
                 character_Show = NameToEnum(values[12].Trim()),
-                dialogue = values[13] + "\n" + values[14] + "\n" + values[15]
+                //dialogue = values[13] + "\n" + values[14] + "\n" + values[15]
+                dialogue = ReplaceDialogue(values[13]) + "\n" + ReplaceDialogue(values[14]) + "\n" + ReplaceDialogue(values[15])
             };
             dds.Add(dd);
         }
 
         return dds;
+    }
+
+    string ReplaceDialogue(string input)
+    {
+        foreach (var words_Bold in FindWords_Bold(input))
+            input = Regex.Replace(input, $"\\*{words_Bold}\\*", $"<b>{words_Bold}</b>");
+
+        return input;
+    }
+
+    List<string> FindWords_Bold(string input_Text)
+    {
+        List<string> words = new List<string>();
+
+        MatchCollection matches = Regex.Matches(input_Text, "\\*(.*?)\\*");
+
+        foreach (Match match in matches)
+            words.Add(match.Groups[1].Value);
+
+        return words;
     }
 
     void TutorialWait(float seconds)

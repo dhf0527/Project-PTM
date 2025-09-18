@@ -48,7 +48,7 @@ public class Princess : Unit
 
     private void Update()
     {
-        Test();
+        //Test();
 
         if (isDead || isSkilling || isKnockBacking)
         {

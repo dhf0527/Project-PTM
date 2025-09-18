@@ -58,10 +58,7 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-            Soul += 5000;
-        if (Input.GetKeyDown(KeyCode.F2))
-            Soul = 0;
+        //Test();
     }
 
     //areaPanel에 던전 데이터 삽입
@@ -135,5 +132,13 @@ public class MainManager : MonoBehaviour
     public void TestOpenStage(bool isOpen)
     {
         isOpenStage = isOpen;
+    }
+
+    public void Test()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+            Soul += 5000;
+        if (Input.GetKeyDown(KeyCode.F2))
+            Soul = 0;
     }
 }
