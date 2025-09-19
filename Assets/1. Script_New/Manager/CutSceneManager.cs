@@ -217,6 +217,8 @@ public class CutSceneManager : MonoBehaviour
             RectTransform target_RectTransform = target_go.GetComponent<RectTransform>();
             Vector2 worldSize = target_RectTransform.rect.size * 1.5f;
             circleMask_Image.rectTransform.sizeDelta = new Vector2(worldSize.x, worldSize.y);
+
+            circleMask_Image.rectTransform.localPosition += new Vector3(target_RectTransform.rect.size.x * (0.5f - target_RectTransform.pivot.x), target_RectTransform.rect.size.y * (0.5f - target_RectTransform.pivot.y), 0);
         }
     }
 
@@ -503,6 +505,8 @@ public class CutSceneManager : MonoBehaviour
     {
         canvas_2.SetActive(true);
         circleMask_Image.gameObject.SetActive(true);
+        circleMask_Image.rectTransform.sizeDelta = Vector2.zero;
+
         for (int i = 0; i < UpGrade.instance.statBars.Count; i++)
         {
             Button upgradeButton = UpGrade.instance.statBars[i].upgradeButton;

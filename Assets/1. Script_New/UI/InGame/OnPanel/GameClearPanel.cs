@@ -207,6 +207,6 @@ public class GameClearPanel : MonoBehaviour
 
     public void OnStopTime()
     {
-        Time.timeScale = 0;
+        DunGeonManager_New.instance.OnPause(true);
     }
 }
