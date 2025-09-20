@@ -16,5 +16,5 @@ MonoBehaviour:
   itemIcon: {fileID: 212782937, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
   itemName: "\uD669\uB3D9 \uC2DC\uACC4"
   itemDescription: "\uACE0\uC6A9 \uCFE8\uD0C0\uC784 {value}% \uAC10\uC18C"
-  itemValue: 25
+  itemValue: 30
   itemRarity: 1
