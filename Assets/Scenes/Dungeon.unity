@@ -7072,8 +7072,8 @@ MonoBehaviour:
   boss_Hp2: 4
   boss_Attack1: 1
   boss_Attack2: 0.5
-  killGolds: 2300000064000000fa000000
-  killGold_Boss: 1500
+  killGolds: 1e0000003c00000078000000
+  killGold_Boss: 1000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
   cur_Wave: 0
