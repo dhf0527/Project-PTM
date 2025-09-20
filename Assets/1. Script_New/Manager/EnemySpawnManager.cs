@@ -47,6 +47,7 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("보스 능력치 배수(Hp1+(번호*Hp2))")]
     public float boss_Hp1;
     public float boss_Hp2;
+    [Header("(Attack1 - 1) + (던전 번호(뒷자리)* Attack2)")]
     public float boss_Attack1;
     public float boss_Attack2;
 

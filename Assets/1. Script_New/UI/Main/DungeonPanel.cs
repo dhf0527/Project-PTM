@@ -16,7 +16,7 @@ public class DungeonPanel : MonoBehaviour
     public TMP_Text record_Text;
 
     public List<Unit> stageUnits = new();
-    public UnitDetail_Pedia detail_Panel;
+    public DetailPanel detail_Panel;
 
     #region 던전 별 변경 사항
     [Header("던전 별 변경")]
@@ -97,7 +97,7 @@ public class DungeonPanel : MonoBehaviour
 
     public void OnSetStageUnitData(int index)
     {
-        detail_Panel.SetData(stageUnits[index].ud, false);
+        detail_Panel.SetDetail(stageUnits[index].ud);
     }
 
     void SetDungeonPanelSprite(Faction factionIndex)

@@ -30476,8 +30476,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC5EC\uAE30\uC5D0 \uB300\uC0AC\uAC00 \uCD9C\uB825\uB420 \uAC70\uC57C."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bad724c67a3e0e34f9dff0d6b4e7ec24, type: 2}
-  m_sharedMaterial: {fileID: 3137333684771967226, guid: bad724c67a3e0e34f9dff0d6b4e7ec24, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
+  m_sharedMaterial: {fileID: 3137333684771967226, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

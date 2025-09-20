@@ -381,13 +381,13 @@ public class CutSceneManager : MonoBehaviour
 
     string ReplaceDialogue(string input)
     {
-        foreach (var words_Bold in FindWords_Bold(input))
-            input = Regex.Replace(input, $"\\*{words_Bold}\\*", $"<b>{words_Bold}</b>");
+        foreach (var words_Point in FindWords_Point(input))
+            input = Regex.Replace(input, $"\\*{words_Point}\\*", $"<color=yellow>{words_Point}</color>");
 
         return input;
     }
 
-    List<string> FindWords_Bold(string input_Text)
+    List<string> FindWords_Point(string input_Text)
     {
         List<string> words = new List<string>();
 
