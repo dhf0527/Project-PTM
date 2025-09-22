@@ -165,10 +165,5 @@ public class Meal : MonoBehaviour
         //식사 완료 시간 기록
         PlayerPrefs.SetString(ConstData.mealCompleteTime, DateTime.Now.ToString());
     }
-
-    public void TestResetMealTime()
-    {
-        PlayerPrefs.SetString(ConstData.mealCompleteTime, "");
-    }
 }
 

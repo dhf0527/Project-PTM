@@ -50,17 +50,6 @@ public class UnlockManager : MonoBehaviour
         }
     }
 
-    public void TestUnlock(bool isUnlock)
-    {
-        PlayerPrefs.SetInt(ConstData.unitItem_Unlock, isUnlock ? 1 : 0);
-        PlayerPrefs.SetInt(ConstData.heroUpgrade_Unlock, isUnlock ? 1 : 0);
-        PlayerPrefs.SetInt(ConstData.meal_Unlock, isUnlock ? 1 : 0);
-        PlayerPrefs.SetInt(ConstData.pedia_Unlock, isUnlock ? 1 : 0);
-        PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, isUnlock ? 4 : 0);
-
-        CheckUnlock();
-    }
-
     void SetNotification()
     {
         string new_Unlock = PlayerPrefs.GetString(ConstData.new_Unlock);

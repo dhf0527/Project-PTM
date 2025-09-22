@@ -116,9 +116,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
-        //테스트
-        //Test();
-
         //웨이브 시간 확인
         CheckWaveTime();
 
@@ -414,21 +411,4 @@ public class EnemySpawnManager : MonoBehaviour
         Instantiate(shockWave_prf, spawn_Trans);
     }
     #endregion
-
-    void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Spawn_Unit(spawn_Units[0, 0]);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            ToNextWave();
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            isBossSpawned = false;
-            OnBossSpawn();
-        }
-    }
 }

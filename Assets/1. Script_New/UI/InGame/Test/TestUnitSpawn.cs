@@ -64,7 +64,12 @@ public class TestUnitSpawn : MonoBehaviour
 
     public void TestUnitDelete()
     {
-        DunGeonManager_New.instance.OnStageUnitDelete_Test();
+        foreach (var onStageUnit in DunGeonManager_New.instance.onStageUnits_Test)
+        {
+            Destroy(onStageUnit.gameObject);
+            Destroy(onStageUnit.hpBar.gameObject);
+        }
+        DunGeonManager_New.instance.onStageUnits_Test.Clear();
     }
     
 }

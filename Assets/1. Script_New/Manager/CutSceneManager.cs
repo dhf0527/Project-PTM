@@ -680,28 +680,4 @@ public class CutSceneManager : MonoBehaviour
     #endregion
     #endregion
 
-    #region 테스트
-    public void Test_Tutorial(int keyIndex)
-    {
-        //모두 클리어 처리
-        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
-
-        PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)keyIndex, 0);
-    }
-
-    //튜토리얼 열람 초기화
-    public void Test_ResetTutorial()
-    {
-        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 0);
-    }
-
-    //튜토리얼 읽음 처리
-    public void Test_TutorialComplete()
-    {
-        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
-    }
-    #endregion
 }

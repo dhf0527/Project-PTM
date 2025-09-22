@@ -25,7 +25,7 @@ public class MainManager : MonoBehaviour
     Coroutine c_Floating;
     bool isFloating;
 
-    bool isOpenStage = false;
+    [HideInInspector] public bool isOpenStage = false;
 
     [HideInInspector] public MealData mealData;
     int cur_Stage_Index;
@@ -127,18 +127,5 @@ public class MainManager : MonoBehaviour
 
         foreach (var item in areaPages[number].GetComponentsInChildren<Image>())
             item.color = targetColor;
-    }
-
-    public void TestOpenStage(bool isOpen)
-    {
-        isOpenStage = isOpen;
-    }
-
-    public void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-            Soul += 5000;
-        if (Input.GetKeyDown(KeyCode.F2))
-            Soul = 0;
     }
 }

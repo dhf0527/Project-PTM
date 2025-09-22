@@ -41,15 +41,8 @@ public class Princess : Unit
 
     bool isSkilling;
 
-    bool test_Is1;
-    bool test_Is2;
-    bool test_Is3;
-    bool test_Is4;
-
     private void Update()
     {
-        //Test();
-
         if (isDead || isSkilling || isKnockBacking)
         {
             return;
@@ -66,41 +59,6 @@ public class Princess : Unit
 
         animator.SetFloat("MoveSpeed", MoveSpeed / 200);
         animator.SetFloat("AttackSpeed", Mathf.Max(AttackSpeed / ud.attack_Speed, 1));
-    }
-
-    //테스트 함수
-    void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            unitStatData_st.moveSpeed_PlusPercent += !test_Is1 ? 400 : -400f;
-            test_Is1 = !test_Is1;
-            Debug.Log("이동 속도 증가" + (test_Is1 ? "On" : "Off"));
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            unitStatData_st.accuracy_Plus += !test_Is2 ? 1000 : -1000;
-            test_Is2 = !test_Is2;
-            Debug.Log("명중률 증가" + (test_Is2 ? "On" : "Off"));
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            unitStatData_st.avoidance_Plus += !test_Is3 ? 1000 : -1000;
-            test_Is3 = !test_Is3;
-            Debug.Log("회피율 증가" + (test_Is3 ? "On" : "Off"));
-        }
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            unitStatData_st.attack_Plus += !test_Is4 ? 1000 : - 1000;
-            test_Is4 = !test_Is4;
-            Debug.Log("공격력 증가" + (test_Is4 ? "On" : "Off"));
-        }
-        if (Input.GetKeyDown(KeyCode.F5))
-            DunGeonManager_New.instance.Cur_Gold = DunGeonManager_New.instance.Max_Gold;
-        if (Input.GetKeyDown(KeyCode.F6))
-            DunGeonManager_New.instance.OpenGameClearPanel();
-        if (Input.GetKeyDown(KeyCode.F7))
-            DunGeonManager_New.instance.OpenGameOverPanel();
     }
 
     public override void Init()

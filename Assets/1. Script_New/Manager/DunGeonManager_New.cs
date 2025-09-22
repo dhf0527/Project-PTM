@@ -524,14 +524,4 @@ public class DunGeonManager_New : MonoBehaviour
         GameOverPanel.SetClearPanel();
     }
     #endregion
-
-    public void OnStageUnitDelete_Test()
-    {
-        foreach (var onStageUnit in onStageUnits_Test)
-        {
-            Destroy(onStageUnit.gameObject);
-            Destroy(onStageUnit.hpBar.gameObject);
-        }
-        onStageUnits_Test.Clear();
-    }
 }
