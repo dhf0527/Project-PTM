@@ -118,7 +118,7 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   killGold: 0
-  healAmount: 15
+  healAmount: 20
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
