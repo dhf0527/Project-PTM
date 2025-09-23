@@ -306,7 +306,7 @@ public class EnemySpawnManager : MonoBehaviour
     }
 
     //warnTime동안 메세지를 노출하는 함수
-    IEnumerator C_SetWarnText(float warnTime)
+    public IEnumerator C_SetWarnText(float warnTime)
     {
         warnText_Image.gameObject.SetActive(true);
         float image_origin_alp = warnText_Image.color.a;
