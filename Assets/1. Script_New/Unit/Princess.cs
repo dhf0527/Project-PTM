@@ -16,6 +16,8 @@ public class Princess : Hero
     //공주 스킬1: 방패 강타
     public override void OnSkill1()
     {
+        base.OnSkill1();
+
         nonCombatTime = 0;
         float skillRange = 1.5f;
 
@@ -45,6 +47,8 @@ public class Princess : Hero
     //공주 스킬2: 부러진 영웅검
     public override void OnSkill2()
     {
+        base.OnSkill2();
+
         nonCombatTime = 0;
         float skillRange = 1f;
 

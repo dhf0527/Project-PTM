@@ -28,6 +28,8 @@ public abstract class Hero : Unit
     [SerializeField] float skill2_coolTime;
 
     [SerializeField] protected PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
+    [SerializeField] protected string skill1_detail;
+    [SerializeField] protected string skill2_detail;
 
     protected float nonCombatTime = 0;
 
@@ -269,7 +271,16 @@ public abstract class Hero : Unit
     }
 
     //스킬1
-    public abstract void OnSkill1();
+    public virtual void OnSkill1()
+    {
+        if(skill_1_Count < 2)
+        {
+            if (EnemySpawnManager.instance.cor_warn == null)
+                EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            EnemySpawnManager.instance.warnText_Text.text = skill1_detail;
+            skill_1_Count++;
+        }
+    }
 
     protected IEnumerator C_Skill1_CoolDown()
     {
@@ -305,7 +316,16 @@ public abstract class Hero : Unit
     }
 
     //공주 스킬2: 부러진 영웅검
-    public abstract void OnSkill2();
+    public virtual void OnSkill2()
+    {
+        if (skill_2_Count < 2)
+        {
+            if (EnemySpawnManager.instance.cor_warn == null)
+                EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            EnemySpawnManager.instance.warnText_Text.text = skill2_detail;
+            skill_2_Count++;
+        }
+    }
 
     protected IEnumerator C_Skill2_CoolDown()
     {

@@ -47738,6 +47738,16 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill1_detail
+      value: "\uC801 \uC774\uB3D9 \uC18D\uB3C4, \uACF5\uACA9 \uC18D\uB3C4 \uB300\uD3ED
+        \uAC10\uC18C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill2_detail
+      value: "\uC8FC\uBCC0 \uC544\uAD70 \uACF5\uACA9 \uAD00\uD1B5 \uBC0F \uBA85\uC911\uB960
+        \uC99D\uAC00 \uBD80\uC5EC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
       value: 6
       objectReference: {fileID: 0}

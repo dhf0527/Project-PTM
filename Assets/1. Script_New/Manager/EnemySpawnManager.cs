@@ -26,7 +26,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     //경고 텍스트
     public Image warnText_Image;
-    [SerializeField] TMP_Text warnText_Text;
+    public TMP_Text warnText_Text;
     [Header("0:경고, 1:카운트다운")]
     [SerializeField] Color[] textColors = new Color[2]; 
     public float[] waveTimes = new float[3];
@@ -66,7 +66,7 @@ public class EnemySpawnManager : MonoBehaviour
     int target_Wave = 0;
 
     //C_SetWarnText를 담는 코루틴
-    Coroutine cor_warn;
+    [HideInInspector]public Coroutine cor_warn;
     Coroutine cor_countDown;
     Color warnImg_Color;
     float cur_WaveTime = 0;
@@ -350,9 +350,9 @@ public class EnemySpawnManager : MonoBehaviour
         float cur_Timer = countTime;
         while (cur_Timer > 0)
         {
-            cur_Timer -= Time.deltaTime;
-            warnText_Text.text = $"남은 시간 {(int)cur_Timer + 1}초!";
-            yield return new WaitForEndOfFrame() ;
+            warnText_Text.text = $"남은 시간 {(int)cur_Timer}초!";
+            cur_Timer -= 1f;
+            yield return new WaitForSeconds(1f);
         }
         DunGeonManager_New.instance.OpenGameOverPanel();
     }
