@@ -427,7 +427,11 @@ public class CutSceneManager : MonoBehaviour
         pointUi_Canvas.sortingLayerID = SortingLayer.NameToID("UI");
         pointUi_Canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1;
 
+        float origin_TimeScale = Time.timeScale;
+        Time.timeScale = 3f;
         yield return new WaitUntil(() => DunGeonManager_New.instance.Cur_Gold >= targetGold);
+
+        Time.timeScale = origin_TimeScale;
         DunGeonManager_New.instance.pauseMask.SetActive(false);
         Destroy(pointUi_Canvas);
 
