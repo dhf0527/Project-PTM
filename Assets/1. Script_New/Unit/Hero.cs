@@ -51,6 +51,10 @@ public abstract class Hero : Unit
     {
         if (isDead || isSkilling || isKnockBacking)
         {
+            //사망 시 카메라만 이동
+            if(isDead)
+                DunGeonManager_New.instance.cameraMove.MoveCamera(Camera.main.transform.position.x + moveDir.x * Time.deltaTime * 2f);
+
             return;
         }
 
@@ -161,7 +165,13 @@ public abstract class Hero : Unit
     //버튼을 눌렀을 때 이동 방향/속도 설정
     public void OnMove(int move_dir)
     {
-        if (isDead || isSkilling)
+        //사망 시 카메라만 이동
+        if (isDead)
+        {
+            moveDir = Vector3.right * move_dir;
+            return;
+        }
+        else if (isSkilling)
             return;
 
         DunGeonManager_New.instance.cameraMove.isChasePrincess = true;
