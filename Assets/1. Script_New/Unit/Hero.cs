@@ -273,12 +273,16 @@ public abstract class Hero : Unit
     //스킬1
     public virtual void OnSkill1()
     {
-        if(skill_1_Count < 2)
+        if (skill_1_Count++ < 2)
         {
-            if (EnemySpawnManager.instance.cor_warn == null)
-                EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            if (EnemySpawnManager.instance.cor_warn != null)
+            {
+                StopCoroutine(EnemySpawnManager.instance.cor_warn);
+                EnemySpawnManager.instance.cor_warn = null;
+            }
+            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+
             EnemySpawnManager.instance.warnText_Text.text = skill1_detail;
-            skill_1_Count++;
         }
     }
 
@@ -318,12 +322,15 @@ public abstract class Hero : Unit
     //공주 스킬2: 부러진 영웅검
     public virtual void OnSkill2()
     {
-        if (skill_2_Count < 2)
+        if (skill_2_Count++ < 2)
         {
-            if (EnemySpawnManager.instance.cor_warn == null)
-                EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            if (EnemySpawnManager.instance.cor_warn != null)
+            {
+                StopCoroutine(EnemySpawnManager.instance.cor_warn);
+                EnemySpawnManager.instance.cor_warn = null;
+            }
+            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
             EnemySpawnManager.instance.warnText_Text.text = skill2_detail;
-            skill_2_Count++;
         }
     }
 

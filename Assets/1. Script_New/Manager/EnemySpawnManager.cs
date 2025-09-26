@@ -309,8 +309,8 @@ public class EnemySpawnManager : MonoBehaviour
     public IEnumerator C_SetWarnText(float warnTime)
     {
         warnText_Image.gameObject.SetActive(true);
-        float image_origin_alp = warnText_Image.color.a;
-        float text_origin_alp = warnText_Text.color.a;
+        Color image_origin_color = warnText_Image.color;
+        Color text_origin_color = warnText_Text.color;
         float cur_Warn_Time = 0;
         float img_alp = 0;
         float text_alp = 0;
@@ -322,16 +322,15 @@ public class EnemySpawnManager : MonoBehaviour
             //0.5초에 걸쳐 디졸브 인
             if (cur_Warn_Time < 0.5f)
             {
-                img_alp = Mathf.Lerp(0, image_origin_alp, cur_Warn_Time / 0.5f);
-                text_alp = Mathf.Lerp(0, text_origin_alp, cur_Warn_Time / 0.5f);
+                img_alp = Mathf.Lerp(0, image_origin_color.a, cur_Warn_Time / 0.5f);
+                text_alp = Mathf.Lerp(0, text_origin_color.a, cur_Warn_Time / 0.5f);
             }
             //wanrTime이 끝나기 0.5초 전부터 디졸브 아웃
             else if (cur_Warn_Time > warnTime - 0.5f)
             {
-                img_alp = Mathf.Lerp(image_origin_alp, 0, (cur_Warn_Time - (warnTime - 0.5f)) / 0.5f);
-                text_alp = Mathf.Lerp(text_origin_alp, 0, (cur_Warn_Time - (warnTime - 0.5f)) / 0.5f);
+                img_alp = Mathf.Lerp(image_origin_color.a, 0, (cur_Warn_Time - (warnTime - 0.5f)) / 0.5f);
+                text_alp = Mathf.Lerp(text_origin_color.a, 0, (cur_Warn_Time - (warnTime - 0.5f)) / 0.5f);
             }
-
             Color img_color = warnText_Image.color;
             Color text_color = warnText_Text.color;
             img_color.a = img_alp;
@@ -342,6 +341,8 @@ public class EnemySpawnManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         warnText_Image.gameObject.SetActive(false);
+        warnText_Image.color = image_origin_color;
+        warnText_Text.color = text_origin_color;
     }
     
     //카운트다운 함수
