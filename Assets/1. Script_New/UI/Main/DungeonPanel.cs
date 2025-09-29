@@ -16,6 +16,7 @@ public class DungeonPanel : MonoBehaviour
     public TMP_Text record_Text;
 
     public List<Unit> stageUnits = new();
+    Unit bossUnit;
     public DetailPanel detail_Panel;
 
     #region 던전 별 변경 사항
@@ -54,6 +55,7 @@ public class DungeonPanel : MonoBehaviour
         foreach (var item in dd.units_Wave3)
             if (item)
                 stageUnits.Add(item);
+        bossUnit = dd.bossUnit;
 
         //중복 제거
         stageUnits = stageUnits.Distinct().ToList();
@@ -71,10 +73,10 @@ public class DungeonPanel : MonoBehaviour
             unit_Images[i].sprite = stageUnits[i].ud.unit_Sprite;
         }
 
-        //별 이미지 설정
         stage_Text.text = $"{dd.stage}-{dd.number}";
-        boss_Image.sprite = dd.bossUnit.ud.unit_Sprite;
+        boss_Image.sprite = bossUnit.ud.unit_Sprite;
 
+        //별 이미지 설정
         int clear_Time = PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{dd.stage},{dd.number}");
         int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
 
@@ -98,6 +100,11 @@ public class DungeonPanel : MonoBehaviour
     public void OnSetStageUnitData(int index)
     {
         detail_Panel.SetDetail(stageUnits[index].ud);
+    }
+
+    public void OnSetStageBossUnitData()
+    {
+        detail_Panel.SetDetail(bossUnit.ud);
     }
 
     void SetDungeonPanelSprite(Faction factionIndex)

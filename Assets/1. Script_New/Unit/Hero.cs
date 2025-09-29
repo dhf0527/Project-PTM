@@ -283,7 +283,8 @@ public abstract class Hero : Unit
     //스킬1
     public virtual void OnSkill1()
     {
-        if (skill_1_Count++ < 2)
+        int onSkillCount1 = PlayerPrefs.GetInt(ConstData.skillCount1 + ud.unit_Code);
+        if (onSkillCount1 < 3)
         {
             if (EnemySpawnManager.instance.cor_warn != null)
             {
@@ -293,6 +294,7 @@ public abstract class Hero : Unit
             EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
 
             EnemySpawnManager.instance.warnText_Text.text = skill1_detail;
+            PlayerPrefs.SetInt(ConstData.skillCount1 + ud.unit_Code, onSkillCount1 + 1);
         }
     }
 
@@ -332,7 +334,8 @@ public abstract class Hero : Unit
     //공주 스킬2: 부러진 영웅검
     public virtual void OnSkill2()
     {
-        if (skill_2_Count++ < 2)
+        int onSkillCount2 = PlayerPrefs.GetInt(ConstData.skillCount2 + ud.unit_Code);
+        if (onSkillCount2 < 3)
         {
             if (EnemySpawnManager.instance.cor_warn != null)
             {
@@ -341,6 +344,8 @@ public abstract class Hero : Unit
             }
             EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
             EnemySpawnManager.instance.warnText_Text.text = skill2_detail;
+
+            PlayerPrefs.SetInt(ConstData.skillCount2 + ud.unit_Code, onSkillCount2 + 1);
         }
     }
 
