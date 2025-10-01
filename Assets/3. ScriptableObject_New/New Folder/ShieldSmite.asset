@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d8a5c41d01e904c8305bb53111d843, type: 3}
+  m_Name: ShieldSmite
+  m_EditorClassIdentifier: 
+  skillName: "\uBC29\uD328 \uAC15\uD0C0"
+  skillIcon: {fileID: 787086215, guid: 88d1e4cfe94cdb8449be27b79e9fac3c, type: 3}
+  skillCoolTime: 20
+  skillDescription: "\uBC29\uD328\uB97C \uD718\uB458\uB7EC \uBC94\uC704\uB0B4\uC5D0
+    \uC788\uB294 \uC801 \uC720\uB2DB\uB4E4\uC744 \uB109\uBC31\uC2DC\uD0A8\uB2E4.
+    \\n\n\uD53C\uACA9\uD55C \uC801\uB4E4\uC758 \uC774\uB3D9 \uC18D\uB3C4\uC640 \uACF5\uACA9
+    \uC18D\uB3C4\uAC00 6\uCD08\uAC04 \uD06C\uAC8C \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+  skillType: 0

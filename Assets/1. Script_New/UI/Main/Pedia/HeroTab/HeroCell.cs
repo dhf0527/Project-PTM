@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HeroCell : MonoBehaviour
 {
     public bool isLock;
-    public UnitData ud;
+    public Hero hero;
 
     public TMP_Text faction_Text;
     public TMP_Text name_Text;
@@ -23,6 +23,7 @@ public class HeroCell : MonoBehaviour
 
     void Init()
     {
+        UnitData ud = hero.ud;
         faction_Text.text = ud.faction == Faction.Guild ? "¡ﬂæ” ø’±π"
             : ud.faction == Faction.Fairy ? "ø‰¡§ Ω£"
             : ud.faction == Faction.Demon ? "∏∂ø’±∫"
@@ -40,7 +41,8 @@ public class HeroCell : MonoBehaviour
 
     public void OnClick()
     {
-        PediaManager.instance.SetHeroData(ud);
+        PediaManager.instance.SetHeroData(hero.ud);
         PediaManager.instance.OnHeroDescription();
+        PediaManager.instance.skillDescription.SetDescription(hero);
     }
 }

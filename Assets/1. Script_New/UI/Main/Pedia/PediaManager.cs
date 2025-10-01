@@ -31,7 +31,7 @@ public class PediaManager : MonoBehaviour
     public GameObject heroList_go;
     public HeroData_Pedia heroData;
 
-    public GameObject heroSkill_go;
+    public SkillDescription skillDescription;
     public GameObject heroDescription_go;
 
     public DetailPanel unitDetail;
@@ -64,7 +64,7 @@ public class PediaManager : MonoBehaviour
         right_Scroll_go.SetActive(false);
         heroList_go.SetActive(false);
         heroData.gameObject.SetActive(false);
-        heroSkill_go.SetActive(false);
+        skillDescription.gameObject.SetActive(false);
         heroDescription_go.SetActive(false);
         unitList_go.SetActive(false);
         unitData.gameObject.SetActive(false);
@@ -130,7 +130,7 @@ public class PediaManager : MonoBehaviour
         heroDescription_go.SetActive(!isOpen);
 
         right_Scroll_go.SetActive(isOpen);
-        heroSkill_go.SetActive(isOpen);
+        skillDescription.gameObject.SetActive(isOpen);
         heroData.gameObject.SetActive(isOpen);
     }
     #endregion

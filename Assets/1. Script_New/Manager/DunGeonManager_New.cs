@@ -41,6 +41,8 @@ public class DunGeonManager_New : MonoBehaviour
 
     public GameObject pauseMask;
     public GameObject touchBlocker;
+
+    public GameObject hpWarnText_go;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class Hero : Unit
 {
+    public List<SkillData> skillDatas;
+
     [Header("영웅 업그레이드 수치(방어도 제외 %수치)")]
     [SerializeField] float upgradeValue_moveSpeed;
     [SerializeField] float upgradeValue_hp;
@@ -49,6 +51,8 @@ public abstract class Hero : Unit
 
     private void Update()
     {
+        SetHpwarnText();
+
         if (isDead || isSkilling || isKnockBacking)
         {
             //사망 시 카메라만 이동
@@ -399,6 +403,17 @@ public abstract class Hero : Unit
                 break;
             default:
                 break;
+        }
+    }
+
+    void SetHpwarnText()
+    {
+        if (isDead || cur_Hp > Max_Hp * 0.25f)
+            DunGeonManager_New.instance.hpWarnText_go.SetActive(false);
+        else
+        {
+            DunGeonManager_New.instance.hpWarnText_go.SetActive(true);
+            DunGeonManager_New.instance.hpWarnText_go.transform.position = transform.position + Vector3.up * 2f;
         }
     }
 }

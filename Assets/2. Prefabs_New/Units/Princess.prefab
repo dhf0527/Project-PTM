@@ -337,17 +337,9 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
   killGold: 0
-  skill1_Damage: 0
-  skill1_coolTime: 30
-  skill1_buff_Time: 6
-  skill1_move_Decrease: 80
-  skill1_attackSpeed_Decrease: 80
-  skill2_coolTime: 60
-  skill2_buff_Time: 12
-  skill2_accuracy_increase: 40
-  skillIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  skillDatas:
+  - {fileID: 11400000, guid: a72f3e263a70bf543af53eda4955d880, type: 2}
+  - {fileID: 11400000, guid: 6e1a361fcfc9e5d41b94f6310b176c5d, type: 2}
   upgradeValue_moveSpeed: 0
   upgradeValue_hp: 0
   upgradeValue_attack: 0
@@ -359,6 +351,19 @@ MonoBehaviour:
   recoveryAmount: 0
   reviveCoolTime: 0
   move_Particle: {fileID: 0}
+  skill1_coolTime: 30
+  skill2_coolTime: 60
+  skillIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  skill1_detail: 
+  skill2_detail: 
+  skill1_Damage: 0
+  skill1_buff_Time: 6
+  skill1_move_Decrease: 80
+  skill1_attackSpeed_Decrease: 80
+  skill2_accuracy_increase: 40
+  skill2_buff_Time: 12
 --- !u!61 &6395019636584269671
 BoxCollider2D:
   m_ObjectHideFlags: 0
