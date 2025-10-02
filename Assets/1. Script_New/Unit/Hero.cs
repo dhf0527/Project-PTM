@@ -64,8 +64,9 @@ public abstract class Hero : Unit
 
         Move();
 
+        //자동 회복
         nonCombatTime += Time.deltaTime;
-        if (nonCombatTime > recoveryTime)
+        if (nonCombatTime > recoveryTime && cur_Hp < Max_Hp)
         {
             nonCombatTime -= 1;
             GetHp(recoveryAmount / 100f * Max_Hp);
@@ -256,6 +257,15 @@ public abstract class Hero : Unit
 
         //안보이는 곳으로 옮기기
         transform.position = new Vector3(-15, 0, 0);
+
+        //사망 텍스트
+        if (EnemySpawnManager.instance.cor_warn != null)
+        {
+            StopCoroutine(EnemySpawnManager.instance.cor_warn);
+            EnemySpawnManager.instance.cor_warn = null;
+        }
+        EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+        EnemySpawnManager.instance.warnText_Text.text = "영웅이 부상당했습니다! \n잠시 뒤 부활합니다.";
     }
 
     public void Rivive()
@@ -335,7 +345,7 @@ public abstract class Hero : Unit
         }
     }
 
-    //공주 스킬2: 부러진 영웅검
+    //스킬2
     public virtual void OnSkill2()
     {
         int onSkillCount2 = PlayerPrefs.GetInt(ConstData.skillCount2 + ud.unit_Code);
@@ -413,7 +423,7 @@ public abstract class Hero : Unit
         else
         {
             DunGeonManager_New.instance.hpWarnText_go.SetActive(true);
-            DunGeonManager_New.instance.hpWarnText_go.transform.position = transform.position + Vector3.up * 2f;
+            DunGeonManager_New.instance.hpWarnText_go.transform.position = transform.position + Vector3.up * 1.7f;
         }
     }
 }

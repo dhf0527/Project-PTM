@@ -15,5 +15,5 @@ public class WorldCanavsManager : MonoBehaviour
     }
 
     //À¯´Ö Ã¼·Â¹Ù ÇÁ¸®ÆÕ
-    public HpBar_new hpBar_Prf;
+    public HpBar hpBar_Prf;
 }

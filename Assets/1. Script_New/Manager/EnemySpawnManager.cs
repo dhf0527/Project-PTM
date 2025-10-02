@@ -51,6 +51,8 @@ public class EnemySpawnManager : MonoBehaviour
     public float boss_Attack1;
     public float boss_Attack2;
 
+    public HpBar_Boss bossHpBar;
+
     [Header("유닛 레벨별 처치 골드")]
     public List<int> killGolds;
     public int killGold_Boss;
@@ -405,6 +407,12 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.AddComponent<BossGuard>();
         //아우라 생성
         Instantiate(bossAura, bossUnit.transform);
+
+        Destroy(bossUnit.hpBar);
+        bossHpBar.gameObject.SetActive(true);
+        bossUnit.hpBar = bossHpBar;
+        bossHpBar.unit = bossUnit;
+        bossUnit.SetBoss();
     }
 
     public void MakeShockWave()

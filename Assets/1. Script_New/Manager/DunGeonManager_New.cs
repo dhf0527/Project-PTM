@@ -202,6 +202,21 @@ public class DunGeonManager_New : MonoBehaviour
 
         //0.1ÃÊ¸¶´Ù °ñµå È¹µæ
         GetGoldPerSec();
+
+        CheckLevelUpCost();
+    }
+
+    void CheckLevelUpCost()
+    {
+        if (Cur_Gold >= base_UpgradeCost)
+        {
+            if (baseLevelUpPanel.mask.activeInHierarchy)
+                baseLevelUpPanel.levelUp_Anim.Play();
+
+            baseLevelUpPanel.mask.SetActive(false);
+        }
+        else
+            baseLevelUpPanel.mask.SetActive(true);
     }
 
     #region À¯´Ö »ý»ê ÇÔ¼ö(°ñµå Æ÷ÇÔ)

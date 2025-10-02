@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BaseLevelUpPanel : MonoBehaviour
 {
+    public GameObject mask;
+    public Animation levelUp_Anim;
     [SerializeField] TMP_Text level_Text;
     [SerializeField] TMP_Text cost_Text;
     Animation anim;

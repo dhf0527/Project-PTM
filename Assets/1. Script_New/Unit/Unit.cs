@@ -151,20 +151,10 @@ public abstract class Unit : MonoBehaviour
             //체력바 갱신
             hpBar?.SetHpBar();
 
-            //체력바 표시
-            if(!alwaysDisplayHpbar)
-            {
-                if (cur_Hp != Max_Hp)
-                {
-                    StopCoroutine(cor_HpBarInActive);
-                    hpBar?.gameObject.SetActive(true);
-                }
-                else
-                    cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
-            }
+            DisplayHpBar();
         }
     }
-    [HideInInspector]public HpBar_new hpBar;
+    [HideInInspector]public HpBar_Base hpBar;
     protected bool alwaysDisplayHpbar;
     Coroutine cor_HpBarInActive;
 
@@ -290,6 +280,13 @@ public abstract class Unit : MonoBehaviour
             Debug.LogError("사거리 이상");
 
         return returnValue;
+    }
+
+    public void SetBoss()
+    {
+        isHpText = true;
+        alwaysDisplayHpbar = true;
+        StopAllCoroutines();
     }
     #endregion
 
@@ -656,6 +653,38 @@ public abstract class Unit : MonoBehaviour
         yield return new WaitForSeconds(4);
         canKnockBack_By_Hp = true;
     }
+
+    public void DisplayHpBar()
+    {
+        //체력바 표시
+        if (!alwaysDisplayHpbar)
+        {
+            if (cur_Hp != Max_Hp)
+            {
+                StopCoroutine(cor_HpBarInActive);
+                hpBar?.gameObject.SetActive(true);
+            }
+            else
+                cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
+        }
+    }
+
+    public void DisplayHpBar_Buff()
+    {
+        //체력바 표시
+        if (!alwaysDisplayHpbar)
+        {
+            hpBar?.gameObject.SetActive(true);
+
+            if (cur_Hp != Max_Hp)
+                StopCoroutine(cor_HpBarInActive);
+            else
+            {
+                StopCoroutine(cor_HpBarInActive);
+                cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
+            }
+        }
+    }
     #endregion
 
     #region 애니메이션 함수
@@ -695,7 +724,7 @@ public abstract class Unit : MonoBehaviour
     #region 버프
     public void SetBuffIcon(int index, bool isActive)
     {
-        hpBar.SetBuffIcon(index, isActive);
+        hpBar?.SetBuffIcon(index, isActive);
     }
 
     #endregion
