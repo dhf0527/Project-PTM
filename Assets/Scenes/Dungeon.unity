@@ -7332,9 +7332,9 @@ MonoBehaviour:
   - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
   spawnCoolTimesByLevel:
-  - 4
-  - 8
-  - 16
+  - 3
+  - 6
+  - 12
   item_Advanced:
   - {fileID: 11400000, guid: 93bf9ea72f57a0740b7bf28246d21502, type: 2}
   - {fileID: 11400000, guid: 912fac0ab16d0974a88ea604f9edee2f, type: 2}
@@ -7440,8 +7440,8 @@ MonoBehaviour:
   - 250
   attackRanges_Ranged_ByLevel:
   - 400
+  - 450
   - 500
-  - 600
   princess: {fileID: 0}
   teamBase: {fileID: 0}
   enemyBase: {fileID: 0}
@@ -7508,23 +7508,23 @@ MonoBehaviour:
   - 30
   - 30
   phase0_SpawnTimes:
-  - 6
+  - 5
   - 15
   - 30
   phase1_SpawnTimes:
   - 5
   - 10
-  - 25
+  - 15
   phase2_SpawnTimes:
   - 4
   - 8
-  - 20
+  - 12
   wave_BaseHps:
   - 70
   - 30
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
-  boss_BaseHp: 30
-  boss_Hp1: 2
+  boss_BaseHp: 28
+  boss_Hp1: 4
   boss_Hp2: 4
   boss_Attack1: 1
   boss_Attack2: 0.5
