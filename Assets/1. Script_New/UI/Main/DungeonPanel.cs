@@ -104,7 +104,14 @@ public class DungeonPanel : MonoBehaviour
 
     public void OnSetStageBossUnitData()
     {
-        detail_Panel.SetDetail(bossUnit.ud);
+        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * ((4 - 1) + GameManager.Instance.current_Dungeon.stage * 4);
+        bossUnit.unitStatData_st.attack_PlusPercent += ((1 - 1) + GameManager.Instance.current_Dungeon.number * 0.5f) * 100;
+        bossUnit.unitStatData_st.targetCount_Plus += bossUnit.ud.target_Count;
+        detail_Panel.SetDetail(bossUnit);
+
+        bossUnit.unitStatData_st.max_Hp_Plus -= bossUnit.ud.hp * ((4 - 1) + GameManager.Instance.current_Dungeon.stage * 4);
+        bossUnit.unitStatData_st.attack_PlusPercent -= ((1 - 1) + GameManager.Instance.current_Dungeon.number * 0.5f) * 100;
+        bossUnit.unitStatData_st.targetCount_Plus -= bossUnit.ud.target_Count;
     }
 
     void SetDungeonPanelSprite(Faction factionIndex)

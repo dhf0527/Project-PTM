@@ -16418,7 +16418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1074841574, guid: 3074f9a020ce0944c9e8e5ada38549b4, type: 3}
+  m_Sprite: {fileID: -1773710983, guid: 3074f9a020ce0944c9e8e5ada38549b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24250,6 +24250,12 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 0, y: 0, z: 0}
   killGold: 0
+  hp_By_Stage:
+  - 1500
+  - 2000
+  - 2500
+  - 3000
+  armor_By_Stage: 060000000a0000000e00000012000000
 --- !u!1001 &965256734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25053,7 +25059,7 @@ GameObject:
   - component: {fileID: 997482327}
   - component: {fileID: 997482328}
   m_Layer: 5
-  m_Name: Meal_Panel
+  m_Name: Meal_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25188,21 +25194,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1176061068}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DunGeonManager_New, Assembly-CSharp
-        m_MethodName: OnPause
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30658,7 +30652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1773710983, guid: 3074f9a020ce0944c9e8e5ada38549b4, type: 3}
+  m_Sprite: {fileID: 1074841574, guid: 3074f9a020ce0944c9e8e5ada38549b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

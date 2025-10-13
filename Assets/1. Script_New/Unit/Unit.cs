@@ -9,7 +9,7 @@ public abstract class Unit : MonoBehaviour
     public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed * (1 + unitStatData_st.attackSpeed_PlusPercent * 0.01f) + unitStatData_st.attackSpeed_Plus, 0.001f); } }
     public int Accuracy { get { return Mathf.Max(ud.accuracy + unitStatData_st.accuracy_Plus, 0);} }
     public int TargetCount { get { return Mathf.Max(ud.target_Count + unitStatData_st.targetCount_Plus, 1); } }
-    public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); } }
+    public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); }}
     public int Armor { get { return Mathf.Max((int)(ud.armor * (1  + unitStatData_st.armor_PlusPercent * 0.01f)) + unitStatData_st.armor_Plus, 0); } }
     public int Avoidance { get { return Mathf.Max(ud.avoidance + unitStatData_st.avoidance_Plus, 0); } }
     public float MoveSpeed { get { return Mathf.Max(ud.move_Speed * (1 + unitStatData_st.moveSpeed_PlusPercent * 0.01f) + unitStatData_st.moveSpeed_Plus, ud.move_Speed * 0.1f); } }

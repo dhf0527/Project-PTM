@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class EnemyBase_Unit : Unit
 {
     bool isBossSpawn = false;
+    public List<float> hp_By_Stage;
+    public List<int> armor_By_Stage;
 
     public override float Cur_Hp
     {
@@ -37,7 +39,7 @@ public class EnemyBase_Unit : Unit
                 DunGeonManager_New.instance.princessHpPanel.SetHpBar(this);
 
             //체력바 갱신
-            hpBar.SetHpBar();
+            hpBar?.SetHpBar();
         }
     }
 
@@ -62,6 +64,29 @@ public class EnemyBase_Unit : Unit
 
         canKnockBack = false;
         alwaysDisplayHpbar = true;
+
+        switch (GameManager.Instance.current_Dungeon.stage)
+        {
+            case 1:
+                unitStatData_st.max_Hp_Plus = hp_By_Stage[0] - ud.hp;
+                unitStatData_st.armor_Plus = armor_By_Stage[0] - ud.armor;
+                break;
+            case 2:
+                unitStatData_st.max_Hp_Plus = hp_By_Stage[1] - ud.hp;
+                unitStatData_st.armor_Plus = armor_By_Stage[1] - ud.armor;
+                break;
+            case 3:
+                unitStatData_st.max_Hp_Plus = hp_By_Stage[2] - ud.hp;
+                unitStatData_st.armor_Plus = armor_By_Stage[2] - ud.armor;
+                break;
+            case 4:
+                unitStatData_st.max_Hp_Plus = hp_By_Stage[3] - ud.hp;
+                unitStatData_st.armor_Plus = armor_By_Stage[3] - ud.armor;
+                break;
+            default:
+                break;
+        }
+        Cur_Hp = Max_Hp;
     }
 
     //체력바 생성 및 설정
