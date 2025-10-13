@@ -37,6 +37,7 @@ Transform:
   - {fileID: 5011576202476332568}
   - {fileID: 2764983105210213345}
   - {fileID: 4717893244150893710}
+  - {fileID: 409362849925886857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8003577852541299673
@@ -107,7 +108,7 @@ MonoBehaviour:
   ud: {fileID: 11400000, guid: da48000b6344f6b46ace2f5731f55e2d, type: 2}
   isHpText: 0
   hitParent: {fileID: 0}
-  ranged_Projectile_Pos: {fileID: 0}
+  ranged_Projectile_Pos: {fileID: 409362849925886857}
   ranged_Projectile_Prefabs: {fileID: 5915279210137212383, guid: 80186e1230fa6224c8d17f94ab452687, type: 3}
   isPenetration: 0
   isTrueDamage: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
-  killGold: 250
+  killGold: 30
   attack_Gold: 1
   kill_Gold: 30
 --- !u!95 &5061897147921594596
@@ -212,6 +213,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &357472302027051991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409362849925886857}
+  m_Layer: 0
+  m_Name: 'RangedAttackSpawn (Missing Prefab with guid: 94b508926113564458a36bc32467a8cc)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &409362849925886857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357472302027051991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.34, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4594010318107249427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1749559055716063982
 GameObject:
   m_ObjectHideFlags: 0
