@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: "\uBD80\uB7EC\uC9C4 \uC601\uC6C5\uAC80"
   skillIcon: {fileID: -1595348396, guid: 88d1e4cfe94cdb8449be27b79e9fac3c, type: 3}
   skillCoolTime: 40
-  skillDescription: "12\uCD08\uAC04 \uC790\uC2E0\uACFC \uC8FC\uBCC0\uC758 \uC544\uAD70
+  skillDescription: "8\uCD08\uAC04 \uC790\uC2E0\uACFC \uC8FC\uBCC0\uC758 \uC544\uAD70
     \uC720\uB2DB\uB4E4\uC5D0\uAC8C \uBA85\uC911\uB960\uACFC \uAD00\uD1B5 \uACF5\uACA9\uC744
     \uBD80\uC5EC\uD55C\uB2E4."
   skillType: 1

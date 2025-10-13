@@ -37,7 +37,6 @@ Transform:
   - {fileID: 5011576202476332568}
   - {fileID: 2764983105210213345}
   - {fileID: 4717893244150893710}
-  - {fileID: 2136429800145144138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8003577852541299673
@@ -108,7 +107,7 @@ MonoBehaviour:
   ud: {fileID: 11400000, guid: da48000b6344f6b46ace2f5731f55e2d, type: 2}
   isHpText: 0
   hitParent: {fileID: 0}
-  ranged_Projectile_Pos: {fileID: 2136429800145144138}
+  ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 5915279210137212383, guid: 80186e1230fa6224c8d17f94ab452687, type: 3}
   isPenetration: 0
   isTrueDamage: 0
@@ -118,8 +117,8 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   killGold: 250
-  attack_Gold: 2
-  kill_Gold: 20
+  attack_Gold: 1
+  kill_Gold: 30
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -297,68 +296,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1540462666826922372
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4594010318107249427}
-    m_Modifications:
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908576041601169702, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-      propertyPath: m_Name
-      value: ProjectilePos
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 94b508926113564458a36bc32467a8cc, type: 3}
---- !u!4 &2136429800145144138 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 632418434886267086, guid: 94b508926113564458a36bc32467a8cc, type: 3}
-  m_PrefabInstance: {fileID: 1540462666826922372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2486572883115525399
 PrefabInstance:
   m_ObjectHideFlags: 0

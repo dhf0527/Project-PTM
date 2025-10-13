@@ -7334,7 +7334,7 @@ MonoBehaviour:
   spawnCoolTimesByLevel:
   - 3
   - 6
-  - 12
+  - 10
   item_Advanced:
   - {fileID: 11400000, guid: 93bf9ea72f57a0740b7bf28246d21502, type: 2}
   - {fileID: 11400000, guid: 912fac0ab16d0974a88ea604f9edee2f, type: 2}
@@ -24251,11 +24251,11 @@ MonoBehaviour:
   scaleVector: {x: 0, y: 0, z: 0}
   killGold: 0
   hp_By_Stage:
-  - 1500
   - 2000
-  - 2500
   - 3000
-  armor_By_Stage: 060000000a0000000e00000012000000
+  - 4000
+  - 5000
+  armor_By_Stage: 080000000c0000001000000014000000
 --- !u!1001 &965256734
 PrefabInstance:
   m_ObjectHideFlags: 0
