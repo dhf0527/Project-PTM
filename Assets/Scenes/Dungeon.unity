@@ -7332,7 +7332,7 @@ MonoBehaviour:
   - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
   spawnCoolTimesByLevel:
-  - 3
+  - 4
   - 6
   - 10
   item_Advanced:
@@ -24255,7 +24255,7 @@ MonoBehaviour:
   - 3000
   - 4000
   - 5000
-  armor_By_Stage: 080000000c0000001000000014000000
+  armor_By_Stage: 060000000a0000000e00000010000000
 --- !u!1001 &965256734
 PrefabInstance:
   m_ObjectHideFlags: 0
