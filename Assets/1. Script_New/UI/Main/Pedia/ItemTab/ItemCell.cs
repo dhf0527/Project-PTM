@@ -24,6 +24,6 @@ public class ItemCell : MonoBehaviour
 
     public void OnClick()
     {
-        PediaManager.instance.SetItemData(id);
+        PediaManager.instance.SetData(id);
     }
 }

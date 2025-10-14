@@ -167,10 +167,17 @@ public class PediaManager : MonoBehaviour
     }
 
     //아이템 클릭했을 때 itemCell에서 호출
-    public void SetItemData(ItemData id)
+    public void SetData(ItemData id)
     {
         itemDescription.gameObject.SetActive(true);
-        itemDescription.SetItemData(id);
+        itemDescription.SetData(id);
+    }
+
+    public void SetData(MealData md)
+    {
+        itemDescription.gameObject.SetActive(true);
+        itemDescription.SetData(md);
+
     }
     #endregion
 

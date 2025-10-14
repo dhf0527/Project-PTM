@@ -662,7 +662,7 @@ public abstract class Unit : MonoBehaviour
             if (cur_Hp != Max_Hp)
             {
                 StopCoroutine(cor_HpBarInActive);
-                hpBar?.gameObject.SetActive(true);
+                hpBar?.gameObject?.SetActive(true);
             }
             else
                 cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
