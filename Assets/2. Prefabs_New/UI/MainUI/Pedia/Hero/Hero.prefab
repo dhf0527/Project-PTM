@@ -384,8 +384,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCF00\uC774 \uACF5\uC8FC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
-  m_sharedMaterial: {fileID: 3137333684771967226, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3925b84a16e673a43893146805b3200b, type: 2}
+  m_sharedMaterial: {fileID: -5155453030580618491, guid: 3925b84a16e673a43893146805b3200b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -835,8 +835,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC911\uC559 \uC655\uAD6D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
-  m_sharedMaterial: {fileID: 3137333684771967226, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3925b84a16e673a43893146805b3200b, type: 2}
+  m_sharedMaterial: {fileID: -5155453030580618491, guid: 3925b84a16e673a43893146805b3200b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLock: 0
-  ud: {fileID: 11400000, guid: 90032e4a0a609a448ad0c3fef8647788, type: 2}
+  hero: {fileID: 0}
   faction_Text: {fileID: 992643763367584512}
   name_Text: {fileID: 7706874242245246799}
   unit_Image: {fileID: 5057679837732300776}

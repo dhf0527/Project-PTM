@@ -15,11 +15,17 @@ public class Meal_Card : MonoBehaviour
     [SerializeField] Image main_Image;
     [SerializeField] Image up_Image;
     [SerializeField] Image down_Image;
-    [SerializeField] List<Image> panel_Images; 
+    [SerializeField] List<Image> panel_Images;
+    [SerializeField] Image rarity_Panel;
+    [SerializeField] Image rarity_Icon;
+    [SerializeField] TMP_Text rarity_Text;
+
     [Header("0°í±Þ, 1Èñ±Í")]
     [SerializeField] List<Sprite> main_Sprites;
     [SerializeField] List<Sprite> side_Sprites;
     [SerializeField] List<Sprite> panel_Sprites;
+    [SerializeField] List<Sprite> rarityPanel_Sprites;
+    [SerializeField] List<Sprite> rarityIcon_Sprites;
 
     MealData md;
     public MealData Md 
@@ -45,6 +51,9 @@ public class Meal_Card : MonoBehaviour
         main_Image.sprite = main_Sprites[rarityIndex];
         up_Image.sprite = side_Sprites[rarityIndex];
         down_Image.sprite = side_Sprites[rarityIndex];
+        rarity_Panel.sprite = rarityPanel_Sprites[rarityIndex];
+        rarity_Icon.sprite = rarityIcon_Sprites[rarityIndex];
+        rarity_Text.text = rarityIndex == 0 ? "°í±Þ" : "Èñ±Í";
 
         foreach (var item in panel_Images)
             item.sprite = panel_Sprites[rarityIndex];
