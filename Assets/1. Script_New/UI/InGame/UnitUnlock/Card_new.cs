@@ -23,7 +23,7 @@ public class Card_new : MonoBehaviour
     [SerializeField] TMP_Text unitDamage_Text;
     [SerializeField] TMP_Text unitAttackSpeed_Text;
     [SerializeField] Image attackType_Image;
-    [SerializeField] TMP_Text[] passive_Text;
+    [SerializeField] GameObject passive_Icon_go;
     [SerializeField] List<GameObject> dark_Masks = new List<GameObject>();
 
     Animation anim;
@@ -192,20 +192,8 @@ public class Card_new : MonoBehaviour
         //AttackType[0] = none이므로 제외하고 1부터
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
 
-        //패시브
-        passive_Text[0].transform.parent.gameObject.SetActive(false);
-        passive_Text[1].transform.parent.gameObject.SetActive(false);
-
-        if (unit.ud.passive1 != "")
-        {
-            passive_Text[0].transform.parent.gameObject.SetActive(true);
-            passive_Text[0].text = unit.ud.passive1;  
-        }
-        if (unit.ud.passive2 != "")
-        {
-            passive_Text[1].transform.parent.gameObject.SetActive(true);
-            passive_Text[1].text = unit.ud.passive2;
-        }
+        //패시브 아이콘
+        passive_Icon_go.SetActive(unit.ud.passive1 != "" || unit.ud.passive2 != "");
 
         //아이템 표시
         if (item)
