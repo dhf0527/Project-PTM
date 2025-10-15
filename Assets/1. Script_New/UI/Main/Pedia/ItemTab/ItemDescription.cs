@@ -10,6 +10,7 @@ public class ItemDescription : MonoBehaviour
     public TMP_Text name_Text;
     public Image item_Image;
     public TMP_Text description_Text;
+    public TMP_Text flavor_Text;
 
     //public Image itemNamePanel_Image;
     //public List<Sprite> itemNamePanel_Sprites;
@@ -31,6 +32,7 @@ public class ItemDescription : MonoBehaviour
     {
         name_Text.text = md.mealName;
         item_Image.sprite = md.mealIcon;
+        flavor_Text.text = md.mealFlavorText;
 
         //itemNamePanel_Image.sprite = itemNamePanel_Sprites[(int)md.mealRarity];
 

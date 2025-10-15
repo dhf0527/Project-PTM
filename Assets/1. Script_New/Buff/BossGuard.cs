@@ -30,12 +30,12 @@ public class BossGuard : Buff
 
     protected override void BuffStart()
     {
-        base.BuffStart();
+
     }
 
     public override void BuffEnd()
     {
-        base.BuffEnd();
+
     }
 
     private void OnDisable()

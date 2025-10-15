@@ -45,6 +45,7 @@ public class PediaManager : MonoBehaviour
     #region 아이템 탭 변수
     public GameObject itemList_go;
     public ItemDescription itemDescription;
+    public GameObject flavorText_go;
     #endregion
 
     #region 세력 탭 변수
@@ -171,13 +172,14 @@ public class PediaManager : MonoBehaviour
     {
         itemDescription.gameObject.SetActive(true);
         itemDescription.SetData(id);
+        flavorText_go.SetActive(false);
     }
 
     public void SetData(MealData md)
     {
         itemDescription.gameObject.SetActive(true);
         itemDescription.SetData(md);
-
+        flavorText_go.SetActive(true);
     }
     #endregion
 

@@ -11,5 +11,6 @@ public class MealData : ScriptableObject
     public float mealValue;
     public float mealValue2;
     public string mealDescription;
+    public string mealFlavorText;
     public MealRarity mealRarity;
 }
