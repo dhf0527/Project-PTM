@@ -17,6 +17,8 @@ public class PlayerSkillIcon : MonoBehaviour
         delay_Image.fillAmount = 0;
     }
 
+    
+
     public void SetDelayImage(float fillAmount)
     {
         if (fillAmount <= 0)

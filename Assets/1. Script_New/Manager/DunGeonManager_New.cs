@@ -43,6 +43,12 @@ public class DunGeonManager_New : MonoBehaviour
     public GameObject touchBlocker;
 
     public GameObject hpWarnText_go;
+
+    public GameObject skillDetail_go;
+    public SkillDataDetail skillDataDetail_1;
+    public SkillDataDetail skillDataDetail_2;
+
+    public DetailPanel unitDetailPanel;
     #endregion
     #region 유닛 생산 변수
     [Header("유닛 생산 변수")]
