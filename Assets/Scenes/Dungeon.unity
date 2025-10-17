@@ -879,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143e53da764b19e41bafbc681e52a6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_Index: 0
   delay_Image: {fileID: 1820553967}
   coolDownIcon_Image: {fileID: 215910970}
   anim: {fileID: 930822600}
@@ -39506,6 +39507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143e53da764b19e41bafbc681e52a6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_Index: 1
   delay_Image: {fileID: 644279025}
   coolDownIcon_Image: {fileID: 1533297047}
   anim: {fileID: 1314170956}

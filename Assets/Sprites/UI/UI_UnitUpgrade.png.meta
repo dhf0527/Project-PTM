@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,154 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_0
-      rect:
-        serializedVersion: 2
-        x: 1034
-        y: 972
-        width: 442
-        height: 174
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb495e98afd64b04ea539ff94a403ddd
-      internalID: -385850956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_1
-      rect:
-        serializedVersion: 2
-        x: 1950
-        y: 1086
-        width: 122
-        height: 122
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 907dc57a75cd5074a80489c2d8840af1
-      internalID: 862919549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_2
-      rect:
-        serializedVersion: 2
-        x: 2081
-        y: 902
-        width: 124
-        height: 121
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dc6d44203293334da18cf90f72a76dc
-      internalID: -1567288469
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_8
-      rect:
-        serializedVersion: 2
-        x: 731
-        y: 645
-        width: 212
-        height: 196
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7e79e039875e084da3158f92d8f620c
-      internalID: 95539009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_9
-      rect:
-        serializedVersion: 2
-        x: 1049
-        y: 645
-        width: 1315
-        height: 196
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9815d7496c0b49f4bb8ca125e0048d6c
-      internalID: 363111986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_19
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 301
-        width: 233
-        height: 216
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc6e872fcb20eb041ba69dfbcac184be
-      internalID: 826438710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_UnitUpgrade_20
-      rect:
-        serializedVersion: 2
-        x: 1038
-        y: 301
-        width: 1335
-        height: 216
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7b95719d47967f4aba8a9424229c0e4
-      internalID: 1459321160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -266,28 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      UI_UnitUpgrade_0: -385850956
-      UI_UnitUpgrade_1: 862919549
-      UI_UnitUpgrade_10: -1534381571
-      UI_UnitUpgrade_11: 2068184842
-      UI_UnitUpgrade_12: -1833741744
-      UI_UnitUpgrade_13: 1689606365
-      UI_UnitUpgrade_14: 1323275925
-      UI_UnitUpgrade_15: 394468590
-      UI_UnitUpgrade_16: 1544219837
-      UI_UnitUpgrade_17: -1372129159
-      UI_UnitUpgrade_18: -1769631523
-      UI_UnitUpgrade_19: 826438710
-      UI_UnitUpgrade_2: -1567288469
-      UI_UnitUpgrade_20: 1459321160
-      UI_UnitUpgrade_3: -343953828
-      UI_UnitUpgrade_4: -1099154574
-      UI_UnitUpgrade_5: -1037597213
-      UI_UnitUpgrade_6: 1733636404
-      UI_UnitUpgrade_7: 1429384660
-      UI_UnitUpgrade_8: 95539009
-      UI_UnitUpgrade_9: 363111986
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

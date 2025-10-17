@@ -13,6 +13,9 @@ public class UnlockManager : MonoBehaviour
     public List<GameObject> unitUpgrade_Buttons;
     public GameObject pedia_Button;
 
+    [Header("영웅,식사,용병단,도감 순서")]
+    public List<GameObject> lockImages_go;
+
     public GameObject notification;
     public TMP_Text notification_Text_1;
     public TMP_Text notification_Text_2;
@@ -39,8 +42,15 @@ public class UnlockManager : MonoBehaviour
     public void CheckUnlock()
     {
         heroUpgrade_Button.SetActive(PlayerPrefs.GetInt(ConstData.heroUpgrade_Unlock) == 1);
+        lockImages_go[0].SetActive(PlayerPrefs.GetInt(ConstData.heroUpgrade_Unlock) != 1);
+
         meal_Button.SetActive(PlayerPrefs.GetInt(ConstData.meal_Unlock) == 1);
+        lockImages_go[1].SetActive(PlayerPrefs.GetInt(ConstData.meal_Unlock) != 1);
+
         pedia_Button.SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) == 1);
+        lockImages_go[3].SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) != 1);
+
+        lockImages_go[2].SetActive(PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 0);
         for (int i = 0; i < unitUpgrade_Buttons.Count; i++)
         {
             if (i < PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock))

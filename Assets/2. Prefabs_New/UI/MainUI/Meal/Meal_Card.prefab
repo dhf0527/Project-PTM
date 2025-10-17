@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1398692901, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13826b2cbea220d498d8b1da86e15a9c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1474279061, guid: 7347f80d243e3684bb107f248ebb2b59, type: 3}
+  m_Sprite: {fileID: 1845415062, guid: a4de3d9196beaf842aff0cd6cd41be0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1066,8 +1066,8 @@ MonoBehaviour:
   - {fileID: -1720688663, guid: 7c87ad4a167d21e4395d23560f5b1df2, type: 3}
   - {fileID: 1742140580, guid: 7c87ad4a167d21e4395d23560f5b1df2, type: 3}
   rarityIcon_Sprites:
-  - {fileID: -1398692901, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
-  - {fileID: -2029484508, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
+  - {fileID: 21300000, guid: 13826b2cbea220d498d8b1da86e15a9c, type: 3}
+  - {fileID: 21300000, guid: c9bf18893fe655d4f91c130be23fd440, type: 3}
 --- !u!1 &6792968384900247560
 GameObject:
   m_ObjectHideFlags: 0
