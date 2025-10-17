@@ -51,9 +51,13 @@ public class Meal_Card : MonoBehaviour
         main_Image.sprite = main_Sprites[rarityIndex];
         up_Image.sprite = side_Sprites[rarityIndex];
         down_Image.sprite = side_Sprites[rarityIndex];
-        rarity_Panel.sprite = rarityPanel_Sprites[rarityIndex];
-        rarity_Icon.sprite = rarityIcon_Sprites[rarityIndex];
-        rarity_Text.text = rarityIndex == 0 ? "°í±Þ" : "Èñ±Í";
+
+        if(rarity_Panel)
+        {
+            rarity_Panel.sprite = rarityPanel_Sprites[rarityIndex];
+            rarity_Icon.sprite = rarityIcon_Sprites[rarityIndex];
+            rarity_Text.text = rarityIndex == 0 ? "°í±Þ" : "Èñ±Í";
+        }
 
         foreach (var item in panel_Images)
             item.sprite = panel_Sprites[rarityIndex];
