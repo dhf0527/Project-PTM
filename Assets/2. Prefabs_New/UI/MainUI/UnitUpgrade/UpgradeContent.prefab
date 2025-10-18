@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 452866675, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5
 --- !u!1 &2931335147960632533
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
   unitUpgradeData: {fileID: 11400000, guid: a76665e33777feb4aba8467a182654bb, type: 2}
   unitUpgrade: {fileID: 0}
   star_Sprites:
-  - {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
-  - {fileID: 862919549, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  - {fileID: 452866675, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  - {fileID: -1756722818, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   icon_Image: {fileID: 6829137457047368161}
   upgradeName_Text: {fileID: 5609410775850365565}
   level_Images:
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 363111986, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  m_Sprite: {fileID: -400197833, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 95539009, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  m_Sprite: {fileID: -1443194727, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 452866675, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5
 --- !u!1 &8083295364565128388
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,8 +664,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC5C5\uADF8\uB808\uC774\uB4DC \uC774\uB984"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
-  m_sharedMaterial: {fileID: 3137333684771967226, guid: a1796ddf251ea4e459490ffa5ae36ffd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3925b84a16e673a43893146805b3200b, type: 2}
+  m_sharedMaterial: {fileID: -5155453030580618491, guid: 3925b84a16e673a43893146805b3200b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -796,8 +796,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 452866675, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -805,4 +805,4 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.5

@@ -64697,6 +64697,18 @@ PrefabInstance:
       propertyPath: upgradeValue_attackSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3699483183902379359, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699483183902379359, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3699483183902379359, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4750957064542608633, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: m_Name
       value: Princess
