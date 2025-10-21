@@ -8,6 +8,7 @@ public class ImageAnimation : MonoBehaviour
     [SerializeField] List<Sprite> sprites;
     [SerializeField] float period;
     Image img;
+    [SerializeField]Image pre_img;
     float curTime;
     int index = 0;
 
@@ -19,15 +20,23 @@ public class ImageAnimation : MonoBehaviour
     private void Update()
     {
         curTime += Time.unscaledDeltaTime;
+
         if (curTime > period)
         {
             index++;
 
-            if(index >= sprites.Count)
+            if (index >= sprites.Count)
                 index -= sprites.Count;
 
-            img.sprite = sprites[index];
+            img.sprite = sprites[(index + 1) % sprites.Count];
+            pre_img.sprite = sprites[index];
             curTime = 0;
         }
+
+        Color tmp_Color = pre_img.color;
+        tmp_Color.a = 1 - curTime / period;
+        pre_img.color = tmp_Color;
+
+        
     }
 }
