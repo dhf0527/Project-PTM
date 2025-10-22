@@ -7,6 +7,7 @@ public class ImageAnimation : MonoBehaviour
 {
     [SerializeField] List<Sprite> sprites;
     [SerializeField] float period;
+    [SerializeField] float period_dissolve;
     Image img;
     [SerializeField]Image pre_img;
     float curTime;
@@ -34,7 +35,7 @@ public class ImageAnimation : MonoBehaviour
         }
 
         Color tmp_Color = pre_img.color;
-        tmp_Color.a = 1 - curTime / period;
+        tmp_Color.a = 1 - curTime / period_dissolve;
         pre_img.color = tmp_Color;
 
         

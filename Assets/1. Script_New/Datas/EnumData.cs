@@ -70,5 +70,5 @@ public enum TutorialKey
 
 public enum SearchKey
 {
-    Dungeon1, Area1, GameStartButton, CardSelectButton, UnitSpawnButton1, BaseLevelUpButton, GameClearPanel, GoldPanel , Area2
+    Dungeon1, Area1, GameStartButton, CardSelectButton, UnitSpawnButton1, BaseLevelUpButton, GameClearPanel, GoldPanel , Area2, FadeMask
 }
