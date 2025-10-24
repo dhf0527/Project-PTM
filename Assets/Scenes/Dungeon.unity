@@ -9205,7 +9205,7 @@ MonoBehaviour:
     base_GoldPerSec_By_Level: 50
     base_MaxGold_By_Level: 9000
   bridge_Sprites:
-  - {fileID: 21300000, guid: 1531d8ff54ab86c42a573e4fc007fe7d, type: 3}
+  - {fileID: 21300000, guid: f5484bdaa3c97414ca0aff8b6d278655, type: 3}
   - {fileID: 21300000, guid: 7c70a95a22d7f444f9133cb0f5e348e1, type: 3}
   - {fileID: 21300000, guid: c32a8376c167ff6489ea2d95540c490d, type: 3}
   - {fileID: 21300000, guid: 8fd5459896e14fa4b885470985a08819, type: 3}
@@ -11993,7 +11993,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.6
+  m_fontSize: 66.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -38324,6 +38324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bbcd972fa743f458e9141eacd138dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade_Time: 0
 --- !u!4 &1259631752
 Transform:
   m_ObjectHideFlags: 0

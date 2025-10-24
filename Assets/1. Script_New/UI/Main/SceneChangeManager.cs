@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SceneChangeManager : MonoBehaviour
 {
+    /*
     private static SceneChangeManager instance;
     public static SceneChangeManager Instance
     {
@@ -30,6 +31,7 @@ public class SceneChangeManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
     }
+    */
 
     [SerializeField] float fade_Time;
 
