@@ -30,6 +30,7 @@ public class CutSceneManager : MonoBehaviour
         public bool isPause;
         public bool isSpeak;
         public string character_Speak;
+        public Sprite character_Sprite;
         public CharacterData character_Show;
         [TextArea(0,3)]
         public string dialogue;
@@ -61,9 +62,12 @@ public class CutSceneManager : MonoBehaviour
             CheckTutorial_MainScene();
     }
 
-    private void Start()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCutScene("1-1");
+        }
     }
 
     public void CheckTutorial_MainScene()
@@ -128,7 +132,10 @@ public class CutSceneManager : MonoBehaviour
                 character_Image_Left.gameObject.SetActive(true);
             }
             //스프라이트 변경
-            target_Image.sprite = list_Dialogue[dialogue_index].character_Show.characterSprite;
+            if (list_Dialogue[dialogue_index].character_Show)
+                target_Image.sprite = list_Dialogue[dialogue_index].character_Show.characterSprite;
+            else
+                target_Image.sprite = list_Dialogue[dialogue_index].character_Sprite;
         }
         else
         {
@@ -263,10 +270,11 @@ public class CutSceneManager : MonoBehaviour
 
             DialogueData dd = new DialogueData
             {
-                isRight = values[1].Trim() == "오른쪽",
-                character_Speak = values[2],
-                character_Show = NameToEnum(values[3].Trim()),
-                dialogue = values[7],
+                isRight = values[2].Trim() == "오른쪽",
+                character_Speak = values[3],
+                character_Sprite = Resources.Load<Sprite>("Sprites/Stand/" + "Stand_" + values[4]),
+                //character_Show = NameToEnum(values[3].Trim()),
+                dialogue = values[5] + "\n" + values[6] + "\n" + values[7],
                 isSpeak = true,
                 isPause = true
             };

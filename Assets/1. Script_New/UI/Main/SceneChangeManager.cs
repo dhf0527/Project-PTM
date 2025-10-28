@@ -38,6 +38,7 @@ public class SceneChangeManager : MonoBehaviour
     readonly static string mainSceneName = "MainScene";
     readonly static string dungeonSceneName = "Dungeon";
     readonly static string testSceneName = "TestScene";
+    readonly static string introSceneName = "IntroScene";
 
     public void OnToMainScene()
     {
@@ -61,6 +62,13 @@ public class SceneChangeManager : MonoBehaviour
 
         //테스트 씬 오류를 방지하기 위해 임시로 첫 번째 던전의 값을 삽입
         GameManager.Instance.current_Dungeon = MainManager.instance.dungeonDatas[0];
+        Time.timeScale = 1f;
+    }
+
+    public void OnToIntroScene()
+    {
+        SceneManager.LoadScene(introSceneName);
+        AudioManager.Instance.PlayerBgm(BGM_Enum.Intro);
         Time.timeScale = 1f;
     }
 

@@ -56,11 +56,6 @@ public class MainManager : MonoBehaviour
         OnMeal(GameManager.Instance?.current_Meal != null);
     }
 
-    private void Update()
-    {
-        //Test();
-    }
-
     //areaPanel에 던전 데이터 삽입
     public void OnSetDungeonDatas(int stage)
     {
@@ -127,5 +122,10 @@ public class MainManager : MonoBehaviour
 
         foreach (var item in areaPages[number].GetComponentsInChildren<Image>())
             item.color = targetColor;
+    }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
