@@ -31,11 +31,9 @@ public class CutSceneManager : MonoBehaviour
         public bool isSpeak;
         public string character_Speak;
         public Sprite character_Sprite;
-        public CharacterData character_Show;
         [TextArea(0,3)]
         public string dialogue;
     }
-    public List<CharacterData> characterDatas;
 
     public GameObject cutScene_Go;
     public Dialogue dialogue;
@@ -131,10 +129,6 @@ public class CutSceneManager : MonoBehaviour
                 character_Image_Right.gameObject.SetActive(false);
                 character_Image_Left.gameObject.SetActive(true);
             }
-            //스프라이트 변경
-            if (list_Dialogue[dialogue_index].character_Show)
-                target_Image.sprite = list_Dialogue[dialogue_index].character_Show.characterSprite;
-            else
                 target_Image.sprite = list_Dialogue[dialogue_index].character_Sprite;
         }
         else
@@ -273,7 +267,6 @@ public class CutSceneManager : MonoBehaviour
                 isRight = values[2].Trim() == "오른쪽",
                 character_Speak = values[3],
                 character_Sprite = Resources.Load<Sprite>("Sprites/Stand/" + "Stand_" + values[4]),
-                //character_Show = NameToEnum(values[3].Trim()),
                 dialogue = values[5] + "\n" + values[6] + "\n" + values[7],
                 isSpeak = true,
                 isPause = true
@@ -283,71 +276,19 @@ public class CutSceneManager : MonoBehaviour
 
         return dds;
     }
-
-    //csv파일에서 튜토리얼 데이터를 읽어오는 함수
-    public List<DialogueData> GetTutorialDatasByCsv(string fileName)
-    {
-        List<DialogueData> dds = new List<DialogueData>();
-
-        //Assets\Resources\CSV 폴더에 있는 fileName.csv 읽어오기
-        TextAsset csvFile = Resources.Load<TextAsset>("CSV/" + fileName);
-
-        //csv파일의 데이터를 한 줄씩 저장
-        string[] lines = csvFile.text.Split('\n');
-
-        //첫 줄은 헤더이므로 i=1
-        for (int i = 1; i < lines.Length; i++)
-        {
-            //공백 건너뛰기
-            if (string.IsNullOrWhiteSpace(lines[i]))
-                continue;
-
-            //따옴표(")사이에 있는 ,를 제외하고 ,를 기준으로 나누기
-            string[] values = Regex.Split(lines[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-
-            //따옴표 제거
-            for (int j = 0; j < values.Length; j++)
-                values[j] = values[j].Trim().Trim('"');
-
-            DialogueData dd = new DialogueData
-            {
-                isPause = !(values[2].Trim() == "X"),
-                isSpeak = !(values[3].Trim() == "X"),
-                //tutorialType = StringToTutorialType(values[7]),
-                isRight = values[6].Trim() == "오른쪽",
-                character_Speak = values[8],
-                character_Show = NameToEnum(values[9].Trim()),
-                dialogue = values[10] + "\n" + values[11] + "\n" + values[12]
-            };
-            dds.Add(dd);
-        }
-
-        return dds;
-    }
-
-    //캐릭터 이름을 string -> enum 바꿔주는 함수(매칭되지 않으면 0번째 반환)
-    CharacterData NameToEnum(string inputName)
-    {
-        for (int i = 0; i < characterDatas.Count; i++)
-        {
-            if (characterDatas[i].characterName == inputName)
-                return characterDatas[i];
-        }
-        return null;
-    }
     #endregion
 
     #region 튜토리얼
     public void StartTutorial(string eventName, Action onComplete = null)
     {
         isTutorial = true;
-        list_Dialogue = GetTutorialDatasByCsv_New(eventName);
+        list_Dialogue = GetTutorialDatasByCsv(eventName);
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
     }
 
     //csv파일에서 튜토리얼 데이터를 읽어오는 함수
-    public List<DialogueData> GetTutorialDatasByCsv_New(string fileName)
+    public List<DialogueData> GetTutorialDatasByCsv(string fileName)
     {
         List<DialogueData> dds = new List<DialogueData>();
 
@@ -376,10 +317,9 @@ public class CutSceneManager : MonoBehaviour
                 isPause = !(values[3].Trim() == "X"),
                 isSpeak = !(values[4].Trim() == "X"),
                 isRight = values[9].Trim() == "오른쪽",
-                character_Speak = values[11],
-                character_Show = NameToEnum(values[12].Trim()),
-                //dialogue = values[13] + "\n" + values[14] + "\n" + values[15]
-                dialogue = ReplaceDialogue(values[13]) + "\n" + ReplaceDialogue(values[14]) + "\n" + ReplaceDialogue(values[15])
+                character_Speak = values[10],
+                character_Sprite = Resources.Load<Sprite>("Sprites/Stand/" + "Stand_" + values[11]),
+                dialogue = ReplaceDialogue(values[12]) + "\n" + ReplaceDialogue(values[13]) + "\n" + ReplaceDialogue(values[14])
             };
             dds.Add(dd);
         }
