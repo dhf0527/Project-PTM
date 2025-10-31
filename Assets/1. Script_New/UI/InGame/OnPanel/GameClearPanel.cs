@@ -55,7 +55,7 @@ public class GameClearPanel : MonoBehaviour
             }
 
             //랭크 스타 이미지 변경
-            int clear_Rank = resultTime == 0 ? 0 : resultTime < 300 ? 3 : resultTime < 480 ? 2 : 1;
+            int clear_Rank = resultTime == 0 ? 0 : resultTime < GameManager.Instance.clearTimes[2] ? 3 : resultTime < GameManager.Instance.clearTimes[1] ? 2 : 1;
             if (clear_Rank == 0)
                 star_Image.gameObject.SetActive(false);
             else
@@ -117,7 +117,7 @@ public class GameClearPanel : MonoBehaviour
                 #endregion
 
                 //스타 획득
-                int pre_Rank = pre_Record == 0 ? 0 : pre_Record < 300 ? 3 : pre_Record < 480 ? 2 : 1;
+                int pre_Rank = pre_Record == 0 ? 0 : pre_Record < GameManager.Instance.clearTimes[2] ? 3 : pre_Record < GameManager.Instance.clearTimes[1] ? 2 : 1;
                 PlayerPrefs.SetInt("Star", PlayerPrefs.GetInt("Star") + clear_Rank - pre_Rank); 
 
                 PlayerPrefs.SetInt(clearData_Key, resultTime);

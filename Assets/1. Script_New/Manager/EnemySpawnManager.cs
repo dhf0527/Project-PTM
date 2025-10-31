@@ -50,6 +50,9 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("(Attack1 - 1) + (던전 번호(뒷자리)* Attack2)")]
     public float boss_Attack1;
     public float boss_Attack2;
+    [Header("(원래 공격 수 + plus) * multiple")]
+    public int boss_attackPlus;
+    public int boss_attackMultiple;
 
     public HpBar_Boss bossHpBar;
 
@@ -401,7 +404,8 @@ public class EnemySpawnManager : MonoBehaviour
         bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * ((boss_Hp1 - 1) + GameManager.Instance.current_Dungeon.stage * boss_Hp2);
         bossUnit.Cur_Hp = bossUnit.Max_Hp;
         bossUnit.unitStatData_st.attack_PlusPercent += ((boss_Attack1 - 1) + GameManager.Instance.current_Dungeon.number * boss_Attack2) * 100;
-        bossUnit.unitStatData_st.targetCount_Plus += bossUnit.ud.target_Count;
+        bossUnit.unitStatData_st.targetCount_Plus = boss_attackPlus;
+        bossUnit.unitStatData_st.targetCount_Multiple = boss_attackMultiple;
         bossUnit.killGold = killGold_Boss;
         //보스의 수호 버프 부여
         bossUnit.AddComponent<BossGuard>();

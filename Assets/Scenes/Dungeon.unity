@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc422d9faea14de41ae95e62a1c89523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickTime: 1.5
   unitIndex: 1
 --- !u!1 &14470874
 GameObject:
@@ -911,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6ac59b21504f74a8e3211a27e70a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickTime: 1.5
 --- !u!1 &33678202
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,6 +9324,8 @@ MonoBehaviour:
   boss_Hp2: 4
   boss_Attack1: 1
   boss_Attack2: 0.5
+  boss_attackPlus: 0
+  boss_attackMultiple: 0
   bossHpBar: {fileID: 1236025590}
   killGolds: 1e0000003c00000078000000
   killGold_Boss: 1000
@@ -20547,7 +20551,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
-    oldSize: {x: 1.9684373, y: 2.6245832}
+    oldSize: {x: 1.033444, y: 1.4616667}
     newSize: {x: 1.9684373, y: 2.6245832}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -28895,7 +28899,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
-    oldSize: {x: 1.9684373, y: 2.6245832}
+    oldSize: {x: 1.033444, y: 1.4616667}
     newSize: {x: 1.9684373, y: 2.6245832}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -36516,6 +36520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc422d9faea14de41ae95e62a1c89523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickTime: 1.5
   unitIndex: 2
 --- !u!1 &1222085078
 GameObject:
@@ -39538,6 +39543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6ac59b21504f74a8e3211a27e70a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickTime: 1.5
 --- !u!1 &1299560911
 GameObject:
   m_ObjectHideFlags: 0
@@ -64661,6 +64667,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skillDetail_Time
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: upgradeValue_armor
       value: 2
       objectReference: {fileID: 0}
@@ -67480,6 +67490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc422d9faea14de41ae95e62a1c89523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  longClickTime: 1.5
   unitIndex: 0
 --- !u!1 &6313257251995606450
 GameObject:

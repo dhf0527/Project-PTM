@@ -210,6 +210,44 @@ public class Card_new : MonoBehaviour
             itemParent_Go.SetActive(false);
     }
 
+    #region SetData 오버로딩
+    public void SetData(UnitData setUnitData)
+    {
+        SetFrame(setUnitData);
+
+        attackRangeType_Image.sprite = attackRangeType_Sprites[(int)setUnitData.attack_RangeType];
+        spawnCount_Text.text = $"X {setUnitData.spawn_Count}";
+        unitLevel_Text.text = $"LV.{setUnitData.level}";
+        faction_Image.sprite = faction_Sprites[(int)setUnitData.faction];
+        unit_Image.sprite = setUnitData.unit_Sprite;
+        unitName_Text.text = $"{setUnitData.unit_Name}";
+        SetTextColor(unitCost_Text, setUnitData.cost, setUnitData.cost, false);
+        SetTextColor(unitArmor_Text, setUnitData.armor, setUnitData.armor);
+        SetTextColor(unitHp_Text, setUnitData.hp, setUnitData.hp);
+        SetTextColor(unitDamage_Text, setUnitData.damage, setUnitData.damage);
+        SetTextColor(unitAttackSpeed_Text, setUnitData.attack_Speed, setUnitData.attack_Speed);
+        //AttackType[0] = none이므로 제외하고 1부터
+        attackType_Image.sprite = attackType_Sprites[(int)setUnitData.attack_Type - 1];
+
+        //패시브 아이콘
+        passive_Icon_go.SetActive(setUnitData.passive1 != "" || setUnitData.passive2 != "");
+
+        //아이템 표시
+        if (item)
+        {
+            itemParent_Go.SetActive(true);
+            itemPanel_Image.color = item.itemRarity == ItemRarity.Uncommon ? new Color(107 / 255f, 198 / 255f, 53 / 255f) : Color.white;
+            itemIcon_Image.sprite = item.itemIcon;
+
+            //{value}를 item.itemValue로 변환
+            string fixed_Text = Regex.Replace(item.itemDescription, @"\{value\}", item.itemValue.ToString());
+            itemDescription_Text.text = fixed_Text;
+        }
+        else
+            itemParent_Go.SetActive(false);
+    }
+#endregion
+
     void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
     {
         text.text = ((int)value).ToString();
@@ -271,4 +309,26 @@ public class Card_new : MonoBehaviour
             item.sprite = backGround3ByFaction_Sprite[(int)unit.ud.faction];
         }
     }
+
+    #region SetFrame 오버로딩
+    public void SetFrame(UnitData ud)
+    {
+        foreach (var item in upDownFrame_Image)
+        {
+            item.sprite = upDownFrameByFaction_Sprite[(int)ud.faction];
+        }
+        foreach (var item in backGroundFrame_Image)
+        {
+            item.sprite = backGroundByFaction_Sprite[(int)ud.faction];
+        }
+        foreach (var item in backGround2Frame_Image)
+        {
+            item.sprite = backGround2ByFaction_Sprite[(int)ud.faction];
+        }
+        foreach (var item in backGround3Frame_Image)
+        {
+            item.sprite = backGround3ByFaction_Sprite[(int)ud.faction];
+        }
+    }
+    #endregion
 }

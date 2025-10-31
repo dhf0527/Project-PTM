@@ -29,7 +29,7 @@ public class DungeonButton : MonoBehaviour
 
             //클리어 정보(0 = 미클리어, 1 = 노란 별, 2 파란 별, 3 빛나는 별)
             int clear_Time = PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{stage},{number}");
-            int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
+            int clear_Rank = clear_Time == 0 ? 0 : clear_Time < GameManager.Instance.clearTimes[2] ? 3 : clear_Time < GameManager.Instance.clearTimes[1] ? 2 : 1;
 
             if (clear_Rank != 0)
             {

@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public MealData current_Meal;
     [HideInInspector] public DungeonData current_Dungeon;
+    [Header("스타 달성 기준 시간(1,2,3성)")]
+    public List<float> clearTimes;
 
     private void Awake()
     {

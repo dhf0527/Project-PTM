@@ -6,13 +6,13 @@ public abstract class LongClick : MonoBehaviour
 {
     bool isClick;
     float clickTime;
-    float longClickTime = 1.5f;
+    [SerializeField] float longClickTime = 1f;
 
     private void Update()
     {
         if (isClick)
         {
-            clickTime += Time.deltaTime;
+            clickTime += Time.unscaledDeltaTime;
             if (clickTime > longClickTime)
             {
                 LongClickFunc();

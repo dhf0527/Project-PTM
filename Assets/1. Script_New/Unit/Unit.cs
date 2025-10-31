@@ -8,7 +8,7 @@ public abstract class Unit : MonoBehaviour
     public float AttackDamage { get { return Mathf.Max((ud.damage * (1 + unitStatData_st.attack_PlusPercent * 0.01f)) + unitStatData_st.attack_Plus, 0); }}
     public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed * (1 + unitStatData_st.attackSpeed_PlusPercent * 0.01f) + unitStatData_st.attackSpeed_Plus, 0.001f); } }
     public int Accuracy { get { return Mathf.Max(ud.accuracy + unitStatData_st.accuracy_Plus, 0);} }
-    public int TargetCount { get { return Mathf.Max(ud.target_Count + unitStatData_st.targetCount_Plus, 1); } }
+    public int TargetCount { get { return Mathf.Max((ud.target_Count + unitStatData_st.targetCount_Plus) * unitStatData_st.targetCount_Multiple, 1); } }
     public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); }}
     public int Armor { get { return Mathf.Max((int)(ud.armor * (1  + unitStatData_st.armor_PlusPercent * 0.01f)) + unitStatData_st.armor_Plus, 0); } }
     public int Avoidance { get { return Mathf.Max(ud.avoidance + unitStatData_st.avoidance_Plus, 0); } }
@@ -39,6 +39,8 @@ public abstract class Unit : MonoBehaviour
         public int accuracy_Plus;
         //타겟 수 증감
         public int targetCount_Plus;
+        //타겟 수 증감(배수)
+        public int targetCount_Multiple;
 
         //최종 피해량 증감
         public float totalDamageReduction_PlusPercent;
@@ -230,6 +232,7 @@ public abstract class Unit : MonoBehaviour
         */
 
         size = ud.size;
+        unitStatData_st.targetCount_Multiple = 1;
 
         SetHpBar();
 

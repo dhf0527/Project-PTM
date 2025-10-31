@@ -19,6 +19,8 @@ public class DungeonPanel : MonoBehaviour
     Unit bossUnit;
     public DetailPanel detail_Panel;
 
+    [SerializeField] List<TMP_Text> star_ClearTimes;
+
     #region 던전 별 변경 사항
     [Header("던전 별 변경")]
     [SerializeField] Image top_Image;
@@ -36,8 +38,16 @@ public class DungeonPanel : MonoBehaviour
     [Header("번호 별 변경")]
     [SerializeField] List<Sprite> sideScroll_Sprites;
     [SerializeField] List<Sprite> panel_Sprites;
-    
+
     #endregion
+
+    private void Start()
+    {
+        for (int i = 0; i < star_ClearTimes.Count; i++)
+        {
+            star_ClearTimes[i].text = $"{GameManager.Instance.clearTimes[i]}sec";
+        }
+    }
 
     public void SetData(DungeonData dd)
     {
@@ -78,7 +88,7 @@ public class DungeonPanel : MonoBehaviour
 
         //별 이미지 설정
         int clear_Time = PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{dd.stage},{dd.number}");
-        int clear_Rank = clear_Time == 0 ? 0 : clear_Time < 300 ? 3 : clear_Time < 480 ? 2 : 1;
+        int clear_Rank = clear_Time == 0 ? 0 : clear_Time < GameManager.Instance.clearTimes[2] ? 3 : clear_Time < GameManager.Instance.clearTimes[1] ? 2 : 1;
 
         if (clear_Rank == 0)
         {

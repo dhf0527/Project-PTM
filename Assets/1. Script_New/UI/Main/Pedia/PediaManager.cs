@@ -39,7 +39,7 @@ public class PediaManager : MonoBehaviour
 
     #region 유닛 탭 변수
     public GameObject unitList_go;
-    public UnitData_Pedia unitData;
+    public Card_new card;
     #endregion
 
     #region 아이템 탭 변수
@@ -68,7 +68,7 @@ public class PediaManager : MonoBehaviour
         skillDescription.gameObject.SetActive(false);
         heroDescription_go.SetActive(false);
         unitList_go.SetActive(false);
-        unitData.gameObject.SetActive(false);
+        card.transform.parent.gameObject.SetActive(false);
         itemList_go.SetActive(false);
         itemDescription.gameObject.SetActive(false);
         factionList_go.SetActive(false);
@@ -150,8 +150,8 @@ public class PediaManager : MonoBehaviour
     //유닛 클릭했을 때 UnitCell에서 호출
     public void SetUnitData(UnitData ud)
     {
-        unitData.gameObject.SetActive(true);
-        unitData.SetData(ud);
+        card.transform.parent.gameObject.SetActive(true);
+        card.SetData(ud);
         unitDetail.SetDetail(ud);
     }
     #endregion

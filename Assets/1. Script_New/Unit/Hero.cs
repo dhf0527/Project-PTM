@@ -32,6 +32,7 @@ public abstract class Hero : Unit
     [SerializeField] protected PlayerSkillIcon[] skillIcons = new PlayerSkillIcon[2];
     [SerializeField] protected string skill1_detail;
     [SerializeField] protected string skill2_detail;
+    [SerializeField] protected float skillDetail_Time;
 
     protected float nonCombatTime = 0;
 
@@ -305,7 +306,7 @@ public abstract class Hero : Unit
                 StopCoroutine(EnemySpawnManager.instance.cor_warn);
                 EnemySpawnManager.instance.cor_warn = null;
             }
-            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(skillDetail_Time));
 
             EnemySpawnManager.instance.warnText_Text.text = skill1_detail;
             PlayerPrefs.SetInt(ConstData.skillCount1 + ud.unit_Code, onSkillCount1 + 1);
@@ -356,7 +357,7 @@ public abstract class Hero : Unit
                 StopCoroutine(EnemySpawnManager.instance.cor_warn);
                 EnemySpawnManager.instance.cor_warn = null;
             }
-            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(4f));
+            EnemySpawnManager.instance.cor_warn = StartCoroutine(EnemySpawnManager.instance.C_SetWarnText(skillDetail_Time));
             EnemySpawnManager.instance.warnText_Text.text = skill2_detail;
 
             PlayerPrefs.SetInt(ConstData.skillCount2 + ud.unit_Code, onSkillCount2 + 1);
