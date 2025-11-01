@@ -598,7 +598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD08\uAE30\uD654"
+  m_text: "\uB370\uC774\uD130 \uCD08\uAE30\uD654"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fe5f154871c0714f844f69a4ebd40af, type: 2}
   m_sharedMaterial: {fileID: -1487015921539717366, guid: 6fe5f154871c0714f844f69a4ebd40af, type: 2}
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -54801,14 +54801,6 @@ MonoBehaviour:
   circleMask_Image: {fileID: 1567510821}
   mask_trans: {fileID: 1363779866}
   touchBlocker: {fileID: 1843998014}
-  characterDatas:
-  - {fileID: 11400000, guid: c51e0caa161e65b499ba15d82603bc7d, type: 2}
-  - {fileID: 11400000, guid: ad01d08c4956e7f4cad6588a97e066fd, type: 2}
-  - {fileID: 11400000, guid: bd5bacaf273cf7a459852a5c2c068a68, type: 2}
-  - {fileID: 11400000, guid: dc0e7adbca8eae84b95036249f4cabc4, type: 2}
-  - {fileID: 11400000, guid: 91ab89d1147a36d44a5ec63fc8aed213, type: 2}
-  - {fileID: 11400000, guid: 11072338739048140b9a30ac1f13e2e5, type: 2}
-  - {fileID: 11400000, guid: 7fbb3b461c44b3d468983fb338fb79ff, type: 2}
   cutScene_Go: {fileID: 273130281}
   dialogue: {fileID: 1825137024}
   characterName_Text: {fileID: 319649646}
@@ -86954,8 +86946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326, y: -175}
-  m_SizeDelta: {x: 140, y: 67}
+  m_AnchoredPosition: {x: 300, y: -175}
+  m_SizeDelta: {x: 256.8, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952638300
 MonoBehaviour:
@@ -86977,7 +86969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1867530285, guid: bdaafd705a904e04681eb54b696cb198, type: 3}
+  m_Sprite: {fileID: 2005490437, guid: bdaafd705a904e04681eb54b696cb198, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
