@@ -9322,10 +9322,10 @@ MonoBehaviour:
   boss_BaseHp: 28
   boss_Hp1: 4
   boss_Hp2: 4
-  boss_Attack1: 1
+  boss_Attack1: 2
   boss_Attack2: 0.5
-  boss_attackPlus: 0
-  boss_attackMultiple: 0
+  boss_attackPlus: 3
+  boss_attackMultiple: 1
   bossHpBar: {fileID: 1236025590}
   killGolds: 1e0000003c00000078000000
   killGold_Boss: 1000

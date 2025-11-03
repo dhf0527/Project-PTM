@@ -6058,8 +6058,8 @@ MonoBehaviour:
   current_Dungeon: {fileID: 0}
   clearTimes:
   - 600
-  - 480
-  - 300
+  - 420
+  - 240
 --- !u!4 &100695857
 Transform:
   m_ObjectHideFlags: 0
