@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemList : MonoBehaviour
 {
     [SerializeField] Toggle itemToggle;
+    [SerializeField] RectTransform toggles_rectTrans;
     [SerializeField] GameObject itemList;
     [SerializeField] GameObject mealList;
 
@@ -22,5 +23,10 @@ public class ItemList : MonoBehaviour
 
         itemMask.SetActive(!itemToggle.isOn);
         mealMask.SetActive(itemToggle.isOn);
+
+        Vector2 tmp_vec = GetComponent<RectTransform>().sizeDelta;
+        tmp_vec.y = itemToggle.isOn ? toggles_rectTrans.sizeDelta.y + itemList.GetComponent<RectTransform>().sizeDelta.y :
+                    toggles_rectTrans.sizeDelta.y + mealList.GetComponent<RectTransform>().sizeDelta.y;
+        GetComponent<RectTransform>().sizeDelta = tmp_vec;
     }
 }
