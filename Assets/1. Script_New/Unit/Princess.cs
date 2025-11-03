@@ -13,6 +13,8 @@ public class Princess : Hero
     [SerializeField] int skill2_accuracy_increase;
     [SerializeField] float skill2_buff_Time;
 
+    [SerializeField] GameObject crownSword_prf;
+
     //공주 스킬1: 방패 강타
     public override void OnSkill1()
     {
@@ -48,6 +50,8 @@ public class Princess : Hero
     public override void OnSkill2()
     {
         base.OnSkill2();
+
+        Instantiate(crownSword_prf, transform).transform.position += Vector3.up * 1.7f;
 
         nonCombatTime = 0;
         float skillRange = 1f;

@@ -50,12 +50,7 @@ public class CutSceneManager : MonoBehaviour
         
          //Æ©Åä¸®¾ó
         if(SceneManager.GetActiveScene().name == "Dungeon")
-        {
-            if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_1) == 0)
-                Tutorial_Dungeon_1();
-            else if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_2) == 0)
-                Tutorial_Dungeon_2();
-        }
+            CheckTutorial_DungeonScene();
         else if(SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
             CheckTutorial_MainScene();
     }
@@ -66,6 +61,14 @@ public class CutSceneManager : MonoBehaviour
         {
             StartCutScene("1-1");
         }
+    }
+
+    public void CheckTutorial_DungeonScene()
+    {
+        if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_1) == 0)
+            Tutorial_Dungeon_1();
+        else if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_2) == 0)
+            Tutorial_Dungeon_2();
     }
 
     public void CheckTutorial_MainScene()
