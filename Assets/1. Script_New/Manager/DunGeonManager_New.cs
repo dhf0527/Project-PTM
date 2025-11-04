@@ -270,9 +270,11 @@ public class DunGeonManager_New : MonoBehaviour
 
     public Unit SpawnUnit(Unit spawnUnit)
     {
+        spawnUnit.InitData();
         //유닛 하나 생성 및 설정
         Unit unit = Instantiate(spawnUnit, spawn_Trans);
         unit.unitStatData_st = spawnUnit.unitStatData_st;
+        
         unit.transform.position += SpawnY(unit) + Vector3.forward * spawn_Z;
         spawn_Z += 0.001f;
         unit.transform.parent = unit_Parent;
@@ -288,6 +290,8 @@ public class DunGeonManager_New : MonoBehaviour
             unit.unitStatData_st.attack_Plus += (EnemySpawnManager.instance.cur_Wave + 1) * (GameManager.Instance.current_Meal.mealValue);
 
         onStageUnits_Test.Add(unit);
+        
+
         return unit;
     }
 

@@ -231,10 +231,15 @@ public abstract class Unit : MonoBehaviour
             ud.attack_Range = ud.size == Unit_Size.Small ? 2f : ud.size == Unit_Size.Medium ? 2.5f : 3f;
         */
 
+        SetHpBar();
+
+        InitData();
+    }
+
+    public void InitData()
+    {
         size = ud.size;
         unitStatData_st.targetCount_Multiple = 1;
-
-        SetHpBar();
 
         origin_Scale = 1;
         scaleVector = Vector3.one;
