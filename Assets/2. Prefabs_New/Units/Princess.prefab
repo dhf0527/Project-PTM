@@ -365,6 +365,8 @@ MonoBehaviour:
   skill1_attackSpeed_Decrease: 80
   skill2_accuracy_increase: 40
   skill2_buff_Time: 12
+  imperialShield_prf: {fileID: 8082916998547654140, guid: 381160e2a1176c145b72145ea195c935, type: 3}
+  crownSword_prf: {fileID: 2912708730199687156, guid: 19f0bbadac33a4341a9136d8c7ba4429, type: 3}
 --- !u!61 &6395019636584269671
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,12 +13,15 @@ public class Princess : Hero
     [SerializeField] int skill2_accuracy_increase;
     [SerializeField] float skill2_buff_Time;
 
+    [SerializeField] GameObject imperialShield_prf;
     [SerializeField] GameObject crownSword_prf;
 
     //공주 스킬1: 방패 강타
     public override void OnSkill1()
     {
         base.OnSkill1();
+
+        Instantiate(imperialShield_prf, transform).transform.position += Vector3.up * 0.7f;
 
         nonCombatTime = 0;
         float skillRange = 1.5f;

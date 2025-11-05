@@ -64809,10 +64809,6 @@ PrefabInstance:
         \uC99D\uAC00 \uBD80\uC5EC"
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
-      propertyPath: crownSword_prf
-      value: 
-      objectReference: {fileID: 2912708730199687156, guid: 19f0bbadac33a4341a9136d8c7ba4429, type: 3}
-    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
       value: 10
       objectReference: {fileID: 0}
@@ -64822,7 +64818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_coolTime
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_coolTime
