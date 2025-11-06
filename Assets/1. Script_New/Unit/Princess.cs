@@ -21,7 +21,7 @@ public class Princess : Hero
     {
         base.OnSkill1();
 
-        Instantiate(imperialShield_prf, transform).transform.position += Vector3.up * 0.7f;
+        Instantiate(imperialShield_prf, transform.parent).transform.position = transform.position + Vector3.up * 0.7f;
 
         nonCombatTime = 0;
         float skillRange = 1.5f;

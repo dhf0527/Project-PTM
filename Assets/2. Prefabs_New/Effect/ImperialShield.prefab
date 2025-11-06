@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7274428565012629607}
   - component: {fileID: 5756831581501966927}
   m_Layer: 0
-  m_Name: Square
+  m_Name: ShieldSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9221983471946834445}
   - component: {fileID: 5905669376074812795}
-  - component: {fileID: 4108404878546629119}
+  - component: {fileID: 6146681756683008757}
   m_Layer: 0
   m_Name: ImperialShield
   m_TagString: Untagged
@@ -139,7 +139,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4108404878546629119
+--- !u!114 &6146681756683008757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8082916998547654140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488005e92e13d9c448817e737432d6f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7686ff6e837b34043af6bb5f01ad6158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield_Particle_prf: {fileID: 7198950610905783107, guid: d678ae47681055d49bc5e5298448a277, type: 3}
+  shieldSprite_Trans: {fileID: 7274428565012629607}
+  particle_period: 0.08

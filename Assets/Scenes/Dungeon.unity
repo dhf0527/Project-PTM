@@ -30389,6 +30389,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 283656905}
+        m_TargetAssemblyTypeName: DunGeonManager_New, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &999388562
 GameObject:
   m_ObjectHideFlags: 0
@@ -64818,7 +64830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_coolTime
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_coolTime
