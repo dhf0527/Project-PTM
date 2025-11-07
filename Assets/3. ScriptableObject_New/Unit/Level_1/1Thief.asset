@@ -20,10 +20,10 @@ MonoBehaviour:
   faction: 0
   move_Speed: 200
   hp: 40
-  damage: 10
+  damage: 12
   attack_Speed: 6
   accuracy: 60
-  avoidance: 80
+  avoidance: 60
   armor: 0
   attack_RangeType: 1
   target_Count: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   resistance_Type: 0
   spawn_Count: 1
   size: 0
-  cost: 130
+  cost: 150
   passive1: "\uAC15\uD0C8"
   passive1_Detail: "\uC790\uC2E0\uC758 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uBA85\uC911\uD560
     \uB54C\uB9C8\uB2E4 1\uACE8\uB4DC\uB97C \uC5BB\uB294\uB2E4. \uC790\uC2E0\uC774
