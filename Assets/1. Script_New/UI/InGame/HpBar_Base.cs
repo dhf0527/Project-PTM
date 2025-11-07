@@ -44,6 +44,7 @@ public abstract class HpBar_Base : MonoBehaviour
             up_Y = height;
         //체력바 위치 설정
         Vector3 pos = unit.transform.position + Vector3.up * up_Y;
+
         transform.position = pos;
         //transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, pos);
     }
@@ -55,6 +56,12 @@ public abstract class HpBar_Base : MonoBehaviour
 
         if (isActive)
             unit.DisplayHpBar_Buff();
+    }
+
+    private void OnEnable()
+    {
+        if (unit)
+            SetHpPos(up_Y);
     }
 
     protected void Start()

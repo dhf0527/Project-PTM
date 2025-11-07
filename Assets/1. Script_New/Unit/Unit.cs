@@ -256,6 +256,7 @@ public abstract class Unit : MonoBehaviour
     {
         //체력바를 world canvas에 생성
         hpBar = Instantiate(WorldCanavsManager.instance.hpBar_Prf, WorldCanavsManager.instance.worldCanvas_Trans);
+
         //체력바 연동
         hpBar.unit = this;
         //체력바 위치 설정
@@ -670,7 +671,8 @@ public abstract class Unit : MonoBehaviour
             if (cur_Hp != Max_Hp)
             {
                 StopCoroutine(cor_HpBarInActive);
-                hpBar?.gameObject?.SetActive(true);
+                if(hpBar)
+                    hpBar.gameObject.SetActive(true);
             }
             else
                 cor_HpBarInActive = StartCoroutine(C_HpBarInActive());
@@ -753,6 +755,7 @@ public abstract class Unit : MonoBehaviour
     IEnumerator C_HpBarInActive()
     {
         yield return new WaitForSeconds(3f);
-        hpBar?.gameObject.SetActive(false);
+        if(hpBar)
+            hpBar.gameObject.SetActive(false);
     }
 }
