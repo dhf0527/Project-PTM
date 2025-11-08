@@ -1636,9 +1636,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 380, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: 420, y: 330}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &23979054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -12060,7 +12060,7 @@ GameObject:
   - component: {fileID: 248499524}
   - component: {fileID: 248499523}
   m_Layer: 5
-  m_Name: Announcement_Battle (1)
+  m_Name: Announcement_Instar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12083,8 +12083,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -861.25}
-  m_SizeDelta: {x: 545.3, y: 175.8}
+  m_AnchoredPosition: {x: 0, y: -921.7}
+  m_SizeDelta: {x: 785, y: 128.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &248499523
 MonoBehaviour:
@@ -40889,7 +40889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 175, y: 270}
+  m_AnchoredPosition: {x: 175, y: 320}
   m_SizeDelta: {x: 200, y: 415}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &917509530
@@ -60316,8 +60316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -83.6}
-  m_SizeDelta: {x: 669.25, y: 122.28003}
+  m_AnchoredPosition: {x: 0, y: -83.3}
+  m_SizeDelta: {x: 1671.9, y: 122.28003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314029871
 MonoBehaviour:
@@ -60339,9 +60339,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC800\uD76C\uC758 \uAC8C\uC784\uC774 \uB9C8\uC74C\uC5D0 \uB4DC\uC168\uB2E4\uBA74\n'\uC77C\uC6A9\uC9C1
-    \uC6A9\uBCD1\uB2E8'\uC778\uC2A4\uD0C0\uADF8\uB7A8 \uACC4\uC815 \n\uD314\uB85C\uC6B0
-    \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!\n"
+  m_text: "'\uC77C\uC6A9\uC9C1 \uC6A9\uBCD1\uB2E8'\uC778\uC2A4\uD0C0\uADF8\uB7A8
+    \uACC4\uC815 \uD314\uB85C\uC6B0\uD558\uC2DC\uACE0 \n\uB354 \uB9CE\uC740 \uC815\uBCF4\uB97C
+    \uD655\uC778\uD558\uC138\uC694!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fe5f154871c0714f844f69a4ebd40af, type: 2}
   m_sharedMaterial: {fileID: -1487015921539717366, guid: 6fe5f154871c0714f844f69a4ebd40af, type: 2}
