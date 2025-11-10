@@ -41,8 +41,5 @@ public class ImageAnimation : MonoBehaviour
             tmp_Color.a = 1 - curTime / period_dissolve;
             pre_img.color = tmp_Color;
         }
-        
-
-        
     }
 }
