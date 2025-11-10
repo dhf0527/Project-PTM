@@ -390,6 +390,8 @@ public class EnemySpawnManager : MonoBehaviour
         MakeShockWave();
         //보스 소환
         bossUnit = Spawn_Unit(boss_Unit);
+        //보스 소환 효과음
+        AudioManager.Instance.PlayerSfx(SFX_Enum.BossSpawned);
         //넉백 방지
         bossUnit.canKnockBack = false;
         //크기 조정

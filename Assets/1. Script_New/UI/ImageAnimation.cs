@@ -30,13 +30,18 @@ public class ImageAnimation : MonoBehaviour
                 index -= sprites.Count;
 
             img.sprite = sprites[(index + 1) % sprites.Count];
-            pre_img.sprite = sprites[index];
+            if(pre_img)
+                pre_img.sprite = sprites[index];
             curTime = 0;
         }
 
-        Color tmp_Color = pre_img.color;
-        tmp_Color.a = 1 - curTime / period_dissolve;
-        pre_img.color = tmp_Color;
+        if (pre_img)
+        {
+            Color tmp_Color = pre_img.color;
+            tmp_Color.a = 1 - curTime / period_dissolve;
+            pre_img.color = tmp_Color;
+        }
+        
 
         
     }
