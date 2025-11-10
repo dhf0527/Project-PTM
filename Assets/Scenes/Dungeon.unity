@@ -29025,7 +29025,7 @@ MonoBehaviour:
   - 3000
   - 4000
   - 5000
-  armor_By_Stage: 060000000a0000000e00000010000000
+  armor_By_Stage: 06000000080000000a0000000c000000
 --- !u!1001 &965256734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64808,7 +64808,7 @@ PrefabInstance:
       objectReference: {fileID: 172278284}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_Damage
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_detail
