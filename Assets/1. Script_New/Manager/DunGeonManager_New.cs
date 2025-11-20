@@ -217,12 +217,19 @@ public class DunGeonManager_New : MonoBehaviour
         if (Cur_Gold >= base_UpgradeCost)
         {
             if (baseLevelUpPanel.mask.activeInHierarchy)
-                baseLevelUpPanel.levelUp_Anim.Play();
+            {
+                baseLevelUpPanel.levelUp_Anim.SetTrigger("ready");
+                baseLevelUpPanel.anim.SetTrigger("ready");
+            }
 
             baseLevelUpPanel.mask.SetActive(false);
+            baseLevelUpPanel.anim.SetBool("idle", false);
         }
         else
+        {
             baseLevelUpPanel.mask.SetActive(true);
+            baseLevelUpPanel.anim.SetBool("idle", true);
+        }
     }
 
     #region 유닛 생산 함수(골드 포함)
@@ -347,6 +354,7 @@ public class DunGeonManager_New : MonoBehaviour
         teamBase.Base_LevelUp();
         //골드 관련 레벨업 처리
         Set_GoldByBaseLevel();
+        baseLevelUpPanel.anim.SetTrigger("levelUp");
 
         AudioManager.Instance.PlayerSfx(SFX_Enum.BaseUpgrade);
     }

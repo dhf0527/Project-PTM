@@ -9,7 +9,7 @@ public class PlayerSkillIcon : MonoBehaviour
 
     public Image delay_Image;
     public Image coolDownIcon_Image;
-    public Animation anim;
+    public Animator anim;
     Animation clickAnim;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class PlayerSkillIcon : MonoBehaviour
     public void SetDelayImage(float fillAmount)
     {
         if (fillAmount <= 0)
-            anim.Play();
+            anim.SetTrigger("ready");
 
         coolDownIcon_Image.gameObject.SetActive(fillAmount > 0);
         delay_Image.fillAmount = fillAmount;

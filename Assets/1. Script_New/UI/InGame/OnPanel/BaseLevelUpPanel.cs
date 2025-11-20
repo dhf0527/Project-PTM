@@ -6,21 +6,23 @@ using UnityEngine;
 public class BaseLevelUpPanel : MonoBehaviour
 {
     public GameObject mask;
-    public Animation levelUp_Anim;
+    public Animator levelUp_Anim;
     [SerializeField] TMP_Text level_Text;
     [SerializeField] TMP_Text cost_Text;
-    Animation anim;
+    public Animator anim;
 
     private void Awake()
     {
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
     }
 
     public void Set_LevelText(int level)
     {
         level_Text.text = $"Level {level}";
+        /*
         if (level != 1)
             Anim_LevelUp();
+        */
     }
     public void Set_CostText(int cost)
     {
@@ -34,6 +36,6 @@ public class BaseLevelUpPanel : MonoBehaviour
 
     public void Anim_LevelUp()
     {
-        anim.Play();
+        anim.SetTrigger("levelUp");
     }
 }

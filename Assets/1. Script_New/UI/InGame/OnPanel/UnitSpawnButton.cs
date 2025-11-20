@@ -15,7 +15,8 @@ public class UnitSpawnButton : MonoBehaviour
     [SerializeField] Image unit_Image;
     [SerializeField] Image lock_Image;
     [SerializeField] Image coolDown_Image;
-    [SerializeField] Animation anim;
+    [SerializeField] GameObject blackMask;
+    [SerializeField] Animator anim;
 
     [HideInInspector] public bool isCoolDown;
     float coolTime;
@@ -33,10 +34,15 @@ public class UnitSpawnButton : MonoBehaviour
             else
             {
                 isCoolDown = false;
-                anim.Play();
+                anim.SetTrigger("ready");
                 AudioManager.Instance.PlayerSfx(SFX_Enum.UnitCoolDown);
             }
         }
+
+        if (unit && unit.Cost <= DunGeonManager_New.instance.Cur_Gold)
+            blackMask.SetActive(false);
+        else
+            blackMask.SetActive(true);
     }
 
     //UI¿¬µ¿
