@@ -218,17 +218,17 @@ public class DunGeonManager_New : MonoBehaviour
         {
             if (baseLevelUpPanel.mask.activeInHierarchy)
             {
-                baseLevelUpPanel.levelUp_Anim.SetTrigger("ready");
-                baseLevelUpPanel.anim.SetTrigger("ready");
+                baseLevelUpPanel.levelUpWave_Anim.SetTrigger("ready");
+                baseLevelUpPanel.anim.SetBool("ready", true);
             }
 
             baseLevelUpPanel.mask.SetActive(false);
-            baseLevelUpPanel.anim.SetBool("idle", false);
         }
         else
         {
             baseLevelUpPanel.mask.SetActive(true);
-            baseLevelUpPanel.anim.SetBool("idle", true);
+            //baseLevelUpPanel.levelUpWave_Anim.SetTrigger("ready");
+            baseLevelUpPanel.anim.SetBool("ready", false);
         }
     }
 

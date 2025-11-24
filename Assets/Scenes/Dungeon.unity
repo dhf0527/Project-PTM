@@ -5304,7 +5304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mask: {fileID: 1641037532}
-  levelUp_Anim: {fileID: 861036463}
+  levelUpWave_Anim: {fileID: 861036463}
   level_Text: {fileID: 1421806930}
   cost_Text: {fileID: 1558142816}
   anim: {fileID: 0}
