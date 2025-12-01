@@ -50,9 +50,16 @@ public class CutSceneManager : MonoBehaviour
         
          //Æ©Åä¸®¾ó
         if(SceneManager.GetActiveScene().name == "Dungeon")
+        {
+            ReadyTutorial();
             CheckTutorial_DungeonScene();
+        }
         else if(SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
+        {
+            if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 0)
+                PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 1);
             CheckTutorial_MainScene();
+        }
     }
 
     private void Update()
@@ -63,22 +70,42 @@ public class CutSceneManager : MonoBehaviour
         }
     }
 
+    void ReadyTutorial()
+    {
+        int cur_Stage = GameManager.Instance.current_Dungeon.stage;
+        int cur_Number = GameManager.Instance.current_Dungeon.number;
+
+        if(cur_Stage == 1 && cur_Number == 1 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1) == 0)
+            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1, 1);
+        else if (cur_Stage == 1 && cur_Number == 2 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2) == 0)
+            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2, 1);
+    }
+
     public void CheckTutorial_DungeonScene()
     {
-        if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_1) == 0)
+        if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1) == 1)
             Tutorial_Dungeon_1();
-        else if (GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.Dungeon_2) == 0)
+        else if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2) == 1)
             Tutorial_Dungeon_2();
     }
 
     public void CheckTutorial_MainScene()
     {
-        if (PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_1) == 0)
+        if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 1)
+        {
             Tutorial_WorldMap_1();
-        else if (PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{2}") != 0 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_2) == 0)
+            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 2);
+        }
+        else if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_2) == 1)
+        {
             Tutorial_WorldMap_2();
-        else if (PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{1},{3}") != 0 && PlayerPrefs.GetInt(ConstData.tutorialComplete + TutorialKey.WorldMap_3) == 0)
+            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_2, 2);
+        }
+        else if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3) == 1)
+        {
             Tutorial_WorldMap_3();
+            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3, 2);
+        }
     }
 
     //´ÙÀ½ ´ë»ç Ãâ·Â
@@ -88,6 +115,7 @@ public class CutSceneManager : MonoBehaviour
         if (dialogue_index == list_Dialogue.Count)
         {
             //ÄÆ¾À Á¾·á
+
             cutScene_Go.SetActive(false);
             EndCutScene();
             return;
@@ -158,7 +186,7 @@ public class CutSceneManager : MonoBehaviour
         dialogue_index = 0;
         action_index = 0;
         //ÄÆ¾À ¿­¶÷ ±â·Ï
-        PlayerPrefs.SetInt(ConstData.tutorialComplete + cur_TutorialKey, 1);
+        PlayerPrefs.SetInt(ConstData.tutorialReady + cur_TutorialKey, 2);
         canvas_2.SetActive(false);
 
         if (DunGeonManager_New.instance)

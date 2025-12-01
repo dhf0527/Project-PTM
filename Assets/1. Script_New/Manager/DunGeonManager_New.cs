@@ -553,6 +553,7 @@ public class DunGeonManager_New : MonoBehaviour
 
     public void OpenGameOverPanel()
     {
+        OnPause(true);
         EnemySpawnManager.instance.StopWarn();
         GameOverPanel.gameObject.SetActive(true);
         GameClearPanel.gameObject.SetActive(false);

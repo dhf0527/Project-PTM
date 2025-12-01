@@ -116,6 +116,19 @@ public class GameClearPanel : MonoBehaviour
                 }
                 #endregion
 
+                #region ÄÆ¾À Á¶°Ç Ã¼Å©
+                if(pre_Record == 0)
+                {
+                    //Æ©Åä¸®¾ó Ã¼Å©
+                    if (stage == 1 && number == 2)
+                        PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_2, 1);
+                    else if (stage == 1 && number == 3)
+                        PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3, 1);
+
+                    //´ëÈ­ÄÆ¾À Ã¼Å©
+                }
+                #endregion
+
                 //½ºÅ¸ È¹µæ
                 int pre_Rank = pre_Record == 0 ? 0 : pre_Record < GameManager.Instance.clearTimes[2] ? 3 : pre_Record < GameManager.Instance.clearTimes[1] ? 2 : 1;
                 PlayerPrefs.SetInt("Star", PlayerPrefs.GetInt("Star") + clear_Rank - pre_Rank); 

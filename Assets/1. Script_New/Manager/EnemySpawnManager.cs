@@ -277,6 +277,12 @@ public class EnemySpawnManager : MonoBehaviour
             //15초 경과 시 보스 등장
             if (!isBossSpawned && cur_WaveTime >= 15f)
                 OnBossSpawn();
+
+            /*
+            //시간 초과시 게임오버
+            if(cur_WaveTime > waveTimes[waveTimes.Length - 1])
+                DunGeonManager_New.instance.OpenGameOverPanel();
+            */
         }
         //웨이브 시간 종료 시 다음 웨이브로 넘어감
         else if (cur_WaveTime >= waveTimes[cur_Wave])

@@ -35,23 +35,23 @@ public class TestManager : MonoBehaviour
     {
         //모두 클리어 처리
         for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
+            PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)i, 2);
 
-        PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)keyIndex, 0);
+        PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)keyIndex, 1);
     }
 
     //튜토리얼 열람 초기화
     public void Test_ResetTutorial()
     {
         for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 0);
+            PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)i, 0);
     }
 
     //튜토리얼 읽음 처리
     public void Test_TutorialComplete()
     {
         for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialComplete + (TutorialKey)i, 1);
+            PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)i, 2);
     }
     #endregion
     #region 해금
