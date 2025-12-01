@@ -9328,7 +9328,7 @@ MonoBehaviour:
   - 30
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_BaseHp: 28
-  boss_Hp1: 8
+  boss_Hp1: 4
   boss_Hp2: 4
   boss_Attack1: 1
   boss_Attack2: 0.5
@@ -29104,11 +29104,11 @@ MonoBehaviour:
   scaleVector: {x: 0, y: 0, z: 0}
   killGold: 0
   hp_By_Stage:
+  - 1500
   - 2000
+  - 2500
   - 3000
-  - 4000
-  - 5000
-  armor_By_Stage: 06000000080000000a0000000c000000
+  armor_By_Stage: 0400000006000000080000000a000000
 --- !u!1001 &965256734
 PrefabInstance:
   m_ObjectHideFlags: 0

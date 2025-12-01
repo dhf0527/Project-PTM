@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 5690532506024597163, guid: eb22c443f8e45aa4bb39a1ccd5c2ef94, type: 3}
   units_Wave3:
-  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   - {fileID: 0}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   - {fileID: 5690532506024597163, guid: eb22c443f8e45aa4bb39a1ccd5c2ef94, type: 3}
   stage_Faction: 1

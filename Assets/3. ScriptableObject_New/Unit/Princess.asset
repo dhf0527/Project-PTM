@@ -18,7 +18,7 @@ MonoBehaviour:
   unit_Name: "\uCF00\uC774 \uACF5\uC8FC"
   unit_SubName: "\uB9D0\uAD04\uB7C9\uC774 \uACF5\uC8FC"
   faction: 0
-  move_Speed: 200
+  move_Speed: 300
   hp: 300
   damage: 20
   attack_Speed: 5
