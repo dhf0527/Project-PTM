@@ -6058,7 +6058,7 @@ MonoBehaviour:
   current_Dungeon: {fileID: 0}
   clearTimes:
   - 600
-  - 420
+  - 360
   - 240
 --- !u!4 &100695857
 Transform:
@@ -12065,7 +12065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &248499522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19580,7 +19580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &442231365
 RectTransform:
   m_ObjectHideFlags: 0
