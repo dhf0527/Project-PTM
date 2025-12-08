@@ -40,6 +40,11 @@ public class TestManager : MonoBehaviour
         PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)keyIndex, 1);
     }
 
+    public void Test_Cartoon()
+    {
+        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.StartScene_1, 0);
+    }
+
     //튜토리얼 열람 초기화
     public void Test_ResetTutorial()
     {

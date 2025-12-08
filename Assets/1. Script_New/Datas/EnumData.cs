@@ -68,6 +68,11 @@ public enum TutorialKey
     WorldMap_1, WorldMap_2, WorldMap_3, Dungeon_1, Dungeon_2,
 }
 
+public enum CutSceneKey
+{
+    StartScene_1
+}
+
 public enum SearchKey
 {
     Dungeon1, Area1, GameStartButton, CardSelectButton, UnitSpawnButton1, BaseLevelUpButton, GameClearPanel, GoldPanel , Area2, FadeMask

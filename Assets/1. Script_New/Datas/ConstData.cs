@@ -19,6 +19,7 @@ public static class ConstData
     public const string pedia_Unlock = "pedia_Unlock";
     public const string new_Unlock = "new_Unlock";
     public const string tutorialReady = "tutorialRready";    //ConstData.tutorialReady + TutorialKey.Dungeon_1
+    public const string cutSceneReady = "cutSceneRready";    //ConstData.cutSceneReady + TutorialKey.Dungeon_1
 
     public const string skillCount1 = "skillCount1";    //ConstData.skillCount1 + ud.unit_Code
     public const string skillCount2 = "skillCount2";

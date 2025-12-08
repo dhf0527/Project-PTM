@@ -44,6 +44,12 @@ public class CutSceneManager : MonoBehaviour
     List<DialogueData> list_Dialogue;
     int dialogue_index = 0;
 
+    [SerializeField] List<Image> cutScenes;
+    [SerializeField] List<Sprite> cutSceneSprites;
+    int cutScene_index = 0;
+    int cutScene_maxIndex;
+    CutSceneKey cur_CutSceneKey;
+
     private void Awake()
     {
         instance = this;
@@ -58,6 +64,8 @@ public class CutSceneManager : MonoBehaviour
         {
             if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 0)
                 PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 1);
+            if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.StartScene_1) == 0)
+                PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.StartScene_1, 1);
             CheckTutorial_MainScene();
         }
     }
@@ -66,7 +74,8 @@ public class CutSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            StartCutScene("1-1");
+            //StartCutScene("1-1");
+            PlayCutscene_StartScene1();
         }
     }
 
@@ -91,7 +100,11 @@ public class CutSceneManager : MonoBehaviour
 
     public void CheckTutorial_MainScene()
     {
-        if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 1)
+        if(PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.StartScene_1) == 1)
+        {
+            PlayCutscene_StartScene1();
+        }
+        else if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 1)
         {
             Tutorial_WorldMap_1();
             PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 2);
@@ -663,4 +676,50 @@ public class CutSceneManager : MonoBehaviour
     #endregion
     #endregion
 
+    #region ¸¸È­ ÄÆ¾À
+    void PlayCutscene_StartScene1()
+    {
+        cutScene_index = 0;
+        cutScenes[0].sprite = cutSceneSprites[cutScene_index];
+        cutScenes[1].sprite = cutSceneSprites[cutScene_index + 1];
+        foreach (var item in cutScenes)
+        {
+            item.gameObject.SetActive(true);
+        }
+
+        cutScene_maxIndex = cutSceneSprites.Count - 1;
+        cur_CutSceneKey = CutSceneKey.StartScene_1;
+    }
+
+    public void NextCutscene()
+    {
+        if (cutScene_index == cutScene_maxIndex)
+        {
+            EndCartoonCutScene();
+            return;
+        }
+        cutScenes[0].sprite = cutSceneSprites[cutScene_index];
+        if(cutScene_index != cutScene_maxIndex)
+            cutScenes[1].sprite = cutSceneSprites[cutScene_index + 1];
+        cutScenes[0].transform.parent.GetComponent<Animator>().SetTrigger("Next");
+        cutScene_index++;
+    }
+
+    public void OnNextCutScene()
+    {
+        cutScenes[0].sprite = cutScenes[1].sprite;
+    }
+
+    void EndCartoonCutScene()
+    {
+        foreach (var item in cutScenes)
+        {
+            item.gameObject.SetActive(false);
+        }
+        PlayerPrefs.SetInt(ConstData.cutSceneReady + cur_CutSceneKey, 2);
+    }
+
+
+
+    #endregion
 }
