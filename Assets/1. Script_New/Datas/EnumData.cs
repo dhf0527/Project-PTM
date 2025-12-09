@@ -55,7 +55,7 @@ public enum EMixer
 
 public enum MealRarity
 {
-    Uncommon,Rare
+    Uncommon,Rare,Legendary
 }
 
 public enum SkillType

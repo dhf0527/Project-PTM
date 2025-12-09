@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public abstract class Unit : MonoBehaviour
 {
     public float AttackDamage { get { return Mathf.Max((ud.damage * (1 + unitStatData_st.attack_PlusPercent * 0.01f)) + unitStatData_st.attack_Plus, 0); }}
-    public float AttackSpeed { get { return Mathf.Max(ud.attack_Speed * (1 + unitStatData_st.attackSpeed_PlusPercent * 0.01f) + unitStatData_st.attackSpeed_Plus, 0.001f); } }
+    public float AttackSpeed { get { return unitStatData_st.isFixed_AttackSpeed ? unitStatData_st.fixedAttackSpeed : Mathf.Max(ud.attack_Speed * (1 + unitStatData_st.attackSpeed_PlusPercent * 0.01f) + unitStatData_st.attackSpeed_Plus, 0.001f); } }
     public int Accuracy { get { return Mathf.Max(ud.accuracy + unitStatData_st.accuracy_Plus, 0);} }
     public int TargetCount { get { return Mathf.Max((ud.target_Count + unitStatData_st.targetCount_Plus) * unitStatData_st.targetCount_Multiple, 1); } }
     public float Max_Hp { get { return Mathf.Max(ud.hp + unitStatData_st.max_Hp_Plus, 1); }}
@@ -33,6 +33,10 @@ public abstract class Unit : MonoBehaviour
         public float attackSpeed_Plus;
         //공격속도 증감(비율)
         public float attackSpeed_PlusPercent;
+        //공격속도 고정 여부
+        public bool isFixed_AttackSpeed;
+        //고정된 공격속도
+        public float fixedAttackSpeed;
         //주는 피해량 증감
         public float attackBoost_PlusPercent;
         //명중률 증감
@@ -52,7 +56,7 @@ public abstract class Unit : MonoBehaviour
         public float armor_PlusPercent;
         //회피율 증감
         public int avoidance_Plus;
-        //받는 피해량 증감
+        //받는 피해 감소량
         public float damageReduction_PlusPercent;
 
         //이동속도 증감(절대값)

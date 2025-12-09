@@ -13,13 +13,11 @@ public class TestManager : MonoBehaviour
     bool test_Is4;
 
 #if UNITY_EDITOR
-    /*
     private void OnEnable()
     {
         foreach (var testObject in testObjects)
             testObject.SetActive(true);
     }
-    */
 
     private void Update()
     {

@@ -160,6 +160,12 @@ public class Card_new : MonoBehaviour
             //칠면조 바비큐
             else if (md.code == 3)
                 unit.unitStatData_st.max_Hp_Plus += md.mealValue;
+            //파인애플 피자
+            else if (md.code == 9)
+            {
+                unit.unitStatData_st.isFixed_AttackSpeed = true;
+                unit.unitStatData_st.fixedAttackSpeed = md.mealValue;
+            }
             //로즈베리 케이크
             else if (md.code == 104)
                 unit.isTrueDamage = true;
@@ -175,6 +181,17 @@ public class Card_new : MonoBehaviour
             //정체불명 햄버거
             else if (md.code == 102)
                 unit.unitStatData_st.cost_MinusPercent += md.mealValue;
+            //드워프 맥주
+            else if (md.code == 105)
+            {
+                unit.unitStatData_st.damageReduction_PlusPercent -= md.mealValue;
+                unit.unitStatData_st.attackBoost_PlusPercent += md.mealValue2;
+            }
+            //드래곤알 오믈렛
+            else if (md.code == 200)
+            {
+                unit.unitStatData_st.cost_MinusPercent += md.mealValue;
+            }
         }
         #endregion
 

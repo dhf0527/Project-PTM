@@ -297,7 +297,6 @@ public class DunGeonManager_New : MonoBehaviour
             unit.unitStatData_st.attack_Plus += (EnemySpawnManager.instance.cur_Wave + 1) * (GameManager.Instance.current_Meal.mealValue);
 
         onStageUnits_Test.Add(unit);
-        
 
         return unit;
     }
@@ -400,22 +399,30 @@ public class DunGeonManager_New : MonoBehaviour
     public void SetUnlockData(int unitLevel)
     {
         List<Unit> targetLevel_Units;
-        switch (unitLevel)
+
+        //µå·¡°ï¾Ë ¿À¹É·¿
+        if (GameManager.Instance.current_Meal?.code == 200)
+            targetLevel_Units = units_Level_3;
+        else
         {
-            case 1:
-                targetLevel_Units = units_Level_1;
-                break;
-            case 2:
-                targetLevel_Units = units_Level_2;
-                break;
-            case 3:
-                targetLevel_Units = units_Level_3;
-                break;
-            default:
-                targetLevel_Units = new List<Unit>();
-                Debug.LogError("À¯´Ö ·¹º§ ¼³Á¤ ¿À·ù");
-                break;
+            switch (unitLevel)
+            {
+                case 1:
+                    targetLevel_Units = units_Level_1;
+                    break;
+                case 2:
+                    targetLevel_Units = units_Level_2;
+                    break;
+                case 3:
+                    targetLevel_Units = units_Level_3;
+                    break;
+                default:
+                    targetLevel_Units = new List<Unit>();
+                    Debug.LogError("À¯´Ö ·¹º§ ¼³Á¤ ¿À·ù");
+                    break;
+            }
         }
+        
 
         //¸ðÁý À¯´Ö »Ì±â
         if(isTutorial_1 && unitLevel == 1)
