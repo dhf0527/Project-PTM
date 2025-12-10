@@ -103374,6 +103374,8 @@ MonoBehaviour:
   - {fileID: 0}
   itemParent_Go: {fileID: 0}
   itemPanel_Image: {fileID: 0}
+  itemIconPanel_Image: {fileID: 0}
+  itemIconPanel_Sprites: []
   itemIcon_Image: {fileID: 0}
   itemDescription_Text: {fileID: 0}
   upDownFrame_Image:

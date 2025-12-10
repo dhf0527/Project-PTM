@@ -30,6 +30,8 @@ public class Card_new : MonoBehaviour
 
     [SerializeField] GameObject itemParent_Go;
     [SerializeField] Image itemPanel_Image;
+    [SerializeField] Image itemIconPanel_Image;
+    [SerializeField] List<Sprite> itemIconPanel_Sprites;
     [SerializeField] Image itemIcon_Image;
     [SerializeField] TMP_Text itemDescription_Text;
 
@@ -218,6 +220,8 @@ public class Card_new : MonoBehaviour
             itemParent_Go.SetActive(true);
             itemPanel_Image.color = item.itemRarity == ItemRarity.Uncommon ? new Color(107 / 255f, 198 / 255f, 53 / 255f) : Color.white;
             itemIcon_Image.sprite = item.itemIcon;
+
+            itemIconPanel_Image.sprite = itemIconPanel_Sprites[(int)item.itemRarity];
 
             //{value}를 item.itemValue로 변환
             string fixed_Text = Regex.Replace(item.itemDescription, @"\{value\}", item.itemValue.ToString());
