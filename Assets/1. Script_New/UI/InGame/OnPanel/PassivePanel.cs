@@ -17,9 +17,9 @@ public class PassivePanel : MonoBehaviour
     const string reapedSpirit = "¼öÈ®ÇÑ ¿µÈ¥";
 
     string Color_Red { get { return ColorToHex(color_Red_1); } }
-    /*= "#CD3B3B";*/
+    //= "#CD3B3B";
     string Color_Blue {get{ return ColorToHex(color_Blue_1); }}
-    /*= "#3A43CD";*/
+    //= "#3A43CD";
 
     public Color color_Red_1;
     public Color color_Blue_1;

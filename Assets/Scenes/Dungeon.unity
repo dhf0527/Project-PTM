@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6ac59b21504f74a8e3211a27e70a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longClickTime: 1.5
+  longClickTime: 0.5
 --- !u!1 &33678202
 GameObject:
   m_ObjectHideFlags: 0
@@ -45581,6 +45581,8 @@ MonoBehaviour:
   characterName_Text: {fileID: 522287455}
   character_Image_Left: {fileID: 69390954}
   character_Image_Right: {fileID: 920958563}
+  cutScenes: []
+  cutSceneSprites: []
 --- !u!4 &1475829144
 Transform:
   m_ObjectHideFlags: 0

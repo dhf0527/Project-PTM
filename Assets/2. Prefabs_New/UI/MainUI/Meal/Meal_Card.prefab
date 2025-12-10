@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 2031844967676878785}
   - component: {fileID: 5843557071999709433}
   - component: {fileID: 1897368095412844603}
+  - component: {fileID: 3046080580011167241}
   m_Layer: 5
   m_Name: Meal_Card
   m_TagString: Untagged
@@ -1068,6 +1069,20 @@ MonoBehaviour:
   rarityIcon_Sprites:
   - {fileID: 21300000, guid: 13826b2cbea220d498d8b1da86e15a9c, type: 3}
   - {fileID: 21300000, guid: c9bf18893fe655d4f91c130be23fd440, type: 3}
+--- !u!114 &3046080580011167241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063300619727979531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38e154e4d217c24a8a621a7d7b00c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color_Red_1: {r: 0.9843137, g: 0.6392157, b: 0.6392157, a: 0}
+  color_Blue_1: {r: 0.6509804, g: 0.8117647, b: 0.96862745, a: 0}
 --- !u!1 &6792968384900247560
 GameObject:
   m_ObjectHideFlags: 0

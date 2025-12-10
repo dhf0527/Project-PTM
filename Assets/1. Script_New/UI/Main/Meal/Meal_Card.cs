@@ -38,6 +38,13 @@ public class Meal_Card : MonoBehaviour
         }
     }
 
+    ReplaceWord replaceWord;
+
+    private void Awake()
+    {
+        replaceWord = GetComponent<ReplaceWord>();
+    }
+
     public void SetData()
     {
         icon_Image.sprite = Md.mealIcon;
@@ -45,6 +52,7 @@ public class Meal_Card : MonoBehaviour
 
         string mealDsc = Regex.Replace(Md.mealDescription, @"\{value\}", Md.mealValue.ToString());
         mealDsc = Regex.Replace(mealDsc, @"\{value2\}", Md.mealValue2.ToString());
+        mealDsc = replaceWord.ReplaceWordColor(mealDsc);
         mealDescription_Text.text = mealDsc;
 
         int rarityIndex = (int)Md.mealRarity;
