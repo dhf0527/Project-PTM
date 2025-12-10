@@ -190,6 +190,9 @@ public class EnemySpawnManager : MonoBehaviour
         }
 
         DunGeonManager_New.instance.onStageUnits_Test.Add(spawned_Unit);
+        //하드모드 버프 부여
+        if (GameManager.Instance.current_Dungeon.isHard)
+            spawned_Unit.AddComponent<HardBuff>();
         return spawned_Unit;
     }
 

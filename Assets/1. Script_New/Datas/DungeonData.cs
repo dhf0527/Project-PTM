@@ -12,4 +12,5 @@ public class DungeonData : ScriptableObject
     public Unit[] units_Wave2;
     public Unit[] units_Wave3;
     public Faction stage_Faction;
+    public bool isHard;
 }
