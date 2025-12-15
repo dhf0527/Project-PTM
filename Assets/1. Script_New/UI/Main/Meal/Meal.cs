@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class Meal : MonoBehaviour
 {
-    public List<MealData> mealDatas;
+    public List<MealData> mealDatas_uncommon;
+    public List<MealData> mealDatas_rare;
+    public List<MealData> mealDatas_legendary;
+    [Header("확률(%)")]
+    [SerializeField] int pro_legendary;
+    [SerializeField] int pro_rare;
 
     [Header("panel, select, eating, complete, full순")]
     public List<GameObject> gameObjects;
@@ -49,7 +56,9 @@ public class Meal : MonoBehaviour
     public void SetMealData()
     {
         int k = meal_Cards.Count;
-        List<MealData> rand_Mds = GetRandomMealData(mealDatas, k);
+        int rand = UnityEngine.Random.Range(0, 100);
+
+        List<MealData> rand_Mds = GetRandomMealData(mealDatas_uncommon, mealDatas_rare, mealDatas_legendary, k);
 
         for (int i = 0; i < k; i++)
             meal_Cards[i].Md = rand_Mds[i];
@@ -103,14 +112,23 @@ public class Meal : MonoBehaviour
     //새로고침
     public void RerollMealData()
     {
-        List<MealData> inputMealDatas = new List<MealData>(mealDatas);
+        List<MealData> inputMealDatas_uncommon = new List<MealData>(mealDatas_uncommon);
+        List<MealData> inputMealDatas_rare = new List<MealData>(mealDatas_rare);
+        List<MealData> inputMealDatas_legendary = new List<MealData>(mealDatas_legendary);
         int k = meal_Cards.Count;
 
         //중복 제거
         for (int i = 0; i < k; i++)
-            inputMealDatas.Remove(meal_Cards[i].Md);
+        {
+            if (meal_Cards[i].Md.mealRarity == MealRarity.Uncommon)
+                inputMealDatas_uncommon.Remove(meal_Cards[i].Md);
+            else if(meal_Cards[i].Md.mealRarity == MealRarity.Rare)
+                inputMealDatas_rare.Remove(meal_Cards[i].Md);
+            else
+                inputMealDatas_legendary.Remove(meal_Cards[i].Md);
+        }
 
-        List<MealData> rand_Mds = GetRandomMealData(inputMealDatas, k);
+        List<MealData> rand_Mds = GetRandomMealData(inputMealDatas_uncommon, inputMealDatas_rare, inputMealDatas_legendary, k);
         for (int i = 0; i < k; i++)
             meal_Cards[i].Md = rand_Mds[i];
     }
@@ -123,19 +141,38 @@ public class Meal : MonoBehaviour
     }
     #endregion
 
-    //식사 k개 무작위로 뽑기 - FisherYates알고리즘
-    List<MealData> GetRandomMealData(List<MealData> inputMds, int k)
+    //식사 k개 무작위로 뽑기
+    List<MealData> GetRandomMealData(List<MealData> inputMealDatas_uncommon, List<MealData> inputMealDatas_rare, List<MealData> inputMealDatas_legendary,  int k)
     {
-        List<MealData> mds = new List<MealData>(inputMds);
-        for (int i = inputMds.Count - 1; i > 0; i--)
-        {
-            int j = UnityEngine.Random.Range(0, i + 1);
+        List<MealData> mds_pool_uncommon = new List<MealData>(inputMealDatas_uncommon);
+        List<MealData> mds_pool_rare = new List<MealData>(inputMealDatas_rare);
+        List<MealData> mds_pool_legendary = new List<MealData>(inputMealDatas_legendary);
 
-            MealData tmp_md = mds[j];
-            mds[j] = mds[i];
-            mds[i] = tmp_md;
+        List<MealData> rand_Mds = new();
+        for (int i = 0; i < k; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, 100);
+            int pro_uncommon = 100 - (pro_legendary + pro_rare);
+            if (rand < pro_legendary && mds_pool_legendary.Count > 0)
+            {
+                MealData tmp_md = mds_pool_legendary[UnityEngine.Random.Range(0, mds_pool_legendary.Count)];
+                rand_Mds.Add(tmp_md);
+                mds_pool_legendary.Remove(tmp_md);
+            }
+            else if (rand < pro_legendary + pro_rare)
+            {
+                MealData tmp_md = mds_pool_rare[UnityEngine.Random.Range(0, mds_pool_rare.Count)];
+                rand_Mds.Add(tmp_md);
+                mds_pool_rare.Remove(tmp_md);
+            }
+            else
+            {
+                MealData tmp_md = mds_pool_uncommon[UnityEngine.Random.Range(0, mds_pool_uncommon.Count)];
+                rand_Mds.Add(tmp_md);
+                mds_pool_uncommon.Remove(tmp_md);
+            }
         }
-        return mds.GetRange(0, k);
+        return rand_Mds;
     }
 
     //식사를 클릭했을 때 호출
