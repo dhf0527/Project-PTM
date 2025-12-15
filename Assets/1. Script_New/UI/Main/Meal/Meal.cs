@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.StandaloneInputModule;
 
@@ -12,9 +10,9 @@ public class Meal : MonoBehaviour
     public List<MealData> mealDatas_uncommon;
     public List<MealData> mealDatas_rare;
     public List<MealData> mealDatas_legendary;
-    [Header("È®·ü(%)")]
+    [Header("È®·ü(%) -> Èñ±Í È®·ü = pro_legendary * rare_multi")]
     [SerializeField] int pro_legendary;
-    [SerializeField] int pro_rare;
+    [SerializeField] int rare_multi;
 
     [Header("panel, select, eating, complete, full¼ø")]
     public List<GameObject> gameObjects;
@@ -152,6 +150,7 @@ public class Meal : MonoBehaviour
         for (int i = 0; i < k; i++)
         {
             int rand = UnityEngine.Random.Range(0, 100);
+            int pro_rare = pro_legendary * rare_multi; 
             int pro_uncommon = 100 - (pro_legendary + pro_rare);
             if (rand < pro_legendary && mds_pool_legendary.Count > 0)
             {
