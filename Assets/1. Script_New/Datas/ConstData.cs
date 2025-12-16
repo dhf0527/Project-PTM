@@ -17,7 +17,9 @@ public static class ConstData
     public const string meal_Unlock = "meal_Unlock";
     public const string unitUpgrade_Unlock = "unitUpgrade_Unlock";
     public const string pedia_Unlock = "pedia_Unlock";
+    public const string hardMode_Unlock = "hardMode_Unlock";
     public const string new_Unlock = "new_Unlock";
+
     public const string tutorialReady = "tutorialRready";    //ConstData.tutorialReady + TutorialKey.Dungeon_1
     public const string cutSceneReady = "cutSceneRready";    //ConstData.cutSceneReady + TutorialKey.Dungeon_1
 

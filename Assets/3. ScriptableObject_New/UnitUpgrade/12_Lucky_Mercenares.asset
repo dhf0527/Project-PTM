@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
-  m_Name: 9_Boss_Dmg
+  m_Name: 12_Lucky_Mercenares
   m_EditorClassIdentifier: 
-  code: 9
-  upgradeName: "\uD604\uC0C1\uC218\uBC30"
+  code: 12
+  upgradeName: "\uD589\uC6B4\uC758 \uC6A9\uBCD1\uB2E8"
   upgradeIcon: {fileID: 1931998358, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
-  upgradeCost: 2
+  upgradeCost: 5
   upgradeValue:
-  - 15
+  - 10
+  - 20
   - 30
   upgradeValue2: []
-  upgradeDescription: "\uC6A9\uBCD1\uC774 \uC801 \uBCF4\uC2A4\uC5D0\uAC8C \uC8FC\uB294
-    \uD53C\uD574 {value}% \uC99D\uAC00"
+  upgradeDescription: "\uC6A9\uBCD1\uC774 \uC544\uC774\uD15C\uC744 \uC9C0\uB2CC \uCC44
+    \uB4F1\uC7A5\uD560 \uD655\uB960,\n\uD76C\uADC0 \uB4F1\uAE09\uC758 \uC694\uB9AC\uC640
+    \uC544\uC774\uD15C\uC774 \uB4F1\uC7A5\uD560 \uD655\uB960\uC774 {value}% \uC99D\uAC00"

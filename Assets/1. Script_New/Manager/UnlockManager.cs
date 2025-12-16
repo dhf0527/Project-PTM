@@ -15,6 +15,7 @@ public class UnlockManager : MonoBehaviour
 
     [Header("영웅,식사,용병단,도감 순서")]
     public List<GameObject> lockImages_go;
+    public List<GameObject> lockImages_go_HardMode;
 
     public GameObject notification;
     public TMP_Text notification_Text_1;
@@ -35,6 +36,7 @@ public class UnlockManager : MonoBehaviour
     private void OnEnable()
     {
         CheckUnlock();
+        CheckHardModeUnlock();
 
         SetNotification();
     }
@@ -60,12 +62,29 @@ public class UnlockManager : MonoBehaviour
         }
     }
 
+    void CheckHardModeUnlock()
+    {
+        //하드모드 컨텐츠들 언락
+        bool isUnlockHardMode = PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0
+            && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{4},{3}") > 0;
+        foreach (var item in lockImages_go_HardMode)
+            item.SetActive(isUnlockHardMode);
+
+        //최초 언락시 알림
+        if (PlayerPrefs.GetInt(ConstData.hardMode_Unlock) == 1 && isUnlockHardMode)
+        {
+            PlayerPrefs.SetString(ConstData.new_Unlock, ConstData.hardMode_Unlock);
+            SetNotification();
+            PlayerPrefs.SetInt(ConstData.hardMode_Unlock, 2);
+        }
+    }
+
     void SetNotification()
     {
         string new_Unlock = PlayerPrefs.GetString(ConstData.new_Unlock);
         if(string.IsNullOrEmpty(new_Unlock))
         {
-            notification.SetActive(false);
+            //notification.SetActive(false);
             return;
         }
         else
@@ -115,6 +134,12 @@ public class UnlockManager : MonoBehaviour
                     notification_unitUpgrades[0].SetActive(true);
                     notification_unitUpgrades[3].SetActive(true);
                     break;
+                case ConstData.hardMode_Unlock:
+                    notification_Text_1.text = "하드 모드가 해금되었습니다!";
+                    notification_Text_2.text = "아래의 기능들이 해금되었습니다.\n* 5-1 이후의 스테이지\n* 용병단 업그레이드-정예";
+                    notification_unitUpgrades[0].SetActive(true);
+                    notification_unitUpgrades[4].SetActive(true);
+                    break;
                 default:
                     Debug.LogError($"잘못된 new_Unlock값 :{new_Unlock}");
                     break;
@@ -122,5 +147,19 @@ public class UnlockManager : MonoBehaviour
 
             PlayerPrefs.SetString(ConstData.new_Unlock, null);
         }
+    }
+
+    public void OnProductBuy(bool isUnlock = true)
+    {
+        //중복 구매시 예외처리
+        if(PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0 && isUnlock)
+        {
+            Debug.Log("중복 구매");
+            return;
+        }
+
+        PlayerPrefs.SetInt(ConstData.hardMode_Unlock, isUnlock ? 1 : 0);
+        CheckHardModeUnlock();
+        SetNotification();
     }
 }

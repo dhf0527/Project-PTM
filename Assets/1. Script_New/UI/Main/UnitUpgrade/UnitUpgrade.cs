@@ -70,6 +70,17 @@ public class UnitUpgrade : MonoBehaviour
         }
         upgrade_Detail.text = uud.upgradeDescription.Replace("{value}", $"({replace_Word})" );
 
+        replace_Word = string.Empty;
+        for (int i = 0; i < uud.upgradeValue2.Count; i++)
+        {
+            replace_Word += uud.upgradeValue2[i].ToString();
+            if (i != uud.upgradeValue2.Count - 1)
+                replace_Word += "/";
+        }
+        upgrade_Detail.text = upgrade_Detail.text.Replace("{value2}", $"({replace_Word})");
+
+        upgrade_Cost.text = "X" + selected_UnitUpgradeContent.unitUpgradeData.upgradeCost.ToString();
+
         //스타가 부족하거나 업그레이드 최대치일 때 업그레이드 비활성
         upgrade_Button.interactable = Star >= 2 && uuc_level != uud.upgradeValue.Count;
 
@@ -80,11 +91,12 @@ public class UnitUpgrade : MonoBehaviour
 
     public void OnUpgrade()
     {
-        if(Star >= 2)
+        int cost = selected_UnitUpgradeContent.unitUpgradeData.upgradeCost;
+        if (Star >= cost)
         {
             selected_UnitUpgradeContent.Level++;
             SetUpgrade(selected_UnitUpgradeContent);
-            Star -= 2;
+            Star -= cost;
             AudioManager.Instance.PlayerSfx(SFX_Enum.HeroUpgrade);
             upgrade_Button.GetComponent<Animation>().Stop();
             upgrade_Button.GetComponent<Animation>().Play();

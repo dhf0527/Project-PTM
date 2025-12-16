@@ -15,9 +15,11 @@ MonoBehaviour:
   code: 6
   upgradeName: "\uB300\uD615 \uD150\uD2B8"
   upgradeIcon: {fileID: 263118851, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
+  upgradeCost: 2
   upgradeValue:
   - 20
   - 35
   - 50
+  upgradeValue2: []
   upgradeDescription: "\uC911\uD615,  \uB300\uD615 \uC6A9\uBCD1\uC758 \uC774\uB3D9
     \uC18D\uB3C4 {value}% \uC99D\uAC00"

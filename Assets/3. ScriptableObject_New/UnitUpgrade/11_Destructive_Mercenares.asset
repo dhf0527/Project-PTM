@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
-  m_Name: 9_Boss_Dmg
+  m_Name: 11_Destructive_Mercenares
   m_EditorClassIdentifier: 
-  code: 9
-  upgradeName: "\uD604\uC0C1\uC218\uBC30"
+  code: 11
+  upgradeName: "\uD30C\uAD34\uC758 \uC6A9\uBCD1\uB2E8"
   upgradeIcon: {fileID: 1931998358, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
-  upgradeCost: 2
+  upgradeCost: 5
   upgradeValue:
+  - 5
+  - 10
   - 15
-  - 30
-  upgradeValue2: []
-  upgradeDescription: "\uC6A9\uBCD1\uC774 \uC801 \uBCF4\uC2A4\uC5D0\uAC8C \uC8FC\uB294
-    \uD53C\uD574 {value}% \uC99D\uAC00"
+  upgradeValue2:
+  - 10
+  - 15
+  - 20
+  upgradeDescription: "\uBB18\uC9C0\uAE30, \uB9C8\uC655\uAD70 \uC6A9\uBCD1\uC758
+    \uACE0\uC6A9 \uBE44\uC6A9, \uB300\uAE30 \uC2DC\uAC04\uC774 {value}% \uAC10\uC18C\n\uC911\uC559
+    \uC655\uAD6D, \uC694\uC815\uC232 \uC801\uC5D0\uAC8C \uC8FC\uB294 \uD53C\uD574
+    {value2}% \uAC10\uC18C"
