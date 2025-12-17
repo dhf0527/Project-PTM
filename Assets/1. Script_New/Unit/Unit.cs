@@ -23,8 +23,6 @@ public abstract class Unit : MonoBehaviour
     //스탯의 증감치를 담는 구조체
     public struct UnitStatData_Struct
     {
-        //최종 데미지 증감(비율)
-        public float totalDamage_PlusPercent;
         //공격력 증감(절대값)
         public float attack_Plus;
         //공격력 증감(비율)
@@ -46,8 +44,6 @@ public abstract class Unit : MonoBehaviour
         //타겟 수 증감(배수)
         public int targetCount_Multiple;
 
-        //최종 피해량 증감
-        public float totalDamageReduction_PlusPercent;
         //최대체력 증감
         public float max_Hp_Plus;
         //방어력 증감(절대값)
@@ -129,7 +125,7 @@ public abstract class Unit : MonoBehaviour
     //관통 공격 여부
     [HideInInspector] public bool isPenetration;
     //고정 공격 여부
-    [HideInInspector] public bool isTrueDamage;
+    [HideInInspector] public bool isNoTypeDamage;
     #endregion
     #region 피격 변수
     //현재 체력
@@ -497,23 +493,23 @@ public abstract class Unit : MonoBehaviour
 
         float type_res = attackType == target_Unit.ud.resistance_Type ? 0.5f : 1;
         float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
+        //무속성
+        if(isNoTypeDamage)
+        {
+            type_res = 1;
+            type_weak = 1;
+        }
 
         //최종 피해량
         float totalDamage;
 
-        //고정공격일 경우
-        if (isTrueDamage)
-            totalDamage = damage;
-        //관통공격일 경우
-        else if (isPenetration)
-            totalDamage = damage * type_weak;
+        //주는 피해량
+        float dealingDamage = AttackDamage * CalculateAttackBoost(target_Unit);
+        //관통공격
+        if (isPenetration)
+            totalDamage = dealingDamage * (type_res * type_weak);
         else
-            totalDamage = (damage - target_Unit.Armor)
-                * (type_res * type_weak) * (1 - target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f);
-
-        totalDamage *= 1 + unitStatData_st.totalDamage_PlusPercent * 0.01f;
-        totalDamage *= 1 - unitStatData_st.totalDamageReduction_PlusPercent * 0.01f;
-
+            totalDamage = (dealingDamage - target_Unit.Armor) * (type_res * type_weak) * (1-target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f) * CalculateTargetDamageReduction(target_Unit);
         //최소 피해량 1
         totalDamage = totalDamage < 1 ? 1 : totalDamage;
         target_Unit.TakeDamage(totalDamage);
@@ -538,20 +534,43 @@ public abstract class Unit : MonoBehaviour
             FxManager.Instance.DamageText(target_Unit.transform.position + Vector3.up * 1.2f, totalDamage, attackType);
     }
 
-    //데미지 증가량 반환 함수
+    //주는 피해 변화량 반환 함수
     virtual public float CalculateAttackBoost(Unit target_Unit)
     {
-        float dmgBoost = 0;
+        float dmgBoost = 1;
 
         //유닛 업그레이드 효과 보스 추가 데미지
         if (target_Unit.GetComponent<BossGuard>())
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 9);
             if (upgradeLv != 0)
-                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1];
+                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1] * 0.01f;
+        }
+        //파괴의 용병단
+        if(IsTeam && (target_Unit.ud.faction == Faction.Guild || target_Unit.ud.faction == Faction.Fairy ))
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 11);
+            if (upgradeLv != 0)
+                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1] * 0.01f;
         }
 
         return dmgBoost;
+    }
+
+    //대상의 받는 피해 변화량 반환 함수
+    virtual public float CalculateTargetDamageReduction(Unit target_Unit)
+    {
+        float damageMulti = 1;
+
+        //정의의 용병단
+        if (target_Unit.IsTeam && (ud.faction == Faction.Graveyard || ud.faction == Faction.Demon)) 
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 10);
+            if (upgradeLv != 0)
+                damageMulti -= DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1] * 0.01f;
+        }
+
+        return damageMulti;
     }
 
     //공격 딜레이를 구현하는 함수

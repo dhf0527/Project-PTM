@@ -25,4 +25,6 @@ public static class ConstData
 
     public const string skillCount1 = "skillCount1";    //ConstData.skillCount1 + ud.unit_Code
     public const string skillCount2 = "skillCount2";
+
+    public const string starBuyCount = "starBuyCount";
 }

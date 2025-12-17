@@ -17,12 +17,27 @@ public class UnitUpgrade : MonoBehaviour
     public TMP_Text upgrade_Cost;
     public TMP_Text upgrade_Detail;
 
+    public Button starBuy_Button;
+    public TMP_Text starPrice_Text;
+
     //선택된 업그레이드 요소들
     public GameObject selectedUpgrade_Go;   
     public List<Sprite> star_Sprites;
     public GameObject selectedFrame;
 
     UnitUpgradeContent selected_UnitUpgradeContent;
+    [SerializeField] int baseStarBuyCost;
+    [SerializeField] int maxStarBuyCost;
+    public int starBuyCost_Per_Count;
+    int starBuyCost;
+    public int StarBuyCost
+    {
+        get
+        {
+            starBuyCost = Mathf.Min(baseStarBuyCost + PlayerPrefs.GetInt(ConstData.starBuyCount) * starBuyCost_Per_Count, maxStarBuyCost);
+            return starBuyCost;
+        }
+    }
 
     public int Star
     {
@@ -40,6 +55,11 @@ public class UnitUpgrade : MonoBehaviour
     {
         SetActiveSelectedUpgrade(false);
         SetStarText();
+    }
+
+    private void OnEnable()
+    {
+        CheckSoul();
     }
 
     //선택한 업그레이드의 정보를 띄우는 창을 제어하는 함수
@@ -99,7 +119,7 @@ public class UnitUpgrade : MonoBehaviour
             Star -= cost;
             AudioManager.Instance.PlayerSfx(SFX_Enum.HeroUpgrade);
             upgrade_Button.GetComponent<Animation>().Stop();
-            upgrade_Button.GetComponent<Animation>().Play();
+            //upgrade_Button.GetComponent<Animation>().Play();
         }
     }
 
@@ -113,18 +133,38 @@ public class UnitUpgrade : MonoBehaviour
         Star += returnStar;
     }
 
+    public void OnBuyStar()
+    {
+        MainManager.instance.Soul -= StarBuyCost;
+        PlayerPrefs.SetInt(ConstData.starBuyCount, PlayerPrefs.GetInt(ConstData.starBuyCount) + 1);
+        Star++;
+        CheckSoul();
+    }
+
+    void CheckSoul()
+    {
+        starBuy_Button.interactable = MainManager.instance.Soul >= StarBuyCost;
+        starPrice_Text.text = StarBuyCost.ToString();
+    }
+
     public void SetStarText()
     {
         star_Text.text = "X " + Star.ToString();
     }
 
-    public void Debug_StarPlus()
+    public void Test_StarPlus()
     {
         Star += 5;
     }
 
-    public void Debug_StarReset()
+    public void Test_StarReset()
     {
         Star = 0;
+    }
+
+    public void Test_ResetStarCost()
+    {
+        PlayerPrefs.SetInt(ConstData.starBuyCount, 0);
+        CheckSoul();
     }
 }

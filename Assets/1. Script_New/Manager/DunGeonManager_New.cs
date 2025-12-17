@@ -496,8 +496,15 @@ public class DunGeonManager_New : MonoBehaviour
 
         //Èñ±Í È®·ü
         int rare_pro = 30;
-        //°í±Þ È®·ü
-        int advenced_pro = 70;
+
+        //Çà¿îÀÇ ¿ëº´´Ü
+        int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
+        if (upgradeLv != 0)
+            rare_pro += (int)unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
+
+
+    //°í±Þ È®·ü
+    int advenced_pro = 100 - rare_pro;
 
         int rand = UnityEngine.Random.Range(0, 100);
         if (rand < rare_pro)

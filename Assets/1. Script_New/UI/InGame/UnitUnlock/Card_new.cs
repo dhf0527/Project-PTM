@@ -150,6 +150,26 @@ public class Card_new : MonoBehaviour
             if (upgradeLv != 0)
                 unit.unitStatData_st.moveSpeed_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1];
         }
+        //정의의 용병단
+        if(unit.ud.faction == Faction.Guild || unit.ud.faction == Faction.Fairy)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 10);
+            if(upgradeLv != 0)
+            {
+                unit.unitStatData_st.avoidance_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.accuracy_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
+            }
+        }
+        //파괴의 용병단
+        if (unit.ud.faction == Faction.Graveyard || unit.ud.faction == Faction.Demon)
+        {
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 11);
+            if (upgradeLv != 0)
+            {
+                unit.unitStatData_st.cost_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
+            }
+        }
         #endregion
 
         #region 식사 효과 적용
@@ -170,7 +190,7 @@ public class Card_new : MonoBehaviour
             }
             //로즈베리 케이크
             else if (md.code == 104)
-                unit.isTrueDamage = true;
+                unit.isNoTypeDamage = true;
             //불사조 닭발
             else if (md.code == 100)
                 unit.unitStatData_st.attack_PlusPercent += md.mealValue2;

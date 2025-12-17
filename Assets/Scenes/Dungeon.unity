@@ -9164,6 +9164,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 799852a04fb5265408f8bb6dc60781e9, type: 2}
   - {fileID: 11400000, guid: b39231f0f48f38a41bdcb08821cb6cf6, type: 2}
   - {fileID: 11400000, guid: 752dd116f7d7f144688b92e096acd654, type: 2}
+  - {fileID: 11400000, guid: 5f425417e31966541b2a2f943a5568fa, type: 2}
+  - {fileID: 11400000, guid: a7b807a55811ab44c850d121d42674fa, type: 2}
+  - {fileID: 11400000, guid: a5c988fe8e341184b8de43e043150021, type: 2}
   itemDatas:
   - {fileID: 0}
   - {fileID: 0}
@@ -20663,7 +20666,7 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
-  isTrueDamage: 0
+  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
@@ -29096,7 +29099,7 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
   isPenetration: 0
-  isTrueDamage: 0
+  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0

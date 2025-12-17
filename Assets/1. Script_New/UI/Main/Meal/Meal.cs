@@ -150,7 +150,16 @@ public class Meal : MonoBehaviour
         for (int i = 0; i < k; i++)
         {
             int rand = UnityEngine.Random.Range(0, 100);
-            int pro_rare = pro_legendary * rare_multi; 
+            int pro_rare = pro_legendary * rare_multi;
+
+            //행운의 용병단
+            int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
+            if (upgradeLv != 0)
+            {
+                pro_rare += (int)DunGeonManager_New.instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
+                pro_legendary = pro_rare / rare_multi;
+            }
+
             int pro_uncommon = 100 - (pro_legendary + pro_rare);
             if (rand < pro_legendary && mds_pool_legendary.Count > 0)
             {
