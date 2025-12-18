@@ -67718,6 +67718,7 @@ GameObject:
   - component: {fileID: 6468616873101191784}
   - component: {fileID: 2031844968301870272}
   - component: {fileID: 1897368093688748858}
+  - component: {fileID: 6468616873101191785}
   m_Layer: 5
   m_Name: Meal_Card (1)
   m_TagString: Untagged
@@ -68039,6 +68040,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6063300618063013642}
   m_CullTransparentMesh: 1
+--- !u!114 &6468616873101191785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063300618063013642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38e154e4d217c24a8a621a7d7b00c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color_Red_1: {r: 0.9843137, g: 0.6392157, b: 0.6392157, a: 0}
+  color_Blue_1: {r: 0.6509804, g: 0.8117647, b: 0.96862745, a: 0}
 --- !u!1001 &6490600176235177590
 PrefabInstance:
   m_ObjectHideFlags: 0
