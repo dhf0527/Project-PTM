@@ -39,7 +39,7 @@ public class Eating : MonoBehaviour
         StopAllCoroutines();
         loading_Text.text = origin_Text;
 
-        MainManager.instance.OnMeal(true);
+        MainManager.instance.OnMeal();
 
         playingSfxChannel.Stop();
         AudioManager.Instance.PlayerSfx(SFX_Enum.MealComplete);
@@ -69,6 +69,6 @@ public class Eating : MonoBehaviour
         StopAllCoroutines();
         loading_Text.text = origin_Text;
 
-        MainManager.instance.OnMeal(true);
+        MainManager.instance.OnMeal();
     }
 }

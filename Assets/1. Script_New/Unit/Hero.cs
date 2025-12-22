@@ -95,19 +95,20 @@ public abstract class Hero : Unit
         Cur_Hp = Max_Hp;
 
         #region 식사 효과
+        MealData md;
         //불사조 닭발
-        if (GameManager.Instance.current_Meal?.code == 100)
-            unitStatData_st.attack_PlusPercent += GameManager.Instance.current_Meal.mealValue;
+        if (GameManager.Instance.CheckAppliedMeal(100,out md))
+            unitStatData_st.attack_PlusPercent += md.mealValue;
         //든든 국밥
-        else if (GameManager.Instance.current_Meal?.code == 101)
+        else if (GameManager.Instance.CheckAppliedMeal(101, out md))
         {
-            unitStatData_st.avoidance_Plus += (int)GameManager.Instance.current_Meal.mealValue;
-            unitStatData_st.accuracy_Plus += (int)GameManager.Instance.current_Meal.mealValue2;
+            unitStatData_st.avoidance_Plus += (int)md.mealValue;
+            unitStatData_st.accuracy_Plus += (int)md.mealValue2;
         }
         //크라운 스테이크
-        else if (GameManager.Instance.current_Meal?.code == 103)
+        else if (GameManager.Instance.CheckAppliedMeal(103, out md))
         {
-            unitStatData_st.max_Hp_Plus += 100;
+            unitStatData_st.max_Hp_Plus += ud.hp;
             unitStatData_st.attack_PlusPercent += 100;
             unitStatData_st.armor_PlusPercent += 100;
             unitStatData_st.attackSpeed_PlusPercent += 100;

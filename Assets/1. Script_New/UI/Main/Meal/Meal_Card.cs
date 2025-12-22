@@ -20,7 +20,7 @@ public class Meal_Card : MonoBehaviour
     [SerializeField] Image rarity_Icon;
     [SerializeField] TMP_Text rarity_Text;
 
-    [Header("0°í±Þ, 1Èñ±Í")]
+    [Header("0°í±Þ, 1Èñ±Í, 2Àü¼³")]
     [SerializeField] List<Sprite> main_Sprites;
     [SerializeField] List<Sprite> side_Sprites;
     [SerializeField] List<Sprite> panel_Sprites;

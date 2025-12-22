@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 9ea3e04bfccfda549b25989f52c16438
+guid: 878e0e7391d3880428b08c7c912ccb49
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - current_Meal: {instanceID: 0}
-  executionOrder: -15
+  defaultReferences: []
+  executionOrder: 0
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

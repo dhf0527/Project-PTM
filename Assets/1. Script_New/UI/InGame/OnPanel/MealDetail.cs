@@ -9,10 +9,8 @@ public class MealDetail : MonoBehaviour
 {
     [SerializeField] Meal_Card meal_Card;
 
-    private void OnEnable()
+    public void SetMealDataByIndex(int index)
     {
-        MealData md = GameManager.Instance.current_Meal;
-
-        meal_Card.Md = md;
+        meal_Card.Md = GameManager.Instance.applied_Meals[index];
     }
 }

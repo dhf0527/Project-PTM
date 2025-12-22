@@ -196,9 +196,11 @@ public class DunGeonManager_New : MonoBehaviour
             backGround_Sr.sprite = backGround_Sprites[(int)GameManager.Instance.current_Dungeon.stage_Faction];
         }
 
-        //½Ä»ç È¿°ú(Àíºû ÈÄÃß ¶ó¸é)
-        if (GameManager.Instance.current_Meal?.code == 7)
-            for (int i = 0; i < GameManager.Instance.current_Meal.mealValue - 1; i++)
+        //½Ä»ç È¿°ú
+        MealData md;
+        //(Àíºû ÈÄÃß ¶ó¸é)
+        if (GameManager.Instance.CheckAppliedMeal(7, out md))
+            for (int i = 0; i < md.mealValue - 1; i++)
                 BaseLevelUp();
     }
 
@@ -258,10 +260,11 @@ public class DunGeonManager_New : MonoBehaviour
         int spawnCount = spawnUnits[index].SpawnCount;
 
         //½ÖµÕÀÌ ²¿Ä¡
-        if (GameManager.Instance.current_Meal?.code == 2)
+        MealData md;
+        if (GameManager.Instance.CheckAppliedMeal(2,out md))
         {
             int rand = UnityEngine.Random.Range(0, 100);
-            if (rand < GameManager.Instance.current_Meal.mealValue)
+            if (rand < md.mealValue)
                 spawnCount++;
         }    
 
@@ -293,8 +296,9 @@ public class DunGeonManager_New : MonoBehaviour
             unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
 
         //½Ä»ç È¿°ú(¼÷¼º ÂüÄ¡È¸)
-        if (GameManager.Instance.current_Meal?.code == 8)
-            unit.unitStatData_st.attack_Plus += (EnemySpawnManager.instance.cur_Wave + 1) * (GameManager.Instance.current_Meal.mealValue);
+        MealData md;
+        if (GameManager.Instance.CheckAppliedMeal(8, out md))
+            unit.unitStatData_st.attack_Plus += (EnemySpawnManager.instance.cur_Wave + 1) * (md.mealValue);
 
         onStageUnits_Test.Add(unit);
 
@@ -401,7 +405,8 @@ public class DunGeonManager_New : MonoBehaviour
         List<Unit> targetLevel_Units;
 
         //µå·¡°ï¾Ë ¿À¹É·¿
-        if (GameManager.Instance.current_Meal?.code == 200)
+        MealData md;
+        if (GameManager.Instance.CheckAppliedMeal(200, out md))
             targetLevel_Units = units_Level_3;
         else
         {
@@ -465,9 +470,8 @@ public class DunGeonManager_New : MonoBehaviour
             #endregion
         }
 
-
         //Á¤Ã¼ºÒ¸í ÇÜ¹ö°Å
-        if (GameManager.Instance.current_Meal?.code == 102)
+        if (GameManager.Instance.CheckAppliedMeal(102, out md))
         {
             unitUnlock.cards[1].gameObject.SetActive(false);
             unitUnlock.cards[2].gameObject.SetActive(false);

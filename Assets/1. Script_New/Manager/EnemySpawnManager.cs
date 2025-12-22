@@ -158,11 +158,11 @@ public class EnemySpawnManager : MonoBehaviour
                 if (spawn_Units[cur_Wave, i])
                 {
                     //크라운 스테이크
-                    if (GameManager.Instance.current_Meal?.code == 103)
+                    MealData md;
+                    if (GameManager.Instance.CheckAppliedMeal(103, out md))
                         StartCoroutine(C_Spawn_Unit(spawn_Units[cur_Wave, i]));
                     else
                         Spawn_Unit(spawn_Units[cur_Wave, i]);
-
                 }
             }
         }
@@ -183,10 +183,11 @@ public class EnemySpawnManager : MonoBehaviour
         spawned_Unit.IsTeam = false;
 
         //식사 효과(꽃빙수)
-        if(GameManager.Instance.current_Meal?.code == 4)
+        MealData md;
+        if(GameManager.Instance.CheckAppliedMeal(4, out md))
         {
-            spawned_Unit.unitStatData_st.moveSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
-            spawned_Unit.unitStatData_st.attackSpeed_PlusPercent -= GameManager.Instance.current_Meal.mealValue;
+            spawned_Unit.unitStatData_st.moveSpeed_PlusPercent -= md.mealValue;
+            spawned_Unit.unitStatData_st.attackSpeed_PlusPercent -= md.mealValue;
         }
 
         DunGeonManager_New.instance.onStageUnits_Test.Add(spawned_Unit);

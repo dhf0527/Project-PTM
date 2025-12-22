@@ -1057,17 +1057,22 @@ MonoBehaviour:
   main_Sprites:
   - {fileID: -796546403, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   - {fileID: 312495493, guid: a598739122b3f3245a56262f9be440b9, type: 3}
+  - {fileID: 312495493, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   side_Sprites:
   - {fileID: -2099658276, guid: a598739122b3f3245a56262f9be440b9, type: 3}
+  - {fileID: 639457657, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   - {fileID: 639457657, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   panel_Sprites:
   - {fileID: 1927615179, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   - {fileID: -60280861, guid: a598739122b3f3245a56262f9be440b9, type: 3}
+  - {fileID: -60280861, guid: a598739122b3f3245a56262f9be440b9, type: 3}
   rarityPanel_Sprites:
   - {fileID: -1720688663, guid: 7c87ad4a167d21e4395d23560f5b1df2, type: 3}
   - {fileID: 1742140580, guid: 7c87ad4a167d21e4395d23560f5b1df2, type: 3}
+  - {fileID: 1742140580, guid: 7c87ad4a167d21e4395d23560f5b1df2, type: 3}
   rarityIcon_Sprites:
   - {fileID: 21300000, guid: 13826b2cbea220d498d8b1da86e15a9c, type: 3}
+  - {fileID: 21300000, guid: c9bf18893fe655d4f91c130be23fd440, type: 3}
   - {fileID: 21300000, guid: c9bf18893fe655d4f91c130be23fd440, type: 3}
 --- !u!114 &3046080580011167241
 MonoBehaviour:

@@ -16,9 +16,11 @@ public class MainManager : MonoBehaviour
 
     public TMP_Text soul_Text;
 
-    public Image meal_Icon;
-    public Image meal_Background;
-    [Header("0°í±Þ, 1Èñ±Í")]
+    public int additionalMeal_cost;
+    public int resetMeal_cost;
+    public Image[] meal_Icons = new Image[2];
+    public Image[] meal_Backgrounds = new Image[2];
+    [Header("0°í±Þ, 1Èñ±Í, 2Àü¼³")]
     [SerializeField] List<Sprite> meal_BackgroundSprites;
 
     public TMP_Text floatingMessage;
@@ -53,7 +55,8 @@ public class MainManager : MonoBehaviour
     private void Start()
     {
         Soul = PlayerPrefs.GetInt("Soul");
-        OnMeal(GameManager.Instance?.current_Meal != null);
+
+        OnMeal();
     }
 
     //areaPanel¿¡ ´øÀü µ¥ÀÌÅÍ »ðÀÔ
@@ -104,14 +107,19 @@ public class MainManager : MonoBehaviour
         isFloating = false;
     }
 
-    public void OnMeal(bool isActive)
+    public void OnMeal()
     {
-        meal_Icon.transform.parent.gameObject.SetActive(isActive);
-        if (isActive)
+        for (int i = 0; i < meal_Icons.Length; i++)
         {
-            MealData md = GameManager.Instance.current_Meal;
-            meal_Icon.sprite = md.mealIcon;
-            meal_Background.sprite = meal_BackgroundSprites[(int)md.mealRarity];
+            if (GameManager.Instance.applied_Meals[i])
+            {
+                meal_Icons[i].transform.parent.gameObject.SetActive(true);
+                MealData md = GameManager.Instance.applied_Meals[i];
+                meal_Icons[i].sprite = md.mealIcon;
+                meal_Backgrounds[i].sprite = meal_BackgroundSprites[(int)md.mealRarity];
+            }
+            else
+                meal_Icons[i].transform.parent.gameObject.SetActive(false);
         }
     }
 

@@ -14,7 +14,7 @@ public class Meal : MonoBehaviour
     [SerializeField] int pro_legendary;
     [SerializeField] int rare_multi;
 
-    [Header("panel, select, eating, complete, full순")]
+    [Header("panel, select, eating, complete, full, additionalMeal, full_Hardmode순")]
     public List<GameObject> gameObjects;
     public List<Meal_Card> meal_Cards;
     public TMP_Text eat_Meal_Text;
@@ -36,12 +36,34 @@ public class Meal : MonoBehaviour
             //최초 실행 체크
             if (!string.IsNullOrEmpty(lastEatTime))
             {
-                //마지막 식사 완료 시간 체크
-                DateTime lastTime = DateTime.Parse(lastEatTime);
-                DateTime nowTime = DateTime.Now;
-                TimeSpan difference = nowTime - lastTime;
-                if (difference.TotalMinutes < 2)
-                    go = gameObjects[4];
+                //하드모드 해금, 식사 효과 있을 시
+                if (PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0 && GameManager.Instance.applied_Meals[0] != null)
+                {
+                    //추가 식사 가능할 시
+                    if (GameManager.Instance.applied_Meals[GameManager.Instance.applied_Meals.Length - 1] == null)
+                    {
+                        go = gameObjects[5];
+                        go.SetActive(true);
+                        go.GetComponent<AdditionalMeal>().SetText();
+                        go.SetActive(false);
+                    }
+                    else
+                    {
+                        go = gameObjects[6];
+                        go.SetActive(true);
+                        go.GetComponent<Full_HardMode>().SetText();
+                        go.SetActive(false);
+                    }
+                }
+                else if(PlayerPrefs.GetInt(ConstData.hardMode_Unlock) == 0)
+                {
+                    //마지막 식사 완료 시간 체크
+                    DateTime lastTime = DateTime.Parse(lastEatTime);
+                    DateTime nowTime = DateTime.Now;
+                    TimeSpan difference = nowTime - lastTime;
+                    if (difference.TotalMinutes < 2)
+                        go = gameObjects[4];
+                }
             }
         }
 
@@ -146,28 +168,55 @@ public class Meal : MonoBehaviour
         List<MealData> mds_pool_rare = new List<MealData>(inputMealDatas_rare);
         List<MealData> mds_pool_legendary = new List<MealData>(inputMealDatas_legendary);
 
+        //이미 적용된 식사 제거
+        for (int i = 0; i < GameManager.Instance.applied_Meals.Length; i++)
+        {
+            if (GameManager.Instance.applied_Meals[i] == null)
+            {
+                continue;
+            }
+
+            MealData tmp_md = GameManager.Instance.applied_Meals[i];
+            if (tmp_md.mealRarity == MealRarity.Uncommon)
+                mds_pool_uncommon.Remove(tmp_md);
+            else if (tmp_md.mealRarity == MealRarity.Rare)
+                mds_pool_rare.Remove(tmp_md);
+            else
+                mds_pool_legendary.Remove(tmp_md);
+        }
+
         List<MealData> rand_Mds = new();
         for (int i = 0; i < k; i++)
         {
             int rand = UnityEngine.Random.Range(0, 100);
-            int pro_rare = pro_legendary * rare_multi;
+            int tmp_pro_legendary = pro_legendary;
+            int tmp_pro_rare = pro_legendary * rare_multi;
 
             //행운의 용병단
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
             if (upgradeLv != 0)
             {
-                pro_rare += (int)DunGeonManager_New.instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
-                pro_legendary = pro_rare / rare_multi;
+                tmp_pro_rare += (int)DunGeonManager_New.instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
+                tmp_pro_legendary = tmp_pro_rare / rare_multi;
             }
 
-            int pro_uncommon = 100 - (pro_legendary + pro_rare);
-            if (rand < pro_legendary && mds_pool_legendary.Count > 0)
+            int pro_uncommon = 100 - (tmp_pro_legendary + tmp_pro_rare);
+
+            //첫번째 요리가 전설일 경우 확률 변경
+            if (GameManager.Instance.applied_Meals[0] != null && GameManager.Instance.applied_Meals[0].mealRarity == MealRarity.Legendary)
+            {
+                tmp_pro_rare = tmp_pro_legendary;
+                tmp_pro_legendary = 0;
+                pro_uncommon = 100 - (tmp_pro_legendary + tmp_pro_rare);
+            }
+
+            if (rand < tmp_pro_legendary && mds_pool_legendary.Count > 0)
             {
                 MealData tmp_md = mds_pool_legendary[UnityEngine.Random.Range(0, mds_pool_legendary.Count)];
                 rand_Mds.Add(tmp_md);
                 mds_pool_legendary.Remove(tmp_md);
             }
-            else if (rand < pro_legendary + pro_rare)
+            else if (rand < tmp_pro_legendary + tmp_pro_rare)
             {
                 MealData tmp_md = mds_pool_rare[UnityEngine.Random.Range(0, mds_pool_rare.Count)];
                 rand_Mds.Add(tmp_md);
@@ -205,10 +254,20 @@ public class Meal : MonoBehaviour
         eat_Meal_Text.text = $"{selected_md.mealName} 식사 완료!";
         eat_Meal_Card.Md = selected_md;
 
-        GameManager.Instance.current_Meal = selected_md;
+        if (GameManager.Instance.applied_Meals[0] == null)
+            GameManager.Instance.applied_Meals[0] = selected_md;
+        else
+            GameManager.Instance.applied_Meals[1] = selected_md;
 
         //식사 완료 시간 기록
         PlayerPrefs.SetString(ConstData.mealCompleteTime, DateTime.Now.ToString());
+    }
+
+    public void ResetMealData()
+    {
+        for (int i = 0; i < GameManager.Instance.applied_Meals.Length; i++)
+            GameManager.Instance.applied_Meals[i] = null;
+        MainManager.instance.OnMeal();
     }
 }
 

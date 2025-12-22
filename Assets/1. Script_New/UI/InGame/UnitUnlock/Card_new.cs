@@ -173,47 +173,44 @@ public class Card_new : MonoBehaviour
         #endregion
 
         #region 식사 효과 적용
-        if (GameManager.Instance.current_Meal)
+        MealData md;
+        //유리비늘 생선구이
+        if (GameManager.Instance.CheckAppliedMeal(0, out md) && unit.ud.armor == 0)
+            unit.unitStatData_st.armor_Plus += (int)md.mealValue;
+        //칠면조 바비큐
+        if (GameManager.Instance.CheckAppliedMeal(3, out md))
+            unit.unitStatData_st.max_Hp_Plus += md.mealValue;
+        //파인애플 피자
+        if (GameManager.Instance.CheckAppliedMeal(9, out md))
         {
-            MealData md = GameManager.Instance.current_Meal;
-            //유리비늘 생선구이
-            if (md.code == 0 && unit.ud.armor == 0)
-                unit.unitStatData_st.armor_Plus += (int)md.mealValue;
-            //칠면조 바비큐
-            else if (md.code == 3)
-                unit.unitStatData_st.max_Hp_Plus += md.mealValue;
-            //파인애플 피자
-            else if (md.code == 9)
-            {
-                unit.unitStatData_st.isFixed_AttackSpeed = true;
-                unit.unitStatData_st.fixedAttackSpeed = md.mealValue;
-            }
-            //로즈베리 케이크
-            else if (md.code == 104)
-                unit.isNoTypeDamage = true;
-            //불사조 닭발
-            else if (md.code == 100)
-                unit.unitStatData_st.attack_PlusPercent += md.mealValue2;
-            //든든 국밥
-            else if (md.code == 101)
-            {
-                unit.unitStatData_st.avoidance_Plus += (int)md.mealValue;
-                unit.unitStatData_st.accuracy_Plus += (int)md.mealValue2;
-            }
-            //정체불명 햄버거
-            else if (md.code == 102)
-                unit.unitStatData_st.cost_MinusPercent += md.mealValue;
-            //드워프 맥주
-            else if (md.code == 105)
-            {
-                unit.unitStatData_st.damageReduction_PlusPercent -= md.mealValue;
-                unit.unitStatData_st.attackBoost_PlusPercent += md.mealValue2;
-            }
-            //드래곤알 오믈렛
-            else if (md.code == 200)
-            {
-                unit.unitStatData_st.cost_MinusPercent += md.mealValue;
-            }
+            unit.unitStatData_st.isFixed_AttackSpeed = true;
+            unit.unitStatData_st.fixedAttackSpeed = md.mealValue;
+        }
+        //로즈베리 케이크
+        if (GameManager.Instance.CheckAppliedMeal(104, out md))
+            unit.isNoTypeDamage = true;
+        //불사조 닭발
+        if (GameManager.Instance.CheckAppliedMeal(100, out md))
+            unit.unitStatData_st.attack_PlusPercent += md.mealValue2;
+        //든든 국밥
+        if (GameManager.Instance.CheckAppliedMeal(101, out md))
+        {
+            unit.unitStatData_st.avoidance_Plus += (int)md.mealValue;
+            unit.unitStatData_st.accuracy_Plus += (int)md.mealValue2;
+        }
+        //정체불명 햄버거
+        if (GameManager.Instance.CheckAppliedMeal(102, out md))
+            unit.unitStatData_st.cost_MinusPercent += md.mealValue;
+        //드워프 맥주
+        if (GameManager.Instance.CheckAppliedMeal(105, out md))
+        {
+            unit.unitStatData_st.damageReduction_PlusPercent -= md.mealValue;
+            unit.unitStatData_st.attackBoost_PlusPercent += md.mealValue2;
+        }
+        //드래곤알 오믈렛
+        if (GameManager.Instance.CheckAppliedMeal(200, out md))
+        {
+            unit.unitStatData_st.cost_MinusPercent += md.mealValue;
         }
         #endregion
 

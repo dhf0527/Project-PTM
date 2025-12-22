@@ -40,10 +40,11 @@ public class GameClearPanel : MonoBehaviour
         if (isWin)
         {
             //모험가의 주먹밥
-            if (GameManager.Instance.current_Meal?.code == 5)
+            MealData md;
+            if (GameManager.Instance.CheckAppliedMeal(5, out md))
             {
                 reward *= 5;
-                meal_Image.sprite = GameManager.Instance.current_Meal.mealIcon;
+                meal_Image.sprite = md.mealIcon;
                 meal_Image.gameObject.SetActive(true);
                 info_Text.text = "(승리 보너스X5)";
             }
@@ -143,7 +144,7 @@ public class GameClearPanel : MonoBehaviour
         //보상 지급
         PlayerPrefs.SetInt("Soul", PlayerPrefs.GetInt("Soul") + reward);
         //식사 효과 제거
-        GameManager.Instance.current_Meal = null;
+        GameManager.Instance.ClearAppliedMeal();
 
         dungeonNumber_Text.text = dungeonNumber;
         resultTime_Text.text = $"0s";

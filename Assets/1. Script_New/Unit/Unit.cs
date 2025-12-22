@@ -519,8 +519,9 @@ public abstract class Unit : MonoBehaviour
         {
             int getGold = target_Unit.killGold;
 
-            if (GameManager.Instance.current_Meal?.code == 1)
-                getGold *= (int)GameManager.Instance.current_Meal.mealValue;
+            MealData md;
+            if (GameManager.Instance.CheckAppliedMeal(1,out md))
+                getGold *= (int)md.mealValue;
 
             DunGeonManager_New.instance.GetGold(getGold);
         }
@@ -765,9 +766,10 @@ public abstract class Unit : MonoBehaviour
     //체력 회복
     public void GetHp(float amount)
     {
+        MealData md;
         //식사 효과 (칠면조 바비큐)
-        if (GameManager.Instance.current_Meal?.code == 3)
-            amount *= (1 + GameManager.Instance.current_Meal.mealValue2 * 0.01f);
+        if (GameManager.Instance.CheckAppliedMeal(3, out md))
+            amount *= (1 + md.mealValue2 * 0.01f);
 
         if (Cur_Hp + amount > Max_Hp)
             Cur_Hp = Max_Hp;
