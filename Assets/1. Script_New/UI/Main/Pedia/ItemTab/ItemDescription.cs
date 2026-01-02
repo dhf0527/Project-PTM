@@ -39,6 +39,7 @@ public class ItemDescription : MonoBehaviour
         //{value}를 meal.mealValue로 변환
         string fixed_Text = Regex.Replace(md.mealDescription, @"\{value\}", md.mealValue.ToString());
         fixed_Text = Regex.Replace(fixed_Text, @"\{value2\}", md.mealValue2.ToString());
+        fixed_Text = description_Text.GetComponent<ReplaceWord>().ReplaceWordColor(fixed_Text);
         description_Text.text = fixed_Text;
     }
 }

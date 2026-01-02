@@ -57,7 +57,7 @@ public class Meal_Card : MonoBehaviour
         {
             rarity_Panel.sprite = rarityPanel_Sprites[rarityIndex];
             rarity_Icon.sprite = rarityIcon_Sprites[rarityIndex];
-            rarity_Text.text = rarityIndex == 0 ? "°í±Þ" : "Èñ±Í";
+            rarity_Text.text = rarityIndex == 0 ? "°í±Þ" : rarityIndex == 1 ? "Èñ±Í" : "Àü¼³";
         }
 
         foreach (var item in panel_Images)
