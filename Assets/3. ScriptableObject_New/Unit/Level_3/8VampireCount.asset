@@ -33,7 +33,7 @@ MonoBehaviour:
   spawn_Count: 1
   size: 1
   cost: 700
-  passive1: "\uC601\uC6D0\uD560 \uAC08\uC99D"
+  passive1: "\uC601\uC6D0\uD55C \uAC08\uC99D"
   passive1_Detail: 
   passive2: 
   passive2_Detail: 

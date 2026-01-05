@@ -77,6 +77,11 @@ public class CutSceneManager : MonoBehaviour
             //StartCutScene("1-1");
             PlayCutscene_StartScene1();
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartCutScene("1-1");
+            //PlayCutscene_StartScene1();
+        }
     }
 
     void ReadyTutorial()
@@ -719,7 +724,10 @@ public class CutSceneManager : MonoBehaviour
         PlayerPrefs.SetInt(ConstData.cutSceneReady + cur_CutSceneKey, 2);
     }
 
-
+    public void Test_StartCutScene()
+    {
+        StartCutScene("1-1");
+    }
 
     #endregion
 }

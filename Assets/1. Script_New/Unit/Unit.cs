@@ -172,6 +172,8 @@ public abstract class Unit : MonoBehaviour
 
     protected Vector2 originColliderSize;
     protected Vector2 originColliderOffset;
+
+    [HideInInspector] public event Action deadEvent;
     #endregion
     #region 애니메이션 변수
     [HideInInspector] public float origin_Scale = 1;
@@ -634,6 +636,7 @@ public abstract class Unit : MonoBehaviour
     //유닛 사망 애니메이션 끝날 때 호출
     public virtual void OnDead()
     {
+        deadEvent?.Invoke();
         Destroy(gameObject);
     }
 

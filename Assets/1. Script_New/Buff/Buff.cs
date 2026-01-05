@@ -54,11 +54,13 @@ public abstract class Buff : MonoBehaviour
     protected abstract void Init();
     protected virtual void BuffStart()
     {
-        unit.SetBuffIcon(buffIcon_Index, true);
+        if(buffIcon_Index != -1)
+            unit.SetBuffIcon(buffIcon_Index, true);
     }
     public virtual void BuffEnd()
     {
-        unit.SetBuffIcon(buffIcon_Index, false);
+        if(buffIcon_Index != -1)
+            unit.SetBuffIcon(buffIcon_Index, false);
     }
     protected abstract bool PreventStack();
 }

@@ -19,6 +19,15 @@ public class Product : MonoBehaviour
         bool isBuyable = PlayerPrefs.GetInt(ConstData.hardMode_Unlock) == 0;
 
         buy_Button.interactable = isBuyable;
-        buy_Text.text = isBuyable ? "구매" : "구매 완료";
+        if(isBuyable)
+        {
+            buy_Text.text = "구매";
+            buy_Text.color = buy_Button.colors.normalColor;
+        }
+        else
+        {
+            buy_Text.text = "구매 완료";
+            buy_Text.color = buy_Button.colors.disabledColor;
+        }
     }
 }

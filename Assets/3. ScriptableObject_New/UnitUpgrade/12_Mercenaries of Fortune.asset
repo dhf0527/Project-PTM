@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2045cdaa10787f439112838ee431a3d, type: 3}
-  m_Name: 12_Lucky_Mercenares
+  m_Name: 12_Mercenaries of Fortune
   m_EditorClassIdentifier: 
   code: 12
   upgradeName: "\uD589\uC6B4\uC758 \uC6A9\uBCD1\uB2E8"
