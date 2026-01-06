@@ -9,9 +9,10 @@ public class MealCell : MonoBehaviour
     public MealData md;
 
     public Image item_Image;
+    [SerializeField] GameObject lockImage_go;
     public TMP_Text itemName_Text;
 
-    private void Awake()
+    private void OnEnable()
     {
         Init();
     }
@@ -19,7 +20,22 @@ public class MealCell : MonoBehaviour
     public void Init()
     {
         item_Image.sprite = md.mealIcon;
-        itemName_Text.text = md.mealName;
+
+        if (md.isHardMode)
+        {
+            if (PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0)
+            {
+                itemName_Text.text = md.mealName;
+                lockImage_go.SetActive(false);
+            }
+            else
+            {
+                itemName_Text.text = "???";
+                lockImage_go.SetActive(true);
+            }
+        }
+        else
+            itemName_Text.text = md.mealName;
     }
 
     public void OnClick()

@@ -7,11 +7,10 @@ using static UnityEngine.UI.CanvasScaler;
 public class Elementalist_New : Unit
 {
      public float healAmount = 10;
+    [SerializeField] float range;
 
     public void Heal()
     {
-        float range = 1f;
-
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? TeamLayer : EnemyLayer;
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + Vector3.left * range, Vector2.right, range * 2, LayerMask.GetMask(target_Layer));
@@ -39,5 +38,9 @@ public class Elementalist_New : Unit
         base.ApplyAttack(target_Unit, damage, ud.attack_Type);
         Heal();
     }
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }
 }

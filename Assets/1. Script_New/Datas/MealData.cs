@@ -13,4 +13,5 @@ public class MealData : ScriptableObject
     public string mealDescription;
     public string mealFlavorText;
     public MealRarity mealRarity;
+    public bool isHardMode;
 }

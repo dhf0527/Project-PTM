@@ -59,6 +59,10 @@ public class DunGeonManager_New : MonoBehaviour
     public List<Unit> units_Level_1;
     public List<Unit> units_Level_2;
     public List<Unit> units_Level_3;
+
+    public List<Unit> hardMode_units_Level_1;
+    public List<Unit> hardMode_units_Level_2;
+    public List<Unit> hardMode_units_Level_3;
     [Header("레벨에 따른 유닛 생산 대기 시간")]
     public List<float> spawnCoolTimesByLevel;
     [Header("유닛 아이템")]
@@ -166,6 +170,14 @@ public class DunGeonManager_New : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        //유료 유닛 추가
+        if(PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0)
+        {
+            units_Level_1.AddRange(hardMode_units_Level_1);
+            units_Level_2.AddRange(hardMode_units_Level_2);
+            units_Level_3.AddRange(hardMode_units_Level_3);
+        }
 
         //공주 찾아서 저장
         princess = FindAnyObjectByType<Princess>();

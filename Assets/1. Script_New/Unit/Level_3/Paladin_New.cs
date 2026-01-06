@@ -6,12 +6,11 @@ using UnityEngine;
 public class Paladin_New : Unit
 {
     public int armorIncrease;
+    [SerializeField] float skillRange;
 
     private void Update()
     {
         base.Update();
-
-        float skillRange = 1f;
 
         //스캔할 레이어 설정
         string target_Layer = IsTeam ? TeamLayer : EnemyLayer;
@@ -27,5 +26,11 @@ public class Paladin_New : Unit
             guard.armorIncrease = armorIncrease;
             //버프 처리
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, skillRange);
     }
 }

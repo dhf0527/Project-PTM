@@ -93713,15 +93713,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fb8398aec556884691423eb94d8bf54, type: 2}
   - {fileID: 11400000, guid: 6714d0ac1900f454aaab5cec28f3b82d, type: 2}
   - {fileID: 11400000, guid: 96a563ac23c2df744b0a62e69951e240, type: 2}
-  - {fileID: 11400000, guid: 8861a86a2075d7543acf196c75ccca04, type: 2}
   mealDatas_rare:
   - {fileID: 11400000, guid: 27556bb32fd3e9e448acf0e2bd1b5f5b, type: 2}
   - {fileID: 11400000, guid: 87fefda263b73d146aba657d3c0c0088, type: 2}
   - {fileID: 11400000, guid: e92e4d3904ef5dd4e9d7842efc402aea, type: 2}
   - {fileID: 11400000, guid: f7d74ea2955b1af43b9cc8fd5f8f3063, type: 2}
   - {fileID: 11400000, guid: a8e0f9b4649ebdf4d960f0ac972041d1, type: 2}
+  mealDatas_legendary: []
+  hardMode_mealDatas_uncommon:
+  - {fileID: 11400000, guid: 8861a86a2075d7543acf196c75ccca04, type: 2}
+  hardMode_mealDatas_rare:
   - {fileID: 11400000, guid: 87abfd7e1bf4d1a40ba76447a7123547, type: 2}
-  mealDatas_legendary:
+  hardMode_mealDatas_legendary:
   - {fileID: 11400000, guid: aa67cde1c76314547ab33adae9eb73a0, type: 2}
   pro_legendary: 5
   rare_multi: 3

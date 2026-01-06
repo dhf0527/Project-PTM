@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
   m_Name: 7UnicornRider
   m_EditorClassIdentifier: 
-  unit_Sprite: {fileID: 1099049014, guid: c0e81231e6118b8449a2006c420bb56d, type: 3}
+  unit_Sprite: {fileID: -553379977, guid: a906be88131c775489d2faa93542114b, type: 3}
   unit_Code: 307
   level: 3
   unit_Name: "\uC720\uB2C8\uCF58 \uAE30\uC218"

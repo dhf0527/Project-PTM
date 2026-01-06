@@ -58,4 +58,6 @@ public class UnitData : ScriptableObject
 
     //공격범위
     public float attack_Range;
+
+    public bool isHardMode;
 }

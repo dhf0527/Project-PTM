@@ -10,6 +10,10 @@ public class Meal : MonoBehaviour
     public List<MealData> mealDatas_uncommon;
     public List<MealData> mealDatas_rare;
     public List<MealData> mealDatas_legendary;
+
+    public List<MealData> hardMode_mealDatas_uncommon;
+    public List<MealData> hardMode_mealDatas_rare;
+    public List<MealData> hardMode_mealDatas_legendary;
     [Header("확률(%) -> 희귀 확률 = pro_legendary * rare_multi")]
     [SerializeField] int pro_legendary;
     [SerializeField] int rare_multi;
@@ -167,6 +171,14 @@ public class Meal : MonoBehaviour
         List<MealData> mds_pool_uncommon = new List<MealData>(inputMealDatas_uncommon);
         List<MealData> mds_pool_rare = new List<MealData>(inputMealDatas_rare);
         List<MealData> mds_pool_legendary = new List<MealData>(inputMealDatas_legendary);
+
+        //유료 요리 추가
+        if(PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0)
+        {
+            mds_pool_uncommon.AddRange(hardMode_mealDatas_uncommon);
+            mds_pool_rare.AddRange(hardMode_mealDatas_rare);
+            mds_pool_legendary.AddRange(hardMode_mealDatas_legendary);
+        }
 
         //이미 적용된 식사 제거
         for (int i = 0; i < GameManager.Instance.applied_Meals.Length; i++)

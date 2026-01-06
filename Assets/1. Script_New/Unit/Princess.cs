@@ -12,6 +12,7 @@ public class Princess : Hero
 
     [SerializeField] int skill2_accuracy_increase;
     [SerializeField] float skill2_buff_Time;
+    [SerializeField] float skill2_range;
 
     [SerializeField] GameObject imperialShield_prf;
     [SerializeField] GameObject crownSword_prf;
@@ -57,11 +58,10 @@ public class Princess : Hero
         Instantiate(crownSword_prf, transform).transform.position += Vector3.up * 1.7f;
 
         nonCombatTime = 0;
-        float skillRange = 1f;
 
         //스캔할 레이어 설정
         string target_Layer = TeamLayer;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + Vector3.left * skillRange, Vector2.right, skillRange * 2, LayerMask.GetMask(target_Layer));
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + Vector3.left * skill2_range, Vector2.right, skill2_range * 2, LayerMask.GetMask(target_Layer));
 
         foreach (var item in hits)
         {
@@ -77,5 +77,11 @@ public class Princess : Hero
         StartCoroutine(C_Skill2_CoolDown());
 
         AudioManager.Instance.PlayerSfx(SFX_Enum.BrokenHeroSword);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, skill2_range);
     }
 }
