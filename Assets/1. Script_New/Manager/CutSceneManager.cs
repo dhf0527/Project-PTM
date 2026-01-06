@@ -79,7 +79,7 @@ public class CutSceneManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            StartCutScene("1-1");
+            StartCutScene("4-3");
             //PlayCutscene_StartScene1();
         }
     }
@@ -297,8 +297,8 @@ public class CutSceneManager : MonoBehaviour
         //csv파일의 데이터를 한 줄씩 저장
         string[]lines = csvFile.text.Split('\n');
 
-        //첫 줄은 헤더이므로 i=1
-        for (int i = 1; i < lines.Length; i++)
+        //1,2줄은 헤더이므로 i=2
+        for (int i = 2; i < lines.Length; i++)
         {
             //공백 건너뛰기
             if (string.IsNullOrWhiteSpace(lines[i]))
@@ -687,6 +687,8 @@ public class CutSceneManager : MonoBehaviour
         cutScene_index = 0;
         cutScenes[0].sprite = cutSceneSprites[cutScene_index];
         cutScenes[1].sprite = cutSceneSprites[cutScene_index + 1];
+
+        cutScenes[0].transform.parent.gameObject.SetActive(true);
         foreach (var item in cutScenes)
         {
             item.gameObject.SetActive(true);
@@ -717,6 +719,7 @@ public class CutSceneManager : MonoBehaviour
 
     void EndCartoonCutScene()
     {
+        cutScenes[0].transform.parent.gameObject.SetActive(false);
         foreach (var item in cutScenes)
         {
             item.gameObject.SetActive(false);
@@ -726,7 +729,7 @@ public class CutSceneManager : MonoBehaviour
 
     public void Test_StartCutScene()
     {
-        StartCutScene("1-1");
+        StartCutScene("4-3");
     }
 
     #endregion
