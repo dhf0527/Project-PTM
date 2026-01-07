@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4c677ba09a45448175d3ec73404c6, type: 3}
   m_Name: 8BabyDragon
   m_EditorClassIdentifier: 
-  unit_Sprite: {fileID: 1706793863, guid: 0f28cbaab3ff5fb49b60b7a43dcd740b, type: 3}
+  unit_Sprite: {fileID: 1617851756, guid: 728182d22d650a2498f0748dc5120b98, type: 3}
   unit_Code: 108
   level: 1
   unit_Name: "\uC0C8\uB07C \uC6A9"

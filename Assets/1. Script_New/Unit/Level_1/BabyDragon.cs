@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BabyDragon : Unit
 {
-    [SerializeField] int attackPerWave;
+    [Header("1,2,3웨이브 순")]
+    public List<int> attackByWave;
 
     public override void Init()
     {
         base.Init();
-        unitStatData_st.attack_Plus += EnemySpawnManager.instance.cur_Wave * attackPerWave;
-        Debug.Log("공격력 증가" + EnemySpawnManager.instance.cur_Wave * attackPerWave);
+        ExplosiveGrowth explosiveGrowth = gameObject.AddComponent<ExplosiveGrowth>();
+        explosiveGrowth.buffValues = attackByWave;
+        explosiveGrowth.buff_Time = int.MaxValue;
     }
 }

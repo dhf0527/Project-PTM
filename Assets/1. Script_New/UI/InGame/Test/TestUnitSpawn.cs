@@ -72,4 +72,8 @@ public class TestUnitSpawn : MonoBehaviour
         DunGeonManager_New.instance.onStageUnits_Test.Clear();
     }
     
+    public void TestToWave(int setWave)
+    {
+        EnemySpawnManager.instance.Test_SetWave(setWave);
+    }
 }

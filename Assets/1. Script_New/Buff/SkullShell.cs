@@ -33,7 +33,7 @@ public class SkullShell : Buff
 
     protected override bool PreventStack()
     {
-        if (GetComponents<CuttedArmor>().Length > 1)
+        if (GetComponents<SkullShell>().Length > 1)
         {
             //지속 시간 초기화
             GetComponent<SkullShell>().cur_BuffTime = 0;

@@ -314,6 +314,14 @@ public class EnemySpawnManager : MonoBehaviour
         target_Wave = wave;
     }
 
+    public void Test_SetWave(int wave)
+    {
+        cur_Wave = wave;
+        cur_WaveTime = 0;
+        cur_Phase = 0;
+        wavePanel.OnWaveTextSet(cur_Wave);
+    }
+
     void InitTexts(int index)
     {
         warnText_Image.color = warnImg_Color;

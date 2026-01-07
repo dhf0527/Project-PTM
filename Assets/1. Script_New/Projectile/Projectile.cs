@@ -53,12 +53,12 @@ public abstract class Projectile : MonoBehaviour
 
     [HideInInspector] public Unit unit;
 
-    private void Awake()
+    protected void Awake()
     {
         col = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
     }
-    private void Update()
+    protected void Update()
     {
         //투사체 이동
         float moveDistance = move_Speed * Time.deltaTime;
