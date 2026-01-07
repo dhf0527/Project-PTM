@@ -37,7 +37,7 @@ public class WorldMapBackgrounds : MonoBehaviour
 
     private void Awake()
     {
-        screen_Width = Screen.width;
+        screen_Width = GetComponent<RectTransform>().rect.width;
         SetTransformMaps(0);
     }
 
