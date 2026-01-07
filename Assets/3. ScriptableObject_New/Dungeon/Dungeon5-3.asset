@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 5
   number: 3
-  bossUnit: {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
+  bossUnit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   units_Wave1:
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
   - {fileID: 0}
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   units_Wave2:
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
-  - {fileID: 0}
-  - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   units_Wave3:
-  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
-  - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
-  - {fileID: -1041740598641159027, guid: fb69955adc976af4092a7de1a2fe5630, type: 3}
-  stage_Faction: 2
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
+  - {fileID: 7797822636383587268, guid: 27b1c00f46824ab4fab3b069fa602b3e, type: 3}
+  - {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
+  stage_Faction: 0
   isHard: 1

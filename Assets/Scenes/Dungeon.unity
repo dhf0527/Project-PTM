@@ -65655,6 +65655,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 813430772}
     m_Modifications:
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill2_range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: skill1_Damage
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]
       value: 
       objectReference: {fileID: 19880594}
