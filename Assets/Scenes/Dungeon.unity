@@ -9427,7 +9427,7 @@ MonoBehaviour:
   killGold_Boss: 1000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
-  eliteAuraBuffValue: 20
+  eliteAuraBuffValue: 30
   cur_Wave: 0
   isBossSpawned: 0
   bossUnit: {fileID: 0}

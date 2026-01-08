@@ -21,9 +21,9 @@ MonoBehaviour:
   - 20
   - 30
   upgradeValue2:
+  - 5
   - 10
   - 15
-  - 20
   upgradeDescription: "\uC911\uC559 \uC655\uAD6D, \uC694\uC815\uC232 \uC6A9\uBCD1\uC758
     \uBA85\uC911\uB960, \uD68C\uD53C\uC728 {value} \uC99D\uAC00\n\uBB18\uC9C0\uAE30,
     \uB9C8\uC655\uAD70 \uC801\uC5D0\uAC8C \uBC1B\uB294 \uD53C\uD574 {value2}% \uAC10\uC18C"
