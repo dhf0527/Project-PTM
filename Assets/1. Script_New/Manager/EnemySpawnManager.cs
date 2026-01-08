@@ -65,6 +65,9 @@ public class EnemySpawnManager : MonoBehaviour
     //보스 오라 이펙트
     public GameObject bossAura;
 
+    [Header("강적의 오라 버프량(%)")]
+    [SerializeField] float eliteAuraBuffValue;
+
     //현재 웨이브-1
     [HideInInspector] public int cur_Wave = 0;
     int cur_Phase = 0;
@@ -193,7 +196,10 @@ public class EnemySpawnManager : MonoBehaviour
         DunGeonManager_New.instance.onStageUnits_Test.Add(spawned_Unit);
         //하드모드 버프 부여
         if (GameManager.Instance.current_Dungeon.isHard)
-            spawned_Unit.AddComponent<HardBuff>();
+        {
+            EliteAura eliteAura = spawned_Unit.AddComponent<EliteAura>();
+            eliteAura.buffValue = eliteAuraBuffValue;
+        }
         return spawned_Unit;
     }
 
@@ -319,7 +325,7 @@ public class EnemySpawnManager : MonoBehaviour
         cur_Wave = wave;
         cur_WaveTime = 0;
         cur_Phase = 0;
-        wavePanel.OnWaveTextSet(cur_Wave);
+        wavePanel.WaveTextSet(cur_Wave);
     }
 
     void InitTexts(int index)

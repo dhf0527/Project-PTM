@@ -14,7 +14,7 @@ public class DungeonButton : MonoBehaviour
     public List<Image> star_Images;
     public List<Sprite> star_Sprites;
 
-    private void Start()
+    private void OnEnable()
     {
         CheckClear();
     }

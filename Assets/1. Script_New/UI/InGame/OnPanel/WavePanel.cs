@@ -20,14 +20,20 @@ public class WavePanel : MonoBehaviour
 
     public void ToNextWave(int cur_Wave)
     {
-        OnWaveTextSet(cur_Wave);
+        WaveTextSet(cur_Wave);
         wave++;
         anim.SetTrigger(DoMove);
     }
     
-    public void OnWaveTextSet(int cur_Wave)
+    public void WaveTextSet(int cur_Wave)
     {
         wave = cur_Wave;
+        wave_Texts[0].text = $"WAVE {wave + 1}";
+        wave_Texts[1].text = $"WAVE {wave + 2}";
+    }
+
+    public void OnWaveTextSet()
+    {
         wave_Texts[0].text = $"WAVE {wave + 1}";
         wave_Texts[1].text = $"WAVE {wave + 2}";
     }

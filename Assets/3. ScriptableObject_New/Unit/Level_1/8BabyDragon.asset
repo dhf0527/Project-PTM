@@ -34,7 +34,8 @@ MonoBehaviour:
   size: 0
   cost: 150
   passive1: "\uD3ED\uD48D \uC131\uC7A5"
-  passive1_Detail: 
+  passive1_Detail: "\uC6E8\uC774\uBE0C\uAC00 \uC624\uB97C \uB54C\uB9C8\uB2E4 \uACF5\uACA9\uB825\uC774
+    *b8* \uC99D\uAC00\uD55C\uB2E4."
   passive2: 
   passive2_Detail: 
   attack_Range: 0

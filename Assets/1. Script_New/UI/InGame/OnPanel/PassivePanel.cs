@@ -15,6 +15,7 @@ public class PassivePanel : MonoBehaviour
     const string cursedFlame = "ÀúÁÖ ¹ÞÀº ºÒ²É";
     const string cuttedArmor = "Àý´ÜµÈ °©¿Ê";
     const string reapedSpirit = "¼öÈ®ÇÑ ¿µÈ¥";
+    const string blinding = "´«ºÎ½É";
 
     string Color_Red { get { return ColorToHex(color_Red_1); } }
     //= "#CD3B3B";
@@ -120,6 +121,9 @@ public class PassivePanel : MonoBehaviour
                 break;
             case reapedSpirit:
                 passive_Detail = $"°ø°Ý·Â {ColorText("+20", Color_Blue)}, ¸íÁß·ü {ColorText("+40", Color_Blue)}";
+                break;
+            case blinding:
+                passive_Detail = $"¸íÁß·ü {ColorText("-30",Color_Red)}";
                 break;
             default:
                 return;

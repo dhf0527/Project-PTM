@@ -14,9 +14,6 @@ public class ImageAnimation : MonoBehaviour
     [SerializeField] GameObject next_Obj;
     [SerializeField] GameObject back_Obj;
 
-    [SerializeField] List<GameObject> dayButtons;
-    [SerializeField] List<GameObject> nightButtons;
-
     float curTime;
     int index = 0;
 
@@ -70,9 +67,5 @@ public class ImageAnimation : MonoBehaviour
         isNight = setBool;
         next_Obj.SetActive(!setBool);
         back_Obj.SetActive(setBool);
-        foreach (var item in dayButtons)
-            item.SetActive(!isNight);
-        foreach (var item in nightButtons)
-            item.SetActive(isNight);
     }
 }

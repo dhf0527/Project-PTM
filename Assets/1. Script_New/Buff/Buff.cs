@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Buff : MonoBehaviour
 {
-    [SerializeField]public Unit unit;
+    [HideInInspector] public Unit unit;
 
     //버프 지속 시간
     public float buff_Time;

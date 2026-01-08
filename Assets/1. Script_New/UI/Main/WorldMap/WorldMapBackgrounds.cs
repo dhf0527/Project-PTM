@@ -12,6 +12,9 @@ public class WorldMapBackgrounds : MonoBehaviour
     [SerializeField] GameObject backButton;
     [SerializeField] float changeTime;
 
+    [SerializeField] List<GameObject> dayButtons;
+    [SerializeField] List<GameObject> nightButtons;
+
     float screen_Width;
     bool isNight;
     bool IsNight
@@ -22,6 +25,11 @@ public class WorldMapBackgrounds : MonoBehaviour
             isNight = value;
             nextButton.SetActive(!value);
             backButton.SetActive(value);
+
+            foreach (var item in dayButtons)
+                item.SetActive(!isNight);
+            foreach (var item in nightButtons)
+                item.SetActive(isNight);
         }
     }
     bool isChanging;
@@ -39,11 +47,16 @@ public class WorldMapBackgrounds : MonoBehaviour
     {
         screen_Width = GetComponent<RectTransform>().rect.width;
         SetTransformMaps(0);
+
+        FastChange(GameManager.Instance.current_Dungeon?.stage >= 5);
     }
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.N))
+            FastChange(true);
+        if (Input.GetKeyDown(KeyCode.M))
+            FastChange(false);
     }
 
     void SetTransformMaps(float value)
@@ -94,5 +107,11 @@ public class WorldMapBackgrounds : MonoBehaviour
         SetTransformMaps(0);
         IsChanging = false;
         IsNight = false;
+    }
+
+    public void FastChange(bool isToNight)
+    {
+        SetTransformMaps(isToNight ? 1 : 0);
+        IsNight = isToNight;
     }
 }

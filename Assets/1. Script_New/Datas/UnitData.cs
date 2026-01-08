@@ -50,10 +50,12 @@ public class UnitData : ScriptableObject
     //고유 특성1 이름
     public string passive1;
     //고유 특성1 설명
+    [TextArea]
     public string passive1_Detail;
     //고유 특성2 이름
     public string passive2;
-    //고유 특성2 설명
+    //고유 특성2 설명\
+    [TextArea]
     public string passive2_Detail;
 
     //공격범위
