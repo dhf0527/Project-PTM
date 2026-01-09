@@ -29,8 +29,12 @@ public class SkullGiant : Unit
     private void Update()
     {
         base.Update();
-        ScanUnit();
-        RemoveScanUnit();
+
+        if (!isDead)
+        {
+            ScanUnit();
+            RemoveScanUnit();
+        }
     }
 
     void ScanUnit()
@@ -78,8 +82,13 @@ public class SkullGiant : Unit
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 
-    private void OnDisable()
+    public override void Dead()
     {
+        base.Dead();
+
+        foreach (var item in detectedUnits)
+            item.deadEvent -= CorpseCollect;
+
         detectedUnits.Clear();
     }
 }
