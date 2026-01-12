@@ -39,7 +39,7 @@ public enum ItemRarity
 
 public enum BGM_Enum 
 { 
-    Map_1 , Boss, WorldMap, Intro
+    Dungeon , Boss, WorldMap, Intro, HardDungeon, HardBoss
 }
 public enum SFX_Enum 
 { 

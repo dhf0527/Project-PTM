@@ -12,8 +12,8 @@ public class WorldMapBackgrounds : MonoBehaviour
     [SerializeField] GameObject backButton;
     [SerializeField] float changeTime;
 
-    [SerializeField] List<GameObject> dayButtons;
-    [SerializeField] List<GameObject> nightButtons;
+    [SerializeField] List<GameObject> dayObjects;
+    [SerializeField] List<GameObject> nightObjects;
 
     float screen_Width;
     bool isNight;
@@ -26,9 +26,9 @@ public class WorldMapBackgrounds : MonoBehaviour
             nextButton.SetActive(!value);
             backButton.SetActive(value);
 
-            foreach (var item in dayButtons)
+            foreach (var item in dayObjects)
                 item.SetActive(!isNight);
-            foreach (var item in nightButtons)
+            foreach (var item in nightObjects)
                 item.SetActive(isNight);
         }
     }

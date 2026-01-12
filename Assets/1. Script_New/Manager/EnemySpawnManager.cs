@@ -401,7 +401,11 @@ public class EnemySpawnManager : MonoBehaviour
         {
             ToNextWave(2);
             backGround_Anim.SetTrigger("SpawnBoss");
-            AudioManager.Instance.PlayerBgm(BGM_Enum.Boss);
+
+            if(GameManager.Instance.current_Dungeon.isHard)
+                AudioManager.Instance.PlayerBgm(BGM_Enum.HardBoss);
+            else
+                AudioManager.Instance.PlayerBgm(BGM_Enum.Boss);
             isBossSpawned = true;
         }
     }

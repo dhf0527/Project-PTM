@@ -35,30 +35,29 @@ public class SceneChangeManager : MonoBehaviour
 
     [SerializeField] float fade_Time;
 
-    readonly static string mainSceneName = "MainScene";
-    readonly static string dungeonSceneName = "Dungeon";
-    readonly static string testSceneName = "TestScene";
-    readonly static string introSceneName = "IntroScene";
-
     public void OnToMainScene()
     {
-        AudioManager.Instance.PlayerBgm(BGM_Enum.WorldMap);
-        SceneManager.LoadScene(mainSceneName);
+        string loadSceneName = ConstData.sceneName_Main;
+
+        AudioManager.Instance.PlayerBgm(loadSceneName);
+        SceneManager.LoadScene(loadSceneName);
         Time.timeScale = 1f;
     }
 
     public void OnToDungeonScene()
     {
-        AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
-        SceneManager.LoadScene(dungeonSceneName);
+        string loadSceneName = ConstData.sceneName_Dungeon;
+
+        AudioManager.Instance.PlayerBgm(loadSceneName);
+        SceneManager.LoadScene(loadSceneName);
         Time.timeScale = 1f;
     }
 
     public void OnToTestScene()
     {
-        AudioManager.Instance.PlayerBgm(BGM_Enum.Map_1);
-        SceneManager.LoadScene(testSceneName, LoadSceneMode.Single);
-        SceneManager.LoadScene(dungeonSceneName, LoadSceneMode.Additive);
+        SceneManager.LoadScene(ConstData.sceneName_Dungeon, LoadSceneMode.Single);
+        SceneManager.LoadScene(ConstData.sceneName_Test, LoadSceneMode.Additive);
+        AudioManager.Instance.PlayerBgm(ConstData.sceneName_Dungeon);
 
         //테스트 씬 오류를 방지하기 위해 임시로 첫 번째 던전의 값을 삽입
         GameManager.Instance.current_Dungeon = MainManager.instance.dungeonDatas[0];
@@ -67,8 +66,10 @@ public class SceneChangeManager : MonoBehaviour
 
     public void OnToIntroScene()
     {
-        SceneManager.LoadScene(introSceneName);
-        AudioManager.Instance.PlayerBgm(BGM_Enum.Intro);
+        string loadSceneName = ConstData.sceneName_Intro;
+        
+        AudioManager.Instance.PlayerBgm(loadSceneName);
+        SceneManager.LoadScene(loadSceneName);
         Time.timeScale = 1f;
     }
 
@@ -104,8 +105,6 @@ public class SceneChangeManager : MonoBehaviour
         tmp_Color.a = 1;
         fadeMask.color = tmp_Color;
 
-        AudioManager.Instance.PlayerBgm(BGM_Enum.WorldMap);
-        SceneManager.LoadScene(mainSceneName);
-        Time.timeScale = 1f;
+        OnToMainScene();
     }
 }

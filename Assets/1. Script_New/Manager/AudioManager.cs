@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
@@ -25,7 +26,6 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public int startBGMIndex;
     #region BGM
     [Header("BGM (clips 순서 유의)")]
     public AudioClip[] bgm_Clips;
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerBgm((BGM_Enum)startBGMIndex);
+        PlayerBgm(SceneManager.GetActiveScene().name);
 
         LoadVolumes();
     }
@@ -84,6 +84,31 @@ public class AudioManager : MonoBehaviour
             sfx_Players[i] = sfxObject.AddComponent<AudioSource>();
             sfx_Players[i].playOnAwake = false;
             sfx_Players[i].outputAudioMixerGroup = mixer.FindMatchingGroups(EMixer.SFX.ToString())[0];
+        }
+    }
+
+    public void PlayerBgm(string currentSceneName)
+    {
+        switch (currentSceneName)
+        {
+            case ConstData.sceneName_Intro:
+                PlayerBgm(BGM_Enum.Intro);
+                break;
+            case ConstData.sceneName_Main:
+                PlayerBgm(BGM_Enum.WorldMap);
+                break;
+            case ConstData.sceneName_Dungeon:
+                if (GameManager.Instance.current_Dungeon.isHard)
+                    PlayerBgm(BGM_Enum.HardDungeon);
+                else
+                    PlayerBgm(BGM_Enum.Dungeon);
+                break;
+
+            case ConstData.sceneName_Test:
+                PlayerBgm(BGM_Enum.Dungeon);
+                break;
+            default:
+                break;
         }
     }
 

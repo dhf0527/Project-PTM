@@ -49,6 +49,9 @@ public class EliteAura : Buff
         unit.unitStatData_st.attack_PlusPercent += value;
         unit.unitStatData_st.accuracy_Plus += (int)(unit.ud.accuracy * value * 0.01f);
         unit.unitStatData_st.avoidance_Plus += (int)(unit.ud.avoidance * value * 0.01f);
+
+        if (value > pre_buffValue)
+            unit.GetHp(unit.Max_Hp * value * 0.01f - unit.Max_Hp * pre_buffValue * 0.01f);
     }
 
     protected override void BuffStart()

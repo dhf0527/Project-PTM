@@ -27,4 +27,10 @@ public static class ConstData
     public const string skillCount2 = "skillCount2";
 
     public const string starBuyCount = "starBuyCount";
+
+    //æ¿ ¿Ã∏ß
+    public const string sceneName_Intro = "IntroScene";
+    public const string sceneName_Main = "MainScene";
+    public const string sceneName_Dungeon = "Dungeon";
+    public const string sceneName_Test = "TestScene";
 }
