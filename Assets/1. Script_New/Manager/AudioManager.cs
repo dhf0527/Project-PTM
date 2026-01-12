@@ -98,7 +98,7 @@ public class AudioManager : MonoBehaviour
                 PlayerBgm(BGM_Enum.WorldMap);
                 break;
             case ConstData.sceneName_Dungeon:
-                if (GameManager.Instance.current_Dungeon.isHard)
+                if (GameManager.Instance.current_Dungeon && GameManager.Instance.current_Dungeon.isHard)
                     PlayerBgm(BGM_Enum.HardDungeon);
                 else
                     PlayerBgm(BGM_Enum.Dungeon);

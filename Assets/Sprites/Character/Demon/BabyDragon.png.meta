@@ -114,11 +114,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 600
         width: 600
         height: 600
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: BabyDragon_1
       rect:
         serializedVersion: 2
-        x: 603
-        y: 0
+        x: 600
+        y: 600
         width: 600
         height: 600
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,11 +156,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1200
-        y: 0
+        y: 600
         width: 600
         height: 600
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: BabyDragon_3
       rect:
         serializedVersion: 2
-        x: 1803
-        y: 0
+        x: 1800
+        y: 598
         width: 600
         height: 600
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: BabyDragon_4
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 0
         y: 0
         width: 600
         height: 600
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: BabyDragon_5
       rect:
         serializedVersion: 2
-        x: 3000
+        x: 600
         y: 0
         width: 600
         height: 600
-      alignment: 9
-      pivot: {x: 0.5, y: 0.47}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: BabyDragon_6
       rect:
         serializedVersion: 2
-        x: 3597
+        x: 1200
         y: 0
         width: 600
         height: 600
-      alignment: 9
-      pivot: {x: 0.5, y: 0.47}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: BabyDragon_7
       rect:
         serializedVersion: 2
-        x: 4200
+        x: 1800
         y: 0
         width: 600
         height: 600
-      alignment: 9
-      pivot: {x: 0.5, y: 0.47}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
