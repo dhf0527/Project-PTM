@@ -3974,6 +3974,54 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 654965131}
+        m_TargetAssemblyTypeName: DungeonButton, Assembly-CSharp
+        m_MethodName: Test_ResetClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1836440984}
+        m_TargetAssemblyTypeName: DungeonButton, Assembly-CSharp
+        m_MethodName: Test_ResetClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2015655702}
+        m_TargetAssemblyTypeName: DungeonButton, Assembly-CSharp
+        m_MethodName: Test_ResetClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2045872289}
+        m_TargetAssemblyTypeName: DungeonButton, Assembly-CSharp
+        m_MethodName: Test_ResetClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 822545148}
         m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
         m_MethodName: TestOpenStage
@@ -8509,7 +8557,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6498f8866993d94419b32490c96b4baf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9abf7b8e4d96bbd4a88810e19681c6e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -69922,6 +69970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d249a0a92bfd8e49ac36028b976d827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test_DungeonData: {fileID: 11400000, guid: b7d4448e4cd36714aadfca0f210412f1, type: 2}
   dungeonDatas:
   - {fileID: 11400000, guid: e99dd72b84ae6884782254c32a469771, type: 2}
   - {fileID: 11400000, guid: 5693574a0b9b0b24796a8b8052d2fbbe, type: 2}
@@ -72199,7 +72248,7 @@ MonoBehaviour:
   - {fileID: 1836440978}
   - {fileID: 2015655696}
   - {fileID: 2045872283}
-  - {fileID: 0}
+  - {fileID: 1735803068}
 --- !u!114 &1386660021
 MonoBehaviour:
   m_ObjectHideFlags: 0

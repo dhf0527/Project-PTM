@@ -58,7 +58,7 @@ public class CutSceneManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Dungeon")
         {
             ReadyTutorial();
-            CheckTutorial_DungeonScene();
+            //CheckTutorial_DungeonScene();
         }
         else if(SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
         {
@@ -90,9 +90,13 @@ public class CutSceneManager : MonoBehaviour
         int cur_Number = GameManager.Instance.current_Dungeon.number;
 
         if(cur_Stage == 1 && cur_Number == 1 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1) == 0)
-            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1, 1);
+            //PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1, 1);
+            Tutorial_Dungeon_1();
+
         else if (cur_Stage == 1 && cur_Number == 2 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2) == 0)
-            PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2, 1);
+            //PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2, 1);
+            Tutorial_Dungeon_2();
+
     }
 
     public void CheckTutorial_DungeonScene()

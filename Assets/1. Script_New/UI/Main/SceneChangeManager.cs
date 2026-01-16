@@ -59,8 +59,7 @@ public class SceneChangeManager : MonoBehaviour
         SceneManager.LoadScene(ConstData.sceneName_Test, LoadSceneMode.Additive);
         AudioManager.Instance.PlayerBgm(ConstData.sceneName_Dungeon);
 
-        //테스트 씬 오류를 방지하기 위해 임시로 첫 번째 던전의 값을 삽입
-        GameManager.Instance.current_Dungeon = MainManager.instance.dungeonDatas[0];
+        GameManager.Instance.current_Dungeon = MainManager.instance.test_DungeonData;
         Time.timeScale = 1f;
     }
 

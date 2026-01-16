@@ -9,6 +9,7 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager instance;
 
+    public DungeonData test_DungeonData;
     public DungeonData[] dungeonDatas;
     public AreaPanel areaPanel;
     public Area_Page[] areaPages;
