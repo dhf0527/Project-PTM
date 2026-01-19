@@ -40,7 +40,7 @@ public class TestManager : MonoBehaviour
 
     public void Test_Cartoon()
     {
-        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.StartScene_1, 0);
+        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 0);
     }
 
     //튜토리얼 열람 초기화
@@ -48,6 +48,10 @@ public class TestManager : MonoBehaviour
     {
         for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
             PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)i, 0);
+
+        //대사 컷씬 열람 초기화
+        for (int i = 0; i < Enum.GetValues(typeof(CutSceneKey)).Length; i++)
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + (CutSceneKey)i, 0);
     }
 
     //튜토리얼 읽음 처리

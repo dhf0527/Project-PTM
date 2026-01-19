@@ -70002,6 +70002,7 @@ MonoBehaviour:
   - {fileID: 896922122}
   - {fileID: 1641499837}
   dungeonPanel: {fileID: 250612749}
+  endcredit_go: {fileID: 979407385}
   soul_Text: {fileID: 96427140}
   additionalMeal_cost: 2000
   resetMeal_cost: 2000

@@ -120,13 +120,30 @@ public class GameClearPanel : MonoBehaviour
                 #region ÄÆ¾À Á¶°Ç Ã¼Å©
                 if(pre_Record == 0)
                 {
-                    //Æ©Åä¸®¾ó Ã¼Å©
+                    //Æ©Åä¸®¾ó && ´ëÈ­ÄÆ¾À Ã¼Å©
                     if (stage == 1 && number == 2)
                         PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_2, 1);
                     else if (stage == 1 && number == 3)
+                    {
                         PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3, 1);
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_3, 1);
+                    }
+                    else if (stage == 2 && number == 1) 
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_1, 1);
+                    else if (stage == 2 && number == 3)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_3, 1);
+                    else if (stage == 3 && number == 1)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_1, 1);
+                    else if (stage == 3 && number == 3)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_3, 1);
+                    else if (stage == 4 && number == 1)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_1, 1);
+                    else if (stage == 4 && number == 3)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_3, 1);
 
-                    //´ëÈ­ÄÆ¾À Ã¼Å©
+                    //¿£µåÅ©·¡µ÷ Ã¼Å©
+                    else if (stage == 8 && number == 3)
+                        PlayerPrefs.SetInt(ConstData.endcreditReady, 1);
                 }
                 #endregion
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 public class EndCredit_Dotween : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class EndCredit_Dotween : MonoBehaviour
     enum EndCreditStep {illust, devs, final};
     EndCreditStep curStep = EndCreditStep.illust;
 
+    Coroutine c_AutoNextPage;
+
     private void OnEnable()
     {
         Init();
@@ -32,7 +35,11 @@ public class EndCredit_Dotween : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.DOFade(1f, pageChangeDuration)
             .SetEase(Ease.InCubic)
-            .OnComplete(() => isMoving = false);
+            .OnComplete(() =>
+            {
+                isMoving = false;
+                c_AutoNextPage = StartCoroutine(C_AutoNextPage());
+            });
 
         
     }
@@ -55,12 +62,22 @@ public class EndCredit_Dotween : MonoBehaviour
             pageGroups[i].alpha = 0f;
         //최종 페이지 투명화
         final_CanvasGroup.alpha = 0f;
+        Time.timeScale = 1f;
+    }
+
+    IEnumerator C_AutoNextPage()
+    {
+        yield return new WaitForSeconds(10f);
+        OnScreenTouch();
     }
 
     public void OnScreenTouch()
     {
         if (isMoving)
             return;
+
+        StopCoroutine(c_AutoNextPage);
+        c_AutoNextPage = null;
 
         //일러스트 단계
         if(curStep == EndCreditStep.illust)
@@ -126,6 +143,8 @@ public class EndCredit_Dotween : MonoBehaviour
             seq.AppendInterval(2f);
             seq.OnComplete(() => gameObject.SetActive(false));
         }
+
+        c_AutoNextPage = StartCoroutine(C_AutoNextPage());
     }
 
     void MoveToPage(int pre_index)

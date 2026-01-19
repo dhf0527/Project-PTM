@@ -70,7 +70,7 @@ public enum TutorialKey
 
 public enum CutSceneKey
 {
-    StartScene_1
+    CartoonSceneStart, Dialogue_1_1, Dialogue_1_3, Dialogue_2_1, Dialogue_2_3, Dialogue_3_1, Dialogue_3_3, Dialogue_4_1, Dialogue_4_3
 }
 
 public enum SearchKey

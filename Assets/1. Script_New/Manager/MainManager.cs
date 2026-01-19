@@ -14,6 +14,7 @@ public class MainManager : MonoBehaviour
     public AreaPanel areaPanel;
     public Area_Page[] areaPages;
     public DungeonPanel dungeonPanel;
+    public GameObject endcredit_go;
 
     public TMP_Text soul_Text;
 
