@@ -174,7 +174,7 @@ TextureImporter:
         height: 280
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 39, y: 39, z: 39, w: 39}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -195,7 +195,7 @@ TextureImporter:
         height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 39, y: 39, z: 39, w: 39}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -221,6 +221,7 @@ TextureImporter:
       undeadScroll_1: 416037374
       undeadScroll_2: -989832914
       undeadScroll_3: -1050672317
+      undeadScroll_4: -384935660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

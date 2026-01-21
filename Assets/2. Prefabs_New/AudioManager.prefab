@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4b9569f7e7bff40aac449b1fa2d7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startBGMIndex: 0
   bgm_Clips:
   - {fileID: 8300000, guid: cf8e178383977044ab0a4f12ef44d6de, type: 3}
   - {fileID: 8300000, guid: 5e18c973f7ed02a43afce6eb8a5e25ff, type: 3}
@@ -77,5 +76,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7e58bf0c6266b3643bb2fc78e2148166, type: 3}
   - {fileID: 8300000, guid: f53d79bca3a84944292ffee1791b5041, type: 3}
   - {fileID: 8300000, guid: 5131b11525b674a419105bb9f2c18150, type: 3}
+  - {fileID: 8300000, guid: 1c3e732839842db44ae48a6224073575, type: 3}
+  - {fileID: 8300000, guid: b03ff0bfc4a5be34eab82bae0af2feeb, type: 3}
   channels: 16
   mixer: {fileID: 24100000, guid: d7568e8727449d647a13e223f6540691, type: 2}

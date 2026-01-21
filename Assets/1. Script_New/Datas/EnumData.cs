@@ -45,7 +45,7 @@ public enum SFX_Enum
 { 
     Touch , CardAppear, BaseUpgrade , UnitConfirm, UnitCoolDown , Deny , UnitEmploy , Hit_Physic , Hit_Magic, Hit_Fire 
         , Avoid , ShieldSmite, BrokenHeroSword , Dialogue2, HeroUpgrade, Eating, MealComplete , StartStage, Victory, BaseUpgrade_Fail
-        , HeroDie, HeroRevive, Defeated, BossSpawned
+        , HeroDie, HeroRevive, Defeated, BossSpawned, MealReset, StarBuy
 }
 
 public enum EMixer

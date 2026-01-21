@@ -210,10 +210,10 @@ TextureImporter:
       name: cardUI_4
       rect:
         serializedVersion: 2
-        x: 1031
-        y: 3864
-        width: 758
-        height: 287
+        x: 1037
+        y: 3870
+        width: 744
+        height: 271
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}
@@ -273,10 +273,10 @@ TextureImporter:
       name: cardUI_7
       rect:
         serializedVersion: 2
-        x: 1031
-        y: 3505
-        width: 758
-        height: 287
+        x: 1037
+        y: 3513
+        width: 745
+        height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}
@@ -378,10 +378,10 @@ TextureImporter:
       name: cardUI_12
       rect:
         serializedVersion: 2
-        x: 1048
-        y: 2370
-        width: 755
-        height: 286
+        x: 1053
+        y: 2375
+        width: 744
+        height: 273
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}
@@ -399,10 +399,10 @@ TextureImporter:
       name: cardUI_13
       rect:
         serializedVersion: 2
-        x: 1048
-        y: 2011
-        width: 755
-        height: 287
+        x: 1054
+        y: 2021
+        width: 743
+        height: 272
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}
@@ -462,10 +462,10 @@ TextureImporter:
       name: cardUI_16
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 831
-        width: 759
-        height: 287
+        x: 1051
+        y: 843
+        width: 745
+        height: 274
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}
@@ -483,10 +483,10 @@ TextureImporter:
       name: cardUI_17
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 480
-        width: 759
-        height: 287
+        x: 1053
+        y: 486
+        width: 746
+        height: 276
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 33, y: 41, z: 33, w: 41}

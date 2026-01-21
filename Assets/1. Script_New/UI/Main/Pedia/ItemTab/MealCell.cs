@@ -10,7 +10,12 @@ public class MealCell : MonoBehaviour
 
     public Image item_Image;
     [SerializeField] GameObject lockImage_go;
+    [SerializeField] Image panel_Image;
     public TMP_Text itemName_Text;
+   
+
+    [Header("0°í±Þ, 1Èñ±Í, 2Àü¼³")]
+    [SerializeField] List<Sprite> rarityPanel_Sprites;
 
     private void OnEnable()
     {
@@ -20,6 +25,7 @@ public class MealCell : MonoBehaviour
     public void Init()
     {
         item_Image.sprite = md.mealIcon;
+        panel_Image.sprite = rarityPanel_Sprites[(int)md.mealRarity];
 
         if (md.isHardMode)
         {

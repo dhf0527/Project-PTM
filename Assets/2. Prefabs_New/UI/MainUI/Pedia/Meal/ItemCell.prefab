@@ -352,7 +352,12 @@ MonoBehaviour:
   md: {fileID: 11400000, guid: 29a9949e38cd7d741941a0c0b3129ac3, type: 2}
   item_Image: {fileID: 3598241999443119851}
   lockImage_go: {fileID: 1196937510006344455}
+  panel_Image: {fileID: 690465196298753747}
   itemName_Text: {fileID: 5013740462332493326}
+  rarityPanel_Sprites:
+  - {fileID: 2138508906, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: 1153962734, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
+  - {fileID: -1137483167, guid: d40b1049c99553841bd9a40f22447ec8, type: 3}
 --- !u!1 &8613303204933941115
 GameObject:
   m_ObjectHideFlags: 0
