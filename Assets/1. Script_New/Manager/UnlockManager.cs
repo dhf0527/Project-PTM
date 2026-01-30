@@ -12,6 +12,7 @@ public class UnlockManager : MonoBehaviour
     public GameObject meal_Button;
     public List<GameObject> unitUpgrade_Buttons;
     public GameObject pedia_Button;
+    public GameObject product_Button;
 
     [Header("영웅,식사,용병단,도감 순서")]
     public List<GameObject> lockImages_go;
@@ -51,6 +52,8 @@ public class UnlockManager : MonoBehaviour
 
         pedia_Button.SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) == 1);
         lockImages_go[3].SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) != 1);
+
+        product_Button.SetActive(PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3) == 2);
 
         lockImages_go[2].SetActive(PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 0);
         for (int i = 0; i < unitUpgrade_Buttons.Count; i++)

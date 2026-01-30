@@ -19,7 +19,7 @@ public static class ConstData
     public const string pedia_Unlock = "pedia_Unlock";
     public const string hardMode_Unlock = "hardMode_Unlock";
     public const string new_Unlock = "new_Unlock";
-
+    public const string product_Unlock = "product_Unlock";
     public const string tutorialReady = "tutorialReady";    //ConstData.tutorialReady + TutorialKey.Dungeon_1
     public const string cutSceneReady = "cutSceneReady";    //ConstData.cutSceneReady + TutorialKey.Dungeon_1
     public const string endcreditReady = "endcreditReady";

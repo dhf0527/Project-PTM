@@ -48,7 +48,6 @@ public class CutSceneManager : MonoBehaviour
     [SerializeField] List<Sprite> cutSceneSprites;
     int cutScene_index = 0;
     int cutScene_maxIndex;
-    CutSceneKey cur_CutSceneKey;
 
     private void Awake()
     {
@@ -279,6 +278,7 @@ public class CutSceneManager : MonoBehaviour
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
 
+        cur_TutorialKey = TutorialKey.None;
     }
 
     //특정 UI를 강조하는 함수
@@ -749,7 +749,6 @@ public class CutSceneManager : MonoBehaviour
         }
 
         cutScene_maxIndex = cutSceneSprites.Count - 1;
-        cur_CutSceneKey = CutSceneKey.CartoonSceneStart;
     }
 
     public void NextCutscene()
@@ -778,7 +777,7 @@ public class CutSceneManager : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-        PlayerPrefs.SetInt(ConstData.cutSceneReady + cur_CutSceneKey, 2);
+        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 2);
         CheckDialogueCutScene();
     }
 

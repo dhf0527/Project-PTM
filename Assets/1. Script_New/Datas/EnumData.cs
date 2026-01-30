@@ -65,7 +65,7 @@ public enum SkillType
 
 public enum TutorialKey
 {
-    WorldMap_1, WorldMap_2, WorldMap_3, Dungeon_1, Dungeon_2,
+   None, WorldMap_1, WorldMap_2, WorldMap_3, Dungeon_1, Dungeon_2,
 }
 
 public enum CutSceneKey

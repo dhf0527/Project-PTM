@@ -70069,6 +70069,7 @@ MonoBehaviour:
   - {fileID: 1928218592}
   - {fileID: 1306398877}
   pedia_Button: {fileID: 851783446}
+  product_Button: {fileID: 1774593832}
   lockImages_go:
   - {fileID: 1481835836}
   - {fileID: 2146430731}

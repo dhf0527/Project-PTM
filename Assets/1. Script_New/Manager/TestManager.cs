@@ -70,6 +70,7 @@ public class TestManager : MonoBehaviour
         PlayerPrefs.SetInt(ConstData.meal_Unlock, isUnlock ? 1 : 0);
         PlayerPrefs.SetInt(ConstData.pedia_Unlock, isUnlock ? 1 : 0);
         PlayerPrefs.SetInt(ConstData.unitUpgrade_Unlock, isUnlock ? 4 : 0);
+        PlayerPrefs.SetInt(ConstData.product_Unlock, isUnlock ? 1 : 0);
 
         UnlockManager.instance.CheckUnlock();
     }
