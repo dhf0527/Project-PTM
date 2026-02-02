@@ -44,22 +44,49 @@ public class CutSceneManager : MonoBehaviour
     List<DialogueData> list_Dialogue;
     int dialogue_index = 0;
 
-    [SerializeField] List<Image> cutScenes;
-    [SerializeField] List<Sprite> cutSceneSprites;
-    int cutScene_index = 0;
+    [SerializeField] CartoonCutSceneImages cartoonCutSceneImages;
+    [SerializeField] CutScene_SubImage cutScene_subImage_prf;
+    List<CutScene_SubImage> cutScene_subImages = new();
+    int cartoonCutScene_index = 0;
+    int cartoonCutScene_subIndex = 0;
     int cutScene_maxIndex;
+    public bool IsCutSceneProgressing { get; set; }
+
+    [SerializeField] List<CartoonCutSceneData> cartoonCutSceneDatas;
+    [Serializable]
+    struct CartoonCutSceneData
+    {
+        public Sprite cutSceneSprite;
+        public List<Sprite> subSprites;
+    }
 
     private void Awake()
     {
         instance = this;
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //StartCutScene("1-1");
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartCutScene("4-3");
+            //PlayCutscene_StartScene1();
+        }
+    }
+
+    public void CheckDialogues()
+    {
         //튜토리얼
         if (SceneManager.GetActiveScene().name == "Dungeon")
         {
             ReadyTutorial();
             //CheckTutorial_DungeonScene();
         }
-        else if(SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
+        else if (SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
         {
             if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 0)
                 PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 1);
@@ -68,22 +95,8 @@ public class CutSceneManager : MonoBehaviour
             if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 0)
                 PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 1);
 
-            if(!CheckDialogueCutScene())
+            if (!CheckDialogueCutScene())
                 CheckTutorial_MainScene();
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //StartCutScene("1-1");
-            PlayCutscene_CartoonSceneStart();
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartCutScene("4-3");
-            //PlayCutscene_StartScene1();
         }
     }
 
@@ -736,49 +749,80 @@ public class CutSceneManager : MonoBehaviour
     #endregion
 
     #region 만화 컷씬
-    void PlayCutscene_CartoonSceneStart()
+    public void PlayCutscene_CartoonSceneStart()
     {
-        cutScene_index = 0;
-        cutScenes[0].sprite = cutSceneSprites[cutScene_index];
-        cutScenes[1].sprite = cutSceneSprites[cutScene_index + 1];
+        cartoonCutScene_index = 0;
+        cartoonCutScene_subIndex = 0;
+        cartoonCutSceneImages.cutSceneImages[0].sprite = cartoonCutSceneDatas[cartoonCutScene_index].cutSceneSprite;
+        cartoonCutSceneImages.cutSceneImages[1].sprite = cartoonCutSceneDatas[cartoonCutScene_index + 1].cutSceneSprite;
 
-        cutScenes[0].transform.parent.gameObject.SetActive(true);
-        foreach (var item in cutScenes)
+        cartoonCutSceneImages.cutSceneImages[0].transform.parent.gameObject.SetActive(true);
+        foreach (var item in cartoonCutSceneImages.cutSceneImages)
         {
             item.gameObject.SetActive(true);
         }
 
-        cutScene_maxIndex = cutSceneSprites.Count - 1;
+        cutScene_maxIndex = cartoonCutSceneDatas.Count - 1;
     }
 
     public void NextCutscene()
     {
-        if (cutScene_index == cutScene_maxIndex)
-        {
-            EndCartoonCutScene();
+        if (IsCutSceneProgressing)
             return;
+        CartoonCutSceneData cur_data = cartoonCutSceneDatas[cartoonCutScene_index];
+
+        //서브 스프라이트
+        if (cur_data.subSprites.Count != 0)
+        {
+            int maxSubIndex = cur_data.subSprites.Count - 1;
+            if (cartoonCutScene_subIndex <= maxSubIndex)
+            {
+                //서브 이미지 생성
+                cutScene_subImages.Add(Instantiate(cutScene_subImage_prf, cartoonCutSceneImages.cutSceneImages[0].transform));
+                //서브 이미지 스프라이트 설정
+                cutScene_subImages[cartoonCutScene_subIndex].GetComponent<Image>().sprite = cur_data.subSprites[cartoonCutScene_subIndex];
+                cartoonCutScene_subIndex++;
+                return;
+            }
         }
-        cutScenes[0].sprite = cutSceneSprites[cutScene_index];
-        if(cutScene_index != cutScene_maxIndex)
-            cutScenes[1].sprite = cutSceneSprites[cutScene_index + 1];
-        cutScenes[0].transform.parent.GetComponent<Animator>().SetTrigger("Next");
-        cutScene_index++;
+
+        //메인 스프라이트
+        if (cartoonCutScene_index == cutScene_maxIndex)
+        {
+            //만화 컷씬 종료(페이드)
+            FadeManager.Instance.FadeAction(1, EndCartoonCutScene, 0.5f, () => CheckDialogues());
+        }
+        else
+        {
+            //컷씬 넘기기
+            CartoonCutSceneData next_data = cartoonCutSceneDatas[cartoonCutScene_index + 1];
+            cartoonCutSceneImages.cutSceneImages[0].sprite = cur_data.cutSceneSprite;
+            cartoonCutSceneImages.cutSceneImages[1].sprite = next_data.cutSceneSprite;
+            IsCutSceneProgressing = true;
+            cartoonCutSceneImages.cutSceneImages[0].transform.parent.GetComponent<CartoonCutSceneImages>().MoveCutScene();
+            cartoonCutScene_index++;
+        }
     }
 
+    //컷씬 넘기기 애니메이션이 끝날 때 호출
     public void OnNextCutScene()
     {
-        cutScenes[0].sprite = cutScenes[1].sprite;
+        cartoonCutSceneImages.cutSceneImages[0].sprite = cartoonCutSceneImages.cutSceneImages[1].sprite;
+        foreach (var item in cutScene_subImages)
+            Destroy(item.gameObject);
+        cutScene_subImages.Clear();
+
+        IsCutSceneProgressing = false;
     }
 
     void EndCartoonCutScene()
     {
-        cutScenes[0].transform.parent.gameObject.SetActive(false);
-        foreach (var item in cutScenes)
+        cartoonCutSceneImages.cutSceneImages[0].transform.parent.gameObject.SetActive(false);
+        foreach (var item in cartoonCutSceneImages.cutSceneImages)
         {
             item.gameObject.SetActive(false);
         }
         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 2);
-        CheckDialogueCutScene();
     }
 
     public void Test_StartCutScene()

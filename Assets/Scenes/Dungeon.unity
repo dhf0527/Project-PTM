@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.15
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21491,6 +21491,8 @@ GameObject:
   - component: {fileID: 681865467}
   - component: {fileID: 681865466}
   - component: {fileID: 681865465}
+  - component: {fileID: 681865468}
+  - component: {fileID: 681865469}
   m_Layer: 5
   m_Name: 'OK :: Button'
   m_TagString: Untagged
@@ -21562,18 +21564,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1259631751}
-        m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: OnToMainScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 308641163}
         m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
         m_MethodName: ResetSound
@@ -21624,6 +21614,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681865463}
   m_CullTransparentMesh: 1
+--- !u!114 &681865468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681865463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c6a0e13f627f4a8c2c989763a5614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx_enum: 0
+  isButtonDown: 0
+--- !u!114 &681865469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681865463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedba7a51ce64de4cb3d392df4c3a7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneType: 1
 --- !u!1 &689558540
 GameObject:
   m_ObjectHideFlags: 0
@@ -34081,18 +34098,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySfx_By_Int
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1152935998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38930,51 +38935,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 850}
   m_Pivot: {x: 0, y: 1}
---- !u!1 &1259631750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259631752}
-  - component: {fileID: 1259631751}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1259631751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259631750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bbcd972fa743f458e9141eacd138dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade_Time: 0
---- !u!4 &1259631752
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259631750}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1261229619
 GameObject:
   m_ObjectHideFlags: 0
@@ -46364,8 +46324,9 @@ MonoBehaviour:
   characterName_Text: {fileID: 522287455}
   character_Image_Left: {fileID: 69390954}
   character_Image_Right: {fileID: 920958563}
-  cutScenes: []
-  cutSceneSprites: []
+  cartoonCutSceneImages: {fileID: 0}
+  cutScene_subImage_prf: {fileID: 0}
+  cartoonCutSceneDatas: []
 --- !u!4 &1475829144
 Transform:
   m_ObjectHideFlags: 0
@@ -52131,6 +52092,7 @@ GameObject:
   - component: {fileID: 1667543096}
   - component: {fileID: 1667543095}
   - component: {fileID: 1667543094}
+  - component: {fileID: 1667543097}
   m_Layer: 5
   m_Name: 'OK :: Button'
   m_TagString: Untagged
@@ -52202,18 +52164,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1259631751}
-        m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: OnToMainScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 847852303}
         m_TargetAssemblyTypeName: GameClearPanel, Assembly-CSharp
         m_MethodName: ResetSound
@@ -52264,6 +52214,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667543092}
   m_CullTransparentMesh: 1
+--- !u!114 &1667543097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667543092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedba7a51ce64de4cb3d392df4c3a7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneType: 1
 --- !u!1 &1673301990
 GameObject:
   m_ObjectHideFlags: 0
@@ -54169,6 +54132,7 @@ GameObject:
   - component: {fileID: 1727347380}
   - component: {fileID: 1727347379}
   - component: {fileID: 1727347382}
+  - component: {fileID: 1727347383}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -54240,18 +54204,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1259631751}
-        m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: OnToMainScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 283656905}
         m_TargetAssemblyTypeName: DunGeonManager_New, Assembly-CSharp
         m_MethodName: ResetPause
@@ -54316,6 +54268,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_enum: 0
   isButtonDown: 0
+--- !u!114 &1727347383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727347377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedba7a51ce64de4cb3d392df4c3a7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneType: 1
 --- !u!1 &1727731601
 GameObject:
   m_ObjectHideFlags: 0
@@ -62064,7 +62029,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.4
+  m_fontSize: 29.55
   m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -69399,7 +69364,6 @@ SceneRoots:
   - {fileID: 359409966}
   - {fileID: 283656906}
   - {fileID: 4345733284807497838}
-  - {fileID: 1259631752}
   - {fileID: 203163637}
   - {fileID: 1475829144}
   - {fileID: 1751784880}

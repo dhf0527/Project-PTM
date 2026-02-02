@@ -138,4 +138,9 @@ public class MainManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+    }
 }

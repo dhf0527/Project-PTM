@@ -76,8 +76,11 @@ public class EndCredit_Dotween : MonoBehaviour
         if (isMoving)
             return;
 
-        StopCoroutine(c_AutoNextPage);
-        c_AutoNextPage = null;
+        if(c_AutoNextPage != null)
+        {
+            StopCoroutine(c_AutoNextPage);
+            c_AutoNextPage = null;
+        }
 
         //일러스트 단계
         if(curStep == EndCreditStep.illust)

@@ -64,6 +64,8 @@ public class UnitUnlock : MonoBehaviour
         level++;
         //선택창 닫기
         OpenUnitUnlock(false);
+        //효과음 출력
+        AudioManager.Instance.PlayerSfx(SFX_Enum.UnitConfirm);
     }
 
     //유닛 해금창을 열거나 닫는 함수

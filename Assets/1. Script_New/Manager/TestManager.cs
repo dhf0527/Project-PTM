@@ -31,16 +31,14 @@ public class TestManager : MonoBehaviour
     #region 튜토리얼
     public void Test_Tutorial(int keyIndex)
     {
-        //모두 클리어 처리
-        for (int i = 0; i < Enum.GetValues(typeof(TutorialKey)).Length; i++)
-            PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)i, 2);
-
         PlayerPrefs.SetInt(ConstData.tutorialReady + (TutorialKey)keyIndex, 1);
+        UnlockManager.instance.CheckUnlock();
     }
 
     public void Test_Cartoon()
     {
-        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 0);
+        //PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 0);
+        CutSceneManager.instance.PlayCutscene_CartoonSceneStart();
     }
 
     //튜토리얼 열람 초기화

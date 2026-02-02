@@ -28,6 +28,9 @@ public class SwipeWolrdMap : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     void DetectSwipe()
     {
+        if (PlayerPrefs.GetInt(ConstData.hardMode_Unlock) == 0 || PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{4},{3}") <= 0)
+            return;
+
         Vector2 swipe = endPos - startPos;
         float duration = endTime - startTime;
 
