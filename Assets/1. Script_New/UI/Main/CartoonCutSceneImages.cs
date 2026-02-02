@@ -7,7 +7,6 @@ using DG.Tweening;
 public class CartoonCutSceneImages : MonoBehaviour
 {
     public List<Image> cutSceneImages;
-    public Image subImage;
     float width;
 
     private void Awake()
