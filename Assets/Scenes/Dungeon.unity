@@ -52092,6 +52092,7 @@ GameObject:
   - component: {fileID: 1667543096}
   - component: {fileID: 1667543095}
   - component: {fileID: 1667543094}
+  - component: {fileID: 1667543098}
   - component: {fileID: 1667543097}
   m_Layer: 5
   m_Name: 'OK :: Button'
@@ -52227,6 +52228,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneType: 1
+--- !u!114 &1667543098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667543092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c6a0e13f627f4a8c2c989763a5614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx_enum: 0
+  isButtonDown: 0
 --- !u!1 &1673301990
 GameObject:
   m_ObjectHideFlags: 0
