@@ -50,7 +50,8 @@ public class CutSceneManager : MonoBehaviour
     int cartoonCutScene_index = 0;
     int cartoonCutScene_subIndex = 0;
     int cutScene_maxIndex;
-    public bool IsCutSceneProgressing { get; set; }
+    public bool IsCartoonCutSceneProgressing { get; set; }
+    bool isCutSceneProgressing;
 
     [SerializeField] List<CartoonCutSceneData> cartoonCutSceneDatas;
     [Serializable]
@@ -65,33 +66,29 @@ public class CutSceneManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (SceneManager.GetActiveScene().name == "MainScene" && PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart) == 0)
         {
-            //StartCutScene("1-1");
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartCutScene("4-3");
-            //PlayCutscene_StartScene1();
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 1);
+            PlayCutscene_CartoonSceneStart();
         }
     }
 
     public void CheckDialogues()
     {
+        if (isCutSceneProgressing)
+            return;
+
         //Æ©Åä¸®¾ó
         if (SceneManager.GetActiveScene().name == "Dungeon")
         {
             ReadyTutorial();
-            //CheckTutorial_DungeonScene();
         }
         else if (SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
         {
             if (PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1) == 0)
                 PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_1, 1);
-            if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart) == 0)
-                PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 1);
             if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 0)
                 PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 1);
 
@@ -113,9 +110,7 @@ public class CutSceneManager : MonoBehaviour
 
     bool CheckDialogueCutScene()
     {
-        if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart) == 1)
-            PlayCutscene_CartoonSceneStart();
-        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 1)
+        if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 1)
         {
             StartCutScene("1-1");
             PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 2);
@@ -262,6 +257,7 @@ public class CutSceneManager : MonoBehaviour
 
     public void EndCutScene()
     {
+        isCutSceneProgressing = false;
         dialogue_index = 0;
         action_index = 0;
         //ÄÆ¾À ¿­¶÷ ±â·Ï
@@ -284,6 +280,7 @@ public class CutSceneManager : MonoBehaviour
 
     public void StartCutScene(string eventName)
     {
+        isCutSceneProgressing = true;
         isTutorial = false;
         canvas_2.SetActive(true);
 
@@ -397,6 +394,7 @@ public class CutSceneManager : MonoBehaviour
     #region Æ©Åä¸®¾ó
     public void StartTutorial(string eventName, Action onComplete = null)
     {
+        isCutSceneProgressing = true;
         isTutorial = true;
         list_Dialogue = GetTutorialDatasByCsv(eventName);
         cutScene_Go.SetActive(true);
@@ -623,7 +621,6 @@ public class CutSceneManager : MonoBehaviour
     #region Tutorial_Dungeon_1
     public void Tutorial_Dungeon_1()
     {
-        DunGeonManager_New.instance.isTutorial_1 = true;
         actions.Clear();
 
         //actions.Add(() => TutorialWait(1f));    //1
@@ -718,7 +715,6 @@ public class CutSceneManager : MonoBehaviour
     #region Tutorial_Dungeon_2
     public void Tutorial_Dungeon_2()
     {
-        DunGeonManager_New.instance.isTutorial_2 = true;
         actions.Clear();
 
         actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.unitUnlock.gameObject));    //1  ¿ëº´ ¸ðÁý ´ë±â
@@ -751,6 +747,7 @@ public class CutSceneManager : MonoBehaviour
     #region ¸¸È­ ÄÆ¾À
     public void PlayCutscene_CartoonSceneStart()
     {
+        isCutSceneProgressing = true;
         cartoonCutScene_index = 0;
         cartoonCutScene_subIndex = 0;
         cartoonCutSceneImages.cutSceneImages[0].sprite = cartoonCutSceneDatas[cartoonCutScene_index].cutSceneSprite;
@@ -767,7 +764,7 @@ public class CutSceneManager : MonoBehaviour
 
     public void NextCutscene()
     {
-        if (IsCutSceneProgressing)
+        if (IsCartoonCutSceneProgressing)
             return;
         CartoonCutSceneData cur_data = cartoonCutSceneDatas[cartoonCutScene_index];
 
@@ -798,7 +795,7 @@ public class CutSceneManager : MonoBehaviour
             CartoonCutSceneData next_data = cartoonCutSceneDatas[cartoonCutScene_index + 1];
             cartoonCutSceneImages.cutSceneImages[0].sprite = cur_data.cutSceneSprite;
             cartoonCutSceneImages.cutSceneImages[1].sprite = next_data.cutSceneSprite;
-            IsCutSceneProgressing = true;
+            IsCartoonCutSceneProgressing = true;
             cartoonCutSceneImages.cutSceneImages[0].transform.parent.GetComponent<CartoonCutSceneImages>().MoveCutScene();
             cartoonCutScene_index++;
         }
@@ -812,11 +809,12 @@ public class CutSceneManager : MonoBehaviour
             Destroy(item.gameObject);
         cutScene_subImages.Clear();
 
-        IsCutSceneProgressing = false;
+        IsCartoonCutSceneProgressing = false;
     }
 
     void EndCartoonCutScene()
     {
+        isCutSceneProgressing = false;
         cartoonCutSceneImages.cutSceneImages[0].transform.parent.gameObject.SetActive(false);
         foreach (var item in cartoonCutSceneImages.cutSceneImages)
         {

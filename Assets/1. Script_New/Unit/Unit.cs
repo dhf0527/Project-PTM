@@ -220,7 +220,7 @@ public abstract class Unit : MonoBehaviour
     #region √ ±‚»≠
     public virtual void Init()
     {
-        if (DunGeonManager_New.instance.isTutorial_1 || DunGeonManager_New.instance.isTutorial_2)
+        if (DunGeonManager_New.instance.IsTutorial_1 || DunGeonManager_New.instance.IsTutorial_2)
         {
             unitStatData_st.accuracy_Plus += 9999;
             unitStatData_st.avoidance_Plus -= 9999;

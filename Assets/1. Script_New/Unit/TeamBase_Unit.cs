@@ -24,7 +24,7 @@ public class TeamBase_Unit : Unit
     private void Start()
     {
         SetHpBar();
-        if (DunGeonManager_New.instance.isTutorial_1 || DunGeonManager_New.instance.isTutorial_2)
+        if (DunGeonManager_New.instance.IsTutorial_1 || DunGeonManager_New.instance.IsTutorial_2)
             isImmune = true;
     }
 

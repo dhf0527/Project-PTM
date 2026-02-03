@@ -64,7 +64,8 @@ public class SceneChangeManager : MonoBehaviour
             AudioManager.Instance.PlayerBgm(loadSceneName);
             SceneManager.LoadScene(loadSceneName);
             Time.timeScale = 1f;
-        });
+        }
+        , 0.5f, ()=>CutSceneManager.instance.CheckDialogues());
     }
 
     public void OnToTestScene()

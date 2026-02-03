@@ -134,11 +134,12 @@ public class DunGeonManager_New : MonoBehaviour
     public SpriteRenderer backGround_Sr;
     #endregion
     #region 튜토리얼 변수
-    [HideInInspector] public bool isTutorial_1;
-    [HideInInspector] public bool isTutorial_2;
-    #endregion
-    #region 디버깅
-    [Header("(테스트용)고용할 유닛들")]
+    public bool IsTutorial_1 { get { return GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 1 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_1) == 0; } }
+    public bool IsTutorial_2 { get { return GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2) == 0; } }
+
+#endregion
+#region 디버깅
+[Header("(테스트용)고용할 유닛들")]
     [SerializeField] Unit[] test_Units = new Unit[3];
 
     [HideInInspector] public List<Unit> onStageUnits_Test;
@@ -442,20 +443,20 @@ public class DunGeonManager_New : MonoBehaviour
         
 
         //모집 유닛 뽑기
-        if(isTutorial_1 && unitLevel == 1)
+        if(IsTutorial_1 && unitLevel == 1)
         {
             unitUnlock.cards[0].SetData(units_Level_1[1]);  //도적
             unitUnlock.cards[1].SetData(units_Level_1[0]);  //검사
             unitUnlock.cards[2].SetData(units_Level_1[4]);  //슬라임
         }
-        else if (isTutorial_2 && unitLevel == 1)
+        else if (IsTutorial_2 && unitLevel == 1)
         {
             unitUnlock.cards[0].SetData(units_Level_1[6]);  //시체 박쥐
             unitUnlock.cards[1].item = item_Advanced[3];    //참나무 방패
             unitUnlock.cards[1].SetData(units_Level_1[4]);  //슬라임
             unitUnlock.cards[2].SetData(units_Level_1[1]);  //도적
         }
-        else if (isTutorial_2 && unitLevel == 2)
+        else if (IsTutorial_2 && unitLevel == 2)
         {
             unitUnlock.cards[0].SetData(units_Level_2[4]);  //골렘
             unitUnlock.cards[1].SetData(units_Level_2[1]);  //마검사

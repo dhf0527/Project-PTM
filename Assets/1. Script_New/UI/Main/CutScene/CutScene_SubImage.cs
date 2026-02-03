@@ -13,11 +13,11 @@ public class CutScene_SubImage : MonoBehaviour
 
     public void OnStartAnimation()
     {
-        CutSceneManager.instance.IsCutSceneProgressing = true;
+        CutSceneManager.instance.IsCartoonCutSceneProgressing = true;
     }
 
     public void OnEndAnimation()
     {
-        CutSceneManager.instance.IsCutSceneProgressing = false;
+        CutSceneManager.instance.IsCartoonCutSceneProgressing = false;
     }
 }
