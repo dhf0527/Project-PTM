@@ -9321,8 +9321,6 @@ MonoBehaviour:
   bridge_Sr: {fileID: 1696529102}
   base_Sr: {fileID: 963480812}
   backGround_Sr: {fileID: 973086256}
-  isTutorial_1: 0
-  isTutorial_2: 0
   test_Units: []
   onStageUnits_Test: []
   inGamePlayTime: 0
@@ -9420,8 +9418,8 @@ MonoBehaviour:
   boss_Hp1: 4
   boss_Hp2: 4
   boss_Attack1: 1
-  boss_Attack2: 0.5
-  boss_attackPlus: 2
+  boss_Attack2: 0.3
+  boss_attackPlus: 1
   boss_attackMultiple: 2
   bossHpBar: {fileID: 1236025590}
   killGolds: 1e0000003c00000078000000
