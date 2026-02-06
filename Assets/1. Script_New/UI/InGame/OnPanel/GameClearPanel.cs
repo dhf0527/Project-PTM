@@ -122,28 +122,33 @@ public class GameClearPanel : MonoBehaviour
                 {
                     //Æ©Åä¸®¾ó && ´ëÈ­ÄÆ¾À Ã¼Å©
                     if (stage == 1 && number == 2)
+                    {
                         PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_2, 1);
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_2, 1);
+                    }
                     else if (stage == 1 && number == 3)
                     {
                         PlayerPrefs.SetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3, 1);
                         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_3, 1);
                     }
-                    else if (stage == 2 && number == 1) 
-                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_1, 1);
+                    else if (stage == 2 && number == 2) 
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_2, 1);
                     else if (stage == 2 && number == 3)
                         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_3, 1);
-                    else if (stage == 3 && number == 1)
-                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_1, 1);
+                    else if (stage == 3 && number == 2)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_2, 1);
                     else if (stage == 3 && number == 3)
                         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_3, 1);
-                    else if (stage == 4 && number == 1)
-                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_1, 1);
+                    else if (stage == 4 && number == 2)
+                        PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_2, 1);
                     else if (stage == 4 && number == 3)
                         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_3, 1);
 
                     //¿£µåÅ©·¡µ÷ Ã¼Å©
                     else if (stage == 8 && number == 3)
                         PlayerPrefs.SetInt(ConstData.endcreditReady, 1);
+
+                    CutSceneManager.instance.CheckDialogues();
                 }
                 #endregion
 

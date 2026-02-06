@@ -138,8 +138,8 @@ public class DunGeonManager_New : MonoBehaviour
     public bool IsTutorial_2 { get { return GameManager.Instance.current_Dungeon.stage == 1 && GameManager.Instance.current_Dungeon.number == 2 && PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.Dungeon_2) == 0; } }
 
 #endregion
-#region 디버깅
-[Header("(테스트용)고용할 유닛들")]
+    #region 디버깅
+    [Header("(테스트용)고용할 유닛들")]
     [SerializeField] Unit[] test_Units = new Unit[3];
 
     [HideInInspector] public List<Unit> onStageUnits_Test;
@@ -577,6 +577,7 @@ public class DunGeonManager_New : MonoBehaviour
     public void OpenGameClearPanel()
     {
         EnemySpawnManager.instance.StopWarn();
+        CutSceneManager.instance.CheckDialogues();
         GameClearPanel.gameObject.SetActive(true);
         GameOverPanel.gameObject.SetActive(false);
         GameClearPanel.SetClearPanel();

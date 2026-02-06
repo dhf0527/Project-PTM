@@ -35,6 +35,13 @@ public class TestManager : MonoBehaviour
         UnlockManager.instance.CheckUnlock();
     }
 
+    public void Test_CutScene(int keyIndex)
+    {
+        PlayerPrefs.SetInt(ConstData.cutSceneReady + (CutSceneKey)keyIndex, 0);
+        UnlockManager.instance.CheckUnlock();
+        CutSceneManager.instance.CheckDialogues();
+    }
+
     public void Test_Cartoon()
     {
         //PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 0);
@@ -149,5 +156,10 @@ public class TestManager : MonoBehaviour
     void Test_Main()
     {
 
+    }
+
+    public void OnToTestScene()
+    {
+        SceneChangeManager.Instance.OnToTestScene();
     }
 }

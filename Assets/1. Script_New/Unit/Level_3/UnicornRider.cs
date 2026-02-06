@@ -11,7 +11,7 @@ public class UnicornRider : Unit
     public override void ApplyAttack(Unit target_Unit, float damage, AttackType attackType)
     {
         base.ApplyAttack(target_Unit, damage, attackType);
-        Blinding earringDebuff = target_Unit.AddComponent<Blinding>();
+        Blinded earringDebuff = target_Unit.AddComponent<Blinded>();
         earringDebuff.buff_Time = buff_Time;
         earringDebuff.accuracy_Decrease = accuracy_Decrease;
     }

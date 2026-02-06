@@ -75,6 +75,12 @@ public class CutSceneManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+            StartCutScene("1-1WorldMap");
+    }
+
     public void CheckDialogues()
     {
         if (isCutSceneProgressing)
@@ -83,7 +89,8 @@ public class CutSceneManager : MonoBehaviour
         //튜토리얼
         if (SceneManager.GetActiveScene().name == "Dungeon")
         {
-            ReadyTutorial();
+            if(!CheckDialogueCutSceneDungeon())
+                ReadyTutorial();
         }
         else if (SceneManager.GetActiveScene().name == "MainScene" && !UnlockManager.instance.notification.activeInHierarchy)
         {
@@ -92,7 +99,7 @@ public class CutSceneManager : MonoBehaviour
             if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 0)
                 PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 1);
 
-            if (!CheckDialogueCutScene())
+            if (!CheckDialogueCutSceneWorldMap())
                 CheckTutorial_MainScene();
         }
     }
@@ -108,46 +115,60 @@ public class CutSceneManager : MonoBehaviour
             Tutorial_Dungeon_2();
     }
 
-    bool CheckDialogueCutScene()
+    bool CheckDialogueCutSceneDungeon()
     {
-        if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 1)
+        if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_2) == 1)
         {
-            StartCutScene("1-1");
-            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 2);
+            StartCutScene("1-2Victory");
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_2, 2);
         }
         else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_3) == 1)
         {
-            StartCutScene("1-3");
+            StartCutScene("1-3Victory");
             PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_3, 2);
         }
-        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_1) == 1)
+        //컷씬 없으면 false 리턴
+        else
+            return false;
+
+        return true;
+    }
+
+    bool CheckDialogueCutSceneWorldMap()
+    {
+        if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1) == 1)
         {
-            StartCutScene("2-1");
-            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_1, 2);
+            StartCutScene("1-1WorldMap");
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_1_1, 2);
+        }
+        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_2) == 1)
+        {
+            StartCutScene("2-2WorldMap");
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_2, 2);
         }
         else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_3) == 1)
         {
-            StartCutScene("2-3");
+            StartCutScene("2-3WorldMap");
             PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_2_3, 2);
         }
-        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_1) == 1)
+        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_2) == 1)
         {
-            StartCutScene("3-1");
-            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_1, 2);
+            StartCutScene("3-2WorldMap");
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_2, 2);
         }
         else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_3) == 1)
         {
-            StartCutScene("3-3");
+            StartCutScene("3-3WorldMap");
             PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_3_3, 2);
         }
-        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_1) == 1)
+        else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_2) == 1)
         {
-            StartCutScene("4-1");
-            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_1, 2);
+            StartCutScene("4-2WorldMap");
+            PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_2, 2);
         }
         else if (PlayerPrefs.GetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_3) == 1)
         {
-            StartCutScene("4-3");
+            StartCutScene("4-3WorldMap");
             PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.Dialogue_4_3, 2);
         }
         //컷씬 없으면 false 리턴
@@ -234,7 +255,11 @@ public class CutSceneManager : MonoBehaviour
                 character_Image_Right.gameObject.SetActive(false);
                 character_Image_Left.gameObject.SetActive(true);
             }
+
+            if (list_Dialogue[dialogue_index].character_Sprite)
                 target_Image.sprite = list_Dialogue[dialogue_index].character_Sprite;
+            else
+                target_Image.gameObject.SetActive(false);
         }
         else
         {
@@ -273,18 +298,22 @@ public class CutSceneManager : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            if (!CheckDialogueCutScene())
+            UnlockManager.instance.CheckUnlock();
+            if (!CheckDialogueCutSceneWorldMap())
                 CheckTutorial_MainScene();
         }
     }
 
     public void StartCutScene(string eventName)
     {
+        Debug.Log(eventName);
+
         isCutSceneProgressing = true;
         isTutorial = false;
         canvas_2.SetActive(true);
 
         list_Dialogue = GetDialogueDatasByCsv(eventName);
+        Debug.Log("2");
         cutScene_Go.SetActive(true);
         PrintNextDialogue();
 
@@ -364,31 +393,104 @@ public class CutSceneManager : MonoBehaviour
         //1,2줄은 헤더이므로 i=2
         for (int i = 2; i < lines.Length; i++)
         {
-            //공백 건너뛰기
-            if (string.IsNullOrWhiteSpace(lines[i]))
-                continue;
+            if (string.IsNullOrWhiteSpace(lines[i])) continue;
 
-            //따옴표(")사이에 있는 ,를 제외하고 ,를 기준으로 나누기
-            string[] values = Regex.Split(lines[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            // 1단계: 줄 읽기 로그
+            // Debug.Log($"{i}번째 줄 처리 시작: {lines[i]}"); 
 
-            //따옴표 제거
-            for (int j = 0; j < values.Length; j++)
-                values[j] = values[j].Trim().Trim('"');
-
-            DialogueData dd = new DialogueData
+            try
             {
-                isRight = values[2].Trim() == "오른쪽",
-                character_Speak = values[3],
-                character_Sprite = Resources.Load<Sprite>("Sprites/Stand/" + "Stand_" + values[4]),
-                dialogue = values[5] + "\n" + values[6] + "\n" + values[7],
-                isSpeak = true,
-                isPause = true
-            };
-            dds.Add(dd);
+                string[] values = Regex.Split(lines[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                // 2단계: 배열 개수 확인
+                // 만약 여기서 멈춘다면 values[7]이 없는 것입니다.
+                string d1 = values[5];
+                string d2 = values[6];
+                string d3 = values[7];
+
+                // 3단계: 리소스 로드 확인
+                // 만약 여기서 멈춘다면 values[4]의 보이지 않는 문자(\r) 문제입니다.
+                string spritePath = "Sprites/Stand/Stand_" + values[4];
+                Sprite s = Resources.Load<Sprite>(spritePath);
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                Debug.LogError($"{i}번째 줄에서 에러: CSV의 칸(Comma) 개수가 모자랍니다!");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"{i}번째 줄에서 예상치 못한 에러: {e.GetType()} - {e.Message}");
+            }
         }
 
         return dds;
     }
+    /*
+    public List<DialogueData> GetDialogueDatasByCsv(string fileName)
+    {
+        List<DialogueData> dds = new List<DialogueData>();
+        TextAsset csvFile = Resources.Load<TextAsset>("CSV/" + fileName.Trim());
+
+        if (csvFile == null)
+        {
+            Debug.LogError($"[파일 없음] Resources/CSV/{fileName} 체크 필요");
+            return dds;
+        }
+
+        // \r\n, \n, \r 모든 줄바꿈 케이스 대응 (매우 중요)
+        string[] lines = csvFile.text.Split(new[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.None);
+
+        Debug.Log($"파일 로드 성공: {fileName} (총 {lines.Length}줄)");
+
+        for (int i = 2; i < lines.Length; i++)
+        {
+            if (string.IsNullOrWhiteSpace(lines[i])) continue;
+
+            // 콤마로만 분리 (이미 따옴표 제거하셨다고 하니 가장 원시적인 방법 사용)
+            string[] values = lines[i].Split(',');
+
+            // 데이터가 최소한 인물(3), 스프라이트(4), 대사(5)까지는 있어야 함
+            if (values.Length < 6)
+            {
+                Debug.LogWarning($"{i + 1}번째 줄은 데이터 열이 부족합니다. 건너뜁니다.");
+                continue;
+            }
+
+            try
+            {
+                DialogueData dd = new DialogueData();
+
+                // 인덱스 안전하게 할당 (Trim() 시 null 체크 포함)
+                dd.isRight = values.Length > 2 && values[2].Trim().Contains("오른쪽");
+                dd.character_Speak = values.Length > 3 ? values[3].Trim() : "이름 없음";
+
+                // 스프라이트 로드 (파일이 없어도 null이 저장될 뿐 에러는 안 남)
+                string spriteName = values.Length > 4 ? values[4].Trim() : "";
+                dd.character_Sprite = Resources.Load<Sprite>("Sprites/Stand/Stand_" + spriteName);
+
+                // 대사 합치기 (5, 6, 7번 인덱스가 있는지 확인하며 합침)
+                string d1 = values.Length > 5 ? values[5].Trim() : "";
+                string d2 = values.Length > 6 ? values[6].Trim() : "";
+                string d3 = values.Length > 7 ? values[7].Trim() : "";
+                dd.dialogue = $"{d1}\n{d2}\n{d3}".Trim();
+
+                dd.isSpeak = true;
+                dd.isPause = true;
+
+                dds.Add(dd);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"{i + 1}번째 줄 처리 중 시스템 에러: {e.Message}");
+            }
+        }
+
+        Debug.Log($"최종 리스트 생성 완료: {dds.Count}개의 대사");
+        return dds;
+    }
+    */
+
+
     #endregion
 
     #region 튜토리얼

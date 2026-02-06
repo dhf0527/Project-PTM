@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blinding : Buff
+public class Blinded : Buff
 {
     [HideInInspector]public int accuracy_Decrease;
 
     protected override void Init()
     {
-        buffIcon_Index = 0;
+        buffIcon_Index = 8;
     }
 
     protected override void BuffStart()
@@ -28,7 +28,7 @@ public class Blinding : Buff
         if (GetComponents<ShieldSmiteDebuff>().Length > 1)
         {
             //지속 시간 초기화
-            GetComponent<Blinding>().cur_BuffTime = 0;
+            GetComponent<Blinded>().cur_BuffTime = 0;
             Destroy(this);
             return true;
         }
