@@ -779,6 +779,7 @@ public class CutSceneManager : MonoBehaviour
                 //서브 이미지 스프라이트 설정
                 cutScene_subImages[cartoonCutScene_subIndex].GetComponent<Image>().sprite = cur_data.subSprites[cartoonCutScene_subIndex];
                 cartoonCutScene_subIndex++;
+                AudioManager.Instance.PlayerSfx(SFX_Enum.Touch);
                 return;
             }
         }
@@ -798,6 +799,7 @@ public class CutSceneManager : MonoBehaviour
             IsCartoonCutSceneProgressing = true;
             cartoonCutSceneImages.cutSceneImages[0].transform.parent.GetComponent<CartoonCutSceneImages>().MoveCutScene();
             cartoonCutScene_index++;
+            AudioManager.Instance.PlayerSfx(SFX_Enum.NextPage);
         }
     }
 

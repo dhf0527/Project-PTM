@@ -78,5 +78,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5131b11525b674a419105bb9f2c18150, type: 3}
   - {fileID: 8300000, guid: 1c3e732839842db44ae48a6224073575, type: 3}
   - {fileID: 8300000, guid: b03ff0bfc4a5be34eab82bae0af2feeb, type: 3}
+  - {fileID: 8300000, guid: 7fa68ee15ac78f740974e39b01cbf331, type: 3}
   channels: 16
   mixer: {fileID: 24100000, guid: d7568e8727449d647a13e223f6540691, type: 2}
