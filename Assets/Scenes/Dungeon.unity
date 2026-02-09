@@ -9493,7 +9493,7 @@ MonoBehaviour:
   boss_Hp1: 4
   boss_Hp2: 4
   boss_Attack1: 1
-  boss_Attack2: 0.3
+  boss_Attack2: 2
   boss_attackPlus: 1
   boss_attackMultiple: 2
   bossHpBar: {fileID: 1236025590}
