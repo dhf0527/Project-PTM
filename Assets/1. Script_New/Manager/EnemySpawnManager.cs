@@ -44,13 +44,13 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("보스 소환 조건 - 요새 체력(%)")]
     public float boss_BaseHp;
 
-    [Header("보스 능력치 배수(Hp1+(번호*Hp2))")]
+    [Header("보스 능력치 배수(Hp1+(지역 번호(앞자리)*Hp2))배")]
     public float boss_Hp1;
     public float boss_Hp2;
-    [Header("(Attack1 - 1) + (던전 번호(뒷자리)* Attack2)")]
+    [Header("Attack1 + (지역 번호(앞자리)* Attack2)배")]
     public float boss_Attack1;
     public float boss_Attack2;
-    [Header("(원래 공격 수 + plus) * multiple")]
+    [Header("최종 공격 수 = (원래 공격 수 + plus) * multiple")]
     public int boss_attackPlus;
     public int boss_attackMultiple;
 
@@ -431,9 +431,10 @@ public class EnemySpawnManager : MonoBehaviour
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정
-        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * ((boss_Hp1 - 1) + GameManager.Instance.current_Dungeon.stage * boss_Hp2);
+        int minusValue = GameManager.Instance.current_Dungeon.stage >= 5 ? 4 : 0;
+        bossUnit.unitStatData_st.max_Hp_Plus += bossUnit.ud.hp * (boss_Hp1 + (GameManager.Instance.current_Dungeon.stage - minusValue) * boss_Hp2 - 1);
         bossUnit.Cur_Hp = bossUnit.Max_Hp;
-        bossUnit.unitStatData_st.attack_PlusPercent += ((boss_Attack1 - 1) + GameManager.Instance.current_Dungeon.number * boss_Attack2) * 100;
+        bossUnit.unitStatData_st.attack_PlusPercent += (boss_Attack1 + (GameManager.Instance.current_Dungeon.stage - minusValue) * boss_Attack2 - 1)* 100;
         bossUnit.unitStatData_st.targetCount_Plus = boss_attackPlus;
         bossUnit.unitStatData_st.targetCount_Multiple = boss_attackMultiple;
         bossUnit.killGold = killGold_Boss;

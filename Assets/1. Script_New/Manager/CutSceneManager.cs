@@ -377,7 +377,7 @@ public class CutSceneManager : MonoBehaviour
     }
 
     #region CSV 함수
-
+    /*
     //csv파일에서 대사 데이터를 읽어오는 함수
     public List<DialogueData> GetDialogueDatasByCsv(string fileName)
     {
@@ -409,6 +409,55 @@ public class CutSceneManager : MonoBehaviour
                 character_Speak = values[3],
                 character_Sprite = Resources.Load<Sprite>("Sprites/Stand/" + "Stand_" + values[4]),
                 dialogue = values[5] + "\n" + values[6] + "\n" + values[7],
+                isSpeak = true,
+                isPause = true
+            };
+            dds.Add(dd);
+        }
+
+        return dds;
+    }
+    */
+    public List<DialogueData> GetDialogueDatasByCsv(string fileName)
+    {
+        List<DialogueData> dds = new List<DialogueData>();
+        TextAsset csvFile = Resources.Load<TextAsset>("CSV/" + fileName);
+
+        // 1. 파일 존재 여부 확인
+        if (csvFile == null)
+        {
+            Debug.LogError($"[CSV] 파일을 찾을 수 없습니다: CSV/{fileName}");
+            return dds;
+        }
+
+        // 2. 줄바꿈 유연하게 처리
+        string[] lines = csvFile.text.Split(new[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        // 정규식 미리 컴파일 (성능 향상)
+        Regex csvRegex = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+        // 1,2줄은 헤더이므로 i=2부터 시작
+        for (int i = 2; i < lines.Length; i++)
+        {
+            string[] values = csvRegex.Split(lines[i]);
+
+            // 데이터 개수가 부족한지 확인 (IndexOutOfRangeException 방지)
+            if (values.Length < 8) continue;
+
+            // 따옴표 및 공백 제거
+            for (int j = 0; j < values.Length; j++)
+                values[j] = values[j].Trim().Trim('"');
+
+            // 줄바꿈 데이터 병합 (values[5,6,7] 중 비어있는 값 처리)
+            string fullDialogue = $"{values[5]}\n{values[6]}\n{values[7]}".Replace("\n\n", "\n").Trim();
+
+            DialogueData dd = new DialogueData
+            {
+                isRight = values[2] == "오른쪽",
+                character_Speak = values[3],
+                // 3. 스프라이트 로드는 별도의 캐싱 시스템을 거치는 것을 추천합니다.
+                character_Sprite = Resources.Load<Sprite>("Sprites/Stand/Stand_" + values[4]),
+                dialogue = fullDialogue,
                 isSpeak = true,
                 isPause = true
             };
@@ -852,11 +901,5 @@ public class CutSceneManager : MonoBehaviour
         }
         PlayerPrefs.SetInt(ConstData.cutSceneReady + CutSceneKey.CartoonSceneStart, 2);
     }
-
-    public void Test_StartCutScene()
-    {
-        StartCutScene("4-3");
-    }
-
     #endregion
 }
