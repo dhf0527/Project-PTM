@@ -117,9 +117,9 @@ MonoBehaviour:
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
-  killGold: 0
+  killGold: 120
   healAmount: 20
-  range: 1
+  range: 2
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

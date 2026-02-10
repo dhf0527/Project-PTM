@@ -18,8 +18,8 @@ MonoBehaviour:
   upgradeCost: 2
   upgradeValue:
   - 10
-  - 15
   - 20
+  - 30
   upgradeValue2: []
   upgradeDescription: "\uADFC\uAC70\uB9AC \uC6A9\uBCD1\uC758 \uC0DD\uBA85\uB825 {value}%
     \uC99D\uAC00"

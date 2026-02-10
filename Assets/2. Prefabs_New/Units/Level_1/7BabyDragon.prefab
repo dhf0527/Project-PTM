@@ -118,7 +118,7 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   killGold: 0
-  attackByWave: 000000000800000010000000
+  attackByWave: 00000000060000000c000000
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5
@@ -175,7 +175,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.24096465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1}
+    pivot: {x: 0.5, y: 0.05}
     oldSize: {x: 1.171875, y: 1.171875}
     newSize: {x: 1.1999999, y: 1.1999999}
     adaptiveTilingThreshold: 0.5
