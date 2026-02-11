@@ -24,7 +24,7 @@ MonoBehaviour:
   attack_Speed: 2
   accuracy: 60
   avoidance: 20
-  armor: 16
+  armor: 14
   attack_RangeType: 0
   target_Count: 3
   attack_Type: 1
@@ -38,3 +38,4 @@ MonoBehaviour:
   passive2: 
   passive2_Detail: 
   attack_Range: 0
+  isHardMode: 0

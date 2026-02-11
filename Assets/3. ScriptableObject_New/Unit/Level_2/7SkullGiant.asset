@@ -19,23 +19,23 @@ MonoBehaviour:
   unit_SubName: 
   faction: 3
   move_Speed: 80
-  hp: 180
-  damage: 40
+  hp: 320
+  damage: 35
   attack_Speed: 2
-  accuracy: 60
+  accuracy: 40
   avoidance: 20
-  armor: 6
+  armor: 0
   attack_RangeType: 0
   target_Count: 1
-  attack_Type: 1
+  attack_Type: 2
   weak_Type: 3
   resistance_Type: 0
   spawn_Count: 1
   size: 2
   cost: 300
   passive1: "\uD574\uACE8 \uAECD\uC9C8"
-  passive1_Detail: "\uBC29\uC5B4\uB3C4\uB97C *b12* \uC5BB\uB294\uB2E4. \uC0DD\uBA85\uB825\uC758
-    \uBE44\uC728\uC774 *r75%* \uC774\uD558\uAC00 \uB418\uBA74 *b6*, *r50%* \uC774\uD558\uAC00
+  passive1_Detail: "\uBC29\uC5B4\uB3C4\uB97C *b16* \uC5BB\uB294\uB2E4. \uC0DD\uBA85\uB825\uC758
+    \uBE44\uC728\uC774 *r75%* \uC774\uD558\uAC00 \uB418\uBA74 *b8*, *r50%* \uC774\uD558\uAC00
     \uB418\uBA74 *b0*\uC774 \uB41C\uB2E4."
   passive2: "\uC2DC\uCCB4 \uC218\uC9D1"
   passive2_Detail: "\uC8FC\uBCC0\uC5D0\uC11C \uB0B4 \uC720\uB2DB\uC774 \uC8FD\uC744

@@ -15,10 +15,11 @@ MonoBehaviour:
   code: 8
   upgradeName: "\uC6A9\uBCD1\uB2E8 \uAE43\uBC1C"
   upgradeIcon: {fileID: 1468008502, guid: e2533918d0797e345a898f4744b8e0f0, type: 3}
-  upgradeCost: 3
+  upgradeCost: 2
   upgradeValue:
   - 2
   - 4
+  - 6
   upgradeValue2: []
   upgradeDescription: "\uC544\uAD70 \uC694\uC0C8 \uB808\uBCA8 \uB2F9 \uC6A9\uBCD1\uC758
     \uBA85\uC911\uB960 {value} \uC99D\uAC00"

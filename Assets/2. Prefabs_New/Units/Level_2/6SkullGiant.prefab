@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1476119a593b60e4abdee724c559fd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
+  size: 2
   ud: {fileID: 11400000, guid: 1a3a27b3ec2bdba40a8170ca11dc353b, type: 2}
   isHpText: 0
   hitParent: {fileID: 2320949176701582353}
@@ -118,9 +118,9 @@ MonoBehaviour:
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
   killGold: 0
+  buffValues: 000000000800000010000000
   hpCut1: 50
   hpCut2: 75
-  buffValues: 00000000060000000c000000
   detectionRadius: 5
   healValue: 10
 --- !u!95 &5061897147921594596
@@ -179,8 +179,8 @@ BoxCollider2D:
   m_Offset: {x: -0.14342749, y: 0.577778}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.18}
-    oldSize: {x: 2.3460412, y: 2.34375}
+    pivot: {x: 0.5, y: 0.05}
+    oldSize: {x: 2.34375, y: 2.34375}
     newSize: {x: 1.1999999, y: 1.1999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

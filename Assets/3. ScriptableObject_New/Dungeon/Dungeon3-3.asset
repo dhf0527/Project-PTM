@@ -28,3 +28,4 @@ MonoBehaviour:
   - {fileID: 4541328312039694865, guid: 9cf2054573ff09b49ae17c3422b410d9, type: 3}
   - {fileID: -4192341147845739075, guid: 7a7b75a712a1f024a9a6f7aa8e2cf65f, type: 3}
   stage_Faction: 3
+  isHard: 0
