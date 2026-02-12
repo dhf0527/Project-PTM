@@ -17,7 +17,7 @@ MonoBehaviour:
   mealIcon: {fileID: -1314100187, guid: a4de3d9196beaf842aff0cd6cd41be0c, type: 3}
   mealValue: 10
   mealValue2: 0
-  mealDescription: "\uBC29\uC5B4\uB825\uC774 0\uC778 \uC6A9\uBCD1\uB4E4\uC5D0\uAC8C
+  mealDescription: "\uBC29\uC5B4\uB3C4\uAC00 0\uC778 \uC6A9\uBCD1\uB4E4\uC5D0\uAC8C
     \uBC29\uC5B4\uB3C4*b+{value}*"
   mealFlavorText: "\uC694\uC815 \uC232\uC758 \uD638\uC218\uC5D0\uC11C\uB9CC \uC7A1\uD788\uB294
     \uC0DD\uC120\uC778 \uC720\uB9AC\uBE44\uB298 \uC789\uC5B4\uB97C \uD1B5\uC9F8\uB85C
@@ -25,3 +25,4 @@ MonoBehaviour:
     \uBE44\uB298\uC740 \uADF8\uB300\uB85C\uC774\uB2E4. \uC2DD\uAC10\uC740 \uC624\uD788\uB824
     \uC824\uB9AC \uAC19\uC774 \uB9D0\uB791\uD558\uB2E4."
   mealRarity: 0
+  isHardMode: 0

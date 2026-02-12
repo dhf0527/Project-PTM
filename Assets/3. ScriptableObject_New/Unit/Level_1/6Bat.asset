@@ -19,7 +19,7 @@ MonoBehaviour:
   unit_SubName: 
   faction: 3
   move_Speed: 300
-  hp: 30
+  hp: 40
   damage: 8
   attack_Speed: 4
   accuracy: 40
@@ -42,3 +42,4 @@ MonoBehaviour:
     '\uC774\uBA85'\uC744 \uB0A8\uACA8 \uBA85\uC911\uB960\uACFC \uD68C\uD53C\uC728\uC744
     \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
   attack_Range: 0
+  isHardMode: 0

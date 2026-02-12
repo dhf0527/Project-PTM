@@ -19,7 +19,7 @@ MonoBehaviour:
   unit_SubName: 
   faction: 1
   move_Speed: 200
-  hp: 180
+  hp: 200
   damage: 30
   attack_Speed: 4
   accuracy: 60
@@ -40,3 +40,4 @@ MonoBehaviour:
   passive2: 
   passive2_Detail: 
   attack_Range: 0
+  isHardMode: 0
