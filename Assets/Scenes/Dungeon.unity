@@ -9371,13 +9371,13 @@ MonoBehaviour:
   - base_Hp_By_Level: 1900
     base_Armor_By_Level: 7
     base_UpgradeCost_By_Level: 6400
-    base_GoldPerSec_By_Level: 40
-    base_MaxGold_By_Level: 6400
+    base_GoldPerSec_By_Level: 45
+    base_MaxGold_By_Level: 7200
   - base_Hp_By_Level: 2100
     base_Armor_By_Level: 8
     base_UpgradeCost_By_Level: 999999
-    base_GoldPerSec_By_Level: 50
-    base_MaxGold_By_Level: 9000
+    base_GoldPerSec_By_Level: 60
+    base_MaxGold_By_Level: 10000
   bridge_Sprites:
   - {fileID: 21300000, guid: f5484bdaa3c97414ca0aff8b6d278655, type: 3}
   - {fileID: 21300000, guid: 7c70a95a22d7f444f9133cb0f5e348e1, type: 3}
@@ -9490,8 +9490,8 @@ MonoBehaviour:
   - 30
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_BaseHp: 28
-  boss_Hp1: 5
-  boss_Hp2: 3
+  boss_Hp1: 3
+  boss_Hp2: 4
   boss_Attack1: 1
   boss_Attack2: 0.5
   boss_attackPlus: 1

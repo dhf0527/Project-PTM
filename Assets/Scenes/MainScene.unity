@@ -44671,9 +44671,9 @@ MonoBehaviour:
   - {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   - {fileID: 862919549, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   selectedFrame: {fileID: 1984037221}
-  baseStarBuyCost: 8000
-  maxStarBuyCost: 40000
-  starBuyCost_Per_Count: 4000
+  baseStarBuyCost: 4000
+  maxStarBuyCost: 20000
+  starBuyCost_Per_Count: 2000
 --- !u!1 &894230250
 GameObject:
   m_ObjectHideFlags: 0
@@ -69890,8 +69890,8 @@ MonoBehaviour:
   dungeonPanel: {fileID: 250612749}
   endcredit_go: {fileID: 979407385}
   soul_Text: {fileID: 96427140}
-  additionalMeal_cost: 2000
-  resetMeal_cost: 2000
+  additionalMeal_cost: 1000
+  resetMeal_cost: 1000
   meal_Icons:
   - {fileID: 609086005}
   - {fileID: 1411022149}

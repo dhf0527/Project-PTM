@@ -20,8 +20,8 @@ MonoBehaviour:
   faction: 1
   move_Speed: 300
   hp: 360
-  damage: 40
-  attack_Speed: 5
+  damage: 30
+  attack_Speed: 6
   accuracy: 80
   avoidance: 60
   armor: 6
