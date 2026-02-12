@@ -26,6 +26,12 @@ public class TestManager : MonoBehaviour
         else if(MainManager.instance)
             Test_Main();
     }
+#else
+    private void OnEnable()
+    {
+        foreach (var testObject in testObjects)
+            testObject.SetActive(false);
+    }
 #endif
 
     #region Æ©Åä¸®¾ó

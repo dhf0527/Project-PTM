@@ -1,0 +1,15 @@
+org.gradle.parallel=true
+unityStreamingAssets=**STREAMING_ASSETS**
+
+# Android Resolver Properties Start
+android.useAndroidX=true
+android.enableJetifier=true
+# Android Resolver Properties End
+
+# 1. 중복을 피하기 위해 기존 JVM 설정을 지우고 아래 하나로 통합하세요
+# 2. Xmx 값은 유니티가 넣어주는 변수(**JVM_HEAP_SIZE**) 대신 직접 4096M을 넣는 것이 안전합니다.
+org.gradle.jvmargs=-Xmx4096M -XX:MaxMetaspaceSize=512m -Xss4m
+
+android.jetifier.ignorelist=annotation-experimental-1.4.0.aar
+
+**ADDITIONAL_PROPERTIES**

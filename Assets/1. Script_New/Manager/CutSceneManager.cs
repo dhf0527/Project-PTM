@@ -878,6 +878,7 @@ public class CutSceneManager : MonoBehaviour
             cartoonCutScene_index++;
             AudioManager.Instance.PlayerSfx(SFX_Enum.NextPage);
         }
+        cartoonCutScene_subIndex = 0;
     }
 
     //컷씬 넘기기 애니메이션이 끝날 때 호출
