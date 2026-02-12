@@ -43,6 +43,9 @@ public class AudioManager : MonoBehaviour
     #endregion
     public AudioMixer mixer;
 
+    Dictionary<SFX_Enum, float> lastPlayTimes = new();
+    public float minPlayInterval = 0.05f;
+
     private void Awake()
     {
         Init();
@@ -123,6 +126,11 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource PlayerSfx(SFX_Enum sfx_enum)
     {
+        //중복 재생 방지
+        if (lastPlayTimes.ContainsKey(sfx_enum))
+            if (Time.time - lastPlayTimes[sfx_enum] < minPlayInterval)
+                return null;
+
         for (int i = 0; i < channels; i++)
         {
             //마지막으로 사용한 channel의 index부터 탐색
@@ -135,6 +143,12 @@ public class AudioManager : MonoBehaviour
             //채널에 클립 부여
             channel_Index = loopIndex;
             sfx_Players[loopIndex].clip = sfx_Clips[(int)sfx_enum];
+
+            //재생 시간 기록
+            if (lastPlayTimes.ContainsKey(sfx_enum))
+                lastPlayTimes[sfx_enum] = Time.time;
+            else
+                lastPlayTimes.Add(sfx_enum, Time.time);
 
             //오디오 재생
             sfx_Players[loopIndex].Play();
@@ -157,6 +171,12 @@ public class AudioManager : MonoBehaviour
             //채널에 클립 부여
             channel_Index = loopIndex;
             sfx_Players[loopIndex].clip = sfx_Clips[(int)sfx_enum];
+
+            //재생 시간 기록
+            if (lastPlayTimes.ContainsKey(sfx_enum))
+                lastPlayTimes[sfx_enum] = Time.time;
+            else
+                lastPlayTimes.Add(sfx_enum, Time.time);
 
             //오디오 재생
             sfx_Players[loopIndex].Play();
