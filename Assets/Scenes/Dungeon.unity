@@ -9490,14 +9490,14 @@ MonoBehaviour:
   - 30
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_BaseHp: 28
-  boss_Hp1: 3
-  boss_Hp2: 4
+  boss_Hp1: 2
+  boss_Hp2: 5
   boss_Attack1: 1
   boss_Attack2: 0.5
   boss_attackPlus: 1
   boss_attackMultiple: 2
   bossHpBar: {fileID: 1236025590}
-  killGolds: 1e0000003c00000078000000
+  killGolds: 190000003200000064000000
   killGold_Boss: 1000
   isBossDead: 0
   bossAura: {fileID: 6672337738494333986, guid: dbd44bb0d7437604b9d8fbf191993f12, type: 3}
@@ -65789,12 +65789,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 813430772}
     m_Modifications:
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: recoveryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_range
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_Damage
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: recoveryAmount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
+      propertyPath: reviveCoolTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skillIcons.Array.data[0]

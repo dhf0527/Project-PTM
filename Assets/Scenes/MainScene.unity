@@ -6443,8 +6443,8 @@ MonoBehaviour:
   current_Dungeon: {fileID: 0}
   clearTimes:
   - 450
-  - 350
-  - 250
+  - 360
+  - 270
 --- !u!4 &100695857
 Transform:
   m_ObjectHideFlags: 0
@@ -69903,7 +69903,7 @@ MonoBehaviour:
   dungeonPanel: {fileID: 250612749}
   endcredit_go: {fileID: 979407385}
   soul_Text: {fileID: 96427140}
-  baseStarBuyCost: 4000
+  baseStarBuyCost: 6000
   maxStarBuyCost: 20000
   starBuyCost_Per_Count: 2000
   additionalMeal_cost: 1000
