@@ -18,6 +18,11 @@ public class MainManager : MonoBehaviour
 
     public TMP_Text soul_Text;
 
+    [Header("스타 구매 비용")]
+    public int baseStarBuyCost;
+    public int maxStarBuyCost;
+    public int starBuyCost_Per_Count;
+
     public int additionalMeal_cost;
     public int resetMeal_cost;
     public Image[] meal_Icons = new Image[2];

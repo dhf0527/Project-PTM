@@ -128,8 +128,11 @@ public class AudioManager : MonoBehaviour
     {
         //중복 재생 방지
         if (lastPlayTimes.ContainsKey(sfx_enum))
-            if (Time.time - lastPlayTimes[sfx_enum] < minPlayInterval)
+            if (Time.unscaledTime - lastPlayTimes[sfx_enum] < minPlayInterval)
+            {
+                Debug.Log(sfx_enum);
                 return null;
+            }
 
         for (int i = 0; i < channels; i++)
         {
@@ -146,9 +149,9 @@ public class AudioManager : MonoBehaviour
 
             //재생 시간 기록
             if (lastPlayTimes.ContainsKey(sfx_enum))
-                lastPlayTimes[sfx_enum] = Time.time;
+                lastPlayTimes[sfx_enum] = Time.unscaledTime;
             else
-                lastPlayTimes.Add(sfx_enum, Time.time);
+                lastPlayTimes.Add(sfx_enum, Time.unscaledTime);
 
             //오디오 재생
             sfx_Players[loopIndex].Play();
@@ -183,6 +186,18 @@ public class AudioManager : MonoBehaviour
             return sfx_Players[loopIndex];
         }
         return null;
+    }
+
+    public void StopSfx(SFX_Enum sfx_enum)
+    {
+        for (int i = 0; i < sfx_Players.Length; i++)
+        {
+            if (sfx_Players[i].isPlaying && sfx_Players[i].clip == sfx_Clips[(int)sfx_enum])
+            {
+                sfx_Players[i].loop = false;
+                sfx_Players[i].Stop();
+            }
+        }
     }
 
     //int 인덱스를 통해 sfx를 재생하는 함수 (버튼 OnClick에 사용)

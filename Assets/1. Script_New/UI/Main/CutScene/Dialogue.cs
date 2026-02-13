@@ -89,7 +89,6 @@ public class Dialogue : MonoBehaviour
         StopCoroutine(co_TypeText);
         //텍스트 즉시 표시
         dialogue_Text.text = target_Text;
-        text_AudioSource.loop = false;
-        text_AudioSource.Stop();
+        AudioManager.Instance.StopSfx(SFX_Enum.Dialogue2);
     }
 }

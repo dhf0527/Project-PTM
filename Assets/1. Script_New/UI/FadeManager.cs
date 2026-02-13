@@ -59,6 +59,10 @@ public class FadeManager : MonoBehaviour
         fadeSequence.Append(canvasGroup.DOFade(1, duration))
         .AppendCallback(() => midAction?.Invoke())
         .AppendInterval(interval)
+        .AppendCallback(()=>
+        {
+            canvasGroup.blocksRaycasts = false;
+        })
         .Append(canvasGroup.DOFade(0, duration))
         .OnComplete(() =>
         {

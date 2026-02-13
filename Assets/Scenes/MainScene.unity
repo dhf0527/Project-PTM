@@ -8152,6 +8152,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1539403762}
   - {fileID: 272278351}
   - {fileID: 1584741314}
   m_Father: {fileID: 1315806242}
@@ -14387,13 +14388,14 @@ GameObject:
   - component: {fileID: 272278354}
   - component: {fileID: 272278353}
   - component: {fileID: 272278352}
+  - component: {fileID: 272278355}
   m_Layer: 5
   m_Name: CartoonCutSceneImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &272278351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14411,7 +14413,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -302.1599, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272278352
 MonoBehaviour:
@@ -14489,7 +14491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdd66d5ac82bbc4469834dde7e39094e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8163513fbe4616f4b9e3d2ed10f99254, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14507,6 +14509,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272278350}
   m_CullTransparentMesh: 1
+--- !u!114 &272278355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272278350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 1.498
 --- !u!1 &272550685
 GameObject:
   m_ObjectHideFlags: 0
@@ -44671,9 +44687,6 @@ MonoBehaviour:
   - {fileID: -1567288469, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   - {fileID: 862919549, guid: ad976c6424098404a9dd83b280c6debd, type: 3}
   selectedFrame: {fileID: 1984037221}
-  baseStarBuyCost: 4000
-  maxStarBuyCost: 20000
-  starBuyCost_Per_Count: 2000
 --- !u!1 &894230250
 GameObject:
   m_ObjectHideFlags: 0
@@ -69890,6 +69903,9 @@ MonoBehaviour:
   dungeonPanel: {fileID: 250612749}
   endcredit_go: {fileID: 979407385}
   soul_Text: {fileID: 96427140}
+  baseStarBuyCost: 4000
+  maxStarBuyCost: 20000
+  starBuyCost_Per_Count: 2000
   additionalMeal_cost: 1000
   resetMeal_cost: 1000
   meal_Icons:
@@ -79258,6 +79274,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531898159}
   m_CullTransparentMesh: 1
+--- !u!1 &1539403761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1539403762}
+  - component: {fileID: 1539403764}
+  - component: {fileID: 1539403763}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1539403762
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539403761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 125388254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1539403763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539403761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1539403764
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539403761}
+  m_CullTransparentMesh: 1
 --- !u!114 &1540547343 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7171601898975806334, guid: 20340a44db6737e4a9051da8a7d04e1b, type: 3}
@@ -81984,13 +82075,14 @@ GameObject:
   - component: {fileID: 1584741314}
   - component: {fileID: 1584741316}
   - component: {fileID: 1584741315}
+  - component: {fileID: 1584741317}
   m_Layer: 5
   m_Name: CartoonCutSceneImage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1584741314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -82008,7 +82100,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1920, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -302.1599, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584741315
 MonoBehaviour:
@@ -82048,6 +82140,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584741313}
   m_CullTransparentMesh: 1
+--- !u!114 &1584741317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584741313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 1.498
 --- !u!1 &1586072818
 GameObject:
   m_ObjectHideFlags: 0

@@ -224,7 +224,7 @@ public class Card_new : MonoBehaviour
         SetTextColor(unitArmor_Text, unit.Armor, unit.ud.armor);
         SetTextColor(unitHp_Text, unit.Max_Hp, unit.ud.hp);
         SetTextColor(unitDamage_Text, unit.AttackDamage, unit.ud.damage);
-        SetTextColor(unitAttackSpeed_Text, unit.AttackSpeed, unit.ud.attack_Speed);
+        SetFloatTextColor(unitAttackSpeed_Text, unit.AttackSpeed, unit.ud.attack_Speed);
         //AttackType[0] = none이므로 제외하고 1부터
         attackType_Image.sprite = attackType_Sprites[(int)unit.ud.attack_Type - 1];
 
@@ -289,6 +289,22 @@ public class Card_new : MonoBehaviour
     void SetTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
     {
         text.text = ((int)value).ToString();
+
+        if (value == originValue)
+        {
+            text.color = Color.white;
+            return;
+        }
+
+        if ((value > originValue) == isBiggerGood)
+            text.color = Color.green;
+        else
+            text.color = Color.red;
+    }
+
+    void SetFloatTextColor(TMP_Text text, float value, float originValue, bool isBiggerGood = true)
+    {
+        text.text = value.ToString("0.#");
 
         if (value == originValue)
         {

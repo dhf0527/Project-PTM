@@ -26,15 +26,13 @@ public class UnitUpgrade : MonoBehaviour
     public GameObject selectedFrame;
 
     UnitUpgradeContent selected_UnitUpgradeContent;
-    [SerializeField] int baseStarBuyCost;
-    [SerializeField] int maxStarBuyCost;
-    public int starBuyCost_Per_Count;
+    
     int starBuyCost;
     public int StarBuyCost
     {
         get
         {
-            starBuyCost = Mathf.Min(baseStarBuyCost + PlayerPrefs.GetInt(ConstData.starBuyCount) * starBuyCost_Per_Count, maxStarBuyCost);
+            starBuyCost = Mathf.Min(MainManager.instance.baseStarBuyCost + PlayerPrefs.GetInt(ConstData.starBuyCount) * MainManager.instance.starBuyCost_Per_Count, MainManager.instance.maxStarBuyCost);
             return starBuyCost;
         }
     }
