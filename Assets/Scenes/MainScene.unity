@@ -6441,6 +6441,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   current_Dungeon: {fileID: 0}
+  unitUpgradeDatas:
+  - {fileID: 11400000, guid: a76665e33777feb4aba8467a182654bb, type: 2}
+  - {fileID: 11400000, guid: e83ea1ddd4453c84685c2925436cc408, type: 2}
+  - {fileID: 11400000, guid: 52b67174c7e87a0418b2509aa3cccc2b, type: 2}
+  - {fileID: 11400000, guid: b4896b4558fb25841b745b3a1ef9c996, type: 2}
+  - {fileID: 11400000, guid: 38819683d43548e488f8994037971b1e, type: 2}
+  - {fileID: 11400000, guid: bb1c2c83382781c4daf1e2b737716bb3, type: 2}
+  - {fileID: 11400000, guid: 385f6cd5ca6a36442bd40d8892d29395, type: 2}
+  - {fileID: 11400000, guid: 799852a04fb5265408f8bb6dc60781e9, type: 2}
+  - {fileID: 11400000, guid: b39231f0f48f38a41bdcb08821cb6cf6, type: 2}
+  - {fileID: 11400000, guid: 752dd116f7d7f144688b92e096acd654, type: 2}
+  - {fileID: 11400000, guid: 5f425417e31966541b2a2f943a5568fa, type: 2}
+  - {fileID: 11400000, guid: a7b807a55811ab44c850d121d42674fa, type: 2}
+  - {fileID: 11400000, guid: a5c988fe8e341184b8de43e043150021, type: 2}
   clearTimes:
   - 450
   - 360
@@ -69919,6 +69933,7 @@ MonoBehaviour:
   - {fileID: -2029484508, guid: 2444f56d2bee10b46a81ff2b41bc6393, type: 3}
   - {fileID: 21300000, guid: d95152b8074dbe44281e9fd181d4af39, type: 3}
   floatingMessage: {fileID: 911467051}
+  productPopup_go: {fileID: 1298595431}
   isOpenStage: 0
   mealData: {fileID: 0}
 --- !u!114 &1330200282
