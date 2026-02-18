@@ -9,8 +9,8 @@ using Unity.EditorCoroutines.Editor;
 public class GoogleSheetDownloader : EditorWindow
 {
     // 탭 구분을 위한 Enum 추가
-    public enum FileTag { WorldMap, Victory }
-    private FileTag selectedTag = FileTag.WorldMap;
+    public enum FileTag { None, WorldMap, Victory }
+    private FileTag selectedTag = FileTag.None;
 
     private string rawSheetUrl = "https://docs.google.com/spreadsheets/d/117v_ABS7di3oVKaRIfUqTNK4F-nM-TAOKf2jEISA2Ks/edit#gid=0";
     private string fileName = "1-1";
@@ -53,7 +53,7 @@ public class GoogleSheetDownloader : EditorWindow
         selectedTag = (FileTag)EditorGUILayout.EnumPopup("저장 카테고리 (태그)", selectedTag);
 
         // 미리보기 이름 표시 (사용자 확인용)
-        string previewName = $"{fileName}{selectedTag}.csv";
+        string previewName = selectedTag == FileTag.None ? $"{fileName}.csv" : $"{fileName}{selectedTag}.csv";
         EditorGUILayout.HelpBox($"저장될 파일명: {previewName}", MessageType.Info);
         // -----------------------
 

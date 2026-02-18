@@ -34,6 +34,8 @@ public class MainManager : MonoBehaviour
     Coroutine c_Floating;
     bool isFloating;
 
+    [SerializeField] GameObject productPopup_go;
+
     [HideInInspector] public bool isOpenStage = false;
 
     [HideInInspector] public MealData mealData;
@@ -137,6 +139,11 @@ public class MainManager : MonoBehaviour
 
         foreach (var item in areaPages[number].GetComponentsInChildren<Image>())
             item.color = targetColor;
+    }
+    
+    public void OpenProductPopup()
+    {
+        productPopup_go.SetActive(true);
     }
 
     public void ResetData()

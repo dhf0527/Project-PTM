@@ -287,7 +287,14 @@ public class CutSceneManager : MonoBehaviour
         action_index = 0;
         //컷씬 열람 기록
         if(isTutorial)
+        {
             PlayerPrefs.SetInt(ConstData.tutorialReady + cur_TutorialKey, 2);
+            if (cur_TutorialKey == TutorialKey.WorldMap_3)
+            {
+                PlayerPrefs.SetInt(ConstData.product_Unlock, 1);
+                MainManager.instance.OpenProductPopup();
+            }
+        }
         canvas_2.SetActive(false);
 
         if (DunGeonManager_New.instance)
@@ -639,7 +646,7 @@ public class CutSceneManager : MonoBehaviour
     IEnumerator C_Tutorial_WorldMap_2_0()
     {
         touchBlocker.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
         touchBlocker.gameObject.SetActive(false);
         PrintNextDialogue();
     }
@@ -712,9 +719,9 @@ public class CutSceneManager : MonoBehaviour
         actions.Add(() => Tutorial_Dungeon_1_2());    //26  보스 대기
         actions.Add(() => Tutorial_Dungeon_1_3());    //28  보스로 시점 이동
         actions.Add(() => Tutorial_Dungeon_1_4());    //35  보스 처치 대기
-        actions.Add(() => TutorialWait(2f));    //36
+        actions.Add(() => TutorialWait(1f));    //36
         actions.Add(() => TutorialObjectActive(DunGeonManager_New.instance.GameClearPanel.gameObject));    //38   전투 결과 화면 대기
-        actions.Add(() => TutorialWait(2f));    //40
+        actions.Add(() => TutorialWait(1f));    //40
 
         StartTutorial("Tutorial_Dungeon_1");
         cur_TutorialKey = TutorialKey.Dungeon_1;

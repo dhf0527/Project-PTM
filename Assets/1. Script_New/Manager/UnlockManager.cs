@@ -53,7 +53,7 @@ public class UnlockManager : MonoBehaviour
         pedia_Button.SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) == 1);
         lockImages_go[3].SetActive(PlayerPrefs.GetInt(ConstData.pedia_Unlock) != 1);
 
-        product_Button.SetActive(PlayerPrefs.GetInt(ConstData.tutorialReady + TutorialKey.WorldMap_3) == 2);
+        product_Button.SetActive(PlayerPrefs.GetInt(ConstData.product_Unlock) == 1);
 
         lockImages_go[2].SetActive(PlayerPrefs.GetInt(ConstData.unitUpgrade_Unlock) == 0);
         for (int i = 0; i < unitUpgrade_Buttons.Count; i++)

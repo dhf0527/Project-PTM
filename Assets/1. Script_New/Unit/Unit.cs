@@ -547,14 +547,14 @@ public abstract class Unit : MonoBehaviour
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 9);
             if (upgradeLv != 0)
-                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1] * 0.01f;
+                dmgBoost += GameManager.Instance.unitUpgradeDatas[9].upgradeValue[upgradeLv - 1] * 0.01f;
         }
         //파괴의 용병단
         if(IsTeam && (target_Unit.ud.faction == Faction.Guild || target_Unit.ud.faction == Faction.Fairy ))
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 11);
             if (upgradeLv != 0)
-                dmgBoost += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1] * 0.01f;
+                dmgBoost += GameManager.Instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1] * 0.01f;
         }
 
         return dmgBoost;
@@ -570,7 +570,7 @@ public abstract class Unit : MonoBehaviour
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 10);
             if (upgradeLv != 0)
-                damageMulti -= DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1] * 0.01f;
+                damageMulti -= GameManager.Instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1] * 0.01f;
         }
 
         return damageMulti;

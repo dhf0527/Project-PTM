@@ -130,7 +130,6 @@ public class AudioManager : MonoBehaviour
         if (lastPlayTimes.ContainsKey(sfx_enum))
             if (Time.unscaledTime - lastPlayTimes[sfx_enum] < minPlayInterval)
             {
-                Debug.Log(sfx_enum);
                 return null;
             }
 

@@ -208,7 +208,7 @@ public class Meal : MonoBehaviour
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
             if (upgradeLv != 0)
             {
-                tmp_pro_rare += (int)DunGeonManager_New.instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
+                tmp_pro_rare += (int)GameManager.Instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
                 tmp_pro_legendary = tmp_pro_rare / rare_multi;
             }
 

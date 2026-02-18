@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public MealData[] applied_Meals = new MealData[2];
     [HideInInspector] public DungeonData current_Dungeon;
+    [Header("유닛 업그레이드")]
+    public List<UnitUpgradeData> unitUpgradeDatas;
     [Header("스타 달성 기준 시간(1,2,3성)")]
     public List<float> clearTimes;
 

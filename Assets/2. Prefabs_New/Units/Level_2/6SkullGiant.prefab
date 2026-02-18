@@ -122,7 +122,7 @@ MonoBehaviour:
   hpCut1: 35
   hpCut2: 70
   detectionRadius: 5
-  healValue: 10
+  healValue: 40
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

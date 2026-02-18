@@ -68,8 +68,6 @@ public class DunGeonManager_New : MonoBehaviour
     [Header("유닛 아이템")]
     public List<ItemData> item_Advanced;
     public List<ItemData> item_Rare;
-    [Header("유닛 업그레이드")]
-    public List<UnitUpgradeData> unitUpgradeDatas;
 
     List<int> costs = new List<int>();
 
@@ -306,7 +304,7 @@ public class DunGeonManager_New : MonoBehaviour
         //용병 업그레이드 효과(용병단 깃발)
         int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 8);
         if (upgradeLv != 0)
-            unit.unitStatData_st.accuracy_Plus += (int)(unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
+            unit.unitStatData_st.accuracy_Plus += (int)(GameManager.Instance.unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
 
         //식사 효과(숙성 참치회)
         MealData md;
@@ -381,7 +379,7 @@ public class DunGeonManager_New : MonoBehaviour
         Gold_Per_Sec = base_abillitiesByLevels[teamBase.Base_level - 1].base_GoldPerSec_By_Level;
         int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 7);
         if (upgradeLv != 0)
-            Gold_Per_Sec += unitUpgradeDatas[7].upgradeValue[upgradeLv - 1] * teamBase.Base_level;
+            Gold_Per_Sec += GameManager.Instance.unitUpgradeDatas[7].upgradeValue[upgradeLv - 1] * teamBase.Base_level;
 
         Max_Gold = base_abillitiesByLevels[teamBase.Base_level - 1].base_MaxGold_By_Level;
         base_UpgradeCost = base_abillitiesByLevels[teamBase.Base_level - 1].base_UpgradeCost_By_Level;
@@ -517,7 +515,7 @@ public class DunGeonManager_New : MonoBehaviour
         //행운의 용병단
         int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
         if (upgradeLv != 0)
-            rare_pro += (int)unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
+            rare_pro += (int)GameManager.Instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
 
 
     //고급 확률

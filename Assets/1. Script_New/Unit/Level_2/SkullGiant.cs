@@ -13,7 +13,7 @@ public class SkullGiant : Unit
     [SerializeField] float detectionRadius;
     List<Unit> detectedUnits = new();
 
-    [Header("시체 수집 회복량(최대 체력의 healValue%)")]
+    [Header("시체 수집 회복량(고정 수치)")]
     [SerializeField] float healValue;
 
     public override void Init()
@@ -73,7 +73,7 @@ public class SkullGiant : Unit
     //시체 수집
     void CorpseCollect()
     {
-        GetHp(Max_Hp * healValue * 0.01f);
+        GetHp(healValue);
     }
 
     private void OnDrawGizmosSelected()

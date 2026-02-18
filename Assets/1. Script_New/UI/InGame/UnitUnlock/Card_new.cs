@@ -106,49 +106,49 @@ public class Card_new : MonoBehaviour
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 0);
             if (upgradeLv != 0)
-                unit.unitStatData_st.cost_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.cost_MinusPercent += GameManager.Instance.unitUpgradeDatas[0].upgradeValue[upgradeLv - 1];
         }
         //군사 훈련
         else if (unit.ud.level == 2)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 1);
             if (upgradeLv != 0)
-                unit.unitStatData_st.attackSpeed_Plus += DunGeonManager_New.instance.unitUpgradeDatas[1].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.attackSpeed_Plus += GameManager.Instance.unitUpgradeDatas[1].upgradeValue[upgradeLv - 1];
         }
         //성과 대우
         else if (unit.ud.level == 3)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 2);
             if (upgradeLv != 0)
-                unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.spawnCoolDown_MinusPercent += GameManager.Instance.unitUpgradeDatas[2].upgradeValue[upgradeLv - 1];
         }
         //장갑 보강
         if (unit.ud.attack_RangeType == AttackRangeType.Melee)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 3);
             if (upgradeLv != 0)
-                unit.unitStatData_st.max_Hp_Plus += DunGeonManager_New.instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1] * 0.01f * unit.ud.hp;
+                unit.unitStatData_st.max_Hp_Plus += GameManager.Instance.unitUpgradeDatas[3].upgradeValue[upgradeLv - 1] * 0.01f * unit.ud.hp;
         }
         //사격 훈련
         if (unit.ud.attack_RangeType == AttackRangeType.Ranged)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 4);
             if (upgradeLv != 0)
-                unit.unitStatData_st.attack_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[4].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.attack_PlusPercent += GameManager.Instance.unitUpgradeDatas[4].upgradeValue[upgradeLv - 1];
         }
         //개인 침낭
         if (unit.ud.size == Unit_Size.Small)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 5);
             if (upgradeLv != 0)
-                unit.unitStatData_st.avoidance_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[5].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.avoidance_Plus += (int)GameManager.Instance.unitUpgradeDatas[5].upgradeValue[upgradeLv - 1];
         }
         //대형 텐트
         if (unit.ud.size == Unit_Size.Medium || unit.ud.size == Unit_Size.Large)
         {
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 6);
             if (upgradeLv != 0)
-                unit.unitStatData_st.moveSpeed_PlusPercent += DunGeonManager_New.instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.moveSpeed_PlusPercent += GameManager.Instance.unitUpgradeDatas[6].upgradeValue[upgradeLv - 1];
         }
         //정의의 용병단
         if(unit.ud.faction == Faction.Guild || unit.ud.faction == Faction.Fairy)
@@ -156,8 +156,8 @@ public class Card_new : MonoBehaviour
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 10);
             if(upgradeLv != 0)
             {
-                unit.unitStatData_st.avoidance_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
-                unit.unitStatData_st.accuracy_Plus += (int)DunGeonManager_New.instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.avoidance_Plus += (int)GameManager.Instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.accuracy_Plus += (int)GameManager.Instance.unitUpgradeDatas[10].upgradeValue[upgradeLv - 1];
             }
         }
         //파괴의 용병단
@@ -166,8 +166,8 @@ public class Card_new : MonoBehaviour
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 11);
             if (upgradeLv != 0)
             {
-                unit.unitStatData_st.cost_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
-                unit.unitStatData_st.spawnCoolDown_MinusPercent += DunGeonManager_New.instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.cost_MinusPercent += GameManager.Instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
+                unit.unitStatData_st.spawnCoolDown_MinusPercent += GameManager.Instance.unitUpgradeDatas[11].upgradeValue[upgradeLv - 1];
             }
         }
         #endregion
@@ -188,7 +188,10 @@ public class Card_new : MonoBehaviour
         }
         //로즈베리 케이크
         if (GameManager.Instance.CheckAppliedMeal(104, out md))
+        {
             unit.isNoTypeDamage = true;
+            unit.isPenetration = true;
+        }
         //불사조 닭발
         if (GameManager.Instance.CheckAppliedMeal(100, out md))
             unit.unitStatData_st.attack_PlusPercent += md.mealValue2;

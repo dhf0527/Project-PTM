@@ -51,6 +51,8 @@ public class EndCredit_Dotween : MonoBehaviour
 
     void Init()
     {
+        AudioManager.Instance.PlayerBgm(BGM_Enum.Intro);
+
         curStep = EndCreditStep.illust;
         currentPageIndex = 0;
         container.anchoredPosition = Vector3.zero;
@@ -144,7 +146,11 @@ public class EndCredit_Dotween : MonoBehaviour
             seq.Append(fadeOutMask.DOFade(1f, pageChangeDuration).SetEase(Ease.InCubic));
             //페이드 아웃 이후 2초 대기
             seq.AppendInterval(2f);
-            seq.OnComplete(() => gameObject.SetActive(false));
+            seq.OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+                AudioManager.Instance.PlayerBgm(BGM_Enum.WorldMap);
+            });
         }
 
         c_AutoNextPage = StartCoroutine(C_AutoNextPage());
