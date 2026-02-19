@@ -111,7 +111,7 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: -6458632999849278288, guid: 7058502c843cdab46b144ef34566ba88, type: 3}
   isPenetration: 0
-  isTrueDamage: 0
+  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0

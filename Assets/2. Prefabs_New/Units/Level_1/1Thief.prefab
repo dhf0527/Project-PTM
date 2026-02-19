@@ -111,13 +111,13 @@ MonoBehaviour:
   ranged_Projectile_Pos: {fileID: 409362849925886857}
   ranged_Projectile_Prefabs: {fileID: 5915279210137212383, guid: 80186e1230fa6224c8d17f94ab452687, type: 3}
   isPenetration: 0
-  isNoTypeDamage: 1
+  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
-  killGold: 30
+  killGold: 25
   attack_Gold: 1
   kill_Gold: 20
 --- !u!95 &5061897147921594596
