@@ -17,9 +17,9 @@ MonoBehaviour:
   upgradeIcon: {fileID: 21300000, guid: 180cb7834137588458f402e26b288714, type: 3}
   upgradeCost: 4
   upgradeValue:
-  - 15
-  - 25
-  - 35
+  - 20
+  - 30
+  - 40
   upgradeValue2: []
   upgradeDescription: "\uC6A9\uBCD1\uC774 \uC544\uC774\uD15C\uC744 \uC9C0\uB2CC \uCC44
     \uB4F1\uC7A5\uD560 \uD655\uB960,\n\uD76C\uADC0 \uB4F1\uAE09\uC758 \uC694\uB9AC\uC640

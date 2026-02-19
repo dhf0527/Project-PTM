@@ -16,7 +16,7 @@ MonoBehaviour:
   number: 1
   bossUnit: {fileID: -6891784853390649803, guid: d564d1ee06e5cbd4db9b36b4b10f2931, type: 3}
   units_Wave1:
-  - {fileID: 0}
+  - {fileID: 9042319508617872247, guid: 7549fde7d884b8b499396e2b96084202, type: 3}
   - {fileID: -1873704384784698236, guid: 40cf7be3bf0142944a8cd6740ae82459, type: 3}
   - {fileID: 0}
   units_Wave2:

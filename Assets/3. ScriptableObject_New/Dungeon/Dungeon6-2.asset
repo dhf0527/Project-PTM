@@ -18,7 +18,7 @@ MonoBehaviour:
   units_Wave1:
   - {fileID: 0}
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
-  - {fileID: 0}
+  - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}
   units_Wave2:
   - {fileID: 0}
   - {fileID: -2169012110788625081, guid: 0a4906fc4f68b284a9335338aec2149e, type: 3}

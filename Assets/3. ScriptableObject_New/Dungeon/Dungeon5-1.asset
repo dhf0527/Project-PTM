@@ -17,11 +17,11 @@ MonoBehaviour:
   bossUnit: {fileID: -1873704384784698236, guid: 40cf7be3bf0142944a8cd6740ae82459, type: 3}
   units_Wave1:
   - {fileID: -1873704384784698236, guid: 40cf7be3bf0142944a8cd6740ae82459, type: 3}
-  - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
   - {fileID: 0}
-  units_Wave2:
   - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
+  units_Wave2:
   - {fileID: -1873704384784698236, guid: 40cf7be3bf0142944a8cd6740ae82459, type: 3}
+  - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
   - {fileID: 0}
   units_Wave3:
   - {fileID: -2471191115861814989, guid: c60f263116fd40843ad36ae1de8efa15, type: 3}
