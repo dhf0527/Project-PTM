@@ -330,8 +330,6 @@ MonoBehaviour:
   hitParent: {fileID: 6900437765336603078}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
-  isPenetration: 0
-  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
@@ -350,6 +348,7 @@ MonoBehaviour:
   upgradeValue_armor: 2
   recoveryTime: 3
   recoveryAmount: 10
+  recoveryTerm: 0.5
   reviveCoolTime: 15
   move_Particle: {fileID: 6980375922286617282}
   skill1_coolTime: 20

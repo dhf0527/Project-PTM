@@ -18,7 +18,15 @@ public abstract class Unit : MonoBehaviour
     public float SpawnCoolDown { get { return DunGeonManager_New.instance.spawnCoolTimesByLevel[ud.level - 1] * (1 - unitStatData_st.spawnCoolDown_MinusPercent * 0.01f); } }
     public float AttackRange { get { return ud.attack_Range == 0 ? GetAttackRange() : ud.attack_Range; } }
 
-    [HideInInspector] public Unit_Size size;
+    public Unit_Size Size { 
+        get { return size; }
+        set 
+        { 
+            size = value;
+            GetComponent<SpriteRenderer>().sortingOrder = (2 - (int)size) * 10 + 3; 
+        }
+    }
+    Unit_Size size;
 
     //스탯의 증감치를 담는 구조체
     public struct UnitStatData_Struct
@@ -66,6 +74,11 @@ public abstract class Unit : MonoBehaviour
         public int spawnCount_Plus;
         //고용 쿨타임 증감
         public float spawnCoolDown_MinusPercent;
+
+        //관통 공격 여부
+        public bool isPenetration;
+        //고정 공격 여부
+        public bool isNoTypeDamage;
     }
     public UnitStatData_Struct unitStatData_st;
 
@@ -122,10 +135,7 @@ public abstract class Unit : MonoBehaviour
 
     //스캔한 적을 받아올 hit
     protected RaycastHit2D hit;
-    //관통 공격 여부
-    [HideInInspector] public bool isPenetration;
-    //고정 공격 여부
-    [HideInInspector] public bool isNoTypeDamage;
+    
     #endregion
     #region 피격 변수
     //현재 체력
@@ -496,7 +506,7 @@ public abstract class Unit : MonoBehaviour
         float type_res = attackType == target_Unit.ud.resistance_Type ? 0.5f : 1;
         float type_weak = attackType == target_Unit.ud.weak_Type ? 2f : 1;
         //무속성
-        if(isNoTypeDamage)
+        if(unitStatData_st.isNoTypeDamage)
         {
             type_res = 1;
             type_weak = 1;
@@ -508,7 +518,7 @@ public abstract class Unit : MonoBehaviour
         //주는 피해량
         float dealingDamage = AttackDamage * CalculateAttackBoost(target_Unit);
         //관통공격
-        if (isPenetration)
+        if (unitStatData_st.isPenetration)
             totalDamage = dealingDamage * (type_res * type_weak);
         else
             totalDamage = (dealingDamage - target_Unit.Armor) * (type_res * type_weak) * (1-target_Unit.unitStatData_st.damageReduction_PlusPercent * 0.01f) * CalculateTargetDamageReduction(target_Unit);

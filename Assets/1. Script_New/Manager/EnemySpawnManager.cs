@@ -427,7 +427,7 @@ public class EnemySpawnManager : MonoBehaviour
         //소,중형 -> 중,대형
         if(bossUnit.ud.size != Unit_Size.Large)
         {
-            bossUnit.size++;
+            bossUnit.Size++;
             DunGeonManager_New.instance.SpawnY(bossUnit);
         }
         //능력치 조정

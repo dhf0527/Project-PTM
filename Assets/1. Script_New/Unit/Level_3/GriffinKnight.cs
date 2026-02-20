@@ -10,7 +10,7 @@ public class GriffinKnight : Unit
         float dmgBoost = base.CalculateAttackBoost(target_Unit);
 
         //그리폰 발톱(중,대형 추가 데미지)
-        if (target_Unit.size == Unit_Size.Medium || target_Unit.size == Unit_Size.Large)
+        if (target_Unit.Size == Unit_Size.Medium || target_Unit.Size == Unit_Size.Large)
             dmgBoost += 0.5f;
 
         return dmgBoost;

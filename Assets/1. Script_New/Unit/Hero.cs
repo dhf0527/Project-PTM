@@ -16,9 +16,10 @@ public abstract class Hero : Unit
     [SerializeField] float upgradeValue_avoidance;
     [SerializeField] int upgradeValue_armor;
 
-    [Header("비전투 회복 회복 (단위=초, 초당 회복량%)")]
+    [Header("비전투 회복 회복 (비전투 시간, 초당 회복량%, 회복 빈도)")]
     [SerializeField] float recoveryTime;
     [SerializeField] float recoveryAmount;
+    [SerializeField] float recoveryTerm;
 
     [Header("부활 시간")]
     [SerializeField] float reviveCoolTime;
@@ -69,8 +70,8 @@ public abstract class Hero : Unit
         nonCombatTime += Time.deltaTime;
         if (nonCombatTime > recoveryTime && cur_Hp < Max_Hp)
         {
-            nonCombatTime -= 1;
-            GetHp(recoveryAmount / 100f * Max_Hp);
+            nonCombatTime -= recoveryTerm;
+            GetHp(recoveryAmount / recoveryTerm / 100f * Max_Hp);
         }
 
         animator.SetFloat("MoveSpeed", MoveSpeed / 200);

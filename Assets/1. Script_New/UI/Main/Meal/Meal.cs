@@ -14,9 +14,6 @@ public class Meal : MonoBehaviour
     public List<MealData> hardMode_mealDatas_uncommon;
     public List<MealData> hardMode_mealDatas_rare;
     public List<MealData> hardMode_mealDatas_legendary;
-    [Header("È®·ü(%) -> Èñ±Í È®·ü = pro_legendary * rare_multi")]
-    [SerializeField] int pro_legendary;
-    [SerializeField] int rare_multi;
 
     [Header("panel, select, eating, complete, full, additionalMeal, full_Hardmode¼ø")]
     public List<GameObject> gameObjects;
@@ -201,15 +198,15 @@ public class Meal : MonoBehaviour
         for (int i = 0; i < k; i++)
         {
             int rand = UnityEngine.Random.Range(0, 100);
-            int tmp_pro_legendary = pro_legendary;
-            int tmp_pro_rare = pro_legendary * rare_multi;
+            int tmp_pro_legendary = MainManager.instance.pro_legendary;
+            int tmp_pro_rare = MainManager.instance.rare_multi * tmp_pro_legendary;
 
             //Çà¿îÀÇ ¿ëº´´Ü
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
             if (upgradeLv != 0)
             {
                 tmp_pro_rare += (int)GameManager.Instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
-                tmp_pro_legendary = tmp_pro_rare / rare_multi;
+                tmp_pro_legendary = tmp_pro_rare / MainManager.instance.rare_multi;
             }
 
             int pro_uncommon = 100 - (tmp_pro_legendary + tmp_pro_rare);

@@ -24,7 +24,6 @@ public class Princess : Hero
 
         Instantiate(imperialShield_prf, transform.parent).transform.position = transform.position + Vector3.up * 0.7f;
 
-        nonCombatTime = 0;
         float skillRange = 1.5f;
 
         //스캔할 레이어 설정
@@ -56,8 +55,6 @@ public class Princess : Hero
         base.OnSkill2();
 
         Instantiate(crownSword_prf, transform).transform.position += Vector3.up * 1.7f;
-
-        nonCombatTime = 0;
 
         //스캔할 레이어 설정
         string target_Layer = TeamLayer;

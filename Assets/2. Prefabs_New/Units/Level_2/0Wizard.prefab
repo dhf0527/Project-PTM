@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 477463469
   m_SortingLayer: 2
-  m_SortingOrder: 34
+  m_SortingOrder: 33
   m_Sprite: {fileID: 530517141, guid: e68b466322f3a824ca759b3dbf9329a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -110,8 +110,6 @@ MonoBehaviour:
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 2136429800145144138}
   ranged_Projectile_Prefabs: {fileID: -4864505277133231500, guid: ba0c79fc6bdb3d441b0896ab0d1248b6, type: 3}
-  isPenetration: 0
-  isTrueDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0

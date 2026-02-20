@@ -23,6 +23,10 @@ public class MainManager : MonoBehaviour
     public int maxStarBuyCost;
     public int starBuyCost_Per_Count;
 
+    [Header("½Ä»ç È®·ü(%) -> Èñ±Í È®·ü = pro_legendary * rare_multi")]
+    public int pro_legendary;
+    public int rare_multi;
+
     public int additionalMeal_cost;
     public int resetMeal_cost;
     public Image[] meal_Icons = new Image[2];

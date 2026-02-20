@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class WorldMapBackgrounds : MonoBehaviour
 {
@@ -48,7 +49,12 @@ public class WorldMapBackgrounds : MonoBehaviour
         screen_Width = GetComponent<RectTransform>().rect.width;
         SetTransformMaps(0);
 
-        FastChange(GameManager.Instance.current_Dungeon?.stage >= 5);
+        if (PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0
+            && PlayerPrefs.GetInt(ConstData.dungeonClearTime + $"{4},{3}") > 0
+            && GameManager.Instance.current_Dungeon == null)
+            FastChange(true);
+        else
+            FastChange(GameManager.Instance.current_Dungeon?.stage >= 5);
     }
 
     private void Update()

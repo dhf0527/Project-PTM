@@ -142,8 +142,8 @@ public abstract class Projectile : MonoBehaviour
         damage = unit.AttackDamage * (1 + unit.unitStatData_st.attackBoost_PlusPercent * 0.01f);
         accuracy = unit.Accuracy;
         attackType = unit.ud.attack_Type;
-        isPenetration = unit.isPenetration;
-        isTrueDamage = unit.isNoTypeDamage;
+        isPenetration = unit.unitStatData_st.isPenetration;
+        isTrueDamage = unit.unitStatData_st.isNoTypeDamage;
     }
 
     //투사체를 삭제하는 함수

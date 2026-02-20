@@ -25,7 +25,7 @@ public class Blinded : Buff
 
     protected override bool PreventStack()
     {
-        if (GetComponents<ShieldSmiteDebuff>().Length > 1)
+        if (GetComponents<Blinded>().Length > 1)
         {
             //지속 시간 초기화
             GetComponent<Blinded>().cur_BuffTime = 0;

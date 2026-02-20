@@ -306,52 +306,6 @@ public class DunGeonManager_New : MonoBehaviour
         if (upgradeLv != 0)
             unit.unitStatData_st.accuracy_Plus += (int)(GameManager.Instance.unitUpgradeDatas[8].upgradeValue[upgradeLv - 1] * teamBase.Base_level);
 
-        //식사 효과(숙성 참치회)
-        MealData md;
-        if (GameManager.Instance.CheckAppliedMeal(8, out md))
-            unit.unitStatData_st.attack_Plus += (EnemySpawnManager.instance.cur_Wave + 1) * (md.mealValue);
-        //유리비늘 생선구이
-        if (GameManager.Instance.CheckAppliedMeal(0, out md) && unit.ud.armor == 0)
-            unit.unitStatData_st.armor_Plus += (int)md.mealValue;
-        //칠면조 바비큐
-        if (GameManager.Instance.CheckAppliedMeal(3, out md))
-            unit.unitStatData_st.max_Hp_Plus += md.mealValue;
-        //파인애플 피자
-        if (GameManager.Instance.CheckAppliedMeal(9, out md))
-        {
-            unit.unitStatData_st.isFixed_AttackSpeed = true;
-            unit.unitStatData_st.fixedAttackSpeed = md.mealValue;
-        }
-        //로즈베리 케이크
-        if (GameManager.Instance.CheckAppliedMeal(104, out md))
-        {
-            unit.isNoTypeDamage = true;
-            unit.isPenetration = true;
-        }
-        //불사조 닭발
-        if (GameManager.Instance.CheckAppliedMeal(100, out md))
-            unit.unitStatData_st.attack_PlusPercent += md.mealValue2;
-        //든든 국밥
-        if (GameManager.Instance.CheckAppliedMeal(101, out md))
-        {
-            unit.unitStatData_st.avoidance_Plus += (int)md.mealValue;
-            unit.unitStatData_st.accuracy_Plus += (int)md.mealValue2;
-        }
-        //정체불명 햄버거
-        if (GameManager.Instance.CheckAppliedMeal(102, out md))
-            unit.unitStatData_st.cost_MinusPercent += md.mealValue;
-        //드워프 맥주
-        if (GameManager.Instance.CheckAppliedMeal(105, out md))
-        {
-            unit.unitStatData_st.damageReduction_PlusPercent -= md.mealValue;
-            unit.unitStatData_st.attackBoost_PlusPercent += md.mealValue2;
-        }
-        //드래곤알 오믈렛
-        if (GameManager.Instance.CheckAppliedMeal(200, out md))
-        {
-            unit.unitStatData_st.cost_MinusPercent += md.mealValue;
-        }
-
         onStageUnits_Test.Add(unit);
 
         return unit;
@@ -368,7 +322,7 @@ public class DunGeonManager_New : MonoBehaviour
     public Vector3 SpawnY(Unit unit)
     {
         float y_BySize;
-        switch (unit.size)
+        switch (unit.Size)
         {
             case Unit_Size.Medium:
                 y_BySize = 0.12f;
