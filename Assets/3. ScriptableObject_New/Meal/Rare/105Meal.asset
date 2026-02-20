@@ -15,8 +15,8 @@ MonoBehaviour:
   code: 105
   mealName: "\uB4DC\uC6CC\uD504 \uB9E5\uC8FC"
   mealIcon: {fileID: -1546936107, guid: 52022f7b4db308f41965954b91779ce8, type: 3}
-  mealValue: 15
-  mealValue2: 45
+  mealValue: 25
+  mealValue2: 50
   mealDescription: "\uC6A9\uBCD1\uC774 \uBC1B\uB294 \uD53C\uD574 *r{value}%* \uC99D\uAC00,
     \uC8FC\uB294 \uD53C\uD574 *b{value2}%* \uC99D\uAC00"
   mealFlavorText: "\uC5C4\uCCAD\uB09C \uB3C4\uC218\uC758 \uB4DC\uC6CC\uD504 \uB9E5\uC8FC\uB294

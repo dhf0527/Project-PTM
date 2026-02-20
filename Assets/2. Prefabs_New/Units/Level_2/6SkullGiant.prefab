@@ -117,12 +117,12 @@ MonoBehaviour:
   isImmune: 0
   origin_Scale: 1
   scaleVector: {x: 1, y: 1, z: 1}
-  killGold: 0
+  killGold: 50
   buffValues: 00000000060000000c000000
   hpCut1: 35
   hpCut2: 70
   detectionRadius: 5
-  healValue: 40
+  healValue: 30
 --- !u!95 &5061897147921594596
 Animator:
   serializedVersion: 5

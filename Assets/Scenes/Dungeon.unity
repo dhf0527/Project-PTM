@@ -9477,7 +9477,7 @@ MonoBehaviour:
   boss_Unit: {fileID: -5947329421504820961, guid: a160cb0fd6cbaaf4eba7308c1cc5e3a8, type: 3}
   boss_BaseHp: 28
   boss_Hp1: 1
-  boss_Hp2: 6
+  boss_Hp2: 8
   boss_Attack1: 1
   boss_Attack2: 1
   boss_attackPlus: 1
