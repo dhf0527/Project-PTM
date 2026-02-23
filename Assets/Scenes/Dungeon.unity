@@ -20807,14 +20807,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0082e7d3f13f4b95a2f15def25f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
   ud: {fileID: 11400000, guid: 5c36f5331e2342540ad887958491bf84, type: 2}
   isHpText: 1
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
-  isPenetration: 0
-  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
@@ -29595,14 +29592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822a8fc1bd4dc1842a9395d5f8076b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
   ud: {fileID: 11400000, guid: 90423bc2f1aa034488039a8e4ba99975, type: 2}
   isHpText: 1
   hitParent: {fileID: 0}
   ranged_Projectile_Pos: {fileID: 0}
   ranged_Projectile_Prefabs: {fileID: 0}
-  isPenetration: 0
-  isNoTypeDamage: 0
   hpBar: {fileID: 0}
   canKnockBack: 1
   isImmune: 0
@@ -65780,7 +65774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_range
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill1_Damage
@@ -65788,7 +65782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: reviveCoolTime
