@@ -71272,8 +71272,8 @@ MonoBehaviour:
   baseStarBuyCost: 6000
   maxStarBuyCost: 20000
   starBuyCost_Per_Count: 2000
-  pro_legendary: 5
-  rare_multi: 3
+  pro_rare: 15
+  legendary_divide: 3
   additionalMeal_cost: 1000
   resetMeal_cost: 1000
   meal_Icons:
@@ -98047,6 +98047,7 @@ MonoBehaviour:
   - {fileID: 1886257804}
   - {fileID: 822195251}
   - {fileID: 1564342624}
+  - {fileID: 1831334289}
   meal_Cards:
   - {fileID: 1918478753}
   - {fileID: 731084432}

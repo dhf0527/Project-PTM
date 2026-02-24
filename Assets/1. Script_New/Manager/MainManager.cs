@@ -23,9 +23,9 @@ public class MainManager : MonoBehaviour
     public int maxStarBuyCost;
     public int starBuyCost_Per_Count;
 
-    [Header("½Ä»ç È®·ü(%) -> Èñ±Í È®·ü = pro_legendary * rare_multi")]
-    public int pro_legendary;
-    public int rare_multi;
+    [Header("½Ä»ç È®·ü(%) -> Àü¼³ È®·ü = pro_rare / legendary_divide")]
+    public int pro_rare;
+    public int legendary_divide;
 
     public int additionalMeal_cost;
     public int resetMeal_cost;

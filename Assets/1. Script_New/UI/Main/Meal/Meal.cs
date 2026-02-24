@@ -15,7 +15,7 @@ public class Meal : MonoBehaviour
     public List<MealData> hardMode_mealDatas_rare;
     public List<MealData> hardMode_mealDatas_legendary;
 
-    [Header("panel, select, eating, complete, full, additionalMeal, full_Hardmode순")]
+    [Header("panel, select, eating, complete, full, additionalMeal, full_Hardmode, panel(no ads)순")]
     public List<GameObject> gameObjects;
     public List<Meal_Card> meal_Cards;
     public TMP_Text eat_Meal_Text;
@@ -68,6 +68,10 @@ public class Meal : MonoBehaviour
             }
         }
 
+        //하드모드 해금 시 광고X버전
+        if(PlayerPrefs.GetInt(ConstData.hardMode_Unlock) != 0 && go == gameObjects[0])
+            go = gameObjects[7];
+
         foreach (var item in gameObjects)
             item.SetActive(false);
         go.SetActive(true);
@@ -77,7 +81,6 @@ public class Meal : MonoBehaviour
     public void SetMealData()
     {
         int k = meal_Cards.Count;
-        int rand = UnityEngine.Random.Range(0, 100);
 
         List<MealData> rand_Mds = GetRandomMealData(mealDatas_uncommon, mealDatas_rare, mealDatas_legendary, k);
 
@@ -197,35 +200,34 @@ public class Meal : MonoBehaviour
         List<MealData> rand_Mds = new();
         for (int i = 0; i < k; i++)
         {
-            int rand = UnityEngine.Random.Range(0, 100);
-            int tmp_pro_legendary = MainManager.instance.pro_legendary;
-            int tmp_pro_rare = MainManager.instance.rare_multi * tmp_pro_legendary;
+            int multi = MainManager.instance.legendary_divide;
+            int weight_rare = MainManager.instance.pro_rare * multi;
+            int weight_legendary = MainManager.instance.pro_rare;
+            int total_weight = 100 * multi;
+            int rand = UnityEngine.Random.Range(0, total_weight);
 
             //행운의 용병단
             int upgradeLv = PlayerPrefs.GetInt(ConstData.unitUpgrade + 12);
             if (upgradeLv != 0)
             {
-                tmp_pro_rare += (int)GameManager.Instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1];
-                tmp_pro_legendary = tmp_pro_rare / MainManager.instance.rare_multi;
+                weight_rare += (int)GameManager.Instance.unitUpgradeDatas[12].upgradeValue[upgradeLv - 1] * multi;
+                weight_legendary = weight_rare / multi;
             }
-
-            int pro_uncommon = 100 - (tmp_pro_legendary + tmp_pro_rare);
 
             //첫번째 요리가 전설일 경우 확률 변경
             if (GameManager.Instance.applied_Meals[0] != null && GameManager.Instance.applied_Meals[0].mealRarity == MealRarity.Legendary)
             {
-                tmp_pro_rare = tmp_pro_legendary;
-                tmp_pro_legendary = 0;
-                pro_uncommon = 100 - (tmp_pro_legendary + tmp_pro_rare);
+                weight_rare = weight_legendary;
+                weight_legendary = 0;
             }
 
-            if (rand < tmp_pro_legendary && mds_pool_legendary.Count > 0)
+            if (rand < weight_legendary && mds_pool_legendary.Count > 0)
             {
                 MealData tmp_md = mds_pool_legendary[UnityEngine.Random.Range(0, mds_pool_legendary.Count)];
                 rand_Mds.Add(tmp_md);
                 mds_pool_legendary.Remove(tmp_md);
             }
-            else if (rand < tmp_pro_legendary + tmp_pro_rare)
+            else if (rand < weight_legendary + weight_rare)
             {
                 MealData tmp_md = mds_pool_rare[UnityEngine.Random.Range(0, mds_pool_rare.Count)];
                 rand_Mds.Add(tmp_md);

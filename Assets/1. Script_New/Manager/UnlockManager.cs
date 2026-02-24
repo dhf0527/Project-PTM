@@ -138,8 +138,8 @@ public class UnlockManager : MonoBehaviour
                     notification_unitUpgrades[3].SetActive(true);
                     break;
                 case ConstData.hardMode_Unlock:
-                    notification_Text_1.text = "하드 모드가 해금되었습니다!";
-                    notification_Text_2.text = "아래의 기능들이 해금되었습니다.\n* 5-1 이후의 스테이지\n* 용병단 업그레이드-정예";
+                    notification_Text_1.text = "왕실 용병단 패키지를 구매해주셔서 감사합니다!";
+                    notification_Text_2.text = "이제 일용직 용병단의 모든 컨텐츠를 \r\n자유롭게 즐기실 수 있습니다.\r\n(자세한 내용은 상세 창을 확인해주세요)";
                     notification_unitUpgrades[0].SetActive(true);
                     notification_unitUpgrades[4].SetActive(true);
                     break;
