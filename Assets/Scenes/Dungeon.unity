@@ -1315,7 +1315,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -63.600006, y: 0}
-  m_SizeDelta: {x: 100, y: 0}
+  m_SizeDelta: {x: 110, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42001538
 MonoBehaviour:
@@ -27646,6 +27646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 439790622}
     m_Modifications:
+    - target: {fileID: 424248630594246249, guid: b71c009052a4a2340838894038019b0d, type: 3}
+      propertyPath: m_text
+      value: "\uBC29\uD328 \uAC15\uD0C0"
+      objectReference: {fileID: 0}
     - target: {fileID: 507375728435108580, guid: b71c009052a4a2340838894038019b0d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -49293,8 +49297,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -50592,6 +50596,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 439790622}
     m_Modifications:
+    - target: {fileID: 424248630594246249, guid: b71c009052a4a2340838894038019b0d, type: 3}
+      propertyPath: m_text
+      value: "\uBD80\uB7EC\uC9C4 \uC601\uC6C5\uAC80"
+      objectReference: {fileID: 0}
     - target: {fileID: 507375728435108580, guid: b71c009052a4a2340838894038019b0d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -65770,7 +65778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: skill2_range
@@ -65782,7 +65790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: recoveryAmount
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 792385159604393710, guid: f9742f4242c7c094d8b02f4962f5979e, type: 3}
       propertyPath: reviveCoolTime
