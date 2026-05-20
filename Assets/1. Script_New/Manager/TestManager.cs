@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TestManager : MonoBehaviour
 {
+    [Header("활성화: 테스트 오브젝트 안 꺼짐")]
+    [SerializeField] bool isCheckActive;
     [SerializeField] List<GameObject> testObjects;
 
     bool test_Is1;
@@ -29,6 +31,9 @@ public class TestManager : MonoBehaviour
 #else
     private void OnEnable()
     {
+        if (!isCheckActive)
+            return;
+
         foreach (var testObject in testObjects)
             testObject.SetActive(false);
     }
